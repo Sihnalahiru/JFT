@@ -12,7 +12,7 @@
       "lessonId": "ST-L02",
       "bookId": "starter",
       "lessonNumber": 2,
-      "activityCount": 4,
+      "activityCount": 3,
       "status": "VERIFIED"
     },
     {
@@ -47,14 +47,14 @@
       "lessonId": "ST-L07",
       "bookId": "starter",
       "lessonNumber": 7,
-      "activityCount": 4,
+      "activityCount": 5,
       "status": "VERIFIED"
     },
     {
       "lessonId": "ST-L08",
       "bookId": "starter",
       "lessonNumber": 8,
-      "activityCount": 5,
+      "activityCount": 4,
       "status": "VERIFIED"
     },
     {
@@ -117,7 +117,7 @@
       "lessonId": "ST-L17",
       "bookId": "starter",
       "lessonNumber": 17,
-      "activityCount": 4,
+      "activityCount": 5,
       "status": "VERIFIED"
     },
     {
