@@ -1,0 +1,41 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "books": [
+    {
+      "bookId": "starter",
+      "code": "ST",
+      "title": "Starter",
+      "lessonCount": 18,
+      "activityCount": 79,
+      "status": "VERIFIED",
+      "sourceType": "official"
+    },
+    {
+      "bookId": "elementary01",
+      "code": "E1",
+      "title": "Elementary 1",
+      "lessonCount": 18,
+      "activityCount": 69,
+      "status": "VERIFIED",
+      "sourceType": "official"
+    },
+    {
+      "bookId": "elementary02",
+      "code": "E2",
+      "title": "Elementary 2",
+      "lessonCount": 18,
+      "activityCount": 78,
+      "status": "VERIFIED",
+      "sourceType": "official"
+    },
+    {
+      "bookId": "pre-intermediate",
+      "code": "PI",
+      "title": "Pre-Intermediate",
+      "lessonCount": 18,
+      "activityCount": 62,
+      "status": "VERIFIED",
+      "sourceType": "official"
+    }
+  ]
+}
