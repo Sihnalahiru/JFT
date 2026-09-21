@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+
+  "source": {
+    "name": "IRODORI",
+    "publisher": "The Japan Foundation",
+    "sourceOfTruth": "official"
+  },
+
+  "control": {
+    "books": 4,
+    "lessons": 72,
+    "activities": 288,
+    "canDos": 288,
+    "kanjiCharacters": 644,
+    "mainAudioRecords": 1373,
+    "wordListAudioRecords": 222,
+    "grammarWorksheetAudioRecords": 256,
+    "illustrationRecords": 1833
+  },
+
+  "books": [],
+  "lessons": [],
+  "activities": [],
+  "canDos": [],
+  "audio": [],
+  "answers": [],
+  "vocabulary": [],
+  "kanji": [],
+  "grammar": [],
+  "tips": [],
+  "illustrations": [],
+  "contentBlocks": [],
+  "sources": [],
+  "exceptions": []
+}
