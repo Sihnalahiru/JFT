@@ -1,0 +1,92 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "bookId": "elementary01",
+  "canDos": [
+    {"canDoId":"E1-CD01","bookId":"elementary01","canDoNumber":1,"activityId":"E1-L01-A01","textEn":"Can exchange greetings with a person you are meeting for the first time in a long time.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD02","bookId":"elementary01","canDoNumber":2,"activityId":"E1-L01-A02","textEn":"Can talk in simple terms about how you have been recently when asked by a close person.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD03","bookId":"elementary01","canDoNumber":3,"activityId":"E1-L01-A03","textEn":"Can talk in simple terms about your work in Japan.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD04","bookId":"elementary01","canDoNumber":4,"activityId":"E1-L02-A01","textEn":"Can talk in simple terms about your hobbies and favorite things to do.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD05","bookId":"elementary01","canDoNumber":5,"activityId":"E1-L02-A02","textEn":"Can ask and answer questions about how you spend your days off.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD06","bookId":"elementary01","canDoNumber":6,"activityId":"E1-L02-A03","textEn":"Can read staff descriptions posted in a store, facility, etc. and understand their families, hobbies, etc.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD07","bookId":"elementary01","canDoNumber":7,"activityId":"E1-L02-A04","textEn":"Can write in simple terms about your hobbies, your days off, etc. for staff descriptions posted at work.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD08","bookId":"elementary01","canDoNumber":8,"activityId":"E1-L03-A01","textEn":"Can watch a short video about the four seasons in Japan and understand seasonal characteristics.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD09","bookId":"elementary01","canDoNumber":9,"activityId":"E1-L03-A02","textEn":"Can talk in simple terms about the seasonal characteristics of your own country.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD10","bookId":"elementary01","canDoNumber":10,"activityId":"E1-L03-A03","textEn":"Can talk in simple terms about your favorite season and the reason.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD11","bookId":"elementary01","canDoNumber":11,"activityId":"E1-L04-A01","textEn":"Can exchange greetings while talking about the weather.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD12","bookId":"elementary01","canDoNumber":12,"activityId":"E1-L04-A02","textEn":"Can listen to the weather forecast and mostly understand it.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD13","bookId":"elementary01","canDoNumber":13,"activityId":"E1-L04-A03","textEn":"Can read and understand simple posts about the weather on social media.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD14","bookId":"elementary01","canDoNumber":14,"activityId":"E1-L05-A01","textEn":"Can talk in simple terms about your impressions of your town.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD15","bookId":"elementary01","canDoNumber":15,"activityId":"E1-L05-A02","textEn":"Can ask questions about recommended places around town and understand the answers.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD16","bookId":"elementary01","canDoNumber":16,"activityId":"E1-L05-A03","textEn":"Can look at a town map and get information about famous spots, stores, etc.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD17","bookId":"elementary01","canDoNumber":17,"activityId":"E1-L06-A01","textEn":"Can ask and understand directions.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD18","bookId":"elementary01","canDoNumber":18,"activityId":"E1-L06-A02","textEn":"Can ask and understand directions on the phone.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD19","bookId":"elementary01","canDoNumber":19,"activityId":"E1-L06-A03","textEn":"Can give directions to the destination by car when, for example, someone gives you a ride.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD20","bookId":"elementary01","canDoNumber":20,"activityId":"E1-L07-A01","textEn":"Can ask and understand the time and place to meet.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD21","bookId":"elementary01","canDoNumber":21,"activityId":"E1-L07-A02","textEn":"Can talk about and decide the time and place to meet.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD22","bookId":"elementary01","canDoNumber":22,"activityId":"E1-L07-A03","textEn":"Can read and understand a message saying that the person you are meeting will be late.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD23","bookId":"elementary01","canDoNumber":23,"activityId":"E1-L07-A04","textEn":"Can write a message saying that you will be late for the arranged time.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD24","bookId":"elementary01","canDoNumber":24,"activityId":"E1-L08-A01","textEn":"Can ask someone out to eat, go shopping, or go to an event while asking about their experience and interest.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD25","bookId":"elementary01","canDoNumber":25,"activityId":"E1-L08-A02","textEn":"Can discuss what to do next and where to go while you are out with someone.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD26","bookId":"elementary01","canDoNumber":26,"activityId":"E1-L08-A03","textEn":"Can give your impressions about the event to the person you went with.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD27","bookId":"elementary01","canDoNumber":27,"activityId":"E1-L09-A01","textEn":"Can talk in simple terms about your experience learning Japanese.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD28","bookId":"elementary01","canDoNumber":28,"activityId":"E1-L09-A02","textEn":"Can give your impressions and comments about learning Japanese.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD29","bookId":"elementary01","canDoNumber":29,"activityId":"E1-L09-A03","textEn":"Can ask someone for help when, for example, you have a problem with Japanese.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD30","bookId":"elementary01","canDoNumber":30,"activityId":"E1-L09-A04","textEn":"Can read an online forum about learning Japanese and understand the recommended study methods.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD31","bookId":"elementary01","canDoNumber":31,"activityId":"E1-L10-A01","textEn":"Can find and understand information such as the place, date, and time of lessons offered at a local community center, etc.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD32","bookId":"elementary01","canDoNumber":32,"activityId":"E1-L10-A02","textEn":"Can ask questions about the lesson you are interested in at a local government office and understand the answers.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD33","bookId":"elementary01","canDoNumber":33,"activityId":"E1-L10-A03","textEn":"Can ask friends or answer questions about Japanese-language classes in the community.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD34","bookId":"elementary01","canDoNumber":34,"activityId":"E1-L10-A04","textEn":"Can answer questions about your experience or your goals in learning Japanese, in order to participate in Japanese-language classes.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD35","bookId":"elementary01","canDoNumber":35,"activityId":"E1-L11-A01","textEn":"Can discuss who will bring which item when, for example, having a barbecue.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD36","bookId":"elementary01","canDoNumber":36,"activityId":"E1-L11-A02","textEn":"Can discuss what to buy when, for example, having a house party.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD37","bookId":"elementary01","canDoNumber":37,"activityId":"E1-L11-A03","textEn":"Can ask store staff about the ingredients and expiration dates of food and understand the answers.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD38","bookId":"elementary01","canDoNumber":38,"activityId":"E1-L11-A04","textEn":"Can read food labels to check if the food contains something you cannot eat.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD39","bookId":"elementary01","canDoNumber":39,"activityId":"E1-L12-A01","textEn":"Can give your impressions about the appearance of food.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD40","bookId":"elementary01","canDoNumber":40,"activityId":"E1-L12-A02","textEn":"Can comment about the recommended food after eating it.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD41","bookId":"elementary01","canDoNumber":41,"activityId":"E1-L12-A03","textEn":"Can ask or answer questions about the taste, ingredients, etc. of dishes.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD42","bookId":"elementary01","canDoNumber":42,"activityId":"E1-L12-A04","textEn":"Can read and understand cooking instructions for making instant food.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD43","bookId":"elementary01","canDoNumber":43,"activityId":"E1-L13-A01","textEn":"Can tell your supervisor what is going on when you have a problem at work.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD44","bookId":"elementary01","canDoNumber":44,"activityId":"E1-L13-A02","textEn":"Can briefly answer when asked about the status of work.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD45","bookId":"elementary01","canDoNumber":45,"activityId":"E1-L13-A03","textEn":"Can ask about and understand, for example, how to use a machine at work.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD46","bookId":"elementary01","canDoNumber":46,"activityId":"E1-L13-A04","textEn":"Can listen to and understand explanations and instructions on tasks at work.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD47","bookId":"elementary01","canDoNumber":47,"activityId":"E1-L13-A05","textEn":"Can read and understand a simple email for work.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD48","bookId":"elementary01","canDoNumber":48,"activityId":"E1-L14-A01","textEn":"Can call your workplace to say that you will be late or take the day off.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD49","bookId":"elementary01","canDoNumber":49,"activityId":"E1-L14-A02","textEn":"Can ask for permission from a co-worker when leaving the area for a moment.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD50","bookId":"elementary01","canDoNumber":50,"activityId":"E1-L14-A03","textEn":"Can ask for permission in advance when you want to take a day off from work.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD51","bookId":"elementary01","canDoNumber":51,"activityId":"E1-L14-A04","textEn":"Can ask and understand how to fill out a form, such as a vacation request.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD52","bookId":"elementary01","canDoNumber":52,"activityId":"E1-L15-A01","textEn":"Can explain in simple terms your symptoms at the hospital.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD53","bookId":"elementary01","canDoNumber":53,"activityId":"E1-L15-A02","textEn":"Can listen to and understand the doctor at the hospital.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD54","bookId":"elementary01","canDoNumber":54,"activityId":"E1-L15-A03","textEn":"Can fill out the necessary information on a questionnaire form at the hospital reception desk.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD55","bookId":"elementary01","canDoNumber":55,"activityId":"E1-L15-A04","textEn":"Can listen to instructions about medicine and understand directions for use and precautions.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD56","bookId":"elementary01","canDoNumber":56,"activityId":"E1-L15-A05","textEn":"Can read instructions about medicine and understand directions for use and dosage.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD57","bookId":"elementary01","canDoNumber":57,"activityId":"E1-L16-A01","textEn":"Can give advice when someone is feeling unwell, or listen to and understand the advice.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD58","bookId":"elementary01","canDoNumber":58,"activityId":"E1-L16-A02","textEn":"Can talk about what you are mindful of to maintain your health.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD59","bookId":"elementary01","canDoNumber":59,"activityId":"E1-L16-A03","textEn":"Can look at news about an epidemic illness and more or less understand the contents, such as its name, symptoms, and prevention methods.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD60","bookId":"elementary01","canDoNumber":60,"activityId":"E1-L16-A04","textEn":"Can look at a poster about an illness at a hospital and understand the symptoms, prevention methods, etc.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD61","bookId":"elementary01","canDoNumber":61,"activityId":"E1-L17-A01","textEn":"Can exchange basic greetings when you visit someone’s house.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD62","bookId":"elementary01","canDoNumber":62,"activityId":"E1-L17-A02","textEn":"Can give a simple explanation about a gift you give.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD63","bookId":"elementary01","canDoNumber":63,"activityId":"E1-L17-A03","textEn":"Can talk about your belongings, for example, where you bought it or who gave it to you.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD64","bookId":"elementary01","canDoNumber":64,"activityId":"E1-L17-A04","textEn":"Can write a simple email to thank someone who, for example, invited you to their house.","sourceType":"official","status":"VERIFIED"},
+
+    {"canDoId":"E1-CD65","bookId":"elementary01","canDoNumber":65,"activityId":"E1-L18-A01","textEn":"Can say congratulations for a birthday, wedding, etc.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD66","bookId":"elementary01","canDoNumber":66,"activityId":"E1-L18-A02","textEn":"Can discuss what to give when selecting a gift for someone.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD67","bookId":"elementary01","canDoNumber":67,"activityId":"E1-L18-A03","textEn":"Can thank someone and offer comments when someone gives you a gift.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD68","bookId":"elementary01","canDoNumber":68,"activityId":"E1-L18-A04","textEn":"Can read and understand a post on social media that your friend wrote on their birthday.","sourceType":"official","status":"VERIFIED"},
+    {"canDoId":"E1-CD69","bookId":"elementary01","canDoNumber":69,"activityId":"E1-L18-A05","textEn":"Can write a message of congratulations or goodbye on a card.","sourceType":"official","status":"VERIFIED"}
+  ]
+}
