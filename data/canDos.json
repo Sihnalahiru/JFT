@@ -1,0 +1,14 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "canDos": [
+    {
+      "canDoId": "ST-CD01",
+      "bookId": "starter",
+      "canDoNumber": 1,
+      "activityId": "ST-L01-A01",
+      "textEn": "...",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    }
+  ]
+}
