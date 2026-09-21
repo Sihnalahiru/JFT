@@ -1,0 +1,512 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "lessons": [
+    {
+      "lessonId": "ST-L01",
+      "bookId": "starter",
+      "lessonNumber": 1,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L02",
+      "bookId": "starter",
+      "lessonNumber": 2,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L03",
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L04",
+      "bookId": "starter",
+      "lessonNumber": 4,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L05",
+      "bookId": "starter",
+      "lessonNumber": 5,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L06",
+      "bookId": "starter",
+      "lessonNumber": 6,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L07",
+      "bookId": "starter",
+      "lessonNumber": 7,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L08",
+      "bookId": "starter",
+      "lessonNumber": 8,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L09",
+      "bookId": "starter",
+      "lessonNumber": 9,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L10",
+      "bookId": "starter",
+      "lessonNumber": 10,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L11",
+      "bookId": "starter",
+      "lessonNumber": 11,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L12",
+      "bookId": "starter",
+      "lessonNumber": 12,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L13",
+      "bookId": "starter",
+      "lessonNumber": 13,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L14",
+      "bookId": "starter",
+      "lessonNumber": 14,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L15",
+      "bookId": "starter",
+      "lessonNumber": 15,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L16",
+      "bookId": "starter",
+      "lessonNumber": 16,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L17",
+      "bookId": "starter",
+      "lessonNumber": 17,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "ST-L18",
+      "bookId": "starter",
+      "lessonNumber": 18,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+
+    {
+      "lessonId": "E1-L01",
+      "bookId": "elementary01",
+      "lessonNumber": 1,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L02",
+      "bookId": "elementary01",
+      "lessonNumber": 2,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L03",
+      "bookId": "elementary01",
+      "lessonNumber": 3,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L04",
+      "bookId": "elementary01",
+      "lessonNumber": 4,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L05",
+      "bookId": "elementary01",
+      "lessonNumber": 5,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L06",
+      "bookId": "elementary01",
+      "lessonNumber": 6,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L07",
+      "bookId": "elementary01",
+      "lessonNumber": 7,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L08",
+      "bookId": "elementary01",
+      "lessonNumber": 8,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L09",
+      "bookId": "elementary01",
+      "lessonNumber": 9,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L10",
+      "bookId": "elementary01",
+      "lessonNumber": 10,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L11",
+      "bookId": "elementary01",
+      "lessonNumber": 11,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L12",
+      "bookId": "elementary01",
+      "lessonNumber": 12,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L13",
+      "bookId": "elementary01",
+      "lessonNumber": 13,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L14",
+      "bookId": "elementary01",
+      "lessonNumber": 14,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L15",
+      "bookId": "elementary01",
+      "lessonNumber": 15,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L16",
+      "bookId": "elementary01",
+      "lessonNumber": 16,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L17",
+      "bookId": "elementary01",
+      "lessonNumber": 17,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E1-L18",
+      "bookId": "elementary01",
+      "lessonNumber": 18,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+
+    {
+      "lessonId": "E2-L01",
+      "bookId": "elementary02",
+      "lessonNumber": 1,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L02",
+      "bookId": "elementary02",
+      "lessonNumber": 2,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L03",
+      "bookId": "elementary02",
+      "lessonNumber": 3,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L04",
+      "bookId": "elementary02",
+      "lessonNumber": 4,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L05",
+      "bookId": "elementary02",
+      "lessonNumber": 5,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L06",
+      "bookId": "elementary02",
+      "lessonNumber": 6,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L07",
+      "bookId": "elementary02",
+      "lessonNumber": 7,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L08",
+      "bookId": "elementary02",
+      "lessonNumber": 8,
+      "activityCount": 6,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L09",
+      "bookId": "elementary02",
+      "lessonNumber": 9,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L10",
+      "bookId": "elementary02",
+      "lessonNumber": 10,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L11",
+      "bookId": "elementary02",
+      "lessonNumber": 11,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L12",
+      "bookId": "elementary02",
+      "lessonNumber": 12,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L13",
+      "bookId": "elementary02",
+      "lessonNumber": 13,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L14",
+      "bookId": "elementary02",
+      "lessonNumber": 14,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L15",
+      "bookId": "elementary02",
+      "lessonNumber": 15,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L16",
+      "bookId": "elementary02",
+      "lessonNumber": 16,
+      "activityCount": 5,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L17",
+      "bookId": "elementary02",
+      "lessonNumber": 17,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "E2-L18",
+      "bookId": "elementary02",
+      "lessonNumber": 18,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+
+    {
+      "lessonId": "PI-L01",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 1,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L02",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 2,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L03",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 3,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L04",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 4,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L05",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 5,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L06",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 6,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L07",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 7,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L08",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 8,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L09",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 9,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L10",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 10,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L11",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 11,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L12",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 12,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L13",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 13,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L14",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 14,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L15",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 15,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L16",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 16,
+      "activityCount": 3,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L17",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 17,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    },
+    {
+      "lessonId": "PI-L18",
+      "bookId": "pre-intermediate",
+      "lessonNumber": 18,
+      "activityCount": 4,
+      "status": "VERIFIED"
+    }
+  ]
+}
