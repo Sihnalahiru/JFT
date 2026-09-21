@@ -8,7 +8,7 @@
 
     {"activityId":"PI-L02-A01","lessonId":"PI-L02","activityNumber":1,"title":"無料マンガのPR","canDoId":"PI-CD04","status":"VERIFIED"},
     {"activityId":"PI-L02-A02","lessonId":"PI-L02","activityNumber":2,"title":"試合のシーンが本当にドキドキしました","canDoId":"PI-CD05","status":"VERIFIED"},
-    {"activityId":"PI-L02-A03","lessonId":"PI-L02","activityNumber":3,"title":"刀が人間のキャラクターになっているんです","canDoId":"PI-CD06","status":"VERIFIED"},
+    {"activityId":"PI-L02-A03","lessonId":"PI-L02","activityNumber":3,"title":"カワイ人間のキャラクターになっているんです","canDoId":"PI-CD06","status":"VERIFIED"},
 
     {"activityId":"PI-L03-A01","lessonId":"PI-L03","activityNumber":1,"title":"物件情報","canDoId":"PI-CD07","status":"VERIFIED"},
     {"activityId":"PI-L03-A02","lessonId":"PI-L03","activityNumber":2,"title":"住むなら、どのあたりがおすすめですか？","canDoId":"PI-CD08","status":"VERIFIED"},
