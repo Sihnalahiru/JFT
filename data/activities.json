@@ -1,0 +1,626 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "activities": [
+    {
+      "activityId": "ST-L01-A01",
+      "lessonId": "ST-L01",
+      "activityNumber": 1,
+      "canDoId": "ST-L01-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L01-A02",
+      "lessonId": "ST-L01",
+      "activityNumber": 2,
+      "canDoId": "ST-L01-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L01-A03",
+      "lessonId": "ST-L01",
+      "activityNumber": 3,
+      "canDoId": "ST-L01-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L01-A04",
+      "lessonId": "ST-L01",
+      "activityNumber": 4,
+      "canDoId": "ST-L01-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L02-A01",
+      "lessonId": "ST-L02",
+      "activityNumber": 1,
+      "canDoId": "ST-L02-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L02-A02",
+      "lessonId": "ST-L02",
+      "activityNumber": 2,
+      "canDoId": "ST-L02-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L02-A03",
+      "lessonId": "ST-L02",
+      "activityNumber": 3,
+      "canDoId": "ST-L02-CD03",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L03-A01",
+      "lessonId": "ST-L03",
+      "activityNumber": 1,
+      "canDoId": "ST-L03-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L03-A02",
+      "lessonId": "ST-L03",
+      "activityNumber": 2,
+      "canDoId": "ST-L03-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L03-A03",
+      "lessonId": "ST-L03",
+      "activityNumber": 3,
+      "canDoId": "ST-L03-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L03-A04",
+      "lessonId": "ST-L03",
+      "activityNumber": 4,
+      "canDoId": "ST-L03-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L04-A01",
+      "lessonId": "ST-L04",
+      "activityNumber": 1,
+      "canDoId": "ST-L04-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L04-A02",
+      "lessonId": "ST-L04",
+      "activityNumber": 2,
+      "canDoId": "ST-L04-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L04-A03",
+      "lessonId": "ST-L04",
+      "activityNumber": 3,
+      "canDoId": "ST-L04-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L04-A04",
+      "lessonId": "ST-L04",
+      "activityNumber": 4,
+      "canDoId": "ST-L04-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L05-A01",
+      "lessonId": "ST-L05",
+      "activityNumber": 1,
+      "canDoId": "ST-L05-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L05-A02",
+      "lessonId": "ST-L05",
+      "activityNumber": 2,
+      "canDoId": "ST-L05-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L05-A03",
+      "lessonId": "ST-L05",
+      "activityNumber": 3,
+      "canDoId": "ST-L05-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L05-A04",
+      "lessonId": "ST-L05",
+      "activityNumber": 4,
+      "canDoId": "ST-L05-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L05-A05",
+      "lessonId": "ST-L05",
+      "activityNumber": 5,
+      "canDoId": "ST-L05-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L06-A01",
+      "lessonId": "ST-L06",
+      "activityNumber": 1,
+      "canDoId": "ST-L06-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L06-A02",
+      "lessonId": "ST-L06",
+      "activityNumber": 2,
+      "canDoId": "ST-L06-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L06-A03",
+      "lessonId": "ST-L06",
+      "activityNumber": 3,
+      "canDoId": "ST-L06-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L06-A04",
+      "lessonId": "ST-L06",
+      "activityNumber": 4,
+      "canDoId": "ST-L06-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L06-A05",
+      "lessonId": "ST-L06",
+      "activityNumber": 5,
+      "canDoId": "ST-L06-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L07-A01",
+      "lessonId": "ST-L07",
+      "activityNumber": 1,
+      "canDoId": "ST-L07-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L07-A02",
+      "lessonId": "ST-L07",
+      "activityNumber": 2,
+      "canDoId": "ST-L07-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L07-A03",
+      "lessonId": "ST-L07",
+      "activityNumber": 3,
+      "canDoId": "ST-L07-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L07-A04",
+      "lessonId": "ST-L07",
+      "activityNumber": 4,
+      "canDoId": "ST-L07-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L07-A05",
+      "lessonId": "ST-L07",
+      "activityNumber": 5,
+      "canDoId": "ST-L07-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L08-A01",
+      "lessonId": "ST-L08",
+      "activityNumber": 1,
+      "canDoId": "ST-L08-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L08-A02",
+      "lessonId": "ST-L08",
+      "activityNumber": 2,
+      "canDoId": "ST-L08-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L08-A03",
+      "lessonId": "ST-L08",
+      "activityNumber": 3,
+      "canDoId": "ST-L08-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L08-A04",
+      "lessonId": "ST-L08",
+      "activityNumber": 4,
+      "canDoId": "ST-L08-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L09-A01",
+      "lessonId": "ST-L09",
+      "activityNumber": 1,
+      "canDoId": "ST-L09-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L09-A02",
+      "lessonId": "ST-L09",
+      "activityNumber": 2,
+      "canDoId": "ST-L09-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L09-A03",
+      "lessonId": "ST-L09",
+      "activityNumber": 3,
+      "canDoId": "ST-L09-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L09-A04",
+      "lessonId": "ST-L09",
+      "activityNumber": 4,
+      "canDoId": "ST-L09-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L10-A01",
+      "lessonId": "ST-L10",
+      "activityNumber": 1,
+      "canDoId": "ST-L10-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L10-A02",
+      "lessonId": "ST-L10",
+      "activityNumber": 2,
+      "canDoId": "ST-L10-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L10-A03",
+      "lessonId": "ST-L10",
+      "activityNumber": 3,
+      "canDoId": "ST-L10-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L10-A04",
+      "lessonId": "ST-L10",
+      "activityNumber": 4,
+      "canDoId": "ST-L10-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L10-A05",
+      "lessonId": "ST-L10",
+      "activityNumber": 5,
+      "canDoId": "ST-L10-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L11-A01",
+      "lessonId": "ST-L11",
+      "activityNumber": 1,
+      "canDoId": "ST-L11-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L11-A02",
+      "lessonId": "ST-L11",
+      "activityNumber": 2,
+      "canDoId": "ST-L11-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L11-A03",
+      "lessonId": "ST-L11",
+      "activityNumber": 3,
+      "canDoId": "ST-L11-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L11-A04",
+      "lessonId": "ST-L11",
+      "activityNumber": 4,
+      "canDoId": "ST-L11-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L12-A01",
+      "lessonId": "ST-L12",
+      "activityNumber": 1,
+      "canDoId": "ST-L12-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L12-A02",
+      "lessonId": "ST-L12",
+      "activityNumber": 2,
+      "canDoId": "ST-L12-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L12-A03",
+      "lessonId": "ST-L12",
+      "activityNumber": 3,
+      "canDoId": "ST-L12-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L12-A04",
+      "lessonId": "ST-L12",
+      "activityNumber": 4,
+      "canDoId": "ST-L12-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L13-A01",
+      "lessonId": "ST-L13",
+      "activityNumber": 1,
+      "canDoId": "ST-L13-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L13-A02",
+      "lessonId": "ST-L13",
+      "activityNumber": 2,
+      "canDoId": "ST-L13-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L13-A03",
+      "lessonId": "ST-L13",
+      "activityNumber": 3,
+      "canDoId": "ST-L13-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L13-A04",
+      "lessonId": "ST-L13",
+      "activityNumber": 4,
+      "canDoId": "ST-L13-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L13-A05",
+      "lessonId": "ST-L13",
+      "activityNumber": 5,
+      "canDoId": "ST-L13-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L14-A01",
+      "lessonId": "ST-L14",
+      "activityNumber": 1,
+      "canDoId": "ST-L14-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L14-A02",
+      "lessonId": "ST-L14",
+      "activityNumber": 2,
+      "canDoId": "ST-L14-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L14-A03",
+      "lessonId": "ST-L14",
+      "activityNumber": 3,
+      "canDoId": "ST-L14-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L14-A04",
+      "lessonId": "ST-L14",
+      "activityNumber": 4,
+      "canDoId": "ST-L14-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L15-A01",
+      "lessonId": "ST-L15",
+      "activityNumber": 1,
+      "canDoId": "ST-L15-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L15-A02",
+      "lessonId": "ST-L15",
+      "activityNumber": 2,
+      "canDoId": "ST-L15-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L15-A03",
+      "lessonId": "ST-L15",
+      "activityNumber": 3,
+      "canDoId": "ST-L15-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L15-A04",
+      "lessonId": "ST-L15",
+      "activityNumber": 4,
+      "canDoId": "ST-L15-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L15-A05",
+      "lessonId": "ST-L15",
+      "activityNumber": 5,
+      "canDoId": "ST-L15-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L16-A01",
+      "lessonId": "ST-L16",
+      "activityNumber": 1,
+      "canDoId": "ST-L16-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L16-A02",
+      "lessonId": "ST-L16",
+      "activityNumber": 2,
+      "canDoId": "ST-L16-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L16-A03",
+      "lessonId": "ST-L16",
+      "activityNumber": 3,
+      "canDoId": "ST-L16-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L16-A04",
+      "lessonId": "ST-L16",
+      "activityNumber": 4,
+      "canDoId": "ST-L16-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L16-A05",
+      "lessonId": "ST-L16",
+      "activityNumber": 5,
+      "canDoId": "ST-L16-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L17-A01",
+      "lessonId": "ST-L17",
+      "activityNumber": 1,
+      "canDoId": "ST-L17-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L17-A02",
+      "lessonId": "ST-L17",
+      "activityNumber": 2,
+      "canDoId": "ST-L17-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L17-A03",
+      "lessonId": "ST-L17",
+      "activityNumber": 3,
+      "canDoId": "ST-L17-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L17-A04",
+      "lessonId": "ST-L17",
+      "activityNumber": 4,
+      "canDoId": "ST-L17-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L17-A05",
+      "lessonId": "ST-L17",
+      "activityNumber": 5,
+      "canDoId": "ST-L17-CD05",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "ST-L18-A01",
+      "lessonId": "ST-L18",
+      "activityNumber": 1,
+      "canDoId": "ST-L18-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L18-A02",
+      "lessonId": "ST-L18",
+      "activityNumber": 2,
+      "canDoId": "ST-L18-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L18-A03",
+      "lessonId": "ST-L18",
+      "activityNumber": 3,
+      "canDoId": "ST-L18-CD03",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "ST-L18-A04",
+      "lessonId": "ST-L18",
+      "activityNumber": 4,
+      "canDoId": "ST-L18-CD04",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "E1-L01-A01",
+      "lessonId": "E1-L01",
+      "activityNumber": 1,
+      "canDoId": "E1-L01-CD01",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "E1-L01-A02",
+      "lessonId": "E1-L01",
+      "activityNumber": 2,
+      "canDoId": "E1-L01-CD02",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "E1-L01-A03",
+      "lessonId": "E1-L01",
+      "activityNumber": 3,
+      "canDoId": "E1-L01-CD03",
+      "status": "VERIFIED"
+    },
+
+    {
+      "activityId": "E1-L02-A01",
+      "lessonId": "E1-L02",
+      "activityNumber": 1,
+      "canDoId": "E1-L02-CD04",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "E1-L02-A02",
+      "lessonId": "E1-L02",
+      "activityNumber": 2,
+      "canDoId": "E1-L02-CD05",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "E1-L02-A03",
+      "lessonId": "E1-L02",
+      "activityNumber": 3,
+      "canDoId": "E1-L02-CD06",
+      "status": "VERIFIED"
+    },
+    {
+      "activityId": "E1-L02-A04",
+      "lessonId": "E1-L02",
+      "activityNumber": 4,
+      "canDoId": "E1-L02-CD07",
+      "status": "VERIFIED"
+    }
+  ]
+}
