@@ -1,0 +1,85 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "bookId": "pre-intermediate",
+  "activities": [
+    {"activityId":"PI-L01-A01","lessonId":"PI-L01","activityNumber":1,"title":"休みの日はスポーツをしています","canDoId":"PI-CD01","status":"VERIFIED"},
+    {"activityId":"PI-L01-A02","lessonId":"PI-L01","activityNumber":2,"title":"いっしょにどうですか？","canDoId":"PI-CD02","status":"VERIFIED"},
+    {"activityId":"PI-L01-A03","lessonId":"PI-L01","activityNumber":3,"title":"キャンセルのメッセージ","canDoId":"PI-CD03","status":"VERIFIED"},
+
+    {"activityId":"PI-L02-A01","lessonId":"PI-L02","activityNumber":1,"title":"無料マンガのPR","canDoId":"PI-CD04","status":"VERIFIED"},
+    {"activityId":"PI-L02-A02","lessonId":"PI-L02","activityNumber":2,"title":"試合のシーンが本当にドキドキしました","canDoId":"PI-CD05","status":"VERIFIED"},
+    {"activityId":"PI-L02-A03","lessonId":"PI-L02","activityNumber":3,"title":"刀が人間のキャラクターになっているんです","canDoId":"PI-CD06","status":"VERIFIED"},
+
+    {"activityId":"PI-L03-A01","lessonId":"PI-L03","activityNumber":1,"title":"物件情報","canDoId":"PI-CD07","status":"VERIFIED"},
+    {"activityId":"PI-L03-A02","lessonId":"PI-L03","activityNumber":2,"title":"住むなら、どのあたりがおすすめですか？","canDoId":"PI-CD08","status":"VERIFIED"},
+    {"activityId":"PI-L03-A03","lessonId":"PI-L03","activityNumber":3,"title":"荷物を運ぶのを手伝ってもらえたら…","canDoId":"PI-CD09","status":"VERIFIED"},
+
+    {"activityId":"PI-L04-A01","lessonId":"PI-L04","activityNumber":1,"title":"修理業者を手配します","canDoId":"PI-CD10","status":"VERIFIED"},
+    {"activityId":"PI-L04-A02","lessonId":"PI-L04","activityNumber":2,"title":"洗濯機の音がうるさくて、眠れなくなります","canDoId":"PI-CD11","status":"VERIFIED"},
+    {"activityId":"PI-L04-A03","lessonId":"PI-L04","activityNumber":3,"title":"え、洗濯機がうるさいですか？","canDoId":"PI-CD12","status":"VERIFIED"},
+    {"activityId":"PI-L04-A04","lessonId":"PI-L04","activityNumber":4,"title":"場所が便利で、すごく住みやすいです","canDoId":"PI-CD13","status":"VERIFIED"},
+
+    {"activityId":"PI-L05-A01","lessonId":"PI-L05","activityNumber":1,"title":"タブレット注文","canDoId":"PI-CD14","status":"VERIFIED"},
+    {"activityId":"PI-L05-A02","lessonId":"PI-L05","activityNumber":2,"title":"本場の辛さにしてくれます","canDoId":"PI-CD15","status":"VERIFIED"},
+    {"activityId":"PI-L05-A03","lessonId":"PI-L05","activityNumber":3,"title":"おなかいっぱい！","canDoId":"PI-CD16","status":"VERIFIED"},
+    {"activityId":"PI-L05-A04","lessonId":"PI-L05","activityNumber":4,"title":"しもつかれ、知らないですか？","canDoId":"PI-CD17","status":"VERIFIED"},
+
+    {"activityId":"PI-L06-A01","lessonId":"PI-L06","activityNumber":1,"title":"野菜、いつもどこで買ってますか？","canDoId":"PI-CD18","status":"VERIFIED"},
+    {"activityId":"PI-L06-A02","lessonId":"PI-L06","activityNumber":2,"title":"こんなに便利！　電子レンジ調理法","canDoId":"PI-CD19","status":"VERIFIED"},
+    {"activityId":"PI-L06-A03","lessonId":"PI-L06","activityNumber":3,"title":"栄養のバランスも考えるようにしてます","canDoId":"PI-CD20","status":"VERIFIED"},
+
+    {"activityId":"PI-L07-A01","lessonId":"PI-L07","activityNumber":1,"title":"なかなか友だちができないんです","canDoId":"PI-CD21","status":"VERIFIED"},
+    {"activityId":"PI-L07-A02","lessonId":"PI-L07","activityNumber":2,"title":"サークルについての質問","canDoId":"PI-CD22","status":"VERIFIED"},
+    {"activityId":"PI-L07-A03","lessonId":"PI-L07","activityNumber":3,"title":"いろいろ誘ってもらえればうれしいです","canDoId":"PI-CD23","status":"VERIFIED"},
+
+    {"activityId":"PI-L08-A01","lessonId":"PI-L08","activityNumber":1,"title":"前はどこで仕事していたんですか？","canDoId":"PI-CD24","status":"VERIFIED"},
+    {"activityId":"PI-L08-A02","lessonId":"PI-L08","activityNumber":2,"title":"ここのお風呂には、よく来るんですか？","canDoId":"PI-CD25","status":"VERIFIED"},
+    {"activityId":"PI-L08-A03","lessonId":"PI-L08","activityNumber":3,"title":"第一印象を良く見せるための４つのポイント","canDoId":"PI-CD26","status":"VERIFIED"},
+
+    {"activityId":"PI-L09-A01","lessonId":"PI-L09","activityNumber":1,"title":"絶対合格したいんだ","canDoId":"PI-CD27","status":"VERIFIED"},
+    {"activityId":"PI-L09-A02","lessonId":"PI-L09","activityNumber":2,"title":"あんた、どっから来んしゃったと？","canDoId":"PI-CD28","status":"VERIFIED"},
+    {"activityId":"PI-L09-A03","lessonId":"PI-L09","activityNumber":3,"title":"日本語ができるようになって、生活しやすくなりました","canDoId":"PI-CD29","status":"VERIFIED"},
+    {"activityId":"PI-L09-A04","lessonId":"PI-L09","activityNumber":4,"title":"方言で書かれた看板","canDoId":"PI-CD30","status":"VERIFIED"},
+
+    {"activityId":"PI-L10-A01","lessonId":"PI-L10","activityNumber":1,"title":"日本語学習のためのポータルサイト","canDoId":"PI-CD31","status":"VERIFIED"},
+    {"activityId":"PI-L10-A02","lessonId":"PI-L10","activityNumber":2,"title":"AIに聞いたら、文法や表現を直してくれるんだ","canDoId":"PI-CD32","status":"VERIFIED"},
+    {"activityId":"PI-L10-A03","lessonId":"PI-L10","activityNumber":3,"title":"タンデム学習の相手探し","canDoId":"PI-CD33","status":"VERIFIED"},
+
+    {"activityId":"PI-L11-A01","lessonId":"PI-L11","activityNumber":1,"title":"警察に持って行ったほうがいいですね","canDoId":"PI-CD34","status":"VERIFIED"},
+    {"activityId":"PI-L11-A02","lessonId":"PI-L11","activityNumber":2,"title":"電気料金はすぐにお支払ってください！","canDoId":"PI-CD35","status":"VERIFIED"},
+    {"activityId":"PI-L11-A03","lessonId":"PI-L11","activityNumber":3,"title":"身分証明書を見せていただけますか？","canDoId":"PI-CD36","status":"VERIFIED"},
+    {"activityId":"PI-L11-A04","lessonId":"PI-L11","activityNumber":4,"title":"在留カードについて","canDoId":"PI-CD37","status":"VERIFIED"},
+
+    {"activityId":"PI-L12-A01","lessonId":"PI-L12","activityNumber":1,"title":"何かお困りですか？","canDoId":"PI-CD38","status":"VERIFIED"},
+    {"activityId":"PI-L12-A02","lessonId":"PI-L12","activityNumber":2,"title":"事件ですか？　事故ですか？","canDoId":"PI-CD39","status":"VERIFIED"},
+    {"activityId":"PI-L12-A03","lessonId":"PI-L12","activityNumber":3,"title":"置き引きにあっちゃって…","canDoId":"PI-CD40","status":"VERIFIED"},
+
+    {"activityId":"PI-L13-A01","lessonId":"PI-L13","activityNumber":1,"title":"お誕生日おめでとう！","canDoId":"PI-CD41","status":"VERIFIED"},
+    {"activityId":"PI-L13-A02","lessonId":"PI-L13","activityNumber":2,"title":"猫を飼いはじめたんだって","canDoId":"PI-CD42","status":"VERIFIED"},
+    {"activityId":"PI-L13-A03","lessonId":"PI-L13","activityNumber":3,"title":"何かプレゼントしようと思うんですが…","canDoId":"PI-CD43","status":"VERIFIED"},
+    {"activityId":"PI-L13-A04","lessonId":"PI-L13","activityNumber":4,"title":"スピーチをさせていただきます","canDoId":"PI-CD44","status":"VERIFIED"},
+
+    {"activityId":"PI-L14-A01","lessonId":"PI-L14","activityNumber":1,"title":"口もきいてくれないんですよ","canDoId":"PI-CD45","status":"VERIFIED"},
+    {"activityId":"PI-L14-A02","lessonId":"PI-L14","activityNumber":2,"title":"私にとって、大切な親友なんです","canDoId":"PI-CD46","status":"VERIFIED"},
+    {"activityId":"PI-L14-A03","lessonId":"PI-L14","activityNumber":3,"title":"遠距離恋愛になってから、うまくいってないんだ","canDoId":"PI-CD47","status":"VERIFIED"},
+    {"activityId":"PI-L14-A04","lessonId":"PI-L14","activityNumber":4,"title":"相談サイトの投稿","canDoId":"PI-CD48","status":"VERIFIED"},
+
+    {"activityId":"PI-L15-A01","lessonId":"PI-L15","activityNumber":1,"title":"そして、目の前は、海！","canDoId":"PI-CD49","status":"VERIFIED"},
+    {"activityId":"PI-L15-A02","lessonId":"PI-L15","activityNumber":2,"title":"花の名所ベスト３","canDoId":"PI-CD50","status":"VERIFIED"},
+    {"activityId":"PI-L15-A03","lessonId":"PI-L15","activityNumber":3,"title":"ぜひ行ってみたいのは…","canDoId":"PI-CD51","status":"VERIFIED"},
+
+    {"activityId":"PI-L16-A01","lessonId":"PI-L16","activityNumber":1,"title":"旅行先からのメッセージ","canDoId":"PI-CD52","status":"VERIFIED"},
+    {"activityId":"PI-L16-A02","lessonId":"PI-L16","activityNumber":2,"title":"夕食の内容を少し変えてほしいんですが…","canDoId":"PI-CD53","status":"VERIFIED"},
+    {"activityId":"PI-L16-A03","lessonId":"PI-L16","activityNumber":3,"title":"飛行機が遅れて、1時間以上待たされたんです","canDoId":"PI-CD54","status":"VERIFIED"},
+
+    {"activityId":"PI-L17-A01","lessonId":"PI-L17","activityNumber":1,"title":"電車遅延と書いておいてください","canDoId":"PI-CD55","status":"VERIFIED"},
+    {"activityId":"PI-L17-A02","lessonId":"PI-L17","activityNumber":2,"title":"従業員身だしなみ規則","canDoId":"PI-CD56","status":"VERIFIED"},
+    {"activityId":"PI-L17-A03","lessonId":"PI-L17","activityNumber":3,"title":"冷房を、もう少し弱くしていただければと思います","canDoId":"PI-CD57","status":"VERIFIED"},
+    {"activityId":"PI-L17-A04","lessonId":"PI-L17","activityNumber":4,"title":"休みが月2日しかありません","canDoId":"PI-CD58","status":"VERIFIED"},
+
+    {"activityId":"PI-L18-A01","lessonId":"PI-L18","activityNumber":1,"title":"どんなお仕事をしているんですか？","canDoId":"PI-CD59","status":"VERIFIED"},
+    {"activityId":"PI-L18-A02","lessonId":"PI-L18","activityNumber":2,"title":"定例の連絡会議を始めます","canDoId":"PI-CD60","status":"VERIFIED"},
+    {"activityId":"PI-L18-A03","lessonId":"PI-L18","activityNumber":3,"title":"求人情報","canDoId":"PI-CD61","status":"VERIFIED"},
+    {"activityId":"PI-L18-A04","lessonId":"PI-L18","activityNumber":4,"title":"ゲストハウスで働いた経験を活かしたいと思いました","canDoId":"PI-CD62","status":"VERIFIED"}
+  ]
+}
