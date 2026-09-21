@@ -1,0 +1,92 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "bookId": "elementary01",
+  "activities": [
+    {"activityId":"E1-L01-A01","lessonId":"E1-L01","activityNumber":1,"title":"お久しぶりです","canDoId":"E1-CD01","status":"VERIFIED"},
+    {"activityId":"E1-L01-A02","lessonId":"E1-L01","activityNumber":2,"title":"日本に来てどのぐらいですか？","canDoId":"E1-CD02","status":"VERIFIED"},
+    {"activityId":"E1-L01-A03","lessonId":"E1-L01","activityNumber":3,"title":"日本では何をしていますか？","canDoId":"E1-CD03","status":"VERIFIED"},
+
+    {"activityId":"E1-L02-A01","lessonId":"E1-L02","activityNumber":1,"title":"趣味は料理をすることです","canDoId":"E1-CD04","status":"VERIFIED"},
+    {"activityId":"E1-L02-A02","lessonId":"E1-L02","activityNumber":2,"title":"休みの日は何をしますか？","canDoId":"E1-CD05","status":"VERIFIED"},
+    {"activityId":"E1-L02-A03","lessonId":"E1-L02","activityNumber":3,"title":"スタッフ紹介","canDoId":"E1-CD06","status":"VERIFIED"},
+    {"activityId":"E1-L02-A04","lessonId":"E1-L02","activityNumber":4,"title":"自己紹介","canDoId":"E1-CD07","status":"VERIFIED"},
+
+    {"activityId":"E1-L03-A01","lessonId":"E1-L03","activityNumber":1,"title":"春は桜の花が咲きます","canDoId":"E1-CD08","status":"VERIFIED"},
+    {"activityId":"E1-L03-A02","lessonId":"E1-L03","activityNumber":2,"title":"どんな季節がありますか？","canDoId":"E1-CD09","status":"VERIFIED"},
+    {"activityId":"E1-L03-A03","lessonId":"E1-L03","activityNumber":3,"title":"もみじの景色がきれいですから","canDoId":"E1-CD10","status":"VERIFIED"},
+
+    {"activityId":"E1-L04-A01","lessonId":"E1-L04","activityNumber":1,"title":"朝から暑いですね","canDoId":"E1-CD11","status":"VERIFIED"},
+    {"activityId":"E1-L04-A02","lessonId":"E1-L04","activityNumber":2,"title":"明日は晴れるでしょう","canDoId":"E1-CD12","status":"VERIFIED"},
+    {"activityId":"E1-L04-A03","lessonId":"E1-L04","activityNumber":3,"title":"台風が来てます","canDoId":"E1-CD13","status":"VERIFIED"},
+
+    {"activityId":"E1-L05-A01","lessonId":"E1-L05","activityNumber":1,"title":"この町はどうですか？","canDoId":"E1-CD14","status":"VERIFIED"},
+    {"activityId":"E1-L05-A02","lessonId":"E1-L05","activityNumber":2,"title":"場所は不便だけどきれいですよ","canDoId":"E1-CD15","status":"VERIFIED"},
+    {"activityId":"E1-L05-A03","lessonId":"E1-L05","activityNumber":3,"title":"タウンマップ","canDoId":"E1-CD16","status":"VERIFIED"},
+
+    {"activityId":"E1-L06-A01","lessonId":"E1-L06","activityNumber":1,"title":"バス停はどこですか？","canDoId":"E1-CD17","status":"VERIFIED"},
+    {"activityId":"E1-L06-A02","lessonId":"E1-L06","activityNumber":2,"title":"そちらに行きたいんですが…","canDoId":"E1-CD18","status":"VERIFIED"},
+    {"activityId":"E1-L06-A03","lessonId":"E1-L06","activityNumber":3,"title":"この先に白くて大きな家があります","canDoId":"E1-CD19","status":"VERIFIED"},
+
+    {"activityId":"E1-L07-A01","lessonId":"E1-L07","activityNumber":1,"title":"何時にどこですか？","canDoId":"E1-CD20","status":"VERIFIED"},
+    {"activityId":"E1-L07-A02","lessonId":"E1-L07","activityNumber":2,"title":"明日、何時にしますか？","canDoId":"E1-CD21","status":"VERIFIED"},
+    {"activityId":"E1-L07-A03","lessonId":"E1-L07","activityNumber":3,"title":"電車が止まりました","canDoId":"E1-CD22","status":"VERIFIED"},
+    {"activityId":"E1-L07-A04","lessonId":"E1-L07","activityNumber":4,"title":"30分おくれます","canDoId":"E1-CD23","status":"VERIFIED"},
+
+    {"activityId":"E1-L08-A01","lessonId":"E1-L08","activityNumber":1,"title":"もう行きましたか？","canDoId":"E1-CD24","status":"VERIFIED"},
+    {"activityId":"E1-L08-A02","lessonId":"E1-L08","activityNumber":2,"title":"このあと、どうしますか？","canDoId":"E1-CD25","status":"VERIFIED"},
+    {"activityId":"E1-L08-A03","lessonId":"E1-L08","activityNumber":3,"title":"パンダがかわいかったです","canDoId":"E1-CD26","status":"VERIFIED"},
+
+    {"activityId":"E1-L09-A01","lessonId":"E1-L09","activityNumber":1,"title":"どこで日本語を勉強しましたか？","canDoId":"E1-CD27","status":"VERIFIED"},
+    {"activityId":"E1-L09-A02","lessonId":"E1-L09","activityNumber":2,"title":"会話は得意です","canDoId":"E1-CD28","status":"VERIFIED"},
+    {"activityId":"E1-L09-A03","lessonId":"E1-L09","activityNumber":3,"title":"日本語をチェックしてもらえませんか？","canDoId":"E1-CD29","status":"VERIFIED"},
+    {"activityId":"E1-L09-A04","lessonId":"E1-L09","activityNumber":4,"title":"いい練習のし方がありますか？","canDoId":"E1-CD30","status":"VERIFIED"},
+
+    {"activityId":"E1-L10-A01","lessonId":"E1-L10","activityNumber":1,"title":"教室案内","canDoId":"E1-CD31","status":"VERIFIED"},
+    {"activityId":"E1-L10-A02","lessonId":"E1-L10","activityNumber":2,"title":"合気道をやってみたいんですが…","canDoId":"E1-CD32","status":"VERIFIED"},
+    {"activityId":"E1-L10-A03","lessonId":"E1-L10","activityNumber":3,"title":"日本語のクラスはどうですか？","canDoId":"E1-CD33","status":"VERIFIED"},
+    {"activityId":"E1-L10-A04","lessonId":"E1-L10","activityNumber":4,"title":"高校のとき、少し勉強しました","canDoId":"E1-CD34","status":"VERIFIED"},
+
+    {"activityId":"E1-L11-A01","lessonId":"E1-L11","activityNumber":1,"title":"だれが何を持って行きますか？","canDoId":"E1-CD35","status":"VERIFIED"},
+    {"activityId":"E1-L11-A02","lessonId":"E1-L11","activityNumber":2,"title":"どっちがいいですか？","canDoId":"E1-CD36","status":"VERIFIED"},
+    {"activityId":"E1-L11-A03","lessonId":"E1-L11","activityNumber":3,"title":"この料理、卵を使ってますか？","canDoId":"E1-CD37","status":"VERIFIED"},
+    {"activityId":"E1-L11-A04","lessonId":"E1-L11","activityNumber":4,"title":"食品表示","canDoId":"E1-CD38","status":"VERIFIED"},
+
+    {"activityId":"E1-L12-A01","lessonId":"E1-L12","activityNumber":1,"title":"辛そうな料理ですね","canDoId":"E1-CD39","status":"VERIFIED"},
+    {"activityId":"E1-L12-A02","lessonId":"E1-L12","activityNumber":2,"title":"甘くておいしいですね","canDoId":"E1-CD40","status":"VERIFIED"},
+    {"activityId":"E1-L12-A03","lessonId":"E1-L12","activityNumber":3,"title":"卵の料理です","canDoId":"E1-CD41","status":"VERIFIED"},
+    {"activityId":"E1-L12-A04","lessonId":"E1-L12","activityNumber":4,"title":"カップ焼きそばの作り方","canDoId":"E1-CD42","status":"VERIFIED"},
+
+    {"activityId":"E1-L13-A01","lessonId":"E1-L13","activityNumber":1,"title":"パソコンが動かないんですが…","canDoId":"E1-CD43","status":"VERIFIED"},
+    {"activityId":"E1-L13-A02","lessonId":"E1-L13","activityNumber":2,"title":"どのぐらいかかりそうですか？","canDoId":"E1-CD44","status":"VERIFIED"},
+    {"activityId":"E1-L13-A03","lessonId":"E1-L13","activityNumber":3,"title":"コピー機の使い方を教えてもらえませんか？","canDoId":"E1-CD45","status":"VERIFIED"},
+    {"activityId":"E1-L13-A04","lessonId":"E1-L13","activityNumber":4,"title":"会議の準備は、どうしますか？","canDoId":"E1-CD46","status":"VERIFIED"},
+    {"activityId":"E1-L13-A05","lessonId":"E1-L13","activityNumber":5,"title":"お知らせのメール","canDoId":"E1-CD47","status":"VERIFIED"},
+
+    {"activityId":"E1-L14-A01","lessonId":"E1-L14","activityNumber":1,"title":"少し遅くなります","canDoId":"E1-CD48","status":"VERIFIED"},
+    {"activityId":"E1-L14-A02","lessonId":"E1-L14","activityNumber":2,"title":"トイレに行って来てもいいですか？","canDoId":"E1-CD49","status":"VERIFIED"},
+    {"activityId":"E1-L14-A03","lessonId":"E1-L14","activityNumber":3,"title":"明日の午後、早退してもいいでしょうか？","canDoId":"E1-CD50","status":"VERIFIED"},
+    {"activityId":"E1-L14-A04","lessonId":"E1-L14","activityNumber":4,"title":"休暇届を出してください","canDoId":"E1-CD51","status":"VERIFIED"},
+
+    {"activityId":"E1-L15-A01","lessonId":"E1-L15","activityNumber":1,"title":"今日はどうしましたか？","canDoId":"E1-CD52","status":"VERIFIED"},
+    {"activityId":"E1-L15-A02","lessonId":"E1-L15","activityNumber":2,"title":"インフルエンザですね","canDoId":"E1-CD53","status":"VERIFIED"},
+    {"activityId":"E1-L15-A03","lessonId":"E1-L15","activityNumber":3,"title":"問診票","canDoId":"E1-CD54","status":"VERIFIED"},
+    {"activityId":"E1-L15-A04","lessonId":"E1-L15","activityNumber":4,"title":"熱を下げるお薬です","canDoId":"E1-CD55","status":"VERIFIED"},
+    {"activityId":"E1-L15-A05","lessonId":"E1-L15","activityNumber":5,"title":"薬の説明","canDoId":"E1-CD56","status":"VERIFIED"},
+
+    {"activityId":"E1-L16-A01","lessonId":"E1-L16","activityNumber":1,"title":"具合が悪そうですね","canDoId":"E1-CD57","status":"VERIFIED"},
+    {"activityId":"E1-L16-A02","lessonId":"E1-L16","activityNumber":2,"title":"夜は早く寝るようにしています","canDoId":"E1-CD58","status":"VERIFIED"},
+    {"activityId":"E1-L16-A03","lessonId":"E1-L16","activityNumber":3,"title":"食中毒が増えています","canDoId":"E1-CD59","status":"VERIFIED"},
+    {"activityId":"E1-L16-A04","lessonId":"E1-L16","activityNumber":4,"title":"病気予防のポスター","canDoId":"E1-CD60","status":"VERIFIED"},
+
+    {"activityId":"E1-L17-A01","lessonId":"E1-L17","activityNumber":1,"title":"ごめんください","canDoId":"E1-CD61","status":"VERIFIED"},
+    {"activityId":"E1-L17-A02","lessonId":"E1-L17","activityNumber":2,"title":"これ、お土産です","canDoId":"E1-CD62","status":"VERIFIED"},
+    {"activityId":"E1-L17-A03","lessonId":"E1-L17","activityNumber":3,"title":"誕生日に、友だちにもらったんです","canDoId":"E1-CD63","status":"VERIFIED"},
+    {"activityId":"E1-L17-A04","lessonId":"E1-L17","activityNumber":4,"title":"お礼のメール","canDoId":"E1-CD64","status":"VERIFIED"},
+
+    {"activityId":"E1-L18-A01","lessonId":"E1-L18","activityNumber":1,"title":"おめでとうございます","canDoId":"E1-CD65","status":"VERIFIED"},
+    {"activityId":"E1-L18-A02","lessonId":"E1-L18","activityNumber":2,"title":"送別会をしませんか？","canDoId":"E1-CD66","status":"VERIFIED"},
+    {"activityId":"E1-L18-A03","lessonId":"E1-L18","activityNumber":3,"title":"いろいろお世話になりました","canDoId":"E1-CD67","status":"VERIFIED"},
+    {"activityId":"E1-L18-A04","lessonId":"E1-L18","activityNumber":4,"title":"誕生日の書き込み","canDoId":"E1-CD68","status":"VERIFIED"},
+    {"activityId":"E1-L18-A05","lessonId":"E1-L18","activityNumber":5,"title":"お祝いのメッセージ","canDoId":"E1-CD69","status":"VERIFIED"}
+  ]
+}
