@@ -1,0 +1,101 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "bookId": "elementary02",
+  "activities": [
+    {"activityId":"E2-L01-A01","lessonId":"E2-L01","activityNumber":1,"title":"みんなを紹介しますね","canDoId":"E2-CD01","status":"VERIFIED"},
+    {"activityId":"E2-L01-A02","lessonId":"E2-L01","activityNumber":2,"title":"一生懸命がんばります","canDoId":"E2-CD02","status":"VERIFIED"},
+    {"activityId":"E2-L01-A03","lessonId":"E2-L01","activityNumber":3,"title":"とても大きい町です","canDoId":"E2-CD03","status":"VERIFIED"},
+    {"activityId":"E2-L01-A04","lessonId":"E2-L01","activityNumber":4,"title":"SNSの自己紹介","canDoId":"E2-CD04","status":"VERIFIED"},
+
+    {"activityId":"E2-L02-A01","lessonId":"E2-L02","activityNumber":1,"title":"どの人ですか？","canDoId":"E2-CD05","status":"VERIFIED"},
+    {"activityId":"E2-L02-A02","lessonId":"E2-L02","activityNumber":2,"title":"その写真、だれですか？","canDoId":"E2-CD06","status":"VERIFIED"},
+    {"activityId":"E2-L02-A03","lessonId":"E2-L02","activityNumber":3,"title":"本当にかっこいいです","canDoId":"E2-CD07","status":"VERIFIED"},
+    {"activityId":"E2-L02-A04","lessonId":"E2-L02","activityNumber":4,"title":"インタビュー記事","canDoId":"E2-CD08","status":"VERIFIED"},
+
+    {"activityId":"E2-L03-A01","lessonId":"E2-L03","activityNumber":1,"title":"定食屋のメニュー","canDoId":"E2-CD09","status":"VERIFIED"},
+    {"activityId":"E2-L03-A02","lessonId":"E2-L03","activityNumber":2,"title":"わさび抜きでお願いします","canDoId":"E2-CD10","status":"VERIFIED"},
+    {"activityId":"E2-L03-A03","lessonId":"E2-L03","activityNumber":3,"title":"人気があるのはお刺身定食です","canDoId":"E2-CD11","status":"VERIFIED"},
+    {"activityId":"E2-L03-A04","lessonId":"E2-L03","activityNumber":4,"title":"予約をしたいんですけど…","canDoId":"E2-CD12","status":"VERIFIED"},
+    {"activityId":"E2-L03-A05","lessonId":"E2-L03","activityNumber":5,"title":"レストランのクーポン","canDoId":"E2-CD13","status":"VERIFIED"},
+
+    {"activityId":"E2-L04-A01","lessonId":"E2-L04","activityNumber":1,"title":"どこかいい店、ありませんか？","canDoId":"E2-CD14","status":"VERIFIED"},
+    {"activityId":"E2-L04-A02","lessonId":"E2-L04","activityNumber":2,"title":"よく混ぜて食べてください","canDoId":"E2-CD15","status":"VERIFIED"},
+    {"activityId":"E2-L04-A03","lessonId":"E2-L04","activityNumber":3,"title":"どうやって食べるんですか？","canDoId":"E2-CD16","status":"VERIFIED"},
+    {"activityId":"E2-L04-A04","lessonId":"E2-L04","activityNumber":4,"title":"餃子に似ています","canDoId":"E2-CD17","status":"VERIFIED"},
+    {"activityId":"E2-L04-A05","lessonId":"E2-L04","activityNumber":5,"title":"飲食店の口コミ","canDoId":"E2-CD18","status":"VERIFIED"},
+
+    {"activityId":"E2-L05-A01","lessonId":"E2-L05","activityNumber":1,"title":"いつか行ってみたいです","canDoId":"E2-CD19","status":"VERIFIED"},
+    {"activityId":"E2-L05-A02","lessonId":"E2-L05","activityNumber":2,"title":"景色がきれいなところがいいです","canDoId":"E2-CD20","status":"VERIFIED"},
+    {"activityId":"E2-L05-A03","lessonId":"E2-L05","activityNumber":3,"title":"どんなところに泊まったらいいですか？","canDoId":"E2-CD21","status":"VERIFIED"},
+    {"activityId":"E2-L05-A04","lessonId":"E2-L05","activityNumber":4,"title":"旅行の口コミ","canDoId":"E2-CD22","status":"VERIFIED"},
+
+    {"activityId":"E2-L06-A01","lessonId":"E2-L06","activityNumber":1,"title":"切符・掲示","canDoId":"E2-CD23","status":"VERIFIED"},
+    {"activityId":"E2-L06-A02","lessonId":"E2-L06","activityNumber":2,"title":"中禅寺湖に行くつもりです","canDoId":"E2-CD24","status":"VERIFIED"},
+    {"activityId":"E2-L06-A03","lessonId":"E2-L06","activityNumber":3,"title":"お客様にご案内いたします","canDoId":"E2-CD25","status":"VERIFIED"},
+    {"activityId":"E2-L06-A04","lessonId":"E2-L06","activityNumber":4,"title":"ショーが見られなくて残念でした","canDoId":"E2-CD26","status":"VERIFIED"},
+    {"activityId":"E2-L06-A05","lessonId":"E2-L06","activityNumber":5,"title":"旅行の感想","canDoId":"E2-CD27","status":"VERIFIED"},
+
+    {"activityId":"E2-L07-A01","lessonId":"E2-L07","activityNumber":1,"title":"掲示板のお知らせ","canDoId":"E2-CD28","status":"VERIFIED"},
+    {"activityId":"E2-L07-A02","lessonId":"E2-L07","activityNumber":2,"title":"ガス点検のお知らせですね","canDoId":"E2-CD29","status":"VERIFIED"},
+    {"activityId":"E2-L07-A03","lessonId":"E2-L07","activityNumber":3,"title":"さくら市民センターからお知らせします","canDoId":"E2-CD30","status":"VERIFIED"},
+    {"activityId":"E2-L07-A04","lessonId":"E2-L07","activityNumber":4,"title":"盆踊り？何ですか？","canDoId":"E2-CD31","status":"VERIFIED"},
+
+    {"activityId":"E2-L08-A01","lessonId":"E2-L08","activityNumber":1,"title":"国際交流フェスティバルのチラシ","canDoId":"E2-CD32","status":"VERIFIED"},
+    {"activityId":"E2-L08-A02","lessonId":"E2-L08","activityNumber":2,"title":"スピーチコンテストは、もう始まりましたか？","canDoId":"E2-CD33","status":"VERIFIED"},
+    {"activityId":"E2-L08-A03","lessonId":"E2-L08","activityNumber":3,"title":"だれでも参加できますか？","canDoId":"E2-CD34","status":"VERIFIED"},
+    {"activityId":"E2-L08-A04","lessonId":"E2-L08","activityNumber":4,"title":"皆様にお願いいたします","canDoId":"E2-CD35","status":"VERIFIED"},
+    {"activityId":"E2-L08-A05","lessonId":"E2-L08","activityNumber":5,"title":"国際交流祭りの感想","canDoId":"E2-CD36","status":"VERIFIED"},
+    {"activityId":"E2-L08-A06","lessonId":"E2-L08","activityNumber":6,"title":"イベントの感想","canDoId":"E2-CD37","status":"VERIFIED"},
+
+    {"activityId":"E2-L09-A01","lessonId":"E2-L09","activityNumber":1,"title":"20歳になった人をお祝いするんだよ","canDoId":"E2-CD38","status":"VERIFIED"},
+    {"activityId":"E2-L09-A02","lessonId":"E2-L09","activityNumber":2,"title":"あけましておめでとうございます","canDoId":"E2-CD39","status":"VERIFIED"},
+    {"activityId":"E2-L09-A03","lessonId":"E2-L09","activityNumber":3,"title":"田舎に帰って家族でお祝いします","canDoId":"E2-CD40","status":"VERIFIED"},
+    {"activityId":"E2-L09-A04","lessonId":"E2-L09","activityNumber":4,"title":"イベントの記事","canDoId":"E2-CD41","status":"VERIFIED"},
+    {"activityId":"E2-L09-A05","lessonId":"E2-L09","activityNumber":5,"title":"新年のメッセージ","canDoId":"E2-CD42","status":"VERIFIED"},
+
+    {"activityId":"E2-L10-A01","lessonId":"E2-L10","activityNumber":1,"title":"今からお見舞いに行くんです","canDoId":"E2-CD43","status":"VERIFIED"},
+    {"activityId":"E2-L10-A02","lessonId":"E2-L10","activityNumber":2,"title":"食器は自分で片付けなくちゃ","canDoId":"E2-CD44","status":"VERIFIED"},
+    {"activityId":"E2-L10-A03","lessonId":"E2-L10","activityNumber":3,"title":"国によって違うんですね","canDoId":"E2-CD45","status":"VERIFIED"},
+    {"activityId":"E2-L10-A04","lessonId":"E2-L10","activityNumber":4,"title":"日本の習慣についての記事","canDoId":"E2-CD46","status":"VERIFIED"},
+
+    {"activityId":"E2-L11-A01","lessonId":"E2-L11","activityNumber":1,"title":"着てみてもいいですか？","canDoId":"E2-CD47","status":"VERIFIED"},
+    {"activityId":"E2-L11-A02","lessonId":"E2-L11","activityNumber":2,"title":"自転車を盗まれました","canDoId":"E2-CD48","status":"VERIFIED"},
+    {"activityId":"E2-L11-A03","lessonId":"E2-L11","activityNumber":3,"title":"トイレに忘れたと思います","canDoId":"E2-CD49","status":"VERIFIED"},
+    {"activityId":"E2-L11-A04","lessonId":"E2-L11","activityNumber":4,"title":"お客様のお呼び出しを申し上げます","canDoId":"E2-CD50","status":"VERIFIED"},
+
+    {"activityId":"E2-L12-A01","lessonId":"E2-L12","activityNumber":1,"title":"どこで買ったらいいですか？","canDoId":"E2-CD51","status":"VERIFIED"},
+    {"activityId":"E2-L12-A02","lessonId":"E2-L12","activityNumber":2,"title":"フリマアプリ","canDoId":"E2-CD52","status":"VERIFIED"},
+    {"activityId":"E2-L12-A03","lessonId":"E2-L12","activityNumber":3,"title":"商品の比較表","canDoId":"E2-CD53","status":"VERIFIED"},
+    {"activityId":"E2-L12-A04","lessonId":"E2-L12","activityNumber":4,"title":"これ、安くなりますか？","canDoId":"E2-CD54","status":"VERIFIED"},
+
+    {"activityId":"E2-L13-A01","lessonId":"E2-L13","activityNumber":1,"title":"市の行事に使われてます","canDoId":"E2-CD55","status":"VERIFIED"},
+    {"activityId":"E2-L13-A02","lessonId":"E2-L13","activityNumber":2,"title":"はじめて利用するんですが…","canDoId":"E2-CD56","status":"VERIFIED"},
+    {"activityId":"E2-L13-A03","lessonId":"E2-L13","activityNumber":3,"title":"図書館を使いたいんですが…","canDoId":"E2-CD57","status":"VERIFIED"},
+    {"activityId":"E2-L13-A04","lessonId":"E2-L13","activityNumber":4,"title":"図書館の利用案内","canDoId":"E2-CD58","status":"VERIFIED"},
+    {"activityId":"E2-L13-A05","lessonId":"E2-L13","activityNumber":5,"title":"禁止の表示","canDoId":"E2-CD59","status":"VERIFIED"},
+
+    {"activityId":"E2-L14-A01","lessonId":"E2-L14","activityNumber":1,"title":"自転車の空気を入れたいんですが…","canDoId":"E2-CD60","status":"VERIFIED"},
+    {"activityId":"E2-L14-A02","lessonId":"E2-L14","activityNumber":2,"title":"郵便局からの連絡","canDoId":"E2-CD61","status":"VERIFIED"},
+    {"activityId":"E2-L14-A03","lessonId":"E2-L14","activityNumber":3,"title":"どのぐらい切りますか？","canDoId":"E2-CD62","status":"VERIFIED"},
+    {"activityId":"E2-L14-A04","lessonId":"E2-L14","activityNumber":4,"title":"外国の方のために、いろいろなサービスがあります","canDoId":"E2-CD63","status":"VERIFIED"},
+
+    {"activityId":"E2-L15-A01","lessonId":"E2-L15","activityNumber":1,"title":"エコ活動の貼り紙","canDoId":"E2-CD64","status":"VERIFIED"},
+    {"activityId":"E2-L15-A02","lessonId":"E2-L15","activityNumber":2,"title":"水がもったいないですよ","canDoId":"E2-CD65","status":"VERIFIED"},
+    {"activityId":"E2-L15-A03","lessonId":"E2-L15","activityNumber":3,"title":"ごみの分け方・出し方","canDoId":"E2-CD66","status":"VERIFIED"},
+    {"activityId":"E2-L15-A04","lessonId":"E2-L15","activityNumber":4,"title":"どうやって捨てればいいですか？","canDoId":"E2-CD67","status":"VERIFIED"},
+
+    {"activityId":"E2-L16-A01","lessonId":"E2-L16","activityNumber":1,"title":"緊急地震速報です","canDoId":"E2-CD68","status":"VERIFIED"},
+    {"activityId":"E2-L16-A02","lessonId":"E2-L16","activityNumber":2,"title":"避難訓練を始めます","canDoId":"E2-CD69","status":"VERIFIED"},
+    {"activityId":"E2-L16-A03","lessonId":"E2-L16","activityNumber":3,"title":"地震が起こったときは…","canDoId":"E2-CD70","status":"VERIFIED"},
+    {"activityId":"E2-L16-A04","lessonId":"E2-L16","activityNumber":4,"title":"避難所はどこですか？","canDoId":"E2-CD71","status":"VERIFIED"},
+    {"activityId":"E2-L16-A05","lessonId":"E2-L16","activityNumber":5,"title":"防災パンフレット","canDoId":"E2-CD72","status":"VERIFIED"},
+
+    {"activityId":"E2-L17-A01","lessonId":"E2-L17","activityNumber":1,"title":"日本の生活には慣れましたか？","canDoId":"E2-CD73","status":"VERIFIED"},
+    {"activityId":"E2-L17-A02","lessonId":"E2-L17","activityNumber":2,"title":"知らないことばが多くて大変でした","canDoId":"E2-CD74","status":"VERIFIED"},
+    {"activityId":"E2-L17-A03","lessonId":"E2-L17","activityNumber":3,"title":"近況報告のメッセージ","canDoId":"E2-CD75","status":"VERIFIED"},
+
+    {"activityId":"E2-L18-A01","lessonId":"E2-L18","activityNumber":1,"title":"すしの職人になりたいです","canDoId":"E2-CD76","status":"VERIFIED"},
+    {"activityId":"E2-L18-A02","lessonId":"E2-L18","activityNumber":2,"title":"最初はすごく苦労したよ","canDoId":"E2-CD77","status":"VERIFIED"},
+    {"activityId":"E2-L18-A03","lessonId":"E2-L18","activityNumber":3,"title":"みなさんには、とても親切にしてもらいました","canDoId":"E2-CD78","status":"VERIFIED"}
+  ]
+}
