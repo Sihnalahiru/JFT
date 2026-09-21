@@ -1,0 +1,734 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "bookId": "starter",
+  "canDos": [
+    {
+      "canDoId": "ST-CD01",
+      "bookId": "starter",
+      "canDoNumber": 1,
+      "activityId": "ST-L01-A01",
+      "textEn": "Can exchange greetings when you meet someone.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD02",
+      "bookId": "starter",
+      "canDoNumber": 2,
+      "activityId": "ST-L01-A02",
+      "textEn": "Can say goodbye when leaving.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD03",
+      "bookId": "starter",
+      "canDoNumber": 3,
+      "activityId": "ST-L01-A03",
+      "textEn": "Can thank someone or apologize to them.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD04",
+      "bookId": "starter",
+      "canDoNumber": 4,
+      "activityId": "ST-L01-A04",
+      "textEn": "Can understand stickers with messages such as “good morning” or “thanks.”",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD05",
+      "bookId": "starter",
+      "canDoNumber": 5,
+      "activityId": "ST-L02-A01",
+      "textEn": "Can ask someone to say something again if you don’t really understand.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD06",
+      "bookId": "starter",
+      "canDoNumber": 6,
+      "activityId": "ST-L02-A02",
+      "textEn": "Can answer when someone asks if you speak Japanese and ask if someone speaks other languages.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD07",
+      "bookId": "starter",
+      "canDoNumber": 7,
+      "activityId": "ST-L02-A03",
+      "textEn": "Can ask how to say something in Japanese and understand the answer.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD08",
+      "bookId": "starter",
+      "canDoNumber": 8,
+      "activityId": "ST-L03-A01",
+      "textEn": "Can give a simple self-introduction, for example by saying your name and country / hometown.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD09",
+      "bookId": "starter",
+      "canDoNumber": 9,
+      "activityId": "ST-L03-A02",
+      "textEn": "Can write your name and country on a name tag, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD10",
+      "bookId": "starter",
+      "canDoNumber": 10,
+      "activityId": "ST-L03-A03",
+      "textEn": "Can ask and answer questions about your name and country / hometown, when meeting someone for the first time.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD11",
+      "bookId": "starter",
+      "canDoNumber": 11,
+      "activityId": "ST-L03-A04",
+      "textEn": "Can write your full name, nationality, date of birth, etc. on an application form.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD12",
+      "bookId": "starter",
+      "canDoNumber": 12,
+      "activityId": "ST-L04-A01",
+      "textEn": "Can listen to a family being introduced and understand who is who.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD13",
+      "bookId": "starter",
+      "canDoNumber": 13,
+      "activityId": "ST-L04-A02",
+      "textEn": "Can ask and answer questions about where you live and your age.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD14",
+      "bookId": "starter",
+      "canDoNumber": 14,
+      "activityId": "ST-L04-A03",
+      "textEn": "Can ask and answer simple questions about a photograph, such as “who is that?”",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD15",
+      "bookId": "starter",
+      "canDoNumber": 15,
+      "activityId": "ST-L04-A04",
+      "textEn": "Can read a short social media post by a friend and understand the topic with help from the photograph.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD16",
+      "bookId": "starter",
+      "canDoNumber": 16,
+      "activityId": "ST-L05-A01",
+      "textEn": "Can answer questions about foods you like and dislike.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD17",
+      "bookId": "starter",
+      "canDoNumber": 17,
+      "activityId": "ST-L05-A02",
+      "textEn": "Can ask and answer questions about Japanese food you like or dislike.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD18",
+      "bookId": "starter",
+      "canDoNumber": 18,
+      "activityId": "ST-L05-A03",
+      "textEn": "Can respond when offered a drink, for example by saying what you want to drink.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD19",
+      "bookId": "starter",
+      "canDoNumber": 19,
+      "activityId": "ST-L05-A04",
+      "textEn": "Can ask and answer questions about what you eat for breakfast.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD20",
+      "bookId": "starter",
+      "canDoNumber": 20,
+      "activityId": "ST-L05-A05",
+      "textEn": "Can write a simple explanation about a photograph of food and post it on social media.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD21",
+      "bookId": "starter",
+      "canDoNumber": 21,
+      "activityId": "ST-L06-A01",
+      "textEn": "Can look at a menu in a fast food restaurant and understand what is available.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD22",
+      "bookId": "starter",
+      "canDoNumber": 22,
+      "activityId": "ST-L06-A02",
+      "textEn": "Can order in a fast food restaurant.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD23",
+      "bookId": "starter",
+      "canDoNumber": 23,
+      "activityId": "ST-L06-A03",
+      "textEn": "Can ask and answer questions about what you want to eat when eating with other people.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD24",
+      "bookId": "starter",
+      "canDoNumber": 24,
+      "activityId": "ST-L06-A04",
+      "textEn": "Can order food at a restaurant and ask for a plate or glass, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD25",
+      "bookId": "starter",
+      "canDoNumber": 25,
+      "activityId": "ST-L06-A05",
+      "textEn": "Can look at different restaurants’ signboards and understand what each place is.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD26",
+      "bookId": "starter",
+      "canDoNumber": 26,
+      "activityId": "ST-L07-A01",
+      "textEn": "Can listen to simple explanations when being shown around a house and understand the layout.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD27",
+      "bookId": "starter",
+      "canDoNumber": 27,
+      "activityId": "ST-L07-A02",
+      "textEn": "Can ask and check whether a house or room has everything you need.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD28",
+      "bookId": "starter",
+      "canDoNumber": 28,
+      "activityId": "ST-L07-A03",
+      "textEn": "Can give a simple answer when asked where you live and what your house is like.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD29",
+      "bookId": "starter",
+      "canDoNumber": 29,
+      "activityId": "ST-L07-A04",
+      "textEn": "Can ask and answer questions about what kind of house you live in.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD30",
+      "bookId": "starter",
+      "canDoNumber": 30,
+      "activityId": "ST-L07-A05",
+      "textEn": "Can read the buttons on an electric appliance, for example the remote controller for the air conditioning, and understand which one to press.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD31",
+      "bookId": "starter",
+      "canDoNumber": 31,
+      "activityId": "ST-L08-A01",
+      "textEn": "Can listen to a simple explanation when being shown around a room at work and understand what room it is.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD32",
+      "bookId": "starter",
+      "canDoNumber": 32,
+      "activityId": "ST-L08-A02",
+      "textEn": "Can ask and answer questions about where someone is.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD33",
+      "bookId": "starter",
+      "canDoNumber": 33,
+      "activityId": "ST-L08-A03",
+      "textEn": "Can ask and answer questions about where some equipment is, for example at work.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD34",
+      "bookId": "starter",
+      "canDoNumber": 34,
+      "activityId": "ST-L08-A04",
+      "textEn": "Can look at a sign at the entrance to a room and understand what room it is.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD35",
+      "bookId": "starter",
+      "canDoNumber": 35,
+      "activityId": "ST-L09-A01",
+      "textEn": "Can ask and answer questions about when you get up and when you sleep.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD36",
+      "bookId": "starter",
+      "canDoNumber": 36,
+      "activityId": "ST-L09-A02",
+      "textEn": "Can listen to and understand a simple explanation of a daily schedule at work.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD37",
+      "bookId": "starter",
+      "canDoNumber": 37,
+      "activityId": "ST-L09-A03",
+      "textEn": "Can look at a whiteboard at work and mostly understand other people’s schedules.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD38",
+      "bookId": "starter",
+      "canDoNumber": 38,
+      "activityId": "ST-L09-A04",
+      "textEn": "Can ask and answer questions about when you are available to decide on a schedule.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD39",
+      "bookId": "starter",
+      "canDoNumber": 39,
+      "activityId": "ST-L10-A01",
+      "textEn": "Can listen to short and simple instructions at work and understand what to do.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD40",
+      "bookId": "starter",
+      "canDoNumber": 40,
+      "activityId": "ST-L10-A02",
+      "textEn": "Can confirm and ask someone to repeat the important points when you receive instructions at work.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD41",
+      "bookId": "starter",
+      "canDoNumber": 41,
+      "activityId": "ST-L10-A03",
+      "textEn": "Can read a simple, handwritten note at work and understand the instructions.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD42",
+      "bookId": "starter",
+      "canDoNumber": 42,
+      "activityId": "ST-L10-A04",
+      "textEn": "Can ask someone to lend you something at work.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD43",
+      "bookId": "starter",
+      "canDoNumber": 43,
+      "activityId": "ST-L10-A05",
+      "textEn": "Can look at a list of equipment and confirm if you have all the items.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD44",
+      "bookId": "starter",
+      "canDoNumber": 44,
+      "activityId": "ST-L11-A01",
+      "textEn": "Can give a simple answer when asked about your hobbies.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD45",
+      "bookId": "starter",
+      "canDoNumber": 45,
+      "activityId": "ST-L11-A02",
+      "textEn": "Can ask and answer questions about your hobbies and favorite things to do.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD46",
+      "bookId": "starter",
+      "canDoNumber": 46,
+      "activityId": "ST-L11-A03",
+      "textEn": "Can ask and answer questions about what you do on your days off.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD47",
+      "bookId": "starter",
+      "canDoNumber": 47,
+      "activityId": "ST-L11-A04",
+      "textEn": "Can read a simple social media profile and understand what that person likes.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD48",
+      "bookId": "starter",
+      "canDoNumber": 48,
+      "activityId": "ST-L12-A01",
+      "textEn": "Can read an event notice and find the important information, such as the date, time, and place.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD49",
+      "bookId": "starter",
+      "canDoNumber": 49,
+      "activityId": "ST-L12-A02",
+      "textEn": "Can ask and answer questions about whether you are going to an event, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD50",
+      "bookId": "starter",
+      "canDoNumber": 50,
+      "activityId": "ST-L12-A03",
+      "textEn": "Can say when you are available, when you are inviting someone to something, or being invited.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD51",
+      "bookId": "starter",
+      "canDoNumber": 51,
+      "activityId": "ST-L12-A04",
+      "textEn": "Can write a reply to your friend when they send you a message with an invitation.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD52",
+      "bookId": "starter",
+      "canDoNumber": 52,
+      "activityId": "ST-L13-A01",
+      "textEn": "Can ask whether a train or bus is going to where you want to go and understand the answer.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD53",
+      "bookId": "starter",
+      "canDoNumber": 53,
+      "activityId": "ST-L13-A02",
+      "textEn": "Can listen to a station name being announced on a train, and ask someone if you don't really understand it.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD54",
+      "bookId": "starter",
+      "canDoNumber": 54,
+      "activityId": "ST-L13-A03",
+      "textEn": "Can say how you go to work, and how long it takes.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD55",
+      "bookId": "starter",
+      "canDoNumber": 55,
+      "activityId": "ST-L13-A04",
+      "textEn": "Can ask questions about how to get to your destination and understand the answers.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD56",
+      "bookId": "starter",
+      "canDoNumber": 56,
+      "activityId": "ST-L13-A05",
+      "textEn": "Can look at common signs in a station and understand what they mean.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD57",
+      "bookId": "starter",
+      "canDoNumber": 57,
+      "activityId": "ST-L14-A01",
+      "textEn": "Can ask where the toilets or an ATM, etc., are.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD58",
+      "bookId": "starter",
+      "canDoNumber": 58,
+      "activityId": "ST-L14-A02",
+      "textEn": "Can tell someone on the phone where you are.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD59",
+      "bookId": "starter",
+      "canDoNumber": 59,
+      "activityId": "ST-L14-A03",
+      "textEn": "Can tell someone your impressions when they show you around town.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD60",
+      "bookId": "starter",
+      "canDoNumber": 60,
+      "activityId": "ST-L14-A04",
+      "textEn": "Can read a sign in a store, restaurant, etc. and understand when it is open or closed, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD61",
+      "bookId": "starter",
+      "canDoNumber": 61,
+      "activityId": "ST-L15-A01",
+      "textEn": "Can ask someone where to buy something and understand the answer.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD62",
+      "bookId": "starter",
+      "canDoNumber": 62,
+      "activityId": "ST-L15-A02",
+      "textEn": "Can look at the floor guide for a store and find where to go for the item you want.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD63",
+      "bookId": "starter",
+      "canDoNumber": 63,
+      "activityId": "ST-L15-A03",
+      "textEn": "Can ask staff in a shopping center, etc. where to go for a certain item, and understand the answer.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD64",
+      "bookId": "starter",
+      "canDoNumber": 64,
+      "activityId": "ST-L15-A04",
+      "textEn": "Can exchange simple comments about products with a friend while shopping.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD65",
+      "bookId": "starter",
+      "canDoNumber": 65,
+      "activityId": "ST-L15-A05",
+      "textEn": "Can understand the meaning of common signs in a department store or a shopping center.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD66",
+      "bookId": "starter",
+      "canDoNumber": 66,
+      "activityId": "ST-L16-A01",
+      "textEn": "Can listen to and understand the price of a product.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD67",
+      "bookId": "starter",
+      "canDoNumber": 67,
+      "activityId": "ST-L16-A02",
+      "textEn": "Can ask store staff the price of something and understand the answer.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD68",
+      "bookId": "starter",
+      "canDoNumber": 68,
+      "activityId": "ST-L16-A03",
+      "textEn": "Can say how much / many you need when shopping.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD69",
+      "bookId": "starter",
+      "canDoNumber": 69,
+      "activityId": "ST-L16-A04",
+      "textEn": "Can answer questions at a convenience store checkout, such as “Do you want chopsticks?” and “Would you like a bag?”",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD70",
+      "bookId": "starter",
+      "canDoNumber": 70,
+      "activityId": "ST-L16-A05",
+      "textEn": "Can look at a discount sign in a store and understand the price.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD71",
+      "bookId": "starter",
+      "canDoNumber": 71,
+      "activityId": "ST-L17-A01",
+      "textEn": "Can give a simple answer when asked what you did on your day off.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD72",
+      "bookId": "starter",
+      "canDoNumber": 72,
+      "activityId": "ST-L17-A02",
+      "textEn": "Can ask and answer questions about what you did on your day off and your impressions.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD73",
+      "bookId": "starter",
+      "canDoNumber": 73,
+      "activityId": "ST-L17-A03",
+      "textEn": "Can read a simple social media post and understand what the person did with help from a photograph.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD74",
+      "bookId": "starter",
+      "canDoNumber": 74,
+      "activityId": "ST-L17-A04",
+      "textEn": "Can read the price list at a local facility and understand how much to pay.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD75",
+      "bookId": "starter",
+      "canDoNumber": 75,
+      "activityId": "ST-L17-A05",
+      "textEn": "Can send someone a simple message with your impressions after you have gone somewhere together.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "ST-CD76",
+      "bookId": "starter",
+      "canDoNumber": 76,
+      "activityId": "ST-L18-A01",
+      "textEn": "Can ask and answer questions about what you want to do on your days off.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD77",
+      "bookId": "starter",
+      "canDoNumber": 77,
+      "activityId": "ST-L18-A02",
+      "textEn": "Can give a simple answer when asked about what you want to do in Japan.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD78",
+      "bookId": "starter",
+      "canDoNumber": 78,
+      "activityId": "ST-L18-A03",
+      "textEn": "Can write a simple post for social media, etc., about what you did on your day off.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "ST-CD79",
+      "bookId": "starter",
+      "canDoNumber": 79,
+      "activityId": "ST-L18-A04",
+      "textEn": "Can talk in simple terms about what you did on a trip and your impressions.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    }
+  ]
+}
