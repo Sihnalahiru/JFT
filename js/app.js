@@ -1,20 +1,46 @@
 const BOOKS_FILE = "./data/books.json";
 const LESSONS_FILE = "./data/lessons.json";
 
+
 const CANDO_FILES = {
-  starter: "./data/canDos-starter.json",
-  "elementary-1": "./data/canDos-e1.json",
-  "elementary-2": "./data/canDos-e2.json",
-  "pre-intermediate": "./data/canDos-pi.json"
+
+  starter:
+    "./data/canDos-starter.json",
+
+  "elementary-1":
+    "./data/canDos-e1.json",
+
+  "elementary-2":
+    "./data/canDos-e2.json",
+
+  "pre-intermediate":
+    "./data/canDos-pi.json"
+
 };
 
+
+
+/* =========================================
+   APPLICATION STATE
+   ========================================= */
+
 let booksData = [];
+
 let lessonsData = [];
+
 let canDosData = {};
 
 let currentBook = null;
+
 let currentLesson = null;
 
+let currentActivity = null;
+
+
+
+/* =========================================
+   START APPLICATION
+   ========================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -22,31 +48,28 @@ document.addEventListener(
 );
 
 
+
 async function initializeApp() {
 
   try {
 
     await loadBooks();
+
     await loadLessons();
+
     await loadAllCanDos();
 
-    renderBooks();
+    renderDashboard();
 
-    if (
-      window.IrodoriProgress &&
-      typeof window.IrodoriProgress.updateProgressDashboard === "function"
-    ) {
+  }
 
-      window.IrodoriProgress.updateProgressDashboard();
-
-    }
-
-  } catch (error) {
+  catch (error) {
 
     console.error(
       "IRODORI Master initialization failed:",
       error
     );
+
 
     showError(
       "Learning data could not be loaded."
@@ -57,10 +80,18 @@ async function initializeApp() {
 }
 
 
+
+/* =========================================
+   LOAD BOOKS
+   ========================================= */
+
 async function loadBooks() {
 
   const response =
-    await fetch(BOOKS_FILE);
+    await fetch(
+      BOOKS_FILE
+    );
+
 
   if (!response.ok) {
 
@@ -70,19 +101,32 @@ async function loadBooks() {
 
   }
 
+
   const data =
     await response.json();
 
+
   booksData =
-    getArray(data, "books");
+    getArray(
+      data,
+      "books"
+    );
 
 }
 
 
+
+/* =========================================
+   LOAD LESSONS
+   ========================================= */
+
 async function loadLessons() {
 
   const response =
-    await fetch(LESSONS_FILE);
+    await fetch(
+      LESSONS_FILE
+    );
+
 
   if (!response.ok) {
 
@@ -92,19 +136,32 @@ async function loadLessons() {
 
   }
 
+
   const data =
     await response.json();
 
+
   lessonsData =
-    getArray(data, "lessons");
+    getArray(
+      data,
+      "lessons"
+    );
 
 }
 
 
+
+/* =========================================
+   LOAD ALL CAN-DO DATA
+   ========================================= */
+
 async function loadAllCanDos() {
 
   for (
-    const [bookKey, file] of Object.entries(CANDO_FILES)
+    const [bookKey, file]
+    of Object.entries(
+      CANDO_FILES
+    )
   ) {
 
     try {
@@ -112,11 +169,13 @@ async function loadAllCanDos() {
       const response =
         await fetch(file);
 
+
       if (!response.ok) {
 
         console.warn(
           `Can-do file unavailable: ${file}`
         );
+
 
         canDosData[bookKey] = [];
 
@@ -124,18 +183,26 @@ async function loadAllCanDos() {
 
       }
 
+
       const data =
         await response.json();
 
-      canDosData[bookKey] =
-        getArray(data, "canDos");
 
-    } catch (error) {
+      canDosData[bookKey] =
+        getArray(
+          data,
+          "canDos"
+        );
+
+    }
+
+    catch (error) {
 
       console.warn(
         `Can-do loading failed: ${file}`,
         error
       );
+
 
       canDosData[bookKey] = [];
 
@@ -146,46 +213,327 @@ async function loadAllCanDos() {
 }
 
 
+
+/* =========================================
+   GENERIC ARRAY READER
+   ========================================= */
+
 function getArray(
   data,
   preferredKey
 ) {
 
-  if (Array.isArray(data)) {
+  if (
+    Array.isArray(data)
+  ) {
+
     return data;
+
   }
+
 
   if (
     data &&
-    Array.isArray(data[preferredKey])
+    Array.isArray(
+      data[preferredKey]
+    )
   ) {
 
     return data[preferredKey];
 
   }
 
+
   if (
     data &&
-    Array.isArray(data.records)
+    Array.isArray(
+      data.records
+    )
   ) {
 
     return data.records;
 
   }
 
+
   if (
     data &&
-    Array.isArray(data.items)
+    Array.isArray(
+      data.items
+    )
   ) {
 
     return data.items;
 
   }
 
+
   return [];
 
 }
 
+
+
+/* =========================================
+   RENDER DASHBOARD
+   ========================================= */
+
+function renderDashboard() {
+
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
+
+
+  if (!main) {
+
+    return;
+
+  }
+
+
+  main.innerHTML = `
+
+    <section class="welcome-card">
+
+      <h2>
+        Welcome to IRODORI Master
+      </h2>
+
+      <p>
+        Learn Japanese through the official
+        IRODORI learning materials.
+      </p>
+
+    </section>
+
+
+
+    <section
+      class="dashboard-section"
+      aria-labelledby="dashboard-title"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <h2 id="dashboard-title">
+            Dashboard
+          </h2>
+
+          <p>
+            Your IRODORI learning overview
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="dashboard-grid">
+
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            📚
+          </div>
+
+          <div
+            class="dashboard-value"
+            data-dashboard-books
+          >
+            0 / 4
+          </div>
+
+          <div class="dashboard-label">
+            Books
+          </div>
+
+        </article>
+
+
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            📖
+          </div>
+
+          <div
+            class="dashboard-value"
+            data-dashboard-lessons
+          >
+            0 / 72
+          </div>
+
+          <div class="dashboard-label">
+            Lessons
+          </div>
+
+        </article>
+
+
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            🎯
+          </div>
+
+          <div
+            class="dashboard-value"
+            data-dashboard-activities
+          >
+            0 / 288
+          </div>
+
+          <div class="dashboard-label">
+            Can-do / Activities
+          </div>
+
+        </article>
+
+
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            漢
+          </div>
+
+          <div
+            class="dashboard-value"
+            data-dashboard-kanji
+          >
+            0 / 644
+          </div>
+
+          <div class="dashboard-label">
+            Kanji
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+
+      <div class="progress-card">
+
+        <div class="progress-card-header">
+
+          <div>
+
+            <h3>
+              Learning Progress
+            </h3>
+
+            <p>
+              Your study progress will appear here.
+            </p>
+
+          </div>
+
+
+          <strong data-progress-overall>
+            0%
+          </strong>
+
+        </div>
+
+
+        <div
+          class="progress-track"
+          aria-label="Learning progress"
+        >
+
+          <div
+            class="progress-bar"
+            data-progress-bar
+            style="width: 0%;"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section
+      class="books-section"
+      aria-labelledby="books-title"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <h2 id="books-title">
+            IRODORI Books
+          </h2>
+
+          <p>
+            Select a book to continue learning.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div id="book-list">
+
+        Loading learning data...
+
+      </div>
+
+    </section>
+
+  `;
+
+
+  renderBooks();
+
+
+  updateProgressUI();
+
+}
+
+
+
+/* =========================================
+   UPDATE PROGRESS UI
+   ========================================= */
+
+function updateProgressUI() {
+
+  if (
+    window.IrodoriProgress &&
+    typeof
+      window.IrodoriProgress
+        .updateProgressDashboard ===
+      "function"
+  ) {
+
+    window.IrodoriProgress
+      .updateProgressDashboard();
+
+  }
+
+}
+
+
+
+/* =========================================
+   RENDER BOOKS
+   ========================================= */
 
 function renderBooks() {
 
@@ -194,50 +542,76 @@ function renderBooks() {
       "book-list"
     );
 
+
   if (!container) {
+
     return;
+
   }
 
-  if (!booksData.length) {
 
-    container.innerHTML =
-      `<div class="pending-card">
+  if (
+    !booksData.length
+  ) {
+
+    container.innerHTML = `
+
+      <div class="pending-card">
+
         No book records available.
-      </div>`;
+
+      </div>
+
+    `;
 
     return;
 
   }
+
 
 
   container.innerHTML =
+
     booksData
       .map(
-        (book, index) => {
+        (
+          book,
+          index
+        ) => {
 
           const title =
             book.title ||
             book.name ||
             `Book ${index + 1}`;
 
+
           const description =
             book.description ||
             "";
 
+
           const bookKey =
-            getBookKey(book);
+            getBookKey(
+              book
+            );
 
 
           const completed =
             window.IrodoriProgress &&
-            window.IrodoriProgress.isBookComplete
-              ? window.IrodoriProgress.isBookComplete(
-                  bookKey
-                )
+            typeof
+              window.IrodoriProgress
+                .isBookComplete ===
+              "function"
+              ? window.IrodoriProgress
+                  .isBookComplete(
+                    bookKey
+                  )
               : false;
 
 
+
           return `
+
             <button
               type="button"
               class="book-card book-card-button"
@@ -247,25 +621,41 @@ function renderBooks() {
               <div class="book-card-content">
 
                 <div class="book-card-title">
-                  ${escapeHtml(title)}
+
+                  ${escapeHtml(
+                    title
+                  )}
+
                 </div>
+
 
                 ${
                   description
                     ? `
+
                       <div class="book-card-description">
-                        ${escapeHtml(description)}
+
+                        ${escapeHtml(
+                          description
+                        )}
+
                       </div>
+
                     `
                     : ""
                 }
 
+
                 ${
                   completed
                     ? `
+
                       <div class="completion-badge">
-                        ✓ Completed
+
+                        ✓ Progress Saved
+
                       </div>
+
                     `
                     : ""
                 }
@@ -273,6 +663,7 @@ function renderBooks() {
               </div>
 
             </button>
+
           `;
 
         }
@@ -296,6 +687,7 @@ function renderBooks() {
                 button.dataset.bookIndex
               );
 
+
             openBook(
               booksData[index]
             );
@@ -309,16 +701,30 @@ function renderBooks() {
 }
 
 
-function openBook(book) {
+
+/* =========================================
+   OPEN BOOK
+   ========================================= */
+
+function openBook(
+  book
+) {
 
   if (!book) {
+
     return;
+
   }
 
-  currentBook = book;
+
+  currentBook =
+    book;
+
 
   const lessons =
-    findLessonsForBook(book);
+    findLessonsForBook(
+      book
+    );
 
 
   const main =
@@ -326,8 +732,11 @@ function openBook(book) {
       ".app-main"
     );
 
+
   if (!main) {
+
     return;
+
   }
 
 
@@ -335,13 +744,17 @@ function openBook(book) {
 
     <section class="lesson-view">
 
+
       <button
         type="button"
         class="back-button"
         data-back-books
       >
+
         ← Back to Books
+
       </button>
+
 
 
       <div class="section-heading">
@@ -349,16 +762,21 @@ function openBook(book) {
         <div>
 
           <h2>
+
             ${escapeHtml(
               book.title ||
               book.name ||
               "IRODORI Book"
             )}
+
           </h2>
 
+
           <p>
+
             ${lessons.length}
             lesson records found
+
           </p>
 
         </div>
@@ -366,10 +784,12 @@ function openBook(book) {
       </div>
 
 
+
       <div class="lesson-grid">
 
         ${
           lessons.length
+
             ? lessons
                 .map(
                   (
@@ -382,11 +802,16 @@ function openBook(book) {
                     )
                 )
                 .join("")
+
             : `
+
               <div class="pending-card">
+
                 No lesson records matched
                 this book.
+
               </div>
+
             `
         }
 
@@ -397,10 +822,12 @@ function openBook(book) {
   `;
 
 
+
   const backButton =
     main.querySelector(
       "[data-back-books]"
     );
+
 
   if (backButton) {
 
@@ -408,12 +835,13 @@ function openBook(book) {
       "click",
       () => {
 
-        restoreDashboard();
+        renderDashboard();
 
       }
     );
 
   }
+
 
 
   main
@@ -432,6 +860,7 @@ function openBook(book) {
                 card.dataset.lessonIndex
               );
 
+
             openLesson(
               lessons[index]
             );
@@ -445,6 +874,11 @@ function openBook(book) {
 }
 
 
+
+/* =========================================
+   LESSON CARD
+   ========================================= */
+
 function renderLessonCard(
   lesson,
   index
@@ -455,6 +889,7 @@ function renderLessonCard(
       lesson,
       index
     );
+
 
   const title =
     lesson.title ||
@@ -471,11 +906,16 @@ function renderLessonCard(
 
   const completed =
     window.IrodoriProgress &&
-    window.IrodoriProgress.isLessonComplete
-      ? window.IrodoriProgress.isLessonComplete(
-          lessonId
-        )
+    typeof
+      window.IrodoriProgress
+        .isLessonComplete ===
+      "function"
+      ? window.IrodoriProgress
+          .isLessonComplete(
+            lessonId
+          )
       : false;
+
 
 
   return `
@@ -487,25 +927,48 @@ function renderLessonCard(
     >
 
       <div class="lesson-number">
+
         ${escapeHtml(
-          String(lessonNumber)
+          String(
+            lessonNumber
+          )
         )}
+
       </div>
+
 
       <div class="lesson-card-content">
 
         <div class="lesson-title">
-          ${escapeHtml(title)}
+
+          ${escapeHtml(
+            title
+          )}
+
         </div>
+
 
         ${
           completed
+
             ? `
+
               <div class="completion-badge">
+
                 ✓ Completed
+
               </div>
+
+              <div class="study-again-label">
+
+                Study Again
+
+              </div>
+
             `
+
             : ""
+
         }
 
       </div>
@@ -517,13 +980,24 @@ function renderLessonCard(
 }
 
 
-function openLesson(lesson) {
+
+/* =========================================
+   OPEN LESSON
+   ========================================= */
+
+function openLesson(
+  lesson
+) {
 
   if (!lesson) {
+
     return;
+
   }
 
-  currentLesson = lesson;
+
+  currentLesson =
+    lesson;
 
 
   const main =
@@ -531,8 +1005,11 @@ function openLesson(lesson) {
       ".app-main"
     );
 
+
   if (!main) {
+
     return;
+
   }
 
 
@@ -542,11 +1019,25 @@ function openLesson(lesson) {
       0
     );
 
+
   const lessonId =
     getLessonId(
       lesson,
       0
     );
+
+
+  const lessonCompleted =
+    window.IrodoriProgress &&
+    typeof
+      window.IrodoriProgress
+        .isLessonComplete ===
+      "function"
+      ? window.IrodoriProgress
+          .isLessonComplete(
+            lessonId
+          )
+      : false;
 
 
   const matchedCanDos =
@@ -556,17 +1047,22 @@ function openLesson(lesson) {
     );
 
 
+
   main.innerHTML = `
 
     <section class="lesson-detail">
+
 
       <button
         type="button"
         class="back-button"
         data-back-lessons
       >
+
         ← Back to Lessons
+
       </button>
+
 
 
       <div class="section-heading">
@@ -574,24 +1070,51 @@ function openLesson(lesson) {
         <div>
 
           <h2>
-            ${
-              escapeHtml(
-                currentBook?.title ||
-                currentBook?.name ||
-                "IRODORI"
-              )
-            }
+
+            ${escapeHtml(
+              currentBook?.title ||
+              currentBook?.name ||
+              "IRODORI"
+            )}
+
           </h2>
 
+
           <p>
-            Lesson ${escapeHtml(
-              String(lessonNumber)
+
+            Lesson
+            ${escapeHtml(
+              String(
+                lessonNumber
+              )
             )}
+
           </p>
 
         </div>
 
       </div>
+
+
+
+      ${
+        lessonCompleted
+
+          ? `
+
+            <div class="completion-badge">
+
+              ✓ Previously Completed —
+              You can study this lesson again.
+
+            </div>
+
+          `
+
+          : ""
+
+      }
+
 
 
       <div class="learning-module-grid">
@@ -607,15 +1130,19 @@ function openLesson(lesson) {
             🎯
           </div>
 
+
           <div class="module-content">
 
             <h3>
               Can-do / Activities
             </h3>
 
+
             ${
               matchedCanDos.length
+
                 ? `
+
                   <div class="can-do-list">
 
                     ${matchedCanDos
@@ -632,19 +1159,26 @@ function openLesson(lesson) {
                       .join("")}
 
                   </div>
+
                 `
+
                 : `
+
                   <p class="pending-text">
+
                     No verified Can-do
                     relationship available
                     for this lesson.
+
                   </p>
+
                 `
             }
 
           </div>
 
         </article>
+
 
 
         <!-- VOCABULARY -->
@@ -657,20 +1191,25 @@ function openLesson(lesson) {
             📝
           </div>
 
+
           <div class="module-content">
 
             <h3>
               Vocabulary
             </h3>
 
+
             <p class="pending-text">
+
               Vocabulary dataset connection
               pending source verification.
+
             </p>
 
           </div>
 
         </article>
+
 
 
         <!-- MAIN LESSON AUDIO -->
@@ -683,21 +1222,26 @@ function openLesson(lesson) {
             🔊
           </div>
 
+
           <div class="module-content">
 
             <h3>
               Main Lesson Audio
             </h3>
 
+
             <p class="pending-text">
+
               Official main lesson audio
               records are pending dataset
               connection.
+
             </p>
 
           </div>
 
         </article>
+
 
 
         <!-- GRAMMAR WORKSHEET AUDIO -->
@@ -710,21 +1254,26 @@ function openLesson(lesson) {
             📚
           </div>
 
+
           <div class="module-content">
 
             <h3>
               Grammar Worksheet Audio
             </h3>
 
+
             <p class="pending-text">
+
               Official grammar worksheet
               audio records are pending
               dataset connection.
+
             </p>
 
           </div>
 
         </article>
+
 
 
         <!-- PRACTICE -->
@@ -737,15 +1286,19 @@ function openLesson(lesson) {
             🎤
           </div>
 
+
           <div class="module-content">
 
             <h3>
               Practice
             </h3>
 
+
             <p class="pending-text">
+
               Adaptive practice layer will
               be connected in a later step.
+
             </p>
 
           </div>
@@ -754,6 +1307,7 @@ function openLesson(lesson) {
 
 
       </div>
+
 
 
       <!-- LESSON COMPLETION -->
@@ -766,52 +1320,69 @@ function openLesson(lesson) {
             Lesson Progress
           </h3>
 
+
           <p>
-            Mark this lesson complete
-            after you finish your study.
+
+            ${
+              lessonCompleted
+
+                ? `
+
+                  This lesson is already recorded
+                  as completed. You can study it
+                  again anytime.
+
+                `
+
+                : `
+
+                  Mark this lesson complete
+                  after you finish your study.
+
+                `
+            }
+
           </p>
 
         </div>
+
 
 
         <button
           type="button"
           class="completion-button"
           data-complete-lesson
-          ${
-            window.IrodoriProgress &&
-            window.IrodoriProgress.isLessonComplete &&
-            window.IrodoriProgress.isLessonComplete(
-              lessonId
-            )
-              ? "disabled"
-              : ""
-          }
         >
 
           ${
-            window.IrodoriProgress &&
-            window.IrodoriProgress.isLessonComplete &&
-            window.IrodoriProgress.isLessonComplete(
-              lessonId
-            )
-              ? "✓ Lesson Completed"
+            lessonCompleted
+
+              ? "✓ Completed — Study Again"
+
               : "Mark Lesson Complete"
+
           }
 
         </button>
 
       </div>
 
+
     </section>
 
   `;
 
 
+
+  /* =======================================
+     BACK TO LESSONS
+     ======================================= */
+
   const backButton =
     main.querySelector(
       "[data-back-lessons]"
     );
+
 
   if (backButton) {
 
@@ -829,10 +1400,16 @@ function openLesson(lesson) {
   }
 
 
+
+  /* =======================================
+     LESSON COMPLETE / STUDY AGAIN
+     ======================================= */
+
   const completeButton =
     main.querySelector(
       "[data-complete-lesson]"
     );
+
 
   if (completeButton) {
 
@@ -842,19 +1419,32 @@ function openLesson(lesson) {
 
         if (
           window.IrodoriProgress &&
-          typeof window.IrodoriProgress.markLessonComplete ===
+          typeof
+            window.IrodoriProgress
+              .markLessonComplete ===
             "function"
         ) {
 
-          window.IrodoriProgress.markLessonComplete(
-            lessonId
-          );
+          /*
+            Important:
+            Completion is permanent until
+            progress is deliberately reset.
 
-          completeButton.disabled =
-            true;
+            Clicking this button again does NOT
+            remove completion.
+          */
+
+          window.IrodoriProgress
+            .markLessonComplete(
+              lessonId
+            );
+
 
           completeButton.textContent =
-            "✓ Lesson Completed";
+            "✓ Completed — Study Again";
+
+
+          updateProgressUI();
 
         }
 
@@ -863,6 +1453,11 @@ function openLesson(lesson) {
 
   }
 
+
+
+  /* =======================================
+     CAN-DO CLICK
+     ======================================= */
 
   main
     .querySelectorAll(
@@ -880,6 +1475,7 @@ function openLesson(lesson) {
                 card.dataset.canDoIndex
               );
 
+
             openActivity(
               matchedCanDos[index]
             );
@@ -892,6 +1488,11 @@ function openLesson(lesson) {
 
 }
 
+
+
+/* =========================================
+   CAN-DO CARD
+   ========================================= */
 
 function renderCanDoCard(
   canDo,
@@ -914,11 +1515,16 @@ function renderCanDoCard(
 
   const completed =
     window.IrodoriProgress &&
-    window.IrodoriProgress.isActivityComplete
-      ? window.IrodoriProgress.isActivityComplete(
-          activityId
-        )
+    typeof
+      window.IrodoriProgress
+        .isActivityComplete ===
+      "function"
+      ? window.IrodoriProgress
+          .isActivityComplete(
+            activityId
+          )
       : false;
+
 
 
   return `
@@ -930,17 +1536,36 @@ function renderCanDoCard(
     >
 
       <div class="can-do-card-title">
-        ${escapeHtml(title)}
+
+        ${escapeHtml(
+          title
+        )}
+
       </div>
+
 
       ${
         completed
+
           ? `
+
             <div class="completion-badge">
+
               ✓ Completed
+
             </div>
+
+
+            <div class="study-again-label">
+
+              Practice Again
+
+            </div>
+
           `
+
           : ""
+
       }
 
     </button>
@@ -950,13 +1575,24 @@ function renderCanDoCard(
 }
 
 
+
+/* =========================================
+   OPEN ACTIVITY
+   ========================================= */
+
 function openActivity(
   activity
 ) {
 
   if (!activity) {
+
     return;
+
   }
+
+
+  currentActivity =
+    activity;
 
 
   const main =
@@ -964,8 +1600,11 @@ function openActivity(
       ".app-main"
     );
 
+
   if (!main) {
+
     return;
+
   }
 
 
@@ -976,47 +1615,98 @@ function openActivity(
     );
 
 
+  const activityCompleted =
+    window.IrodoriProgress &&
+    typeof
+      window.IrodoriProgress
+        .isActivityComplete ===
+      "function"
+      ? window.IrodoriProgress
+          .isActivityComplete(
+            activityId
+          )
+      : false;
+
+
+
   main.innerHTML = `
 
     <section class="activity-detail">
+
 
       <button
         type="button"
         class="back-button"
         data-back-lesson
       >
+
         ← Back to Lesson
+
       </button>
 
 
+
       <div class="activity-detail-card">
+
 
         <div class="module-icon">
           🎯
         </div>
 
+
+
         <h2>
-          ${
-            escapeHtml(
-              activity.title ||
-              activity.name ||
-              activity.canDo ||
-              "Can-do Activity"
-            )
-          }
+
+          ${escapeHtml(
+            activity.title ||
+            activity.name ||
+            activity.canDo ||
+            "Can-do Activity"
+          )}
+
         </h2>
+
+
 
         ${
           activity.description
+
             ? `
+
               <p>
+
                 ${escapeHtml(
                   activity.description
                 )}
+
               </p>
+
             `
+
             : ""
+
         }
+
+
+
+        ${
+          activityCompleted
+
+            ? `
+
+              <div class="completion-badge">
+
+                ✓ Previously Completed —
+                You can practice again.
+
+              </div>
+
+            `
+
+            : ""
+
+        }
+
 
 
         <div class="lesson-completion-card">
@@ -1027,42 +1717,54 @@ function openActivity(
               Activity Progress
             </h3>
 
+
             <p>
-              Mark this activity complete
-              after finishing it.
+
+              ${
+                activityCompleted
+
+                  ? `
+
+                    This activity is already
+                    recorded as completed.
+                    You can practice it again
+                    anytime.
+
+                  `
+
+                  : `
+
+                    Mark this activity complete
+                    after finishing it.
+
+                  `
+              }
+
             </p>
 
           </div>
+
 
 
           <button
             type="button"
             class="completion-button"
             data-complete-activity
-            ${
-              window.IrodoriProgress &&
-              window.IrodoriProgress.isActivityComplete &&
-              window.IrodoriProgress.isActivityComplete(
-                activityId
-              )
-                ? "disabled"
-                : ""
-            }
           >
 
             ${
-              window.IrodoriProgress &&
-              window.IrodoriProgress.isActivityComplete &&
-              window.IrodoriProgress.isActivityComplete(
-                activityId
-              )
-                ? "✓ Activity Completed"
+              activityCompleted
+
+                ? "✓ Completed — Practice Again"
+
                 : "Mark Activity Complete"
+
             }
 
           </button>
 
         </div>
+
 
       </div>
 
@@ -1071,10 +1773,16 @@ function openActivity(
   `;
 
 
+
+  /* =======================================
+     BACK TO LESSON
+     ======================================= */
+
   const backButton =
     main.querySelector(
       "[data-back-lesson]"
     );
+
 
   if (backButton) {
 
@@ -1092,10 +1800,16 @@ function openActivity(
   }
 
 
+
+  /* =======================================
+     ACTIVITY COMPLETE
+     ======================================= */
+
   const completeButton =
     main.querySelector(
       "[data-complete-activity]"
     );
+
 
   if (completeButton) {
 
@@ -1105,19 +1819,30 @@ function openActivity(
 
         if (
           window.IrodoriProgress &&
-          typeof window.IrodoriProgress.markActivityComplete ===
+          typeof
+            window.IrodoriProgress
+              .markActivityComplete ===
             "function"
         ) {
 
-          window.IrodoriProgress.markActivityComplete(
-            activityId
-          );
+          /*
+            Completion remains saved.
 
-          completeButton.disabled =
-            true;
+            Repeating the activity does not
+            erase the previous completion.
+          */
+
+          window.IrodoriProgress
+            .markActivityComplete(
+              activityId
+            );
+
 
           completeButton.textContent =
-            "✓ Activity Completed";
+            "✓ Completed — Practice Again";
+
+
+          updateProgressUI();
 
         }
 
@@ -1129,28 +1854,19 @@ function openActivity(
 }
 
 
-function restoreDashboard() {
 
-  const main =
-    document.querySelector(
-      ".app-main"
-    );
-
-  if (!main) {
-    return;
-  }
-
-  location.reload();
-
-}
-
+/* =========================================
+   FIND LESSONS FOR BOOK
+   ========================================= */
 
 function findLessonsForBook(
   book
 ) {
 
   if (!book) {
+
     return [];
+
   }
 
 
@@ -1178,6 +1894,7 @@ function findLessonsForBook(
     "";
 
 
+
   const matched =
     lessonsData.filter(
       (lesson) => {
@@ -1191,7 +1908,9 @@ function findLessonsForBook(
             String(
               lesson.bookId
             ) ===
-            String(bookId)
+            String(
+              bookId
+            )
           );
 
         }
@@ -1206,7 +1925,9 @@ function findLessonsForBook(
             String(
               lesson.bookCode
             ).toLowerCase() ===
-            String(bookCode).toLowerCase()
+            String(
+              bookCode
+            ).toLowerCase()
           );
 
         }
@@ -1221,7 +1942,9 @@ function findLessonsForBook(
             String(
               lesson.bookSlug
             ).toLowerCase() ===
-            String(bookSlug).toLowerCase()
+            String(
+              bookSlug
+            ).toLowerCase()
           );
 
         }
@@ -1236,7 +1959,9 @@ function findLessonsForBook(
             String(
               lesson.book
             ).toLowerCase() ===
-            String(bookTitle).toLowerCase()
+            String(
+              bookTitle
+            ).toLowerCase()
           );
 
         }
@@ -1251,7 +1976,9 @@ function findLessonsForBook(
             String(
               lesson.bookTitle
             ).toLowerCase() ===
-            String(bookTitle).toLowerCase()
+            String(
+              bookTitle
+            ).toLowerCase()
           );
 
         }
@@ -1270,17 +1997,26 @@ function findLessonsForBook(
 }
 
 
+
+/* =========================================
+   FIND CAN-DO FOR LESSON
+   ========================================= */
+
 function findCanDosForLesson(
   book,
   lesson
 ) {
 
   const bookKey =
-    getBookKey(book);
+    getBookKey(
+      book
+    );
 
 
   const records =
-    canDosData[bookKey] || [];
+    canDosData[
+      bookKey
+    ] || [];
 
 
   const lessonId =
@@ -1301,28 +2037,34 @@ function findCanDosForLesson(
     (record) => {
 
       if (
-        record.lessonId !== undefined
+        record.lessonId !==
+        undefined
       ) {
 
         return (
           String(
             record.lessonId
           ) ===
-          String(lessonId)
+          String(
+            lessonId
+          )
         );
 
       }
 
 
       if (
-        record.lessonNumber !== undefined
+        record.lessonNumber !==
+        undefined
       ) {
 
         return (
           String(
             record.lessonNumber
           ) ===
-          String(lessonNumber)
+          String(
+            lessonNumber
+          )
         );
 
       }
@@ -1336,12 +2078,19 @@ function findCanDosForLesson(
 }
 
 
+
+/* =========================================
+   GET BOOK KEY
+   ========================================= */
+
 function getBookKey(
   book
 ) {
 
   if (!book) {
+
     return "";
+
   }
 
 
@@ -1358,9 +2107,12 @@ function getBookKey(
 
 
   const normalized =
-    String(value)
+    String(
+      value
+    )
       .toLowerCase()
       .trim();
+
 
 
   if (
@@ -1372,6 +2124,7 @@ function getBookKey(
     return "starter";
 
   }
+
 
 
   if (
@@ -1391,6 +2144,7 @@ function getBookKey(
   }
 
 
+
   if (
     normalized.includes(
       "elementary 2"
@@ -1406,6 +2160,7 @@ function getBookKey(
     return "elementary-2";
 
   }
+
 
 
   if (
@@ -1427,13 +2182,22 @@ function getBookKey(
 }
 
 
+
+/* =========================================
+   GET LESSON NUMBER
+   ========================================= */
+
 function getLessonNumber(
   lesson,
   fallback
 ) {
 
   if (!lesson) {
-    return fallback + 1;
+
+    return (
+      fallback + 1
+    );
+
   }
 
 
@@ -1448,17 +2212,25 @@ function getLessonNumber(
 }
 
 
+
+/* =========================================
+   GET LESSON ID
+   ========================================= */
+
 function getLessonId(
   lesson,
   fallback
 ) {
 
   if (!lesson) {
+
     return `lesson-${fallback + 1}`;
+
   }
 
 
   return String(
+
     lesson.id ??
     lesson.lessonId ??
     lesson.lessonCode ??
@@ -1467,10 +2239,16 @@ function getLessonId(
       lesson,
       fallback
     )}`
+
   );
 
 }
 
+
+
+/* =========================================
+   GET ACTIVITY ID
+   ========================================= */
 
 function getActivityId(
   activity,
@@ -1478,20 +2256,29 @@ function getActivityId(
 ) {
 
   if (!activity) {
+
     return `activity-${fallback + 1}`;
+
   }
 
 
   return String(
+
     activity.id ??
     activity.activityId ??
     activity.canDoId ??
     activity.code ??
     `activity-${fallback + 1}`
+
   );
 
 }
 
+
+
+/* =========================================
+   SORT LESSONS
+   ========================================= */
 
 function compareLessons(
   a,
@@ -1506,6 +2293,7 @@ function compareLessons(
       )
     );
 
+
   const numberB =
     Number(
       getLessonNumber(
@@ -1515,10 +2303,18 @@ function compareLessons(
     );
 
 
-  return numberA - numberB;
+  return (
+    numberA -
+    numberB
+  );
 
 }
 
+
+
+/* =========================================
+   ERROR DISPLAY
+   ========================================= */
 
 function showError(
   message
@@ -1529,19 +2325,33 @@ function showError(
       "book-list"
     );
 
+
   if (!container) {
+
     return;
+
   }
 
 
   container.innerHTML = `
+
     <div class="pending-card">
-      ${escapeHtml(message)}
+
+      ${escapeHtml(
+        message
+      )}
+
     </div>
+
   `;
 
 }
 
+
+
+/* =========================================
+   HTML ESCAPE
+   ========================================= */
 
 function escapeHtml(
   value
@@ -1550,22 +2360,27 @@ function escapeHtml(
   return String(
     value ?? ""
   )
+
     .replaceAll(
       "&",
       "&amp;"
     )
+
     .replaceAll(
       "<",
       "&lt;"
     )
+
     .replaceAll(
       ">",
       "&gt;"
     )
+
     .replaceAll(
       '"',
       "&quot;"
     )
+
     .replaceAll(
       "'",
       "&#039;"
