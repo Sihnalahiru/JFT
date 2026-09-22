@@ -85,3 +85,77 @@ function showLessonView(bookTitle, lessons) {
       });
     });
 }
+function openLesson(lesson, bookTitle) {
+  if (!lesson) {
+    return;
+  }
+
+  const lessonNumber =
+    lesson.lessonNumber ||
+    lesson.number ||
+    lesson.lesson ||
+    "";
+
+  const lessonTitle =
+    lesson.title ||
+    lesson.name ||
+    lesson.lessonTitle ||
+    `Lesson ${lessonNumber}`;
+
+  const container = document.getElementById("book-list");
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="lesson-detail">
+      <button
+        type="button"
+        class="back-button"
+        id="back-to-lessons"
+      >
+        ← Back to Lessons
+      </button>
+
+      <div class="lesson-detail-card">
+        <div class="lesson-detail-number">
+          L${String(lessonNumber).padStart(2, "0")}
+        </div>
+
+        <h2>${escapeHtml(lessonTitle)}</h2>
+
+        <p class="lesson-book-name">
+          ${escapeHtml(bookTitle)}
+        </p>
+
+        <div class="lesson-placeholder">
+          <h3>Lesson content</h3>
+
+          <p>
+            Activities, Can-do items, vocabulary,
+            audio and study content will be connected
+            in the next stages.
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const backButton = document.getElementById("back-to-lessons");
+
+  if (backButton) {
+    backButton.addEventListener("click", () => {
+      showLessonView(bookTitle, findLessonsForBook(
+        booksData.find((book) => {
+          const bookName =
+            book.title ||
+            book.name ||
+            book.bookTitle;
+
+          return bookName === bookTitle;
+        }) || {}
+      ));
+    });
+  }
+}
