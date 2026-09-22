@@ -18,11 +18,16 @@
     content="IRODORI Master — Japanese learning PWA"
   >
 
+  <link
+    rel="manifest"
+    href="./manifest.json"
+  >
+
   <title>IRODORI Master</title>
 
   <link
     rel="stylesheet"
-    href="css/style.css"
+    href="./css/style.css"
   >
 </head>
 
@@ -69,9 +74,29 @@
   </div>
 
   <script
-    src="js/app.js"
+    src="./js/app.js"
     defer
   ></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("./sw.js")
+          .then(() => {
+            console.log(
+              "IRODORI Master Service Worker registered."
+            );
+          })
+          .catch((error) => {
+            console.error(
+              "Service Worker registration failed:",
+              error
+            );
+          });
+      });
+    }
+  </script>
 
 </body>
 </html>
