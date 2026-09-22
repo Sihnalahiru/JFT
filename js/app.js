@@ -194,7 +194,7 @@ async function openBook(book) {
 
 
 /* =========================================
-   FIND LESSONS FOR BOOK
+   FIND LESSONS
    ========================================= */
 
 function findLessonsForBook(book) {
@@ -229,22 +229,18 @@ function findLessonsForBook(book) {
 
 
     if (bookId && lessonBookId) {
-
       return (
         String(lessonBookId) ===
         String(bookId)
       );
-
     }
 
 
     if (bookTitle && lessonBookTitle) {
-
       return (
         String(lessonBookTitle) ===
         String(bookTitle)
       );
-
     }
 
 
@@ -267,11 +263,6 @@ async function loadCanDoData(book) {
     CANDO_FILES[bookKey];
 
   if (!file) {
-    console.warn(
-      "No Can-do dataset mapped:",
-      book
-    );
-
     return [];
   }
 
@@ -595,35 +586,69 @@ function openLesson(
         </p>
 
 
-        <div class="cando-section">
+        <div class="lesson-module-grid">
 
-          <div class="cando-section-header">
-
-            <h3>
-              Can-do / Activities
-            </h3>
-
-            <span>
-              ${activities.length}
-            </span>
-
-          </div>
+          <button
+            type="button"
+            class="lesson-module-card"
+            id="module-cando"
+          >
+            <span class="module-icon">🎯</span>
+            <strong>Can-do / Activities</strong>
+            <span>${activities.length} records →</span>
+          </button>
 
 
-          ${
-            activities.length
-              ? renderCanDos(activities)
-              : `
-                <div class="empty-card">
-                  <p>
-                    No Can-do records have been
-                    safely matched to this lesson yet.
-                  </p>
-                </div>
-              `
-          }
+          <button
+            type="button"
+            class="lesson-module-card"
+            id="module-vocabulary"
+          >
+            <span class="module-icon">📚</span>
+            <strong>Vocabulary</strong>
+            <span>Official word-list →</span>
+          </button>
+
+
+          <button
+            type="button"
+            class="lesson-module-card"
+            id="module-main-audio"
+          >
+            <span class="module-icon">🔊</span>
+            <strong>Main Lesson Audio</strong>
+            <span>Official audio →</span>
+          </button>
+
+
+          <button
+            type="button"
+            class="lesson-module-card"
+            id="module-grammar-audio"
+          >
+            <span class="module-icon">🎧</span>
+            <strong>Grammar Worksheet Audio</strong>
+            <span>Official audio →</span>
+          </button>
+
+
+          <button
+            type="button"
+            class="lesson-module-card"
+            id="module-practice"
+          >
+            <span class="module-icon">✍️</span>
+            <strong>Practice</strong>
+            <span>Study practice →</span>
+          </button>
 
         </div>
+
+
+        <div
+          id="lesson-module-content"
+          class="lesson-module-content"
+        ></div>
 
       </div>
 
@@ -647,11 +672,80 @@ function openLesson(
     );
 
 
-  attachCanDoEvents(
-    activities,
-    bookTitle,
-    lesson
-  );
+  document
+    .getElementById("module-cando")
+    ?.addEventListener(
+      "click",
+      () => {
+
+        showCanDoModule(
+          activities,
+          bookTitle,
+          lesson
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById("module-vocabulary")
+    ?.addEventListener(
+      "click",
+      () => {
+
+        showPendingModule(
+          "Vocabulary",
+          "Official word-list data will be connected after the verified word-list dataset is integrated."
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById("module-main-audio")
+    ?.addEventListener(
+      "click",
+      () => {
+
+        showPendingModule(
+          "Main Lesson Audio",
+          "The official Main Lesson Audio family is audited separately and will be connected without inventing direct MP3 URLs."
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById("module-grammar-audio")
+    ?.addEventListener(
+      "click",
+      () => {
+
+        showPendingModule(
+          "Grammar Worksheet Audio",
+          "The official Grammar Worksheet Audio family is audited separately and will be connected as a separate audio family."
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById("module-practice")
+    ?.addEventListener(
+      "click",
+      () => {
+
+        showPendingModule(
+          "Practice",
+          "Practice tools will be connected after the official learning-data layer is complete."
+        );
+
+      }
+    );
 }
 
 
@@ -725,20 +819,77 @@ function findCanDosForLesson(lesson) {
 
 
 /* =========================================
-   RENDER CAN-DO CARDS
+   CAN-DO MODULE
+   ========================================= */
+
+function showCanDoModule(
+  activities,
+  bookTitle,
+  lesson
+) {
+
+  const content =
+    document.getElementById(
+      "lesson-module-content"
+    );
+
+  if (!content) {
+    return;
+  }
+
+
+  content.innerHTML = `
+
+    <div class="module-panel">
+
+      <div class="module-panel-header">
+
+        <h3>
+          🎯 Can-do / Activities
+        </h3>
+
+        <span>
+          ${activities.length}
+        </span>
+
+      </div>
+
+
+      ${
+        activities.length
+          ? renderCanDos(
+              activities
+            )
+          : `
+            <div class="empty-card">
+
+              <p>
+                No Can-do records have been
+                safely matched to this lesson.
+              </p>
+
+              <p>
+                No relationship will be
+                invented or inferred.
+              </p>
+
+            </div>
+          `
+      }
+
+    </div>
+  `;
+}
+
+
+/* =========================================
+   CAN-DO CARDS
    ========================================= */
 
 function renderCanDos(records) {
 
   return records
     .map((item, index) => {
-
-      const id =
-        item.id ||
-        item.canDoId ||
-        item.activityId ||
-        `item-${index + 1}`;
-
 
       const title =
         item.canDo ||
@@ -751,10 +902,8 @@ function renderCanDos(records) {
 
 
       return `
-        <button
-          type="button"
-          class="cando-card cando-card-button"
-          data-cando-index="${index}"
+        <div
+          class="cando-card"
         >
 
           <div class="cando-number">
@@ -769,11 +918,7 @@ function renderCanDos(records) {
 
           </div>
 
-          <div class="cando-arrow">
-            →
-          </div>
-
-        </button>
+        </div>
       `;
 
     })
@@ -782,206 +927,55 @@ function renderCanDos(records) {
 
 
 /* =========================================
-   CAN-DO CLICK EVENTS
+   PENDING MODULE
    ========================================= */
 
-function attachCanDoEvents(
-  activities,
-  bookTitle,
-  lesson
+function showPendingModule(
+  title,
+  message
 ) {
 
-  document
-    .querySelectorAll(
-      ".cando-card-button"
-    )
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          const index =
-            Number(
-              button.dataset.candoIndex
-            );
-
-          openCanDo(
-            activities[index],
-            bookTitle,
-            lesson
-          );
-
-        }
-      );
-
-    });
-}
-
-
-/* =========================================
-   OPEN CAN-DO DETAIL
-   ========================================= */
-
-function openCanDo(
-  activity,
-  bookTitle,
-  lesson
-) {
-
-  if (!activity) {
-    return;
-  }
-
-
-  const container =
+  const content =
     document.getElementById(
-      "book-list"
+      "lesson-module-content"
     );
 
-  if (!container) {
+  if (!content) {
     return;
   }
 
 
-  const activityTitle =
-    activity.canDo ||
-    activity.canDoTitle ||
-    activity.title ||
-    activity.activity ||
-    activity.activityTitle ||
-    activity.name ||
-    "Can-do Activity";
+  content.innerHTML = `
+
+    <div class="module-panel">
+
+      <div class="module-panel-header">
+
+        <h3>
+          ${escapeHtml(title)}
+        </h3>
+
+      </div>
 
 
-  const activityId =
-    activity.id ||
-    activity.canDoId ||
-    activity.activityId ||
-    "";
+      <div class="pending-card">
 
-
-  const lessonNumber =
-    lesson.lessonNumber ||
-    lesson.number ||
-    lesson.lesson ||
-    "";
-
-
-  container.innerHTML = `
-
-    <div class="activity-detail">
-
-      <button
-        type="button"
-        class="back-button"
-        id="back-to-activity-list"
-      >
-        ← Back to Can-do
-      </button>
-
-
-      <div class="activity-detail-card">
-
-        <div class="activity-label">
-          CAN-DO / ACTIVITY
+        <div class="pending-icon">
+          ⏳
         </div>
 
+        <p>
+          ${escapeHtml(message)}
+        </p>
 
-        <div class="activity-id">
-          ${escapeHtml(activityId)}
-        </div>
-
-
-        <h2>
-          ${escapeHtml(activityTitle)}
-        </h2>
-
-
-        <div class="activity-meta">
-
-          <span>
-            ${escapeHtml(bookTitle)}
-          </span>
-
-          <span>
-            L${String(
-              lessonNumber
-            ).padStart(2, "0")}
-          </span>
-
-        </div>
-
-
-        <div class="activity-content">
-
-          <h3>
-            Official learning content
-          </h3>
-
-          <p>
-            This activity is now isolated as
-            an individual learning record.
-          </p>
-
-          <p>
-            Vocabulary, official audio,
-            grammar worksheet audio and
-            practice components will be
-            connected in later stages.
-          </p>
-
-        </div>
+        <strong>
+          SOURCE VERIFICATION / DATA INTEGRATION PENDING
+        </strong>
 
       </div>
 
     </div>
   `;
-
-
-  document
-    .getElementById(
-      "back-to-activity-list"
-    )
-    ?.addEventListener(
-      "click",
-      () => {
-
-        openLesson(
-          lesson,
-          bookTitle,
-          findBookByTitle(
-            bookTitle
-          )
-        );
-
-      }
-    );
-}
-
-
-/* =========================================
-   FIND BOOK
-   ========================================= */
-
-function findBookByTitle(title) {
-
-  return (
-    booksData.find(book => {
-
-      const bookTitle =
-        book.title ||
-        book.name ||
-        book.bookTitle ||
-        "";
-
-      return (
-        String(bookTitle) ===
-        String(title)
-      );
-
-    }) || {}
-  );
 }
 
 
