@@ -1,0 +1,725 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "bookId": "elementary02",
+  "canDos": [
+    {
+      "canDoId": "E2-CD01",
+      "bookId": "elementary02",
+      "canDoNumber": 1,
+      "activityId": "E2-L01-A01",
+      "textEn": "Can understand the name and role, etc. of staff members at your new job when they’re introduced to you.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD02",
+      "bookId": "elementary02",
+      "canDoNumber": 2,
+      "activityId": "E2-L01-A02",
+      "textEn": "Can give a somewhat detailed self-introduction when you give first greetings at work and other places.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD03",
+      "bookId": "elementary02",
+      "canDoNumber": 3,
+      "activityId": "E2-L01-A03",
+      "textEn": "Can talk in simple terms about your hometown.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD04",
+      "bookId": "elementary02",
+      "canDoNumber": 4,
+      "activityId": "E2-L01-A04",
+      "textEn": "Can write a simple self-introduction on social media.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD05",
+      "bookId": "elementary02",
+      "canDoNumber": 5,
+      "activityId": "E2-L02-A01",
+      "textEn": "Can describe a person’s characteristics or identify a person by listening to their characteristics when you are looking for someone.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD06",
+      "bookId": "elementary02",
+      "canDoNumber": 6,
+      "activityId": "E2-L02-A02",
+      "textEn": "Can talk about the traits and appearance of a person who is not present.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD07",
+      "bookId": "elementary02",
+      "canDoNumber": 7,
+      "activityId": "E2-L02-A03",
+      "textEn": "Can talk in simple terms about a famous person you like, why you like them and why you first liked them.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD08",
+      "bookId": "elementary02",
+      "canDoNumber": 8,
+      "activityId": "E2-L02-A04",
+      "textEn": "Can read a simple interview article and understand the contents.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD09",
+      "bookId": "elementary02",
+      "canDoNumber": 9,
+      "activityId": "E2-L03-A01",
+      "textEn": "Can read a menu and understand the names of dishes, prices, and services.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD10",
+      "bookId": "elementary02",
+      "canDoNumber": 10,
+      "activityId": "E2-L03-A02",
+      "textEn": "Can tell someone you are dining with or the restaurant staff what you cannot eat and the reasons.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD11",
+      "bookId": "elementary02",
+      "canDoNumber": 11,
+      "activityId": "E2-L03-A03",
+      "textEn": "Can tell the restaurant staff your requests for seating, orders, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD12",
+      "bookId": "elementary02",
+      "canDoNumber": 12,
+      "activityId": "E2-L03-A04",
+      "textEn": "Can make a restaurant reservation by phone.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD13",
+      "bookId": "elementary02",
+      "canDoNumber": 13,
+      "activityId": "E2-L03-A05",
+      "textEn": "Can look at a restaurant coupon and find the necessary information.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD14",
+      "bookId": "elementary02",
+      "canDoNumber": 14,
+      "activityId": "E2-L04-A01",
+      "textEn": "Can listen to information about a recommended restaurant and understand its features.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD15",
+      "bookId": "elementary02",
+      "canDoNumber": 15,
+      "activityId": "E2-L04-A02",
+      "textEn": "Can listen to and understand the instructions on how to eat a dish.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD16",
+      "bookId": "elementary02",
+      "canDoNumber": 16,
+      "activityId": "E2-L04-A03",
+      "textEn": "Can ask or answer questions about how to eat a dish.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD17",
+      "bookId": "elementary02",
+      "canDoNumber": 17,
+      "activityId": "E2-L04-A04",
+      "textEn": "Can give a simple explanation about a dish from your country, such as the characteristics, ingredients, and how to eat it.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD18",
+      "bookId": "elementary02",
+      "canDoNumber": 18,
+      "activityId": "E2-L04-A05",
+      "textEn": "Can read online reviews about restaurants and find information, such as taste and price.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD19",
+      "bookId": "elementary02",
+      "canDoNumber": 19,
+      "activityId": "E2-L05-A01",
+      "textEn": "Can listen to brief information of tourist destinations in Japan and understand what these places are like and what you can do there.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD20",
+      "bookId": "elementary02",
+      "canDoNumber": 20,
+      "activityId": "E2-L05-A02",
+      "textEn": "Can discuss travel plans with a friend.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD21",
+      "bookId": "elementary02",
+      "canDoNumber": 21,
+      "activityId": "E2-L05-A03",
+      "textEn": "Can ask someone for advice or give them your advice on travel planning.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD22",
+      "bookId": "elementary02",
+      "canDoNumber": 22,
+      "activityId": "E2-L05-A04",
+      "textEn": "Can read reviews on a travel site and more or less understand the contents.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD23",
+      "bookId": "elementary02",
+      "canDoNumber": 23,
+      "activityId": "E2-L06-A01",
+      "textEn": "Can look at a train ticket, signs on a train, the bulletin board at a station, etc. to find the necessary information.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD24",
+      "bookId": "elementary02",
+      "canDoNumber": 24,
+      "activityId": "E2-L06-A02",
+      "textEn": "Can talk in simple terms about your travel plans to a person you met during your trip.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD25",
+      "bookId": "elementary02",
+      "canDoNumber": 25,
+      "activityId": "E2-L06-A03",
+      "textEn": "Can listen to the announcements at a station or on the train and get the necessary information or ask questions to someone nearby when you are not sure.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD26",
+      "bookId": "elementary02",
+      "canDoNumber": 26,
+      "activityId": "E2-L06-A04",
+      "textEn": "Can talk in simple terms about how your trip was.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD27",
+      "bookId": "elementary02",
+      "canDoNumber": 27,
+      "activityId": "E2-L06-A05",
+      "textEn": "Can write a simple post on social media about your experience and impressions of a trip.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD28",
+      "bookId": "elementary02",
+      "canDoNumber": 28,
+      "activityId": "E2-L07-A01",
+      "textEn": "Can get the main information from notices on a community bulletin board or in your mailbox, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD29",
+      "bookId": "elementary02",
+      "canDoNumber": 29,
+      "activityId": "E2-L07-A02",
+      "textEn": "Can ask questions about community events and notices and understand the answers.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD30",
+      "bookId": "elementary02",
+      "canDoNumber": 30,
+      "activityId": "E2-L07-A03",
+      "textEn": "Can listen to an event announcement on a community radio broadcast and understand the main information.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD31",
+      "bookId": "elementary02",
+      "canDoNumber": 31,
+      "activityId": "E2-L07-A04",
+      "textEn": "Can ask questions about the content and understand the answers when you are invited to a community event.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD32",
+      "bookId": "elementary02",
+      "canDoNumber": 32,
+      "activityId": "E2-L08-A01",
+      "textEn": "Can look at an event program and find the main information, such as the starting time and the performances.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD33",
+      "bookId": "elementary02",
+      "canDoNumber": 33,
+      "activityId": "E2-L08-A02",
+      "textEn": "Can ask staff members or others about the time and place of events and understand the answers.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD34",
+      "bookId": "elementary02",
+      "canDoNumber": 34,
+      "activityId": "E2-L08-A03",
+      "textEn": "Can ask the person in charge about the requirements for participating in the event you are interested in and how to apply.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD35",
+      "bookId": "elementary02",
+      "canDoNumber": 35,
+      "activityId": "E2-L08-A04",
+      "textEn": "Can listen to and more or less understand precautions and other announcements at an event venue.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD36",
+      "bookId": "elementary02",
+      "canDoNumber": 36,
+      "activityId": "E2-L08-A05",
+      "textEn": "Can read and understand simple posts on social media written by a friend who participated in the event.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD37",
+      "bookId": "elementary02",
+      "canDoNumber": 37,
+      "activityId": "E2-L08-A06",
+      "textEn": "Can write simple posts on social media about the event you participated in.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD38",
+      "bookId": "elementary02",
+      "canDoNumber": 38,
+      "activityId": "E2-L09-A01",
+      "textEn": "Can listen to and understand what to do and what to eat, etc. for annual events in Japan.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD39",
+      "bookId": "elementary02",
+      "canDoNumber": 39,
+      "activityId": "E2-L09-A02",
+      "textEn": "Can talk in simple terms about what you did during vacation, such as the New Year holidays, and how it was, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD40",
+      "bookId": "elementary02",
+      "canDoNumber": 40,
+      "activityId": "E2-L09-A03",
+      "textEn": "Can talk in simple terms about festivals and events in your country.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD41",
+      "bookId": "elementary02",
+      "canDoNumber": 41,
+      "activityId": "E2-L09-A04",
+      "textEn": "Can read and more or less understand an article about a local event you participated in.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD42",
+      "bookId": "elementary02",
+      "canDoNumber": 42,
+      "activityId": "E2-L09-A05",
+      "textEn": "Can write and send New Year’s greetings.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD43",
+      "bookId": "elementary02",
+      "canDoNumber": 43,
+      "activityId": "E2-L10-A01",
+      "textEn": "Can ask about manners and customs for weddings and funerals in Japan and understand the answers.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD44",
+      "bookId": "elementary02",
+      "canDoNumber": 44,
+      "activityId": "E2-L10-A02",
+      "textEn": "Can ask and comment about the difference in manners and customs between Japan and your country.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD45",
+      "bookId": "elementary02",
+      "canDoNumber": 45,
+      "activityId": "E2-L10-A03",
+      "textEn": "Can talk in simple terms about an event relating to intercultural experiences.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD46",
+      "bookId": "elementary02",
+      "canDoNumber": 46,
+      "activityId": "E2-L10-A04",
+      "textEn": "Can read and more or less understand online posts about differences in manners and customs.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD47",
+      "bookId": "elementary02",
+      "canDoNumber": 47,
+      "activityId": "E2-L11-A01",
+      "textEn": "Can tell a shop assistant your request about color, size, etc. at a clothing store and buy what you want.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD48",
+      "bookId": "elementary02",
+      "canDoNumber": 48,
+      "activityId": "E2-L11-A02",
+      "textEn": "Can tell people nearby about a problem while shopping.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD49",
+      "bookId": "elementary02",
+      "canDoNumber": 49,
+      "activityId": "E2-L11-A03",
+      "textEn": "Can describe a lost item and the place you lost it.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD50",
+      "bookId": "elementary02",
+      "canDoNumber": 50,
+      "activityId": "E2-L11-A04",
+      "textEn": "Can listen to and more or less understand in-store announcements at, for example, a shopping mall.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD51",
+      "bookId": "elementary02",
+      "canDoNumber": 51,
+      "activityId": "E2-L12-A01",
+      "textEn": "Can ask someone which model to buy and where, when you want something.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD52",
+      "bookId": "elementary02",
+      "canDoNumber": 52,
+      "activityId": "E2-L12-A02",
+      "textEn": "Can use a flea market application or website to buy electric appliances and other items.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD53",
+      "bookId": "elementary02",
+      "canDoNumber": 53,
+      "activityId": "E2-L12-A03",
+      "textEn": "Can look at a product comparison chart and the price tags of electric appliances at an electronics retail store to get the necessary information.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD54",
+      "bookId": "elementary02",
+      "canDoNumber": 54,
+      "activityId": "E2-L12-A04",
+      "textEn": "Can ask store staff about a product or ask for a discount when you are buying electric appliances.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD55",
+      "bookId": "elementary02",
+      "canDoNumber": 55,
+      "activityId": "E2-L13-A01",
+      "textEn": "Can listen to and understand what there is and what can be done when you are shown around facilities.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD56",
+      "bookId": "elementary02",
+      "canDoNumber": 56,
+      "activityId": "E2-L13-A02",
+      "textEn": "Can listen to and understand instructions, such as how to use the gym and other public facilities.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD57",
+      "bookId": "elementary02",
+      "canDoNumber": 57,
+      "activityId": "E2-L13-A03",
+      "textEn": "Can ask questions about how to use the library, etc., and understand the answers.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD58",
+      "bookId": "elementary02",
+      "canDoNumber": 58,
+      "activityId": "E2-L13-A04",
+      "textEn": "Can read and understand library information written in simple Japanese for non-Japanese residents.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD59",
+      "bookId": "elementary02",
+      "canDoNumber": 59,
+      "activityId": "E2-L13-A05",
+      "textEn": "Can look at and understand signs, such as “no photography allowed,” posted in facilities.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD60",
+      "bookId": "elementary02",
+      "canDoNumber": 60,
+      "activityId": "E2-L14-A01",
+      "textEn": "Can listen to the instructions and understand how to use delivery, dry cleaning, and other services.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD61",
+      "bookId": "elementary02",
+      "canDoNumber": 61,
+      "activityId": "E2-L14-A02",
+      "textEn": "Can read a delivery notice for mail or an express package and understand how to request redelivery.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD62",
+      "bookId": "elementary02",
+      "canDoNumber": 62,
+      "activityId": "E2-L14-A03",
+      "textEn": "Can explain your wishes about a hairstyle at a beauty salon or a barber shop.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD63",
+      "bookId": "elementary02",
+      "canDoNumber": 63,
+      "activityId": "E2-L14-A04",
+      "textEn": "Can listen to and understand what kind of services are available to non-Japanese residents at the International Exchange Association, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD64",
+      "bookId": "elementary02",
+      "canDoNumber": 64,
+      "activityId": "E2-L15-A01",
+      "textEn": "Can look at a notice about eco-friendly activities posted at work, etc. and understand what to be mindful of.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD65",
+      "bookId": "elementary02",
+      "canDoNumber": 65,
+      "activityId": "E2-L15-A02",
+      "textEn": "Can talk about things you are mindful of for the environment or listen to and understand what others say.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD66",
+      "bookId": "elementary02",
+      "canDoNumber": 66,
+      "activityId": "E2-L15-A03",
+      "textEn": "Can read and understand instructions on how to throw away of garbage, such as when to throw away a certain kind of garbage.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD67",
+      "bookId": "elementary02",
+      "canDoNumber": 67,
+      "activityId": "E2-L15-A04",
+      "textEn": "Can ask and understand how to throw away a certain kind of garbage.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD68",
+      "bookId": "elementary02",
+      "canDoNumber": 68,
+      "activityId": "E2-L16-A01",
+      "textEn": "Can listen to news and announcements about a disaster and understand what happened and what to do.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD69",
+      "bookId": "elementary02",
+      "canDoNumber": 69,
+      "activityId": "E2-L16-A02",
+      "textEn": "Can listen to the explanation and instructions for emergency drills and understand what to do and what to keep in mind.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD70",
+      "bookId": "elementary02",
+      "canDoNumber": 70,
+      "activityId": "E2-L16-A03",
+      "textEn": "Can listen to and more or less understand the explanation on what to do in case of earthquakes at emergency drills, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD71",
+      "bookId": "elementary02",
+      "canDoNumber": 71,
+      "activityId": "E2-L16-A04",
+      "textEn": "Can ask people around you for the necessary information in case of a disaster.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD72",
+      "bookId": "elementary02",
+      "canDoNumber": 72,
+      "activityId": "E2-L16-A05",
+      "textEn": "Can read and understand brochures for disaster prevention written in simple Japanese for non-Japanese residents.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD73",
+      "bookId": "elementary02",
+      "canDoNumber": 73,
+      "activityId": "E2-L17-A01",
+      "textEn": "Can talk in simple terms about what you’ve experienced and how life has changed after coming to Japan.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD74",
+      "bookId": "elementary02",
+      "canDoNumber": 74,
+      "activityId": "E2-L17-A02",
+      "textEn": "Can talk in simple terms about how your work is going lately to your co-workers.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD75",
+      "bookId": "elementary02",
+      "canDoNumber": 75,
+      "activityId": "E2-L17-A03",
+      "textEn": "Can write a simple message about how you are doing lately and send it to your Japanese-language teacher, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "E2-CD76",
+      "bookId": "elementary02",
+      "canDoNumber": 76,
+      "activityId": "E2-L18-A01",
+      "textEn": "Can talk in simple terms about your dreams and hopes.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD77",
+      "bookId": "elementary02",
+      "canDoNumber": 77,
+      "activityId": "E2-L18-A02",
+      "textEn": "Can listen to and more or less understand the experience and advice of a person who has lived in Japan for many years.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "E2-CD78",
+      "bookId": "elementary02",
+      "canDoNumber": 78,
+      "activityId": "E2-L18-A03",
+      "textEn": "Can express thanks at a farewell party, etc. referring to some brief episodes.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    }
+  ]
+}
