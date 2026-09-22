@@ -1,0 +1,11 @@
+{
+  "name": "IRODORI Master",
+  "short_name": "IRODORI",
+  "description": "IRODORI Japanese Learning Platform",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#111827",
+  "orientation": "portrait-primary",
+  "lang": "en"
+}
