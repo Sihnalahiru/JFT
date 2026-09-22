@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -15,88 +17,346 @@
 
   <meta
     name="description"
-    content="IRODORI Master — Japanese learning PWA"
+    content="IRODORI Japanese Learning Platform"
   >
+
+  <title>IRODORI Master</title>
+
+
+  <!-- PWA -->
 
   <link
     rel="manifest"
     href="./manifest.json"
   >
 
-  <title>IRODORI Master</title>
+
+  <!-- Styles -->
 
   <link
     rel="stylesheet"
     href="./css/style.css"
   >
+
 </head>
+
 
 <body>
 
-  <div id="app">
 
-    <header class="app-header">
-      <div class="app-brand">
-        <h1>IRODORI Master</h1>
-        <p>Japanese Learning System</p>
+  <!-- =====================================
+       HEADER
+       ===================================== -->
+
+  <header class="app-header">
+
+    <div class="header-inner">
+
+      <div>
+
+        <h1>
+          IRODORI Master
+        </h1>
+
+        <p>
+          Japanese Learning System
+        </p>
+
       </div>
-    </header>
 
-    <main id="main-content">
+    </div>
 
-      <section id="home-screen" class="screen">
+  </header>
 
-        <div class="welcome-card">
-          <h2>Welcome to IRODORI Master</h2>
+
+
+  <!-- =====================================
+       MAIN
+       ===================================== -->
+
+  <main class="app-main">
+
+
+    <!-- ===================================
+         WELCOME
+         =================================== -->
+
+    <section class="welcome-card">
+
+      <h2>
+        Welcome to IRODORI Master
+      </h2>
+
+      <p>
+        Learn Japanese through the official
+        IRODORI learning materials.
+      </p>
+
+    </section>
+
+
+
+    <!-- ===================================
+         DASHBOARD
+         =================================== -->
+
+    <section
+      class="dashboard-section"
+      aria-labelledby="dashboard-title"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <h2 id="dashboard-title">
+            Dashboard
+          </h2>
 
           <p>
-            Learn Japanese through the official IRODORI
-            learning materials.
+            Your IRODORI learning overview
           </p>
+
         </div>
 
-        <div id="book-list" class="book-list">
-          <p class="loading">
-            Loading learning data...
-          </p>
+      </div>
+
+
+      <div class="dashboard-grid">
+
+
+        <!-- BOOKS -->
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            📚
+          </div>
+
+          <div class="dashboard-value">
+            4
+          </div>
+
+          <div class="dashboard-label">
+            Books
+          </div>
+
+        </article>
+
+
+
+        <!-- LESSONS -->
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            📖
+          </div>
+
+          <div class="dashboard-value">
+            72
+          </div>
+
+          <div class="dashboard-label">
+            Lessons
+          </div>
+
+        </article>
+
+
+
+        <!-- CAN-DO -->
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            🎯
+          </div>
+
+          <div class="dashboard-value">
+            288
+          </div>
+
+          <div class="dashboard-label">
+            Can-do / Activities
+          </div>
+
+        </article>
+
+
+
+        <!-- KANJI -->
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-icon">
+            漢
+          </div>
+
+          <div class="dashboard-value">
+            644
+          </div>
+
+          <div class="dashboard-label">
+            Kanji
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+      <!-- =================================
+           PROGRESS
+           ================================= -->
+
+      <div class="progress-card">
+
+        <div class="progress-card-header">
+
+          <div>
+
+            <h3>
+              Learning Progress
+            </h3>
+
+            <p>
+              Your study progress will appear here.
+            </p>
+
+          </div>
+
+          <strong>
+            0%
+          </strong>
+
         </div>
 
-      </section>
 
-    </main>
+        <div
+          class="progress-track"
+          aria-label="Learning progress"
+        >
 
-    <footer class="app-footer">
-      <p>
-        IRODORI Master
-      </p>
-    </footer>
+          <div
+            class="progress-bar"
+            style="width: 0%;"
+          ></div>
 
-  </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================
+         BOOKS
+         =================================== -->
+
+    <section
+      class="books-section"
+      aria-labelledby="books-title"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <h2 id="books-title">
+            IRODORI Books
+          </h2>
+
+          <p>
+            Select a book to continue learning.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!--
+        JavaScript loads books.json here.
+      -->
+
+      <div id="book-list">
+
+        Loading learning data...
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================
+       FOOTER
+       ===================================== -->
+
+  <footer class="app-footer">
+
+    <div>
+      IRODORI Master
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================
+       APP SCRIPT
+       ===================================== -->
 
   <script
     src="./js/app.js"
-    defer
   ></script>
 
+
+
+  <!-- =====================================
+       SERVICE WORKER
+       ===================================== -->
+
   <script>
+
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("./sw.js")
-          .then(() => {
-            console.log(
-              "IRODORI Master Service Worker registered."
-            );
-          })
-          .catch((error) => {
-            console.error(
-              "Service Worker registration failed:",
-              error
-            );
-          });
-      });
+
+      window.addEventListener(
+        "load",
+        () => {
+
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then(() => {
+
+              console.log(
+                "IRODORI Master Service Worker registered."
+              );
+
+            })
+            .catch((error) => {
+
+              console.error(
+                "Service Worker registration failed:",
+                error
+              );
+
+            });
+
+        }
+      );
+
     }
+
   </script>
 
+
 </body>
+
 </html>
