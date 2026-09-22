@@ -4,6 +4,8 @@ const DATA_PATH = "data/books.json";
 
 const bookList = document.getElementById("book-list");
 
+let booksData = null;
+
 async function loadBooks() {
   try {
     const response = await fetch(DATA_PATH);
@@ -14,9 +16,9 @@ async function loadBooks() {
       );
     }
 
-    const data = await response.json();
+    booksData = await response.json();
 
-    renderBooks(data);
+    renderBooks(booksData);
   } catch (error) {
     console.error(error);
 
@@ -25,7 +27,7 @@ async function loadBooks() {
         <h3>Unable to load learning data</h3>
         <p>
           Please check that data/books.json exists
-          and is valid JSON.
+          and contains valid JSON.
         </p>
       </div>
     `;
@@ -52,8 +54,7 @@ function renderBooks(data) {
       <div class="book-card">
         <h3>No books found</h3>
         <p>
-          The master book data does not contain
-          any book records.
+          No book records were found in the master data.
         </p>
       </div>
     `;
@@ -62,25 +63,70 @@ function renderBooks(data) {
   }
 
   bookList.innerHTML = books
-    .map((book) => {
+    .map((book, index) => {
       const title =
         book.title ||
         book.name ||
         book.bookName ||
-        "Untitled Book";
+        `Book ${index + 1}`;
 
       const description =
         book.description ||
         "";
 
       return `
-        <article class="book-card">
+        <button
+          type="button"
+          class="book-card book-card-button"
+          data-book-index="${index}"
+        >
           <h3>${escapeHtml(title)}</h3>
-          <p>${escapeHtml(description)}</p>
-        </article>
+          ${
+            description
+              ? `<p>${escapeHtml(description)}</p>`
+              : ""
+          }
+        </button>
       `;
     })
     .join("");
+
+  attachBookEvents(books);
+}
+
+function attachBookEvents(books) {
+  const buttons =
+    document.querySelectorAll(
+      ".book-card-button"
+    );
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const index =
+        Number(button.dataset.bookIndex);
+
+      const selectedBook = books[index];
+
+      openBook(selectedBook);
+    });
+  });
+}
+
+function openBook(book) {
+  console.log(
+    "Selected IRODORI book:",
+    book
+  );
+
+  /*
+   * Lesson navigation will be connected
+   * in the next implementation step.
+   *
+   * Official data is not modified here.
+   */
+  alert(
+    `${book.title || book.name || "Book"} selected.\n\nLesson navigation will be connected next.`
+  );
 }
 
 function escapeHtml(value) {
