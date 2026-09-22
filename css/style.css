@@ -500,4 +500,131 @@ a {
 
 .activity-content p:last-child {
   margin-bottom: 0;
+}/* =========================================
+   LESSON MODULE GRID
+   ========================================= */
+
+.lesson-module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.lesson-module-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  min-height: 130px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.lesson-module-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.lesson-module-card:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+
+.module-icon {
+  font-size: 1.5rem;
+}
+
+.lesson-module-card strong {
+  font-size: 1rem;
+}
+
+.lesson-module-card span:last-child {
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+
+/* =========================================
+   MODULE CONTENT
+   ========================================= */
+
+.lesson-module-content {
+  margin-top: 1.25rem;
+}
+
+.module-panel {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.module-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.module-panel-header h3 {
+  margin: 0;
+}
+
+.module-panel-header span {
+  min-width: 32px;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  text-align: center;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   PENDING DATA
+   ========================================= */
+
+.pending-card {
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: var(--surface-alt);
+}
+
+.pending-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.pending-card p {
+  line-height: 1.6;
+}
+
+.pending-card strong {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 640px) {
+
+  .lesson-module-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
