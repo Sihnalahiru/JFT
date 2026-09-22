@@ -1,6 +1,7 @@
 const PROGRESS_STORAGE_KEY =
   "irodori_master_learning_progress_v1";
 
+
 const MASTER_TOTALS = {
   books: 4,
   lessons: 72,
@@ -9,17 +10,32 @@ const MASTER_TOTALS = {
 };
 
 
+
+/* =========================================
+   DEFAULT PROGRESS
+   ========================================= */
+
 function createDefaultProgress() {
 
   return {
+
     completedBooks: [],
+
     completedLessons: [],
+
     completedActivities: [],
+
     completedKanji: []
+
   };
 
 }
 
+
+
+/* =========================================
+   LOAD PROGRESS
+   ========================================= */
 
 function loadProgress() {
 
@@ -30,41 +46,62 @@ function loadProgress() {
         PROGRESS_STORAGE_KEY
       );
 
+
     if (!saved) {
+
       return createDefaultProgress();
+
     }
+
 
     const parsed =
       JSON.parse(saved);
 
+
     return {
+
       completedBooks:
-        Array.isArray(parsed.completedBooks)
+        Array.isArray(
+          parsed.completedBooks
+        )
           ? parsed.completedBooks
           : [],
 
+
       completedLessons:
-        Array.isArray(parsed.completedLessons)
+        Array.isArray(
+          parsed.completedLessons
+        )
           ? parsed.completedLessons
           : [],
 
+
       completedActivities:
-        Array.isArray(parsed.completedActivities)
+        Array.isArray(
+          parsed.completedActivities
+        )
           ? parsed.completedActivities
           : [],
 
+
       completedKanji:
-        Array.isArray(parsed.completedKanji)
+        Array.isArray(
+          parsed.completedKanji
+        )
           ? parsed.completedKanji
           : []
+
     };
 
-  } catch (error) {
+  }
+
+  catch (error) {
 
     console.error(
       "Failed to load learning progress:",
       error
     );
+
 
     return createDefaultProgress();
 
@@ -73,49 +110,103 @@ function loadProgress() {
 }
 
 
-function saveProgress(progress) {
 
-  localStorage.setItem(
-    PROGRESS_STORAGE_KEY,
-    JSON.stringify(progress)
-  );
-
-}
-
+/* =========================================
+   CURRENT PROGRESS
+   ========================================= */
 
 let progress =
   loadProgress();
 
+
+
+/* =========================================
+   SAVE PROGRESS
+   ========================================= */
+
+function saveProgress(
+  currentProgress
+) {
+
+  try {
+
+    localStorage.setItem(
+      PROGRESS_STORAGE_KEY,
+      JSON.stringify(
+        currentProgress
+      )
+    );
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Failed to save learning progress:",
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =========================================
+   PERCENTAGE
+   ========================================= */
 
 function calculatePercentage(
   completed,
   total
 ) {
 
-  if (!total || total <= 0) {
+  if (
+    !total ||
+    total <= 0
+  ) {
+
     return 0;
+
   }
+
 
   return Math.min(
     100,
     Math.round(
-      (completed / total) * 100
+      (
+        completed /
+        total
+      ) * 100
     )
   );
 
 }
 
 
+
+/* =========================================
+   PROGRESS SUMMARY
+   ========================================= */
+
 function getProgressSummary() {
+
+  const books =
+    progress.completedBooks.length;
+
 
   const lessons =
     progress.completedLessons.length;
 
+
   const activities =
     progress.completedActivities.length;
 
+
   const kanji =
     progress.completedKanji.length;
+
+
 
   const lessonPercentage =
     calculatePercentage(
@@ -123,11 +214,13 @@ function getProgressSummary() {
       MASTER_TOTALS.lessons
     );
 
+
   const activityPercentage =
     calculatePercentage(
       activities,
       MASTER_TOTALS.activities
     );
+
 
   const kanjiPercentage =
     calculatePercentage(
@@ -136,15 +229,27 @@ function getProgressSummary() {
     );
 
 
+
+  /*
+    Overall progress currently uses
+    Lessons + Activities + Kanji.
+
+    Books are container-level records,
+    therefore they are not added again
+    to avoid double counting.
+  */
+
   const overallCompleted =
     lessons +
     activities +
     kanji;
 
+
   const overallTotal =
     MASTER_TOTALS.lessons +
     MASTER_TOTALS.activities +
     MASTER_TOTALS.kanji;
+
 
   const overallPercentage =
     calculatePercentage(
@@ -153,10 +258,10 @@ function getProgressSummary() {
     );
 
 
+
   return {
 
-    books:
-      progress.completedBooks.length,
+    books,
 
     lessons,
 
@@ -177,103 +282,42 @@ function getProgressSummary() {
 }
 
 
-function markLessonComplete(
-  lessonId
-) {
 
-  if (!lessonId) {
-    return;
-  }
-
-  if (
-    !progress.completedLessons.includes(
-      lessonId
-    )
-  ) {
-
-    progress.completedLessons.push(
-      lessonId
-    );
-
-    saveProgress(progress);
-    updateProgressDashboard();
-
-  }
-
-}
-
-
-function markActivityComplete(
-  activityId
-) {
-
-  if (!activityId) {
-    return;
-  }
-
-  if (
-    !progress.completedActivities.includes(
-      activityId
-    )
-  ) {
-
-    progress.completedActivities.push(
-      activityId
-    );
-
-    saveProgress(progress);
-    updateProgressDashboard();
-
-  }
-
-}
-
-
-function markKanjiComplete(
-  kanjiId
-) {
-
-  if (!kanjiId) {
-    return;
-  }
-
-  if (
-    !progress.completedKanji.includes(
-      kanjiId
-    )
-  ) {
-
-    progress.completedKanji.push(
-      kanjiId
-    );
-
-    saveProgress(progress);
-    updateProgressDashboard();
-
-  }
-
-}
-
+/* =========================================
+   MARK BOOK COMPLETE
+   ========================================= */
 
 function markBookComplete(
   bookId
 ) {
 
   if (!bookId) {
+
     return;
+
   }
+
+
+  const normalizedId =
+    String(bookId);
+
 
   if (
     !progress.completedBooks.includes(
-      bookId
+      normalizedId
     )
   ) {
 
     progress.completedBooks.push(
-      bookId
+      normalizedId
     );
 
-    saveProgress(progress);
+
+    saveProgress(
+      progress
+    );
+
+
     updateProgressDashboard();
 
   }
@@ -281,61 +325,252 @@ function markBookComplete(
 }
 
 
-function isLessonComplete(
+
+/* =========================================
+   MARK LESSON COMPLETE
+   ========================================= */
+
+function markLessonComplete(
   lessonId
 ) {
 
-  return progress.completedLessons.includes(
-    lessonId
-  );
+  if (!lessonId) {
+
+    return;
+
+  }
+
+
+  const normalizedId =
+    String(lessonId);
+
+
+  if (
+    !progress.completedLessons.includes(
+      normalizedId
+    )
+  ) {
+
+    progress.completedLessons.push(
+      normalizedId
+    );
+
+
+    saveProgress(
+      progress
+    );
+
+
+    updateProgressDashboard();
+
+  }
 
 }
 
 
-function isActivityComplete(
+
+/* =========================================
+   MARK ACTIVITY COMPLETE
+   ========================================= */
+
+function markActivityComplete(
   activityId
 ) {
 
-  return progress.completedActivities.includes(
-    activityId
-  );
+  if (!activityId) {
+
+    return;
+
+  }
+
+
+  const normalizedId =
+    String(activityId);
+
+
+  if (
+    !progress.completedActivities.includes(
+      normalizedId
+    )
+  ) {
+
+    progress.completedActivities.push(
+      normalizedId
+    );
+
+
+    saveProgress(
+      progress
+    );
+
+
+    updateProgressDashboard();
+
+  }
 
 }
 
 
-function isKanjiComplete(
+
+/* =========================================
+   MARK KANJI COMPLETE
+   ========================================= */
+
+function markKanjiComplete(
   kanjiId
 ) {
 
-  return progress.completedKanji.includes(
-    kanjiId
-  );
+  if (!kanjiId) {
+
+    return;
+
+  }
+
+
+  const normalizedId =
+    String(kanjiId);
+
+
+  if (
+    !progress.completedKanji.includes(
+      normalizedId
+    )
+  ) {
+
+    progress.completedKanji.push(
+      normalizedId
+    );
+
+
+    saveProgress(
+      progress
+    );
+
+
+    updateProgressDashboard();
+
+  }
 
 }
 
+
+
+/* =========================================
+   CHECK BOOK
+   ========================================= */
 
 function isBookComplete(
   bookId
 ) {
 
+  if (!bookId) {
+
+    return false;
+
+  }
+
+
   return progress.completedBooks.includes(
-    bookId
+    String(bookId)
   );
 
 }
 
+
+
+/* =========================================
+   CHECK LESSON
+   ========================================= */
+
+function isLessonComplete(
+  lessonId
+) {
+
+  if (!lessonId) {
+
+    return false;
+
+  }
+
+
+  return progress.completedLessons.includes(
+    String(lessonId)
+  );
+
+}
+
+
+
+/* =========================================
+   CHECK ACTIVITY
+   ========================================= */
+
+function isActivityComplete(
+  activityId
+) {
+
+  if (!activityId) {
+
+    return false;
+
+  }
+
+
+  return progress.completedActivities.includes(
+    String(activityId)
+  );
+
+}
+
+
+
+/* =========================================
+   CHECK KANJI
+   ========================================= */
+
+function isKanjiComplete(
+  kanjiId
+) {
+
+  if (!kanjiId) {
+
+    return false;
+
+  }
+
+
+  return progress.completedKanji.includes(
+    String(kanjiId)
+  );
+
+}
+
+
+
+/* =========================================
+   RESET PROGRESS
+   ========================================= */
 
 function resetProgress() {
 
   progress =
     createDefaultProgress();
 
-  saveProgress(progress);
+
+  saveProgress(
+    progress
+  );
+
 
   updateProgressDashboard();
 
 }
 
+
+
+/* =========================================
+   UPDATE DASHBOARD
+   ========================================= */
 
 function updateProgressDashboard() {
 
@@ -343,14 +578,14 @@ function updateProgressDashboard() {
     getProgressSummary();
 
 
+
+  /* ---------------------------------------
+     OVERALL PERCENTAGE
+     --------------------------------------- */
+
   const overallElement =
     document.querySelector(
       "[data-progress-overall]"
-    );
-
-  const progressBar =
-    document.querySelector(
-      "[data-progress-bar]"
     );
 
 
@@ -362,6 +597,17 @@ function updateProgressDashboard() {
   }
 
 
+
+  /* ---------------------------------------
+     PROGRESS BAR
+     --------------------------------------- */
+
+  const progressBar =
+    document.querySelector(
+      "[data-progress-bar]"
+    );
+
+
   if (progressBar) {
 
     progressBar.style.width =
@@ -370,19 +616,14 @@ function updateProgressDashboard() {
   }
 
 
+
+  /* ---------------------------------------
+     LESSON PROGRESS
+     --------------------------------------- */
+
   const lessonsElement =
     document.querySelector(
       "[data-progress-lessons]"
-    );
-
-  const activitiesElement =
-    document.querySelector(
-      "[data-progress-activities]"
-    );
-
-  const kanjiElement =
-    document.querySelector(
-      "[data-progress-kanji]"
     );
 
 
@@ -394,12 +635,34 @@ function updateProgressDashboard() {
   }
 
 
+
+  /* ---------------------------------------
+     ACTIVITY PROGRESS
+     --------------------------------------- */
+
+  const activitiesElement =
+    document.querySelector(
+      "[data-progress-activities]"
+    );
+
+
   if (activitiesElement) {
 
     activitiesElement.textContent =
       summary.activities;
 
   }
+
+
+
+  /* ---------------------------------------
+     KANJI PROGRESS
+     --------------------------------------- */
+
+  const kanjiElement =
+    document.querySelector(
+      "[data-progress-kanji]"
+    );
 
 
   if (kanjiElement) {
@@ -409,8 +672,94 @@ function updateProgressDashboard() {
 
   }
 
+
+
+  /* =======================================
+     DASHBOARD CARDS
+     ======================================= */
+
+
+  /* ---------------------------------------
+     BOOKS
+     --------------------------------------- */
+
+  const booksDashboardElement =
+    document.querySelector(
+      "[data-dashboard-books]"
+    );
+
+
+  if (booksDashboardElement) {
+
+    booksDashboardElement.textContent =
+      `${summary.books} / ${MASTER_TOTALS.books}`;
+
+  }
+
+
+
+  /* ---------------------------------------
+     LESSONS
+     --------------------------------------- */
+
+  const lessonsDashboardElement =
+    document.querySelector(
+      "[data-dashboard-lessons]"
+    );
+
+
+  if (lessonsDashboardElement) {
+
+    lessonsDashboardElement.textContent =
+      `${summary.lessons} / ${MASTER_TOTALS.lessons}`;
+
+  }
+
+
+
+  /* ---------------------------------------
+     ACTIVITIES
+     --------------------------------------- */
+
+  const activitiesDashboardElement =
+    document.querySelector(
+      "[data-dashboard-activities]"
+    );
+
+
+  if (activitiesDashboardElement) {
+
+    activitiesDashboardElement.textContent =
+      `${summary.activities} / ${MASTER_TOTALS.activities}`;
+
+  }
+
+
+
+  /* ---------------------------------------
+     KANJI
+     --------------------------------------- */
+
+  const kanjiDashboardElement =
+    document.querySelector(
+      "[data-dashboard-kanji]"
+    );
+
+
+  if (kanjiDashboardElement) {
+
+    kanjiDashboardElement.textContent =
+      `${summary.kanji} / ${MASTER_TOTALS.kanji}`;
+
+  }
+
 }
 
+
+
+/* =========================================
+   INITIAL DASHBOARD UPDATE
+   ========================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -422,7 +771,14 @@ document.addEventListener(
 );
 
 
+
+/* =========================================
+   PUBLIC API
+   ========================================= */
+
 window.IrodoriProgress = {
+
+  MASTER_TOTALS,
 
   getProgressSummary,
 
@@ -444,8 +800,6 @@ window.IrodoriProgress = {
 
   resetProgress,
 
-  updateProgressDashboard,
-
-  MASTER_TOTALS
+  updateProgressDashboard
 
 };
