@@ -1,11 +1,5 @@
-/* =========================================
-   IRODORI MASTER
-   LEARNER PROGRESS ENGINE
-   ========================================= */
-
 const PROGRESS_STORAGE_KEY =
   "irodori_master_learning_progress_v1";
-
 
 const MASTER_TOTALS = {
   books: 4,
@@ -15,23 +9,19 @@ const MASTER_TOTALS = {
 };
 
 
-/* =========================================
-   DEFAULT STATE
-   ========================================= */
+function createDefaultProgress() {
 
-const DEFAULT_PROGRESS = {
-  completedLessons: [],
-  completedActivities: [],
-  completedKanji: [],
-  lastUpdated: null
-};
+  return {
+    completedBooks: [],
+    completedLessons: [],
+    completedActivities: [],
+    completedKanji: []
+  };
+
+}
 
 
-/* =========================================
-   LOAD STATE
-   ========================================= */
-
-function loadProgressState() {
+function loadProgress() {
 
   try {
 
@@ -40,100 +30,62 @@ function loadProgressState() {
         PROGRESS_STORAGE_KEY
       );
 
-
     if (!saved) {
-
-      return {
-        ...DEFAULT_PROGRESS
-      };
-
+      return createDefaultProgress();
     }
-
 
     const parsed =
       JSON.parse(saved);
 
-
     return {
-
-      ...DEFAULT_PROGRESS,
-
-      ...parsed,
+      completedBooks:
+        Array.isArray(parsed.completedBooks)
+          ? parsed.completedBooks
+          : [],
 
       completedLessons:
-        Array.isArray(
-          parsed.completedLessons
-        )
+        Array.isArray(parsed.completedLessons)
           ? parsed.completedLessons
           : [],
 
       completedActivities:
-        Array.isArray(
-          parsed.completedActivities
-        )
+        Array.isArray(parsed.completedActivities)
           ? parsed.completedActivities
           : [],
 
       completedKanji:
-        Array.isArray(
-          parsed.completedKanji
-        )
+        Array.isArray(parsed.completedKanji)
           ? parsed.completedKanji
           : []
-
     };
 
   } catch (error) {
 
     console.error(
-      "Progress loading error:",
+      "Failed to load learning progress:",
       error
     );
 
-
-    return {
-      ...DEFAULT_PROGRESS
-    };
+    return createDefaultProgress();
 
   }
 
 }
 
 
-/* =========================================
-   SAVE STATE
-   ========================================= */
-
-function saveProgressState(state) {
-
-  state.lastUpdated =
-    new Date().toISOString();
-
+function saveProgress(progress) {
 
   localStorage.setItem(
     PROGRESS_STORAGE_KEY,
-    JSON.stringify(state)
+    JSON.stringify(progress)
   );
 
-
-  updateProgressDashboard();
 }
 
 
-/* =========================================
-   GET CURRENT STATE
-   ========================================= */
+let progress =
+  loadProgress();
 
-function getProgressState() {
-
-  return loadProgressState();
-
-}
-
-
-/* =========================================
-   CALCULATE PERCENTAGE
-   ========================================= */
 
 function calculatePercentage(
   completed,
@@ -143,7 +95,6 @@ function calculatePercentage(
   if (!total || total <= 0) {
     return 0;
   }
-
 
   return Math.min(
     100,
@@ -155,310 +106,236 @@ function calculatePercentage(
 }
 
 
-/* =========================================
-   GET PROGRESS SUMMARY
-   ========================================= */
-
 function getProgressSummary() {
 
-  const state =
-    loadProgressState();
-
-
   const lessons =
-    state.completedLessons.length;
-
+    progress.completedLessons.length;
 
   const activities =
-    state.completedActivities.length;
-
+    progress.completedActivities.length;
 
   const kanji =
-    state.completedKanji.length;
+    progress.completedKanji.length;
 
-
-  const lessonPercent =
+  const lessonPercentage =
     calculatePercentage(
       lessons,
       MASTER_TOTALS.lessons
     );
 
-
-  const activityPercent =
+  const activityPercentage =
     calculatePercentage(
       activities,
       MASTER_TOTALS.activities
     );
 
-
-  const kanjiPercent =
+  const kanjiPercentage =
     calculatePercentage(
       kanji,
       MASTER_TOTALS.kanji
     );
 
 
-  /*
-   * Overall learning progress is based
-   * on the three learner-tracked areas.
-   */
+  const overallCompleted =
+    lessons +
+    activities +
+    kanji;
 
-  const overall =
-    Math.round(
-      (
-        lessonPercent +
-        activityPercent +
-        kanjiPercent
-      ) / 3
+  const overallTotal =
+    MASTER_TOTALS.lessons +
+    MASTER_TOTALS.activities +
+    MASTER_TOTALS.kanji;
+
+  const overallPercentage =
+    calculatePercentage(
+      overallCompleted,
+      overallTotal
     );
 
 
   return {
 
-    books: MASTER_TOTALS.books,
+    books:
+      progress.completedBooks.length,
 
-    lessons: {
-      completed: lessons,
-      total: MASTER_TOTALS.lessons,
-      percentage: lessonPercent
-    },
+    lessons,
 
-    activities: {
-      completed: activities,
-      total: MASTER_TOTALS.activities,
-      percentage: activityPercent
-    },
+    activities,
 
-    kanji: {
-      completed: kanji,
-      total: MASTER_TOTALS.kanji,
-      percentage: kanjiPercent
-    },
+    kanji,
 
-    overall
+    lessonPercentage,
+
+    activityPercentage,
+
+    kanjiPercentage,
+
+    overallPercentage
 
   };
 
 }
 
 
-/* =========================================
-   MARK LESSON COMPLETE
-   ========================================= */
-
 function markLessonComplete(
   lessonId
 ) {
 
-  if (
-    lessonId ===
-    undefined ||
-    lessonId ===
-    null
-  ) {
-
+  if (!lessonId) {
     return;
-
   }
 
-
-  const state =
-    loadProgressState();
-
-
-  const id =
-    String(lessonId);
-
-
   if (
-    !state.completedLessons.includes(id)
+    !progress.completedLessons.includes(
+      lessonId
+    )
   ) {
 
-    state.completedLessons.push(id);
+    progress.completedLessons.push(
+      lessonId
+    );
 
-    saveProgressState(state);
+    saveProgress(progress);
+    updateProgressDashboard();
 
   }
 
 }
 
-
-/* =========================================
-   MARK ACTIVITY COMPLETE
-   ========================================= */
 
 function markActivityComplete(
   activityId
 ) {
 
-  if (
-    activityId ===
-    undefined ||
-    activityId ===
-    null
-  ) {
-
+  if (!activityId) {
     return;
-
   }
 
-
-  const state =
-    loadProgressState();
-
-
-  const id =
-    String(activityId);
-
-
   if (
-    !state.completedActivities.includes(id)
+    !progress.completedActivities.includes(
+      activityId
+    )
   ) {
 
-    state.completedActivities.push(id);
+    progress.completedActivities.push(
+      activityId
+    );
 
-    saveProgressState(state);
+    saveProgress(progress);
+    updateProgressDashboard();
 
   }
 
 }
 
-
-/* =========================================
-   MARK KANJI COMPLETE
-   ========================================= */
 
 function markKanjiComplete(
   kanjiId
 ) {
 
-  if (
-    kanjiId ===
-    undefined ||
-    kanjiId ===
-    null
-  ) {
-
+  if (!kanjiId) {
     return;
-
   }
 
-
-  const state =
-    loadProgressState();
-
-
-  const id =
-    String(kanjiId);
-
-
   if (
-    !state.completedKanji.includes(id)
+    !progress.completedKanji.includes(
+      kanjiId
+    )
   ) {
 
-    state.completedKanji.push(id);
+    progress.completedKanji.push(
+      kanjiId
+    );
 
-    saveProgressState(state);
+    saveProgress(progress);
+    updateProgressDashboard();
 
   }
 
 }
 
 
-/* =========================================
-   CHECK LESSON
-   ========================================= */
+function markBookComplete(
+  bookId
+) {
+
+  if (!bookId) {
+    return;
+  }
+
+  if (
+    !progress.completedBooks.includes(
+      bookId
+    )
+  ) {
+
+    progress.completedBooks.push(
+      bookId
+    );
+
+    saveProgress(progress);
+    updateProgressDashboard();
+
+  }
+
+}
+
 
 function isLessonComplete(
   lessonId
 ) {
 
-  const state =
-    loadProgressState();
-
-
-  return state.completedLessons.includes(
-    String(lessonId)
+  return progress.completedLessons.includes(
+    lessonId
   );
 
 }
 
-
-/* =========================================
-   CHECK ACTIVITY
-   ========================================= */
 
 function isActivityComplete(
   activityId
 ) {
 
-  const state =
-    loadProgressState();
-
-
-  return state.completedActivities.includes(
-    String(activityId)
+  return progress.completedActivities.includes(
+    activityId
   );
 
 }
 
-
-/* =========================================
-   CHECK KANJI
-   ========================================= */
 
 function isKanjiComplete(
   kanjiId
 ) {
 
-  const state =
-    loadProgressState();
-
-
-  return state.completedKanji.includes(
-    String(kanjiId)
+  return progress.completedKanji.includes(
+    kanjiId
   );
 
 }
 
 
-/* =========================================
-   RESET ALL PROGRESS
-   ========================================= */
+function isBookComplete(
+  bookId
+) {
 
-function resetLearningProgress() {
-
-  const confirmed =
-    window.confirm(
-      "Reset all IRODORI learning progress?"
-    );
-
-
-  if (!confirmed) {
-    return;
-  }
-
-
-  localStorage.removeItem(
-    PROGRESS_STORAGE_KEY
+  return progress.completedBooks.includes(
+    bookId
   );
 
+}
+
+
+function resetProgress() {
+
+  progress =
+    createDefaultProgress();
+
+  saveProgress(progress);
 
   updateProgressDashboard();
 
-
-  window.dispatchEvent(
-    new CustomEvent(
-      "irodori-progress-reset"
-    )
-  );
-
 }
 
-
-/* =========================================
-   DASHBOARD UPDATE
-   ========================================= */
 
 function updateProgressDashboard() {
 
@@ -466,111 +343,74 @@ function updateProgressDashboard() {
     getProgressSummary();
 
 
-  /*
-   * Overall percentage
-   */
-
-  const percentageElements =
-    document.querySelectorAll(
+  const overallElement =
+    document.querySelector(
       "[data-progress-overall]"
     );
 
-
-  percentageElements.forEach(
-    element => {
-
-      element.textContent =
-        `${summary.overall}%`;
-
-    }
-  );
-
-
-  /*
-   * Progress bar
-   */
-
-  const bars =
-    document.querySelectorAll(
+  const progressBar =
+    document.querySelector(
       "[data-progress-bar]"
     );
 
 
-  bars.forEach(
-    bar => {
+  if (overallElement) {
 
-      bar.style.width =
-        `${summary.overall}%`;
+    overallElement.textContent =
+      `${summary.overallPercentage}%`;
 
-    }
-  );
+  }
 
 
-  /*
-   * Lesson count
-   */
+  if (progressBar) {
 
-  const lessonElements =
-    document.querySelectorAll(
+    progressBar.style.width =
+      `${summary.overallPercentage}%`;
+
+  }
+
+
+  const lessonsElement =
+    document.querySelector(
       "[data-progress-lessons]"
     );
 
-
-  lessonElements.forEach(
-    element => {
-
-      element.textContent =
-        `${summary.lessons.completed}/${summary.lessons.total}`;
-
-    }
-  );
-
-
-  /*
-   * Activity count
-   */
-
-  const activityElements =
-    document.querySelectorAll(
+  const activitiesElement =
+    document.querySelector(
       "[data-progress-activities]"
     );
 
-
-  activityElements.forEach(
-    element => {
-
-      element.textContent =
-        `${summary.activities.completed}/${summary.activities.total}`;
-
-    }
-  );
-
-
-  /*
-   * Kanji count
-   */
-
-  const kanjiElements =
-    document.querySelectorAll(
+  const kanjiElement =
+    document.querySelector(
       "[data-progress-kanji]"
     );
 
 
-  kanjiElements.forEach(
-    element => {
+  if (lessonsElement) {
 
-      element.textContent =
-        `${summary.kanji.completed}/${summary.kanji.total}`;
+    lessonsElement.textContent =
+      summary.lessons;
 
-    }
-  );
+  }
+
+
+  if (activitiesElement) {
+
+    activitiesElement.textContent =
+      summary.activities;
+
+  }
+
+
+  if (kanjiElement) {
+
+    kanjiElement.textContent =
+      summary.kanji;
+
+  }
 
 }
 
-
-/* =========================================
-   INITIALIZE
-   ========================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -582,37 +422,30 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   PUBLIC API
-   ========================================= */
-
 window.IrodoriProgress = {
 
-  getState:
-    getProgressState,
+  getProgressSummary,
 
-  getSummary:
-    getProgressSummary,
+  markBookComplete,
 
-  markLessonComplete:
-    markLessonComplete,
+  markLessonComplete,
 
-  markActivityComplete:
-    markActivityComplete,
+  markActivityComplete,
 
-  markKanjiComplete:
-    markKanjiComplete,
+  markKanjiComplete,
 
-  isLessonComplete:
-    isLessonComplete,
+  isBookComplete,
 
-  isActivityComplete:
-    isActivityComplete,
+  isLessonComplete,
 
-  isKanjiComplete:
-    isKanjiComplete,
+  isActivityComplete,
 
-  reset:
-    resetLearningProgress
+  isKanjiComplete,
+
+  resetProgress,
+
+  updateProgressDashboard,
+
+  MASTER_TOTALS
 
 };
