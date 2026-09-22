@@ -1,0 +1,581 @@
+{
+  "datasetVersion": "IRODORI-MASTER-v1.0",
+  "bookId": "pre-intermediate",
+  "canDos": [
+    {
+      "canDoId": "PI-CD01",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 1,
+      "activityId": "PI-L01-A01",
+      "textEn": "Can listen to a friend’s simple comments about their favorite sports and understand their reasons for liking it, what the attractions are, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD02",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 2,
+      "activityId": "PI-L01-A02",
+      "textEn": "Can talk about the details of an event, while inviting a friend or responding to an invitation.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD03",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 3,
+      "activityId": "PI-L01-A03",
+      "textEn": "Can write a simple message to a friend or colleague canceling plans while giving the reason.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD04",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 4,
+      "activityId": "PI-L02-A01",
+      "textEn": "Can read and understand short and simple reviews about a manga.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD05",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 5,
+      "activityId": "PI-L02-A02",
+      "textEn": "Can talk in some detail to a friend about a film with comments or opinions.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD06",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 6,
+      "activityId": "PI-L02-A03",
+      "textEn": "Can talk in some detail to a friend about something you like, such as music or sports, including the reason and attractions.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD07",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 7,
+      "activityId": "PI-L03-A01",
+      "textEn": "Can look at the property information on a housing information website, and find the necessary information, such as rent, size, and location.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD08",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 8,
+      "activityId": "PI-L03-A02",
+      "textEn": "Can listen to simple comments from someone about recommended places to move to, and understand the reasons why they recommend them, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD09",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 9,
+      "activityId": "PI-L03-A03",
+      "textEn": "Can ask a friend or colleague for help with moving, and can also accept or decline when someone else asks you to help.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD10",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 10,
+      "activityId": "PI-L04-A01",
+      "textEn": "Can report a problem that occurred in your building to the building manager, etc., and ask them to deal with it.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD11",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 11,
+      "activityId": "PI-L04-A02",
+      "textEn": "Can explain and complain to the property management company when a problem occurs in your apartment or condominium, such as noises.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD12",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 12,
+      "activityId": "PI-L04-A03",
+      "textEn": "Can respond to noise and other complaints from the property management company of your apartment or condominium, while explaining your situation.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD13",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 13,
+      "activityId": "PI-L04-A04",
+      "textEn": "Can talk in some detail to a friend about where you are living, such as how comfortable it is or the surrounding environment.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD14",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 14,
+      "activityId": "PI-L05-A01",
+      "textEn": "Can order food and drinks using the order tablet in a restaurant.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD15",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 15,
+      "activityId": "PI-L05-A02",
+      "textEn": "Can talk to a friend about a restaurant in Japan where you can eat the cuisine of your home country/region, including detailed information and reasons why you recommend it, such as what sort of restaurant it is and what you can eat.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD16",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 16,
+      "activityId": "PI-L05-A03",
+      "textEn": "Can write a simple post on social media about a restaurant you went to.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD17",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 17,
+      "activityId": "PI-L05-A04",
+      "textEn": "Can listen to an explanation about unfamiliar foods, such as local cuisine, and more or less understand what is said, such as cooking methods and origins.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD18",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 18,
+      "activityId": "PI-L06-A01",
+      "textEn": "Can listen to simple comments from a friend about recommended supermarkets, etc., and understand the reason why they recommend them, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD19",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 19,
+      "activityId": "PI-L06-A02",
+      "textEn": "Can read an online article about eating habits and more or less understand what is written.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD20",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 20,
+      "activityId": "PI-L06-A03",
+      "textEn": "Can talk in some detail to a friend about your daily meals, such as what you eat and what you pay attention to in your diet.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD21",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 21,
+      "activityId": "PI-L07-A01",
+      "textEn": "Can listen to and understand simple advice, such as where to go or what to do, when you want to make new friends.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD22",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 22,
+      "activityId": "PI-L07-A02",
+      "textEn": "Can write a message to a friend who is in a club to get information about the club.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD23",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 23,
+      "activityId": "PI-L07-A03",
+      "textEn": "Can introduce yourself coherently, including your profile and hopes and aspirations for the future.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD24",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 24,
+      "activityId": "PI-L08-A01",
+      "textEn": "Can start a conversation with someone you are meeting for the first time, such as someone you will be working with.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD25",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 25,
+      "activityId": "PI-L08-A02",
+      "textEn": "Can talk in simple terms about yourself and the other person when a stranger tries to start a conversation.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD26",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 26,
+      "activityId": "PI-L08-A03",
+      "textEn": "Can read an online article about communication and more or less understand what is written.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD27",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 27,
+      "activityId": "PI-L09-A01",
+      "textEn": "Can talk in simple terms to a friend about your goals for Japanese learning and the reasons for them.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD28",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 28,
+      "activityId": "PI-L09-A02",
+      "textEn": "Can ask questions about an unfamiliar dialect you hear when talking with locals and others.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD29",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 29,
+      "activityId": "PI-L09-A03",
+      "textEn": "Can talk in some detail to a friend about your experience learning Japanese so far, including specific experiences.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD30",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 30,
+      "activityId": "PI-L09-A04",
+      "textEn": "Can read signs written in a local dialect and guess the meaning.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD31",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 31,
+      "activityId": "PI-L10-A01",
+      "textEn": "Can read multiple descriptions of online courses and apps on a Japanese language learning portal site and choose the ones that suit you.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD32",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 32,
+      "activityId": "PI-L10-A02",
+      "textEn": "Can exchange somewhat detailed information with a friend about Japanese learning methods.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD33",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 33,
+      "activityId": "PI-L10-A03",
+      "textEn": "Can write your profile, hopes, etc., in some detail on a site or app for finding language exchange partners.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD34",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 34,
+      "activityId": "PI-L11-A01",
+      "textEn": "Can listen to a friend’s simple explanation about what to do when picking up a lost item, etc., and understand how to respond.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD35",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 35,
+      "activityId": "PI-L11-A02",
+      "textEn": "Can look at a scam email and determine whether it should be ignored.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD36",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 36,
+      "activityId": "PI-L11-A03",
+      "textEn": "Can respond when asked to confirm your identity or to go through a baggage inspection at event venues, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD37",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 37,
+      "activityId": "PI-L11-A04",
+      "textEn": "Can read and understand guides about Japanese lifestyle rules written for non-Japanese residents.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD38",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 38,
+      "activityId": "PI-L12-A01",
+      "textEn": "Can offer to help someone who appears troubled, such as being lost, using short and simple phrases such as だいじょうぶですか.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD39",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 39,
+      "activityId": "PI-L12-A02",
+      "textEn": "Can call 110 or 119 in an emergency and request the police or an ambulance using short and simple phrases.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD40",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 40,
+      "activityId": "PI-L12-A03",
+      "textEn": "Can talk in some detail to a friend about a difficult situation that happened to you recently, explaining what happened and how it was.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD41",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 41,
+      "activityId": "PI-L13-A01",
+      "textEn": "Can send birthday congratulations to a friend via a messaging app and exchange updates about how you have been recently.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD42",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 42,
+      "activityId": "PI-L13-A02",
+      "textEn": "Can listen to how friends and acquaintances have been recently and comment in short and simple phrases.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD43",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 43,
+      "activityId": "PI-L13-A03",
+      "textEn": "Can advise a friend in some detail about what to give for birthdays and other special occasions.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD44",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 44,
+      "activityId": "PI-L13-A04",
+      "textEn": "Can listen to speeches at wedding parties and other events and more or less understand what is said.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD45",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 45,
+      "activityId": "PI-L14-A01",
+      "textEn": "Can listen to and understand friends’ small troubles.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD46",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 46,
+      "activityId": "PI-L14-A02",
+      "textEn": "Can talk in some detail to a friend about the character and personality of close people, and how you met them.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD47",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 47,
+      "activityId": "PI-L14-A03",
+      "textEn": "Can consult with friends about troubles or listen to troubles and give specific advice.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD48",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 48,
+      "activityId": "PI-L14-A04",
+      "textEn": "Can read an article about interpersonal relationships and more or less understand what is written.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD49",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 49,
+      "activityId": "PI-L15-A01",
+      "textEn": "Can watch short travel-themed videos about famous places and local specialties and more or less understand what is said.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD50",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 50,
+      "activityId": "PI-L15-A02",
+      "textEn": "Can read articles introducing tourist destinations on travel websites and more or less understand what is written.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD51",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 51,
+      "activityId": "PI-L15-A03",
+      "textEn": "Can talk in some detail to a friend about desirable travel destinations, including places you want to visit and what you want to do there.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD52",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 52,
+      "activityId": "PI-L16-A01",
+      "textEn": "Can send messages to friends from travel destinations via a messaging app.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD53",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 53,
+      "activityId": "PI-L16-A02",
+      "textEn": "Can explain in some detail to hotel or inn staff circumstances and wishes and request services or changes.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD54",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 54,
+      "activityId": "PI-L16-A03",
+      "textEn": "Can talk in some detail about travel experiences to a friend.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD55",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 55,
+      "activityId": "PI-L17-A01",
+      "textEn": "Can give simple instructions and explanations about work to subordinates or junior colleagues at work.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD56",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 56,
+      "activityId": "PI-L17-A02",
+      "textEn": "Can read and understand bulleted documents about workplace rules.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD57",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 57,
+      "activityId": "PI-L17-A03",
+      "textEn": "Can convey in some detail to a superior your requests or complaints about your work or workplace environment during one-on-one meetings.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD58",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 58,
+      "activityId": "PI-L17-A04",
+      "textEn": "Can write messages to acquaintances to convey workplace problems in some detail and get information about where to seek consultation.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+
+    {
+      "canDoId": "PI-CD59",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 59,
+      "activityId": "PI-L18-A01",
+      "textEn": "Can listen to simple comments about other people’s work and understand what kind of work they do and what they think about it.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD60",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 60,
+      "activityId": "PI-L18-A02",
+      "textEn": "Can listen to somewhat detailed communications and reports about work at workplace meetings or morning assemblies and more or less understand what is said.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD61",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 61,
+      "activityId": "PI-L18-A03",
+      "textEn": "Can look at job postings and find necessary information such as job content, salary, and workplace location.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    },
+    {
+      "canDoId": "PI-CD62",
+      "bookId": "pre-intermediate",
+      "canDoNumber": 62,
+      "activityId": "PI-L18-A04",
+      "textEn": "Can talk in some detail about your abilities and what you can do in job interviews, etc.",
+      "sourceType": "official",
+      "status": "VERIFIED"
+    }
+  ]
+}
