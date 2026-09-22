@@ -1,21 +1,31 @@
 const BOOKS_PATH = "./data/books.json";
 const LESSONS_PATH = "./data/lessons.json";
 
+const CANDO_FILES = {
+  starter: "./data/canDos-starter.json",
+  "elementary-1": "./data/canDos-e1.json",
+  "elementary-2": "./data/canDos-e2.json",
+  "pre-intermediate": "./data/canDos-pi.json"
+};
+
 let booksData = [];
 let lessonsData = [];
+let canDosData = [];
+
 
 /* =========================================
-   INITIALIZE APP
+   APP INITIALIZATION
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
   try {
-    const [booksResponse, lessonsResponse] = await Promise.all([
-      fetch(BOOKS_PATH),
-      fetch(LESSONS_PATH)
-    ]);
+    const [booksResponse, lessonsResponse] =
+      await Promise.all([
+        fetch(BOOKS_PATH),
+        fetch(LESSONS_PATH)
+      ]);
 
     if (!booksResponse.ok) {
       throw new Error("Could not load books.json");
@@ -25,49 +35,51 @@ async function init() {
       throw new Error("Could not load lessons.json");
     }
 
-    const booksJson = await booksResponse.json();
-    const lessonsJson = await lessonsResponse.json();
+    const booksJson =
+      await booksResponse.json();
 
-    booksData = getArray(booksJson, "books");
-    lessonsData = getArray(lessonsJson, "lessons");
+    const lessonsJson =
+      await lessonsResponse.json();
+
+    booksData =
+      getArray(
+        booksJson,
+        "books"
+      );
+
+    lessonsData =
+      getArray(
+        lessonsJson,
+        "lessons"
+      );
 
     renderBooks();
 
   } catch (error) {
+
     console.error(error);
 
-    const container = document.getElementById("book-list");
-
-    if (container) {
-      container.innerHTML = `
-        <div class="error-card">
-          <h2>Unable to load learning data</h2>
-          <p>${escapeHtml(error.message)}</p>
-
-          <button
-            type="button"
-            class="retry-button"
-            onclick="location.reload()"
-          >
-            Retry
-          </button>
-        </div>
-      `;
-    }
+    showError(
+      error.message
+    );
   }
 }
 
 
 /* =========================================
-   DATA HELPERS
+   GENERIC ARRAY READER
    ========================================= */
 
 function getArray(data, key) {
+
   if (Array.isArray(data)) {
     return data;
   }
 
-  if (data && Array.isArray(data[key])) {
+  if (
+    data &&
+    Array.isArray(data[key])
+  ) {
     return data[key];
   }
 
@@ -80,79 +92,110 @@ function getArray(data, key) {
    ========================================= */
 
 function renderBooks() {
-  const container = document.getElementById("book-list");
+
+  const container =
+    document.getElementById(
+      "book-list"
+    );
 
   if (!container) {
     return;
   }
 
   if (!booksData.length) {
+
     container.innerHTML = `
       <div class="error-card">
         <h2>No books found</h2>
-        <p>The books dataset is empty.</p>
+        <p>
+          The books dataset is empty.
+        </p>
       </div>
     `;
 
     return;
   }
 
-  container.innerHTML = booksData
-    .map((book, index) => {
-      const title =
-        book.title ||
-        book.name ||
-        book.bookTitle ||
-        `Book ${index + 1}`;
 
-      const description =
-        book.description ||
-        book.subtitle ||
-        "";
+  container.innerHTML =
+    booksData
+      .map(
+        (book, index) => {
 
-      return `
-        <button
-          type="button"
-          class="book-card book-card-button"
-          data-book-index="${index}"
-        >
-          <div class="book-card-content">
+          const title =
+            book.title ||
+            book.name ||
+            book.bookTitle ||
+            `Book ${index + 1}`;
 
-            <h2>
-              ${escapeHtml(title)}
-            </h2>
+          const description =
+            book.description ||
+            book.subtitle ||
+            "";
 
-            ${
-              description
-                ? `<p>${escapeHtml(description)}</p>`
-                : ""
-            }
+          return `
+            <button
+              type="button"
+              class="book-card book-card-button"
+              data-book-index="${index}"
+            >
 
-            <span class="book-card-arrow">
-              →
-            </span>
+              <div class="book-card-content">
 
-          </div>
-        </button>
-      `;
-    })
-    .join("");
+                <h2>
+                  ${escapeHtml(title)}
+                </h2>
+
+                ${
+                  description
+                    ? `
+                      <p>
+                        ${escapeHtml(
+                          description
+                        )}
+                      </p>
+                    `
+                    : ""
+                }
+
+                <span class="book-card-arrow">
+                  →
+                </span>
+
+              </div>
+
+            </button>
+          `;
+        }
+      )
+      .join("");
+
 
   document
-    .querySelectorAll(".book-card-button")
-    .forEach((button) => {
+    .querySelectorAll(
+      ".book-card-button"
+    )
+    .forEach(
+      (button) => {
 
-      button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-        const index = Number(
-          button.dataset.bookIndex
+            const index =
+              Number(
+                button.dataset.bookIndex
+              );
+
+            openBook(
+              booksData[index]
+            );
+
+          }
         );
 
-        openBook(booksData[index]);
-
-      });
-
-    });
+      }
+    );
 }
 
 
@@ -160,7 +203,8 @@ function renderBooks() {
    OPEN BOOK
    ========================================= */
 
-function openBook(book) {
+async function openBook(book) {
+
   if (!book) {
     return;
   }
@@ -172,7 +216,21 @@ function openBook(book) {
     "Book";
 
   const relatedLessons =
-    findLessonsForBook(book);
+    findLessonsForBook(
+      book
+    );
+
+
+  /*
+   * Load the correct Can-do dataset
+   * for this book.
+   */
+
+  canDosData =
+    await loadCanDoData(
+      book
+    );
+
 
   showLessonView(
     title,
@@ -203,41 +261,242 @@ function findLessonsForBook(book) {
     book.name ||
     book.bookTitle;
 
+
   if (!lessonsData.length) {
     return [];
   }
 
-  return lessonsData.filter((lesson) => {
 
-    const lessonBookId =
-      lesson.bookId ||
-      lesson.book ||
-      lesson.bookCode ||
-      lesson.bookSlug;
+  return lessonsData.filter(
+    (lesson) => {
 
-    const lessonBookTitle =
-      lesson.bookTitle ||
-      lesson.bookName;
+      const lessonBookId =
+        lesson.bookId ||
+        lesson.book ||
+        lesson.bookCode ||
+        lesson.bookSlug;
 
-    if (bookId && lessonBookId) {
-      return (
-        String(lessonBookId) ===
-        String(bookId)
-      );
+      const lessonBookTitle =
+        lesson.bookTitle ||
+        lesson.bookName;
+
+
+      if (
+        bookId &&
+        lessonBookId
+      ) {
+
+        return (
+          String(
+            lessonBookId
+          ) ===
+          String(
+            bookId
+          )
+        );
+
+      }
+
+
+      if (
+        bookTitle &&
+        lessonBookTitle
+      ) {
+
+        return (
+          String(
+            lessonBookTitle
+          ) ===
+          String(
+            bookTitle
+          )
+        );
+
+      }
+
+
+      return false;
     }
+  );
+}
+
+
+/* =========================================
+   CAN-DO DATA LOADER
+   ========================================= */
+
+async function loadCanDoData(book) {
+
+  const key =
+    getBookKey(book);
+
+  const file =
+    CANDO_FILES[key];
+
+
+  if (!file) {
+
+    console.warn(
+      "No Can-do file mapped for:",
+      book
+    );
+
+    return [];
+  }
+
+
+  try {
+
+    const response =
+      await fetch(file);
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        `Could not load ${file}`
+      );
+
+    }
+
+
+    const json =
+      await response.json();
+
+
+    /*
+     * Support common verified
+     * JSON container structures.
+     */
 
     if (
-      bookTitle &&
-      lessonBookTitle
+      Array.isArray(json)
     ) {
-      return (
-        String(lessonBookTitle) ===
-        String(bookTitle)
-      );
+
+      return json;
+
     }
 
-    return false;
-  });
+
+    if (
+      json &&
+      Array.isArray(
+        json.canDos
+      )
+    ) {
+
+      return json.canDos;
+
+    }
+
+
+    if (
+      json &&
+      Array.isArray(
+        json.activities
+      )
+    ) {
+
+      return json.activities;
+
+    }
+
+
+    if (
+      json &&
+      Array.isArray(
+        json.records
+      )
+    ) {
+
+      return json.records;
+
+    }
+
+
+    return [];
+
+  } catch (error) {
+
+    console.error(
+      "Can-do loading error:",
+      error
+    );
+
+    return [];
+  }
+}
+
+
+/* =========================================
+   BOOK KEY DETECTION
+   ========================================= */
+
+function getBookKey(book) {
+
+  const raw =
+    String(
+      book.id ||
+      book.bookId ||
+      book.code ||
+      book.slug ||
+      book.title ||
+      book.name ||
+      book.bookTitle ||
+      ""
+    )
+      .toLowerCase()
+      .trim();
+
+
+  if (
+    raw.includes("starter")
+  ) {
+
+    return "starter";
+
+  }
+
+
+  if (
+    raw.includes("elementary") &&
+    (
+      raw.includes("1") ||
+      raw.includes("01") ||
+      raw.includes("one")
+    )
+  ) {
+
+    return "elementary-1";
+
+  }
+
+
+  if (
+    raw.includes("elementary") &&
+    (
+      raw.includes("2") ||
+      raw.includes("02") ||
+      raw.includes("two")
+    )
+  ) {
+
+    return "elementary-2";
+
+  }
+
+
+  if (
+    raw.includes("pre") &&
+    raw.includes("intermediate")
+  ) {
+
+    return "pre-intermediate";
+
+  }
+
+
+  return null;
 }
 
 
@@ -252,71 +511,81 @@ function showLessonView(
 ) {
 
   const container =
-    document.getElementById("book-list");
+    document.getElementById(
+      "book-list"
+    );
 
   if (!container) {
     return;
   }
 
-  const lessonCards = lessons.length
 
-    ? lessons
-        .map((lesson, index) => {
+  const lessonCards =
+    lessons.length
 
-          const lessonNumber =
-            lesson.lessonNumber ||
-            lesson.number ||
-            lesson.lesson ||
-            index + 1;
+      ? lessons
+          .map(
+            (lesson, index) => {
 
-          const lessonTitle =
-            lesson.title ||
-            lesson.name ||
-            lesson.lessonTitle ||
-            `Lesson ${lessonNumber}`;
+              const lessonNumber =
+                lesson.lessonNumber ||
+                lesson.number ||
+                lesson.lesson ||
+                index + 1;
 
-          return `
-            <button
-              type="button"
-              class="lesson-card"
-              data-lesson-index="${index}"
-            >
 
-              <span class="lesson-number">
-                L${String(
-                  lessonNumber
-                ).padStart(2, "0")}
-              </span>
+              const lessonTitle =
+                lesson.title ||
+                lesson.name ||
+                lesson.lessonTitle ||
+                `Lesson ${lessonNumber}`;
 
-              <span class="lesson-title">
-                ${escapeHtml(
-                  lessonTitle
-                )}
-              </span>
 
-              <span class="lesson-arrow">
-                →
-              </span>
+              return `
+                <button
+                  type="button"
+                  class="lesson-card"
+                  data-lesson-index="${index}"
+                >
 
-            </button>
-          `;
-        })
-        .join("")
+                  <span class="lesson-number">
+                    L${String(
+                      lessonNumber
+                    ).padStart(2, "0")}
+                  </span>
 
-    : `
-        <div class="empty-card">
+                  <span class="lesson-title">
+                    ${escapeHtml(
+                      lessonTitle
+                    )}
+                  </span>
 
-          <h3>
-            Lessons not found
-          </h3>
+                  <span class="lesson-arrow">
+                    →
+                  </span>
 
-          <p>
-            No lesson records were matched
-            with this book.
-          </p>
+                </button>
+              `;
 
-        </div>
-      `;
+            }
+          )
+          .join("")
+
+      : `
+          <div class="empty-card">
+
+            <h3>
+              Lessons not found
+            </h3>
+
+            <p>
+              No lesson records were matched
+              with this book.
+            </p>
+
+          </div>
+        `;
+
 
   container.innerHTML = `
 
@@ -331,7 +600,9 @@ function showLessonView(
       </button>
 
       <h2>
-        ${escapeHtml(bookTitle)}
+        ${escapeHtml(
+          bookTitle
+        )}
       </h2>
 
       <p>
@@ -341,6 +612,7 @@ function showLessonView(
 
     </div>
 
+
     <div class="lesson-list">
 
       ${lessonCards}
@@ -349,12 +621,11 @@ function showLessonView(
   `;
 
 
-  /* Back to Books */
-
   const backButton =
     document.getElementById(
       "back-to-books"
     );
+
 
   if (backButton) {
 
@@ -368,31 +639,33 @@ function showLessonView(
   }
 
 
-  /* Lesson buttons */
-
   document
-    .querySelectorAll(".lesson-card")
-    .forEach((card) => {
+    .querySelectorAll(
+      ".lesson-card"
+    )
+    .forEach(
+      (card) => {
 
-      card.addEventListener(
-        "click",
-        () => {
+        card.addEventListener(
+          "click",
+          () => {
 
-          const index =
-            Number(
-              card.dataset.lessonIndex
+            const index =
+              Number(
+                card.dataset.lessonIndex
+              );
+
+            openLesson(
+              lessons[index],
+              bookTitle,
+              book
             );
 
-          openLesson(
-            lessons[index],
-            bookTitle,
-            book
-          );
+          }
+        );
 
-        }
-      );
-
-    });
+      }
+    );
 }
 
 
@@ -410,11 +683,13 @@ function openLesson(
     return;
   }
 
+
   const lessonNumber =
     lesson.lessonNumber ||
     lesson.number ||
     lesson.lesson ||
     "";
+
 
   const lessonTitle =
     lesson.title ||
@@ -422,10 +697,12 @@ function openLesson(
     lesson.lessonTitle ||
     `Lesson ${lessonNumber}`;
 
+
   const container =
     document.getElementById(
       "book-list"
     );
+
 
   if (!container) {
     return;
@@ -479,10 +756,9 @@ function openLesson(
           </h3>
 
           <p>
-            Activities, Can-do items,
-            vocabulary, audio and study
-            content will be connected
-            in the next stages.
+            Can-do activities and
+            official learning content
+            will be connected here.
           </p>
 
         </div>
@@ -493,12 +769,11 @@ function openLesson(
   `;
 
 
-  /* Back to Lessons */
-
   const backButton =
     document.getElementById(
       "back-to-lessons"
     );
+
 
   if (backButton) {
 
@@ -508,7 +783,9 @@ function openLesson(
 
         showLessonView(
           bookTitle,
-          findLessonsForBook(book),
+          findLessonsForBook(
+            book
+          ),
           book
         );
 
@@ -520,7 +797,50 @@ function openLesson(
 
 
 /* =========================================
-   HTML SECURITY HELPER
+   ERROR SCREEN
+   ========================================= */
+
+function showError(message) {
+
+  const container =
+    document.getElementById(
+      "book-list"
+    );
+
+  if (!container) {
+    return;
+  }
+
+
+  container.innerHTML = `
+
+    <div class="error-card">
+
+      <h2>
+        Unable to load learning data
+      </h2>
+
+      <p>
+        ${escapeHtml(
+          message
+        )}
+      </p>
+
+      <button
+        type="button"
+        class="retry-button"
+        onclick="location.reload()"
+      >
+        Retry
+      </button>
+
+    </div>
+  `;
+}
+
+
+/* =========================================
+   HTML ESCAPE
    ========================================= */
 
 function escapeHtml(value) {
