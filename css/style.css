@@ -404,3 +404,100 @@ a {
   margin: 0;
   line-height: 1.5;
 }
+/* =========================================
+   CAN-DO BUTTON
+   ========================================= */
+
+.cando-card-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.cando-card-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.cando-card-button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+
+.cando-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+}
+
+
+/* =========================================
+   ACTIVITY DETAIL
+   ========================================= */
+
+.activity-detail {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.activity-detail-card {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.activity-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.activity-id {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.activity-detail-card h2 {
+  margin: 0.75rem 0 1rem;
+  line-height: 1.4;
+}
+
+.activity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.activity-meta span {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  font-size: 0.85rem;
+}
+
+.activity-content {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--surface-alt);
+}
+
+.activity-content h3 {
+  margin-top: 0;
+}
+
+.activity-content p:last-child {
+  margin-bottom: 0;
+}
