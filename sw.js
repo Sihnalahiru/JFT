@@ -1,13 +1,24 @@
-const CACHE_NAME = "irodori-master-v2";
+const CACHE_NAME = "irodori-master-v3";
 
 const APP_SHELL = [
   "./",
   "./index.html",
+
+  /* CSS */
   "./css/style.css",
+
+  /* JavaScript */
   "./js/app.js",
+  "./js/progress.js",
+
+  /* PWA */
   "./manifest.json",
+
+  /* Master Data */
   "./data/books.json",
   "./data/lessons.json",
+
+  /* Can-do Data */
   "./data/canDos-starter.json",
   "./data/canDos-e1.json",
   "./data/canDos-e2.json",
@@ -34,6 +45,7 @@ self.addEventListener("install", (event) => {
   );
 
   self.skipWaiting();
+
 });
 
 
@@ -53,12 +65,10 @@ self.addEventListener("activate", (event) => {
 
           cacheNames
             .filter(
-              (name) =>
-                name !== CACHE_NAME
+              (name) => name !== CACHE_NAME
             )
             .map(
-              (name) =>
-                caches.delete(name)
+              (name) => caches.delete(name)
             )
 
         );
@@ -68,6 +78,7 @@ self.addEventListener("activate", (event) => {
   );
 
   self.clients.claim();
+
 });
 
 
@@ -83,6 +94,10 @@ self.addEventListener("fetch", (event) => {
       .match(event.request)
       .then((cachedResponse) => {
 
+        /* -----------------------------
+           USE CACHE IF AVAILABLE
+           ----------------------------- */
+
         if (cachedResponse) {
 
           return cachedResponse;
@@ -90,8 +105,18 @@ self.addEventListener("fetch", (event) => {
         }
 
 
+        /* -----------------------------
+           OTHERWISE USE NETWORK
+           ----------------------------- */
+
         return fetch(event.request)
+
           .then((networkResponse) => {
+
+            /*
+             * Only cache successful
+             * same-origin responses.
+             */
 
             if (
               !networkResponse ||
