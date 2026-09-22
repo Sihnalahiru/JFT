@@ -1,77 +1,93 @@
-"use strict";
+const BOOKS_PATH = "./data/books.json";
+const LESSONS_PATH = "./data/lessons.json";
 
-const DATA_PATH = "data/books.json";
+let booksData = [];
+let lessonsData = [];
 
-const bookList = document.getElementById("book-list");
+document.addEventListener("DOMContentLoaded", init);
 
-let booksData = null;
-
-async function loadBooks() {
+async function init() {
   try {
-    const response = await fetch(DATA_PATH);
+    const [booksResponse, lessonsResponse] = await Promise.all([
+      fetch(BOOKS_PATH),
+      fetch(LESSONS_PATH)
+    ]);
 
-    if (!response.ok) {
-      throw new Error(
-        `Failed to load books.json: ${response.status}`
-      );
+    if (!booksResponse.ok) {
+      throw new Error("Could not load books.json");
     }
 
-    booksData = await response.json();
+    if (!lessonsResponse.ok) {
+      throw new Error("Could not load lessons.json");
+    }
 
-    renderBooks(booksData);
+    const booksJson = await booksResponse.json();
+    const lessonsJson = await lessonsResponse.json();
+
+    booksData = getArray(booksJson, "books");
+    lessonsData = getArray(lessonsJson, "lessons");
+
+    renderBooks();
   } catch (error) {
     console.error(error);
 
-    bookList.innerHTML = `
-      <div class="book-card">
-        <h3>Unable to load learning data</h3>
-        <p>
-          Please check that data/books.json exists
-          and contains valid JSON.
-        </p>
-      </div>
-    `;
+    const container = document.getElementById("book-list");
+
+    if (container) {
+      container.innerHTML = `
+        <div class="error-card">
+          <h2>Unable to load learning data</h2>
+          <p>${escapeHtml(error.message)}</p>
+          <button class="retry-button" onclick="location.reload()">
+            Retry
+          </button>
+        </div>
+      `;
+    }
   }
 }
 
-function getBooks(data) {
+function getArray(data, key) {
   if (Array.isArray(data)) {
     return data;
   }
 
-  if (Array.isArray(data.books)) {
-    return data.books;
+  if (data && Array.isArray(data[key])) {
+    return data[key];
   }
 
   return [];
 }
 
-function renderBooks(data) {
-  const books = getBooks(data);
+function renderBooks() {
+  const container = document.getElementById("book-list");
 
-  if (books.length === 0) {
-    bookList.innerHTML = `
-      <div class="book-card">
-        <h3>No books found</h3>
-        <p>
-          No book records were found in the master data.
-        </p>
+  if (!container) {
+    return;
+  }
+
+  if (!booksData.length) {
+    container.innerHTML = `
+      <div class="error-card">
+        <h2>No books found</h2>
+        <p>The books dataset is empty.</p>
       </div>
     `;
 
     return;
   }
 
-  bookList.innerHTML = books
+  container.innerHTML = booksData
     .map((book, index) => {
       const title =
         book.title ||
         book.name ||
-        book.bookName ||
+        book.bookTitle ||
         `Book ${index + 1}`;
 
       const description =
         book.description ||
+        book.subtitle ||
         "";
 
       return `
@@ -80,62 +96,163 @@ function renderBooks(data) {
           class="book-card book-card-button"
           data-book-index="${index}"
         >
-          <h3>${escapeHtml(title)}</h3>
-          ${
-            description
-              ? `<p>${escapeHtml(description)}</p>`
-              : ""
-          }
+          <div class="book-card-content">
+            <h2>${escapeHtml(title)}</h2>
+
+            ${
+              description
+                ? `<p>${escapeHtml(description)}</p>`
+                : ""
+            }
+
+            <span class="book-card-arrow">→</span>
+          </div>
         </button>
       `;
     })
     .join("");
 
-  attachBookEvents(books);
-}
+  document
+    .querySelectorAll(".book-card-button")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = Number(button.dataset.bookIndex);
 
-function attachBookEvents(books) {
-  const buttons =
-    document.querySelectorAll(
-      ".book-card-button"
-    );
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const index =
-        Number(button.dataset.bookIndex);
-
-      const selectedBook = books[index];
-
-      openBook(selectedBook);
+        openBook(booksData[index]);
+      });
     });
-  });
 }
 
 function openBook(book) {
-  console.log(
-    "Selected IRODORI book:",
-    book
-  );
+  if (!book) {
+    return;
+  }
 
-  /*
-   * Lesson navigation will be connected
-   * in the next implementation step.
-   *
-   * Official data is not modified here.
-   */
-  alert(
-    `${book.title || book.name || "Book"} selected.\n\nLesson navigation will be connected next.`
-  );
+  const title =
+    book.title ||
+    book.name ||
+    book.bookTitle ||
+    "Book";
+
+  const relatedLessons = findLessonsForBook(book);
+
+  showLessonView(title, relatedLessons);
+}
+
+function findLessonsForBook(book) {
+  const bookId =
+    book.id ||
+    book.bookId ||
+    book.code ||
+    book.slug;
+
+  const bookTitle =
+    book.title ||
+    book.name ||
+    book.bookTitle;
+
+  if (!lessonsData.length) {
+    return [];
+  }
+
+  return lessonsData.filter((lesson) => {
+    const lessonBookId =
+      lesson.bookId ||
+      lesson.book ||
+      lesson.bookCode ||
+      lesson.bookSlug;
+
+    const lessonBookTitle =
+      lesson.bookTitle ||
+      lesson.bookName;
+
+    if (bookId && lessonBookId) {
+      return String(lessonBookId) === String(bookId);
+    }
+
+    if (bookTitle && lessonBookTitle) {
+      return String(lessonBookTitle) === String(bookTitle);
+    }
+
+    return false;
+  });
+}
+
+function showLessonView(bookTitle, lessons) {
+  const container = document.getElementById("book-list");
+
+  if (!container) {
+    return;
+  }
+
+  const lessonCards = lessons.length
+    ? lessons
+        .map((lesson, index) => {
+          const lessonNumber =
+            lesson.lessonNumber ||
+            lesson.number ||
+            lesson.lesson ||
+            index + 1;
+
+          const lessonTitle =
+            lesson.title ||
+            lesson.name ||
+            lesson.lessonTitle ||
+            `Lesson ${lessonNumber}`;
+
+          return `
+            <button
+              type="button"
+              class="lesson-card"
+            >
+              <span class="lesson-number">
+                L${String(lessonNumber).padStart(2, "0")}
+              </span>
+
+              <span class="lesson-title">
+                ${escapeHtml(lessonTitle)}
+              </span>
+
+              <span class="lesson-arrow">→</span>
+            </button>
+          `;
+        })
+        .join("")
+    : `
+        <div class="empty-card">
+          <h3>Lessons not connected yet</h3>
+          <p>
+            The lesson dataset was loaded, but its book relationship
+            needs verification before displaying lessons.
+          </p>
+        </div>
+      `;
+
+  container.innerHTML = `
+    <div class="lesson-header">
+      <button
+        type="button"
+        class="back-button"
+        onclick="renderBooks()"
+      >
+        ← Back to Books
+      </button>
+
+      <h2>${escapeHtml(bookTitle)}</h2>
+      <p>${lessons.length} lesson records found</p>
+    </div>
+
+    <div class="lesson-list">
+      ${lessonCards}
+    </div>
+  `;
 }
 
 function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
-
-loadBooks();
