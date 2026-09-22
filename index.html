@@ -22,16 +22,10 @@
 
   <title>IRODORI Master</title>
 
-
-  <!-- PWA -->
-
   <link
     rel="manifest"
     href="./manifest.json"
   >
-
-
-  <!-- Styles -->
 
   <link
     rel="stylesheet"
@@ -44,9 +38,7 @@
 <body>
 
 
-  <!-- =====================================
-       HEADER
-       ===================================== -->
+  <!-- HEADER -->
 
   <header class="app-header">
 
@@ -70,16 +62,12 @@
 
 
 
-  <!-- =====================================
-       MAIN
-       ===================================== -->
+  <!-- MAIN -->
 
   <main class="app-main">
 
 
-    <!-- ===================================
-         WELCOME
-         =================================== -->
+    <!-- WELCOME -->
 
     <section class="welcome-card">
 
@@ -96,9 +84,7 @@
 
 
 
-    <!-- ===================================
-         DASHBOARD
-         =================================== -->
+    <!-- DASHBOARD -->
 
     <section
       class="dashboard-section"
@@ -133,7 +119,10 @@
             📚
           </div>
 
-          <div class="dashboard-value">
+          <div
+            class="dashboard-value"
+            data-dashboard-books
+          >
             4
           </div>
 
@@ -153,8 +142,11 @@
             📖
           </div>
 
-          <div class="dashboard-value">
-            72
+          <div
+            class="dashboard-value"
+            data-dashboard-lessons
+          >
+            0 / 72
           </div>
 
           <div class="dashboard-label">
@@ -165,7 +157,7 @@
 
 
 
-        <!-- CAN-DO -->
+        <!-- ACTIVITIES -->
 
         <article class="dashboard-card">
 
@@ -173,8 +165,11 @@
             🎯
           </div>
 
-          <div class="dashboard-value">
-            288
+          <div
+            class="dashboard-value"
+            data-dashboard-activities
+          >
+            0 / 288
           </div>
 
           <div class="dashboard-label">
@@ -193,8 +188,11 @@
             漢
           </div>
 
-          <div class="dashboard-value">
-            644
+          <div
+            class="dashboard-value"
+            data-dashboard-kanji
+          >
+            0 / 644
           </div>
 
           <div class="dashboard-label">
@@ -207,9 +205,8 @@
       </div>
 
 
-      <!-- =================================
-           PROGRESS
-           ================================= -->
+
+      <!-- PROGRESS -->
 
       <div class="progress-card">
 
@@ -228,8 +225,8 @@
           </div>
 
           <strong data-progress-overall>
-  0%
-</strong>
+            0%
+          </strong>
 
         </div>
 
@@ -240,10 +237,10 @@
         >
 
           <div
-  class="progress-bar"
-  data-progress-bar
-  style="width: 0%;"
-></div>
+            class="progress-bar"
+            data-progress-bar
+            style="width: 0%;"
+          ></div>
 
         </div>
 
@@ -253,9 +250,7 @@
 
 
 
-    <!-- ===================================
-         BOOKS
-         =================================== -->
+    <!-- BOOKS -->
 
     <section
       class="books-section"
@@ -279,10 +274,6 @@
       </div>
 
 
-      <!--
-        JavaScript loads books.json here.
-      -->
-
       <div id="book-list">
 
         Loading learning data...
@@ -296,9 +287,7 @@
 
 
 
-  <!-- =====================================
-       FOOTER
-       ===================================== -->
+  <!-- FOOTER -->
 
   <footer class="app-footer">
 
@@ -310,22 +299,21 @@
 
 
 
-  <!-- =====================================
-       APP SCRIPT
-       ===================================== -->
+  <!-- APP -->
 
   <script
     src="./js/app.js"
   ></script>
-  
-<script
-  src="./js/progress.js"
-></script>
 
 
-  <!-- =====================================
-       SERVICE WORKER
-       ===================================== -->
+  <!-- PROGRESS -->
+
+  <script
+    src="./js/progress.js"
+  ></script>
+
+
+  <!-- SERVICE WORKER -->
 
   <script>
 
