@@ -628,3 +628,140 @@ a {
   }
 
 }
+/* =========================================
+   DASHBOARD
+   ========================================= */
+
+.dashboard-section,
+.books-section {
+  margin-top: 2rem;
+}
+
+.section-heading {
+  margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+}
+
+.section-heading p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+
+/* =========================================
+   DASHBOARD GRID
+   ========================================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.dashboard-card {
+  padding: 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.dashboard-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.dashboard-value {
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.dashboard-label {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+
+/* =========================================
+   PROGRESS CARD
+   ========================================= */
+
+.progress-card {
+  margin-top: 0.9rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.progress-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.progress-card-header h3 {
+  margin: 0;
+}
+
+.progress-card-header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.progress-card-header strong {
+  font-size: 1.4rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  margin-top: 1rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-alt);
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: currentColor;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 800px) {
+
+  .dashboard-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard-card {
+    padding: 0.9rem;
+  }
+
+  .progress-card-header {
+    align-items: flex-start;
+  }
+
+}
