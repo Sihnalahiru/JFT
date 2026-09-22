@@ -209,3 +209,90 @@ a {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+/* =========================================
+   LESSON NAVIGATION
+   ========================================= */
+
+.lesson-header {
+  margin-bottom: 1.5rem;
+}
+
+.lesson-header h2 {
+  margin: 1rem 0 0.35rem;
+  font-size: 1.7rem;
+}
+
+.lesson-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.back-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.back-button:hover {
+  background: var(--surface-alt);
+}
+
+.lesson-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lesson-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.lesson-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.lesson-number {
+  min-width: 52px;
+  font-weight: 700;
+}
+
+.lesson-title {
+  flex: 1;
+}
+
+.lesson-arrow {
+  font-size: 1.2rem;
+}
+
+.empty-card,
+.error-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.retry-button {
+  margin-top: 0.75rem;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
