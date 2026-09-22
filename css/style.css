@@ -345,3 +345,62 @@ a {
   margin-bottom: 0;
   color: var(--muted);
 }
+/* =========================================
+   CAN-DO / ACTIVITY CARDS
+   ========================================= */
+
+.cando-section {
+  margin-top: 1.5rem;
+}
+
+.cando-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cando-section-header h3 {
+  margin: 0;
+}
+
+.cando-section-header span {
+  min-width: 32px;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  text-align: center;
+  font-weight: 700;
+}
+
+.cando-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.cando-number {
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface-alt);
+  font-weight: 700;
+}
+
+.cando-content {
+  flex: 1;
+}
+
+.cando-content h4 {
+  margin: 0;
+  line-height: 1.5;
+}
