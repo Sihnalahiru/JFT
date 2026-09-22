@@ -61,6 +61,7 @@ async function init() {
    ========================================= */
 
 function getArray(data, key) {
+
   if (Array.isArray(data)) {
     return data;
   }
@@ -118,7 +119,6 @@ function renderBooks() {
           class="book-card book-card-button"
           data-book-index="${index}"
         >
-
           <div class="book-card-content">
 
             <h2>
@@ -140,7 +140,6 @@ function renderBooks() {
             </span>
 
           </div>
-
         </button>
       `;
 
@@ -195,7 +194,7 @@ async function openBook(book) {
 
 
 /* =========================================
-   FIND LESSONS
+   FIND LESSONS FOR BOOK
    ========================================= */
 
 function findLessonsForBook(book) {
@@ -230,18 +229,22 @@ function findLessonsForBook(book) {
 
 
     if (bookId && lessonBookId) {
+
       return (
         String(lessonBookId) ===
         String(bookId)
       );
+
     }
 
 
     if (bookTitle && lessonBookTitle) {
+
       return (
         String(lessonBookTitle) ===
         String(bookTitle)
       );
+
     }
 
 
@@ -492,7 +495,10 @@ function showLessonView(
 
   document
     .getElementById("back-to-books")
-    ?.addEventListener("click", renderBooks);
+    ?.addEventListener(
+      "click",
+      renderBooks
+    );
 
 
   document
@@ -575,7 +581,9 @@ function openLesson(
       <div class="lesson-detail-card">
 
         <div class="lesson-detail-number">
-          L${String(lessonNumber).padStart(2, "0")}
+          L${String(
+            lessonNumber
+          ).padStart(2, "0")}
         </div>
 
         <h2>
@@ -625,15 +633,25 @@ function openLesson(
 
   document
     .getElementById("back-to-lessons")
-    ?.addEventListener("click", () => {
+    ?.addEventListener(
+      "click",
+      () => {
 
-      showLessonView(
-        bookTitle,
-        findLessonsForBook(book),
-        book
-      );
+        showLessonView(
+          bookTitle,
+          findLessonsForBook(book),
+          book
+        );
 
-    });
+      }
+    );
+
+
+  attachCanDoEvents(
+    activities,
+    bookTitle,
+    lesson
+  );
 }
 
 
@@ -674,11 +692,6 @@ function findCanDosForLesson(lesson) {
       item.lesson;
 
 
-    /*
-     * Match only when an explicit
-     * lesson relationship exists.
-     */
-
     if (
       lessonId &&
       itemLessonId
@@ -712,7 +725,7 @@ function findCanDosForLesson(lesson) {
 
 
 /* =========================================
-   RENDER CAN-DO RECORDS
+   RENDER CAN-DO CARDS
    ========================================= */
 
 function renderCanDos(records) {
@@ -738,9 +751,10 @@ function renderCanDos(records) {
 
 
       return `
-        <div
-          class="cando-card"
-          data-cando-id="${escapeHtml(id)}"
+        <button
+          type="button"
+          class="cando-card cando-card-button"
+          data-cando-index="${index}"
         >
 
           <div class="cando-number">
@@ -755,11 +769,219 @@ function renderCanDos(records) {
 
           </div>
 
-        </div>
+          <div class="cando-arrow">
+            →
+          </div>
+
+        </button>
       `;
 
     })
     .join("");
+}
+
+
+/* =========================================
+   CAN-DO CLICK EVENTS
+   ========================================= */
+
+function attachCanDoEvents(
+  activities,
+  bookTitle,
+  lesson
+) {
+
+  document
+    .querySelectorAll(
+      ".cando-card-button"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const index =
+            Number(
+              button.dataset.candoIndex
+            );
+
+          openCanDo(
+            activities[index],
+            bookTitle,
+            lesson
+          );
+
+        }
+      );
+
+    });
+}
+
+
+/* =========================================
+   OPEN CAN-DO DETAIL
+   ========================================= */
+
+function openCanDo(
+  activity,
+  bookTitle,
+  lesson
+) {
+
+  if (!activity) {
+    return;
+  }
+
+
+  const container =
+    document.getElementById(
+      "book-list"
+    );
+
+  if (!container) {
+    return;
+  }
+
+
+  const activityTitle =
+    activity.canDo ||
+    activity.canDoTitle ||
+    activity.title ||
+    activity.activity ||
+    activity.activityTitle ||
+    activity.name ||
+    "Can-do Activity";
+
+
+  const activityId =
+    activity.id ||
+    activity.canDoId ||
+    activity.activityId ||
+    "";
+
+
+  const lessonNumber =
+    lesson.lessonNumber ||
+    lesson.number ||
+    lesson.lesson ||
+    "";
+
+
+  container.innerHTML = `
+
+    <div class="activity-detail">
+
+      <button
+        type="button"
+        class="back-button"
+        id="back-to-activity-list"
+      >
+        ← Back to Can-do
+      </button>
+
+
+      <div class="activity-detail-card">
+
+        <div class="activity-label">
+          CAN-DO / ACTIVITY
+        </div>
+
+
+        <div class="activity-id">
+          ${escapeHtml(activityId)}
+        </div>
+
+
+        <h2>
+          ${escapeHtml(activityTitle)}
+        </h2>
+
+
+        <div class="activity-meta">
+
+          <span>
+            ${escapeHtml(bookTitle)}
+          </span>
+
+          <span>
+            L${String(
+              lessonNumber
+            ).padStart(2, "0")}
+          </span>
+
+        </div>
+
+
+        <div class="activity-content">
+
+          <h3>
+            Official learning content
+          </h3>
+
+          <p>
+            This activity is now isolated as
+            an individual learning record.
+          </p>
+
+          <p>
+            Vocabulary, official audio,
+            grammar worksheet audio and
+            practice components will be
+            connected in later stages.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+
+  document
+    .getElementById(
+      "back-to-activity-list"
+    )
+    ?.addEventListener(
+      "click",
+      () => {
+
+        openLesson(
+          lesson,
+          bookTitle,
+          findBookByTitle(
+            bookTitle
+          )
+        );
+
+      }
+    );
+}
+
+
+/* =========================================
+   FIND BOOK
+   ========================================= */
+
+function findBookByTitle(title) {
+
+  return (
+    booksData.find(book => {
+
+      const bookTitle =
+        book.title ||
+        book.name ||
+        book.bookTitle ||
+        "";
+
+      return (
+        String(bookTitle) ===
+        String(title)
+      );
+
+    }) || {}
+  );
 }
 
 
@@ -770,7 +992,9 @@ function renderCanDos(records) {
 function showError(message) {
 
   const container =
-    document.getElementById("book-list");
+    document.getElementById(
+      "book-list"
+    );
 
   if (!container) {
     return;
