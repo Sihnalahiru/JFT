@@ -11,7 +11,7 @@
       "sourceType": "official"
     },
     {
-      "bookId": "elementary01",
+      "bookId": "elementary-1",
       "code": "E1",
       "title": "Elementary 1",
       "lessonCount": 18,
@@ -20,7 +20,7 @@
       "sourceType": "official"
     },
     {
-      "bookId": "elementary02",
+      "bookId": "elementary-2",
       "code": "E2",
       "title": "Elementary 2",
       "lessonCount": 18,
