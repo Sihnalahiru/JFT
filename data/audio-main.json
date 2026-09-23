@@ -589,6 +589,106 @@
       "filename": "X_[02-30]_katakana_tsumaru.mp3",
       "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_02-30_katakana_tsumaru.mp3",
       "sourcePage": "https://nd.jpf.go.jp/s1-lesson-2-mp3/"
+    },
+
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 1,
+      "filename": "X_[03-01]_kiku1.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-01_kiku1.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 2,
+      "filename": "X_[03-02]_kiku2.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-02_kiku2.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 3,
+      "filename": "X_[03-03]_kiku3.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-03_kiku3.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 4,
+      "filename": "X_[03-04]_kiku4.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-04_kiku4.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 5,
+      "filename": "X_[03-05]_katachi.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-05_katachi.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 6,
+      "filename": "X_[03-06]_hanasu.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-06_hanasu.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 7,
+      "filename": "X_[03-07]_kaiwa.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-07_kaiwa.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 8,
+      "filename": "X_[03-08]_katachi1.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-08_katachi1.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 9,
+      "filename": "X_[03-09]_katachi2.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-09_katachi2.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 10,
+      "filename": "X_[03-10]_katachi3.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-10_katachi3.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 3,
+      "lessonId": "S-L03",
+      "index": 11,
+      "filename": "X_[03-11]_hanasu.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/03/X_03-11_hanasu.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-3-mp3/"
     }
   ]
 }
