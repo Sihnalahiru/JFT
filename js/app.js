@@ -70,7 +70,6 @@ async function initializeApp() {
       error
     );
 
-
     showError(
       "Learning data could not be loaded."
     );
@@ -336,6 +335,8 @@ function renderDashboard() {
       <div class="dashboard-grid">
 
 
+        <!-- BOOKS -->
+
         <article class="dashboard-card">
 
           <div class="dashboard-icon">
@@ -356,6 +357,8 @@ function renderDashboard() {
         </article>
 
 
+
+        <!-- LESSONS -->
 
         <article class="dashboard-card">
 
@@ -378,6 +381,8 @@ function renderDashboard() {
 
 
 
+        <!-- ACTIVITIES -->
+
         <article class="dashboard-card">
 
           <div class="dashboard-icon">
@@ -398,6 +403,8 @@ function renderDashboard() {
         </article>
 
 
+
+        <!-- KANJI -->
 
         <article class="dashboard-card">
 
@@ -422,6 +429,8 @@ function renderDashboard() {
       </div>
 
 
+
+      <!-- LEARNING PROGRESS -->
 
       <div class="progress-card">
 
@@ -466,6 +475,8 @@ function renderDashboard() {
 
 
 
+    <!-- BOOKS -->
+
     <section
       class="books-section"
       aria-labelledby="books-title"
@@ -500,7 +511,6 @@ function renderDashboard() {
 
 
   renderBooks();
-
 
   updateProgressUI();
 
@@ -959,6 +969,7 @@ function renderLessonCard(
 
               </div>
 
+
               <div class="study-again-label">
 
                 Study Again
@@ -1120,7 +1131,7 @@ function openLesson(
       <div class="learning-module-grid">
 
 
-        <!-- CAN-DO / ACTIVITIES -->
+        <!-- CAN-DO -->
 
         <article
           class="learning-module can-do-module"
@@ -1329,8 +1340,11 @@ function openLesson(
                 ? `
 
                   This lesson is already recorded
-                  as completed. You can study it
-                  again anytime.
+                  as completed.
+
+                  <br>
+
+                  You can study it again anytime.
 
                 `
 
@@ -1374,9 +1388,7 @@ function openLesson(
 
 
 
-  /* =======================================
-     BACK TO LESSONS
-     ======================================= */
+  /* BACK */
 
   const backButton =
     main.querySelector(
@@ -1401,9 +1413,7 @@ function openLesson(
 
 
 
-  /* =======================================
-     LESSON COMPLETE / STUDY AGAIN
-     ======================================= */
+  /* LESSON COMPLETE */
 
   const completeButton =
     main.querySelector(
@@ -1424,15 +1434,6 @@ function openLesson(
               .markLessonComplete ===
             "function"
         ) {
-
-          /*
-            Important:
-            Completion is permanent until
-            progress is deliberately reset.
-
-            Clicking this button again does NOT
-            remove completion.
-          */
 
           window.IrodoriProgress
             .markLessonComplete(
@@ -1455,9 +1456,7 @@ function openLesson(
 
 
 
-  /* =======================================
-     CAN-DO CLICK
-     ======================================= */
+  /* CAN-DO */
 
   main
     .querySelectorAll(
@@ -1503,6 +1502,7 @@ function renderCanDoCard(
     canDo.title ||
     canDo.name ||
     canDo.canDo ||
+    canDo.label ||
     `Activity ${index + 1}`;
 
 
@@ -1621,18 +1621,77 @@ function openActivity(
       window.IrodoriProgress
         .isActivityComplete ===
       "function"
+
       ? window.IrodoriProgress
           .isActivityComplete(
             activityId
           )
+
       : false;
+
+
+
+  /*
+   * Only use data fields that are
+   * actually present in the dataset.
+   */
+
+  const title =
+    activity.title ||
+    activity.name ||
+    activity.canDo ||
+    activity.label ||
+    "Can-do Activity";
+
+
+  const description =
+    activity.description ||
+    activity.details ||
+    activity.content ||
+    "";
+
+
+  const japanese =
+    activity.japanese ||
+    activity.jp ||
+    activity.ja ||
+    "";
+
+
+  const english =
+    activity.english ||
+    activity.en ||
+    "";
+
+
+  const sinhala =
+    activity.sinhala ||
+    activity.si ||
+    "";
+
+
+  const lessonId =
+    activity.lessonId ||
+    activity.lessonNumber ||
+    "";
+
+
+  const activityCode =
+    activity.code ||
+    activity.activityId ||
+    activity.id ||
+    "";
 
 
 
   main.innerHTML = `
 
-    <section class="activity-detail">
+    <section
+      class="activity-detail"
+    >
 
+
+      <!-- BACK -->
 
       <button
         type="button"
@@ -1646,58 +1705,88 @@ function openActivity(
 
 
 
-      <div class="activity-detail-card">
+      <!-- ACTIVITY CARD -->
+
+      <div
+        class="activity-detail-card"
+      >
 
 
-        <div class="module-icon">
+        <div
+          class="module-icon"
+        >
           🎯
         </div>
 
 
 
+        <!-- STATUS -->
+
+        <div
+          class="activity-status"
+        >
+
+          ${
+            activityCompleted
+
+              ? `
+
+                <span
+                  class="completion-badge"
+                >
+
+                  ✓ Completed
+
+                </span>
+
+              `
+
+              : `
+
+                <span
+                  class="activity-status-pending"
+                >
+
+                  Not Completed
+
+                </span>
+
+              `
+          }
+
+        </div>
+
+
+
+        <!-- TITLE -->
+
         <h2>
 
           ${escapeHtml(
-            activity.title ||
-            activity.name ||
-            activity.canDo ||
-            "Can-do Activity"
+            title
           )}
 
         </h2>
 
 
 
+        <!-- ACTIVITY ID -->
+
         ${
-          activity.description
+          activityCode
 
             ? `
 
-              <p>
+              <div
+                class="activity-meta"
+              >
 
+                Activity ID:
                 ${escapeHtml(
-                  activity.description
+                  String(
+                    activityCode
+                  )
                 )}
-
-              </p>
-
-            `
-
-            : ""
-
-        }
-
-
-
-        ${
-          activityCompleted
-
-            ? `
-
-              <div class="completion-badge">
-
-                ✓ Previously Completed —
-                You can practice again.
 
               </div>
 
@@ -1709,7 +1798,195 @@ function openActivity(
 
 
 
-        <div class="lesson-completion-card">
+        <!-- LESSON -->
+
+        ${
+          lessonId
+
+            ? `
+
+              <div
+                class="activity-meta"
+              >
+
+                Lesson:
+                ${escapeHtml(
+                  String(
+                    lessonId
+                  )
+                )}
+
+              </div>
+
+            `
+
+            : ""
+
+        }
+
+
+
+        <!-- DESCRIPTION -->
+
+        ${
+          description
+
+            ? `
+
+              <div
+                class="activity-information"
+              >
+
+                <h3>
+                  Activity Information
+                </h3>
+
+                <p>
+
+                  ${escapeHtml(
+                    description
+                  )}
+
+                </p>
+
+              </div>
+
+            `
+
+            : ""
+
+        }
+
+
+
+        <!-- JAPANESE -->
+
+        ${
+          japanese
+
+            ? `
+
+              <div
+                class="activity-language-card"
+              >
+
+                <h3>
+                  日本語
+                </h3>
+
+                <p
+                  class="japanese-text"
+                >
+
+                  ${escapeHtml(
+                    japanese
+                  )}
+
+                </p>
+
+              </div>
+
+            `
+
+            : ""
+
+        }
+
+
+
+        <!-- ENGLISH -->
+
+        ${
+          english
+
+            ? `
+
+              <div
+                class="activity-language-card"
+              >
+
+                <h3>
+                  English
+                </h3>
+
+                <p>
+
+                  ${escapeHtml(
+                    english
+                  )}
+
+                </p>
+
+              </div>
+
+            `
+
+            : ""
+
+        }
+
+
+
+        <!-- SINHALA -->
+
+        ${
+          sinhala
+
+            ? `
+
+              <div
+                class="activity-language-card"
+              >
+
+                <h3>
+                  සිංහල
+                </h3>
+
+                <p>
+
+                  ${escapeHtml(
+                    sinhala
+                  )}
+
+                </p>
+
+              </div>
+
+            `
+
+            : ""
+
+        }
+
+
+
+        <!-- STUDY AREA -->
+
+        <div
+          class="activity-study-area"
+        >
+
+          <h3>
+            Activity Study
+          </h3>
+
+          <p>
+
+            Study this Can-do activity
+            and practice it again whenever
+            you need.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- ACTIVITY PROGRESS -->
+
+        <div
+          class="lesson-completion-card"
+        >
 
           <div>
 
@@ -1727,15 +2004,19 @@ function openActivity(
 
                     This activity is already
                     recorded as completed.
+
+                    <br>
+
                     You can practice it again
-                    anytime.
+                    without losing your saved
+                    progress.
 
                   `
 
                   : `
 
-                    Mark this activity complete
-                    after finishing it.
+                    Complete this activity
+                    after finishing your study.
 
                   `
               }
@@ -1802,7 +2083,7 @@ function openActivity(
 
 
   /* =======================================
-     ACTIVITY COMPLETE
+     COMPLETE ACTIVITY
      ======================================= */
 
   const completeButton =
@@ -1824,13 +2105,6 @@ function openActivity(
               .markActivityComplete ===
             "function"
         ) {
-
-          /*
-            Completion remains saved.
-
-            Repeating the activity does not
-            erase the previous completion.
-          */
 
           window.IrodoriProgress
             .markActivityComplete(
@@ -2036,6 +2310,10 @@ function findCanDosForLesson(
   return records.filter(
     (record) => {
 
+      /*
+       * Only explicit relationship.
+       */
+
       if (
         record.lessonId !==
         undefined
@@ -2052,6 +2330,10 @@ function findCanDosForLesson(
 
       }
 
+
+      /*
+       * Only explicit lesson number.
+       */
 
       if (
         record.lessonNumber !==
