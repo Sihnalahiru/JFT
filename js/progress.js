@@ -1,6 +1,9 @@
 const PROGRESS_STORAGE_KEY =
   "irodori_master_learning_progress_v1";
 
+const ATTEMPT_STORAGE_KEY =
+  "irodori_master_attempt_history_v1";
+
 
 const MASTER_TOTALS = {
   books: 4,
@@ -26,6 +29,26 @@ function createDefaultProgress() {
     completedActivities: [],
 
     completedKanji: []
+
+  };
+
+}
+
+
+
+/* =========================================
+   DEFAULT ATTEMPT HISTORY
+   ========================================= */
+
+function createDefaultAttemptHistory() {
+
+  return {
+
+    lessons: {},
+
+    activities: {},
+
+    kanji: {}
 
   };
 
@@ -112,11 +135,85 @@ function loadProgress() {
 
 
 /* =========================================
-   CURRENT PROGRESS
+   LOAD ATTEMPT HISTORY
+   ========================================= */
+
+function loadAttemptHistory() {
+
+  try {
+
+    const saved =
+      localStorage.getItem(
+        ATTEMPT_STORAGE_KEY
+      );
+
+
+    if (!saved) {
+
+      return createDefaultAttemptHistory();
+
+    }
+
+
+    const parsed =
+      JSON.parse(saved);
+
+
+    return {
+
+      lessons:
+        parsed &&
+        typeof parsed.lessons ===
+          "object"
+          ? parsed.lessons
+          : {},
+
+
+      activities:
+        parsed &&
+        typeof parsed.activities ===
+          "object"
+          ? parsed.activities
+          : {},
+
+
+      kanji:
+        parsed &&
+        typeof parsed.kanji ===
+          "object"
+          ? parsed.kanji
+          : {}
+
+    };
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Failed to load attempt history:",
+      error
+    );
+
+
+    return createDefaultAttemptHistory();
+
+  }
+
+}
+
+
+
+/* =========================================
+   CURRENT DATA
    ========================================= */
 
 let progress =
   loadProgress();
+
+
+let attemptHistory =
+  loadAttemptHistory();
 
 
 
@@ -153,6 +250,36 @@ function saveProgress(
 
 
 /* =========================================
+   SAVE ATTEMPT HISTORY
+   ========================================= */
+
+function saveAttemptHistory() {
+
+  try {
+
+    localStorage.setItem(
+      ATTEMPT_STORAGE_KEY,
+      JSON.stringify(
+        attemptHistory
+      )
+    );
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Failed to save attempt history:",
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =========================================
    PERCENTAGE
    ========================================= */
 
@@ -171,14 +298,18 @@ function calculatePercentage(
   }
 
 
+  const percentage =
+    (
+      completed /
+      total
+    ) * 100;
+
+
   return Math.min(
     100,
     Math.round(
-      (
-        completed /
-        total
-      ) * 100
-    )
+      percentage * 10
+    ) / 10
   );
 
 }
@@ -207,7 +338,6 @@ function getProgressSummary() {
     progress.completedKanji.length;
 
 
-
   const lessonPercentage =
     calculatePercentage(
       lessons,
@@ -229,16 +359,6 @@ function getProgressSummary() {
     );
 
 
-
-  /*
-    Overall progress currently uses
-    Lessons + Activities + Kanji.
-
-    Books are container-level records,
-    therefore they are not added again
-    to avoid double counting.
-  */
-
   const overallCompleted =
     lessons +
     activities +
@@ -256,7 +376,6 @@ function getProgressSummary() {
       overallCompleted,
       overallTotal
     );
-
 
 
   return {
@@ -284,6 +403,328 @@ function getProgressSummary() {
 
 
 /* =========================================
+   RECORD LESSON ATTEMPT
+   ========================================= */
+
+function recordLessonAttempt(
+  lessonId
+) {
+
+  if (!lessonId) {
+
+    return null;
+
+  }
+
+
+  const id =
+    String(
+      lessonId
+    );
+
+
+  if (
+    !attemptHistory.lessons[id]
+  ) {
+
+    attemptHistory.lessons[id] = [];
+
+  }
+
+
+  const attempt = {
+
+    id:
+      `${id}-${Date.now()}`,
+
+    itemId:
+      id,
+
+    type:
+      "lesson",
+
+    startedAt:
+      new Date().toISOString(),
+
+    completedAt:
+      new Date().toISOString()
+
+  };
+
+
+  attemptHistory
+    .lessons[id]
+    .push(
+      attempt
+    );
+
+
+  saveAttemptHistory();
+
+
+  return attempt;
+
+}
+
+
+
+/* =========================================
+   RECORD ACTIVITY ATTEMPT
+   ========================================= */
+
+function recordActivityAttempt(
+  activityId
+) {
+
+  if (!activityId) {
+
+    return null;
+
+  }
+
+
+  const id =
+    String(
+      activityId
+    );
+
+
+  if (
+    !attemptHistory.activities[id]
+  ) {
+
+    attemptHistory.activities[id] = [];
+
+  }
+
+
+  const attempt = {
+
+    id:
+      `${id}-${Date.now()}`,
+
+    itemId:
+      id,
+
+    type:
+      "activity",
+
+    startedAt:
+      new Date().toISOString(),
+
+    completedAt:
+      new Date().toISOString()
+
+  };
+
+
+  attemptHistory
+    .activities[id]
+    .push(
+      attempt
+    );
+
+
+  saveAttemptHistory();
+
+
+  return attempt;
+
+}
+
+
+
+/* =========================================
+   RECORD KANJI ATTEMPT
+   ========================================= */
+
+function recordKanjiAttempt(
+  kanjiId
+) {
+
+  if (!kanjiId) {
+
+    return null;
+
+  }
+
+
+  const id =
+    String(
+      kanjiId
+    );
+
+
+  if (
+    !attemptHistory.kanji[id]
+  ) {
+
+    attemptHistory.kanji[id] = [];
+
+  }
+
+
+  const attempt = {
+
+    id:
+      `${id}-${Date.now()}`,
+
+    itemId:
+      id,
+
+    type:
+      "kanji",
+
+    startedAt:
+      new Date().toISOString(),
+
+    completedAt:
+      new Date().toISOString()
+
+  };
+
+
+  attemptHistory
+    .kanji[id]
+    .push(
+      attempt
+    );
+
+
+  saveAttemptHistory();
+
+
+  return attempt;
+
+}
+
+
+
+/* =========================================
+   GET LESSON ATTEMPTS
+   ========================================= */
+
+function getLessonAttempts(
+  lessonId
+) {
+
+  if (!lessonId) {
+
+    return [];
+
+  }
+
+
+  return (
+    attemptHistory
+      .lessons[
+        String(
+          lessonId
+        )
+      ] || []
+  );
+
+}
+
+
+
+/* =========================================
+   GET ACTIVITY ATTEMPTS
+   ========================================= */
+
+function getActivityAttempts(
+  activityId
+) {
+
+  if (!activityId) {
+
+    return [];
+
+  }
+
+
+  return (
+    attemptHistory
+      .activities[
+        String(
+          activityId
+        )
+      ] || []
+  );
+
+}
+
+
+
+/* =========================================
+   GET KANJI ATTEMPTS
+   ========================================= */
+
+function getKanjiAttempts(
+  kanjiId
+) {
+
+  if (!kanjiId) {
+
+    return [];
+
+  }
+
+
+  return (
+    attemptHistory
+      .kanji[
+        String(
+          kanjiId
+        )
+      ] || []
+  );
+
+}
+
+
+
+/* =========================================
+   GET ATTEMPT COUNT
+   ========================================= */
+
+function getLessonAttemptCount(
+  lessonId
+) {
+
+  return getLessonAttempts(
+    lessonId
+  ).length;
+
+}
+
+
+
+function getActivityAttemptCount(
+  activityId
+) {
+
+  return getActivityAttempts(
+    activityId
+  ).length;
+
+}
+
+
+
+function getKanjiAttemptCount(
+  kanjiId
+) {
+
+  return getKanjiAttempts(
+    kanjiId
+  ).length;
+
+}
+
+
+
+/* =========================================
    MARK BOOK COMPLETE
    ========================================= */
 
@@ -299,7 +740,9 @@ function markBookComplete(
 
 
   const normalizedId =
-    String(bookId);
+    String(
+      bookId
+    );
 
 
   if (
@@ -342,8 +785,17 @@ function markLessonComplete(
 
 
   const normalizedId =
-    String(lessonId);
+    String(
+      lessonId
+    );
 
+
+  /*
+   * Completion is unique.
+   *
+   * Repeating the lesson does NOT
+   * increase the completion count.
+   */
 
   if (
     !progress.completedLessons.includes(
@@ -355,15 +807,25 @@ function markLessonComplete(
       normalizedId
     );
 
-
-    saveProgress(
-      progress
-    );
-
-
-    updateProgressDashboard();
-
   }
+
+
+  /*
+   * Every completion action creates
+   * a separate attempt history record.
+   */
+
+  recordLessonAttempt(
+    normalizedId
+  );
+
+
+  saveProgress(
+    progress
+  );
+
+
+  updateProgressDashboard();
 
 }
 
@@ -385,8 +847,14 @@ function markActivityComplete(
 
 
   const normalizedId =
-    String(activityId);
+    String(
+      activityId
+    );
 
+
+  /*
+   * Unique completion count.
+   */
 
   if (
     !progress.completedActivities.includes(
@@ -398,15 +866,25 @@ function markActivityComplete(
       normalizedId
     );
 
-
-    saveProgress(
-      progress
-    );
-
-
-    updateProgressDashboard();
-
   }
+
+
+  /*
+   * Every completion action is
+   * stored as a separate attempt.
+   */
+
+  recordActivityAttempt(
+    normalizedId
+  );
+
+
+  saveProgress(
+    progress
+  );
+
+
+  updateProgressDashboard();
 
 }
 
@@ -428,7 +906,9 @@ function markKanjiComplete(
 
 
   const normalizedId =
-    String(kanjiId);
+    String(
+      kanjiId
+    );
 
 
   if (
@@ -441,15 +921,20 @@ function markKanjiComplete(
       normalizedId
     );
 
-
-    saveProgress(
-      progress
-    );
-
-
-    updateProgressDashboard();
-
   }
+
+
+  recordKanjiAttempt(
+    normalizedId
+  );
+
+
+  saveProgress(
+    progress
+  );
+
+
+  updateProgressDashboard();
 
 }
 
@@ -471,7 +956,9 @@ function isBookComplete(
 
 
   return progress.completedBooks.includes(
-    String(bookId)
+    String(
+      bookId
+    )
   );
 
 }
@@ -494,7 +981,9 @@ function isLessonComplete(
 
 
   return progress.completedLessons.includes(
-    String(lessonId)
+    String(
+      lessonId
+    )
   );
 
 }
@@ -517,7 +1006,9 @@ function isActivityComplete(
 
 
   return progress.completedActivities.includes(
-    String(activityId)
+    String(
+      activityId
+    )
   );
 
 }
@@ -540,7 +1031,9 @@ function isKanjiComplete(
 
 
   return progress.completedKanji.includes(
-    String(kanjiId)
+    String(
+      kanjiId
+    )
   );
 
 }
@@ -557,9 +1050,16 @@ function resetProgress() {
     createDefaultProgress();
 
 
+  attemptHistory =
+    createDefaultAttemptHistory();
+
+
   saveProgress(
     progress
   );
+
+
+  saveAttemptHistory();
 
 
   updateProgressDashboard();
@@ -579,9 +1079,7 @@ function updateProgressDashboard() {
 
 
 
-  /* ---------------------------------------
-     OVERALL PERCENTAGE
-     --------------------------------------- */
+  /* OVERALL */
 
   const overallElement =
     document.querySelector(
@@ -598,9 +1096,7 @@ function updateProgressDashboard() {
 
 
 
-  /* ---------------------------------------
-     PROGRESS BAR
-     --------------------------------------- */
+  /* PROGRESS BAR */
 
   const progressBar =
     document.querySelector(
@@ -617,139 +1113,114 @@ function updateProgressDashboard() {
 
 
 
-  /* ---------------------------------------
-     LESSON PROGRESS
-     --------------------------------------- */
+  /* BOOKS */
 
-  const lessonsElement =
-    document.querySelector(
-      "[data-progress-lessons]"
-    );
-
-
-  if (lessonsElement) {
-
-    lessonsElement.textContent =
-      summary.lessons;
-
-  }
-
-
-
-  /* ---------------------------------------
-     ACTIVITY PROGRESS
-     --------------------------------------- */
-
-  const activitiesElement =
-    document.querySelector(
-      "[data-progress-activities]"
-    );
-
-
-  if (activitiesElement) {
-
-    activitiesElement.textContent =
-      summary.activities;
-
-  }
-
-
-
-  /* ---------------------------------------
-     KANJI PROGRESS
-     --------------------------------------- */
-
-  const kanjiElement =
-    document.querySelector(
-      "[data-progress-kanji]"
-    );
-
-
-  if (kanjiElement) {
-
-    kanjiElement.textContent =
-      summary.kanji;
-
-  }
-
-
-
-  /* =======================================
-     DASHBOARD CARDS
-     ======================================= */
-
-
-  /* ---------------------------------------
-     BOOKS
-     --------------------------------------- */
-
-  const booksDashboardElement =
+  const booksElement =
     document.querySelector(
       "[data-dashboard-books]"
     );
 
 
-  if (booksDashboardElement) {
+  if (booksElement) {
 
-    booksDashboardElement.textContent =
+    booksElement.textContent =
       `${summary.books} / ${MASTER_TOTALS.books}`;
 
   }
 
 
 
-  /* ---------------------------------------
-     LESSONS
-     --------------------------------------- */
+  /* LESSONS */
 
-  const lessonsDashboardElement =
+  const lessonsElement =
     document.querySelector(
       "[data-dashboard-lessons]"
     );
 
 
-  if (lessonsDashboardElement) {
+  if (lessonsElement) {
 
-    lessonsDashboardElement.textContent =
+    lessonsElement.textContent =
       `${summary.lessons} / ${MASTER_TOTALS.lessons}`;
 
   }
 
 
 
-  /* ---------------------------------------
-     ACTIVITIES
-     --------------------------------------- */
+  /* ACTIVITIES */
 
-  const activitiesDashboardElement =
+  const activitiesElement =
     document.querySelector(
       "[data-dashboard-activities]"
     );
 
 
-  if (activitiesDashboardElement) {
+  if (activitiesElement) {
 
-    activitiesDashboardElement.textContent =
+    activitiesElement.textContent =
       `${summary.activities} / ${MASTER_TOTALS.activities}`;
 
   }
 
 
 
-  /* ---------------------------------------
-     KANJI
-     --------------------------------------- */
+  /* KANJI */
 
-  const kanjiDashboardElement =
+  const kanjiElement =
     document.querySelector(
       "[data-dashboard-kanji]"
     );
 
 
-  if (kanjiDashboardElement) {
+  if (kanjiElement) {
 
-    kanjiDashboardElement.textContent =
+    kanjiElement.textContent =
       `${summary.kanji} / ${MASTER_TOTALS.kanji}`;
+
+  }
+
+
+
+  /* OPTIONAL DETAILED ELEMENTS */
+
+  const lessonsProgress =
+    document.querySelector(
+      "[data-progress-lessons]"
+    );
+
+
+  if (lessonsProgress) {
+
+    lessonsProgress.textContent =
+      summary.lessons;
+
+  }
+
+
+  const activitiesProgress =
+    document.querySelector(
+      "[data-progress-activities]"
+    );
+
+
+  if (activitiesProgress) {
+
+    activitiesProgress.textContent =
+      summary.activities;
+
+  }
+
+
+  const kanjiProgress =
+    document.querySelector(
+      "[data-progress-kanji]"
+    );
+
+
+  if (kanjiProgress) {
+
+    kanjiProgress.textContent =
+      summary.kanji;
 
   }
 
@@ -758,7 +1229,7 @@ function updateProgressDashboard() {
 
 
 /* =========================================
-   INITIAL DASHBOARD UPDATE
+   INITIAL UPDATE
    ========================================= */
 
 document.addEventListener(
@@ -800,6 +1271,27 @@ window.IrodoriProgress = {
 
   resetProgress,
 
-  updateProgressDashboard
+  updateProgressDashboard,
+
+
+  /* ATTEMPT HISTORY */
+
+  recordLessonAttempt,
+
+  recordActivityAttempt,
+
+  recordKanjiAttempt,
+
+  getLessonAttempts,
+
+  getActivityAttempts,
+
+  getKanjiAttempts,
+
+  getLessonAttemptCount,
+
+  getActivityAttemptCount,
+
+  getKanjiAttemptCount
 
 };
