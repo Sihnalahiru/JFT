@@ -1,7 +1,35 @@
 {
   "datasetVersion": "IRODORI-MASTER-v1.0",
   "audioFamily": "main-lesson",
-  "description": "Official IRODORI main lesson and Japanese-in-the-classroom MP3 audio records.",
+  "description": "Official IRODORI main lesson audio records.",
   "sourceType": "official",
-  "records": []
+  "records": [
+    {
+      "bookId": "starter",
+      "lessonNumber": 1,
+      "lessonId": "S-L01",
+      "index": 1,
+      "filename": "X_[01-01]_kiku.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/02/X_01-01_kiku.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-1-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 1,
+      "lessonId": "S-L01",
+      "index": 2,
+      "filename": "X_[01-02]_kiku1.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/02/X_01-02_kiku1.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-1-mp3/"
+    },
+    {
+      "bookId": "starter",
+      "lessonNumber": 1,
+      "lessonId": "S-L01",
+      "index": 3,
+      "filename": "X_[01-03]_kiku2.mp3",
+      "url": "https://nd.jpf.go.jp/wp-content/uploads/2023/02/X_01-03_kiku2.mp3",
+      "sourcePage": "https://nd.jpf.go.jp/s1-lesson-1-mp3/"
+    }
+  ]
 }
