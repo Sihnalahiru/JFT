@@ -1,6 +1,7 @@
 :root {
   --bg: #f5f7fb;
   --surface: #ffffff;
+  --surface-alt: #f3f4f6;
   --text: #111827;
   --muted: #6b7280;
   --border: #e5e7eb;
@@ -10,6 +11,10 @@
   --radius: 16px;
 }
 
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,11 +22,20 @@
 }
 
 html {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
+
   font-family:
     Inter,
     system-ui,
@@ -29,9 +43,19 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+}
+
+/* Prevent long content from creating horizontal overflow */
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
 }
 
 button,
@@ -39,6 +63,7 @@ input,
 select,
 textarea {
   font: inherit;
+  max-width: 100%;
 }
 
 button {
@@ -50,27 +75,43 @@ a {
   text-decoration: none;
 }
 
-/* App */
+/* =========================================================
+   APP
+========================================================= */
 
 #app {
+  width: 100%;
+  min-width: 0;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
+
+  overflow-x: hidden;
 }
 
-/* Header */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .app-header {
+  width: 100%;
+  min-width: 0;
+
   position: sticky;
   top: 0;
   z-index: 100;
+
   background: var(--surface);
   border-bottom: 1px solid var(--border);
 }
 
 .app-brand {
+  width: 100%;
   max-width: 1200px;
+
   margin: 0 auto;
+
   padding: 18px 20px;
 }
 
@@ -78,85 +119,201 @@ a {
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+
+  overflow-wrap: anywhere;
 }
 
 .app-brand p {
   margin-top: 2px;
+
   color: var(--muted);
   font-size: 0.9rem;
+
+  overflow-wrap: anywhere;
 }
 
-/* Main */
+/* =========================================================
+   MAIN CONTAINERS
+========================================================= */
 
-#main-content {
+/*
+ * The original stylesheet primarily targeted
+ * #main-content.
+ *
+ * The current PWA uses .app-main.
+ *
+ * Both are supported here so older/newer markup
+ * remains compatible.
+ */
+
+#main-content,
+.app-main {
   width: 100%;
   max-width: 1200px;
+  min-width: 0;
+
   margin: 0 auto;
+
   padding: 24px 20px 40px;
+
   flex: 1;
+
+  overflow-x: hidden;
 }
 
 .screen {
   width: 100%;
+  min-width: 0;
 }
 
-/* Welcome */
+/* =========================================================
+   WELCOME
+========================================================= */
 
 .welcome-card {
+  width: 100%;
+  min-width: 0;
+
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+
   padding: 28px;
+
   box-shadow: var(--shadow);
+
+  overflow: hidden;
 }
 
 .welcome-card h2 {
   font-size: 1.6rem;
   line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .welcome-card p {
   margin-top: 10px;
   color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
-/* Books */
+/* =========================================================
+   BOOKS
+========================================================= */
 
-.book-list {
+.book-list,
+.book-grid {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 16px;
+
   margin-top: 24px;
 }
 
+.book-card-button {
+  width: 100%;
+  min-width: 0;
+
+  border: 0;
+  background: transparent;
+
+  padding: 0;
+
+  color: inherit;
+  text-align: left;
+}
+
 .book-card {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 1rem;
+
   background: var(--surface);
+
   border: 1px solid var(--border);
   border-radius: var(--radius);
+
   padding: 22px;
+
   box-shadow: var(--shadow);
+
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
     border-color 0.2s ease;
+
+  overflow: hidden;
 }
 
 .book-card:hover {
   transform: translateY(-2px);
+
   border-color: #cbd5e1;
+
+  box-shadow:
+    0 10px 28px rgba(
+      15,
+      23,
+      42,
+      0.10
+    );
+}
+
+.book-card-number {
+  min-width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: var(--surface-alt);
+
+  font-weight: 800;
+}
+
+.book-card-content {
+  min-width: 0;
+  flex: 1;
 }
 
 .book-card h3 {
   font-size: 1.15rem;
   margin-bottom: 6px;
+
+  overflow-wrap: anywhere;
 }
 
 .book-card p {
   color: var(--muted);
   font-size: 0.9rem;
+
+  overflow-wrap: anywhere;
 }
 
-/* Loading */
+.book-card small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--muted);
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
 
 .loading {
   color: var(--muted);
@@ -164,54 +321,37 @@ a {
   padding: 30px 10px;
 }
 
-/* Footer */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .app-footer {
+  width: 100%;
+  min-width: 0;
+
   border-top: 1px solid var(--border);
   background: var(--surface);
+
+  overflow: hidden;
 }
 
 .app-footer p {
+  width: 100%;
   max-width: 1200px;
+
   margin: 0 auto;
+
   padding: 18px 20px;
+
   color: var(--muted);
   font-size: 0.8rem;
+
+  overflow-wrap: anywhere;
 }
 
-/* Responsive */
-
-@media (max-width: 700px) {
-  #main-content {
-    padding: 18px 14px 30px;
-  }
-
-  .app-brand {
-    padding: 15px 14px;
-  }
-
-  .welcome-card {
-    padding: 22px;
-  }
-
-  .welcome-card h2 {
-    font-size: 1.35rem;
-  }
-
-  .book-list {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-}
-
-@media (min-width: 1000px) {
-  .book-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-/* =========================================
+/* =========================================================
    LESSON NAVIGATION
-   ========================================= */
+========================================================= */
 
 .lesson-header {
   margin-bottom: 1.5rem;
@@ -220,6 +360,7 @@ a {
 .lesson-header h2 {
   margin: 1rem 0 0.35rem;
   font-size: 1.7rem;
+  overflow-wrap: anywhere;
 }
 
 .lesson-header p {
@@ -228,11 +369,16 @@ a {
 }
 
 .back-button {
+  max-width: 100%;
+
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
+
   padding: 0.65rem 1rem;
+
   border-radius: 10px;
+
   cursor: pointer;
   font-weight: 600;
 }
@@ -246,83 +392,151 @@ a {
   gap: 0.75rem;
 }
 
+.lesson-card-button {
+  width: 100%;
+  min-width: 0;
+
+  border: 0;
+  background: transparent;
+
+  padding: 0;
+
+  color: inherit;
+  text-align: left;
+}
+
 .lesson-card {
   width: 100%;
+  min-width: 0;
+
   display: flex;
   align-items: center;
+
   gap: 1rem;
+
   padding: 1rem;
+
   border: 1px solid var(--border);
   border-radius: 14px;
+
   background: var(--surface);
   color: var(--text);
+
   text-align: left;
+
   cursor: pointer;
+
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
+
+  overflow: hidden;
 }
 
 .lesson-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 6px 18px rgba(
+      0,
+      0,
+      0,
+      0.08
+    );
 }
 
 .lesson-number {
   min-width: 52px;
+  flex-shrink: 0;
+
   font-weight: 700;
 }
 
 .lesson-title {
   flex: 1;
+  min-width: 0;
+
+  overflow-wrap: anywhere;
+}
+
+.lesson-card-content {
+  flex: 1;
+  min-width: 0;
 }
 
 .lesson-arrow {
   font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .empty-card,
 .error-card {
   padding: 1.25rem;
+
   border: 1px solid var(--border);
   border-radius: 14px;
+
   background: var(--surface);
 }
 
 .retry-button {
   margin-top: 0.75rem;
+
   padding: 0.65rem 1rem;
+
   border: 0;
   border-radius: 10px;
+
   cursor: pointer;
 }
-/* =========================================
+
+/* =========================================================
    LESSON DETAIL
-   ========================================= */
+========================================================= */
 
 .lesson-detail {
+  width: 100%;
   max-width: 800px;
+  min-width: 0;
+
   margin: 0 auto;
 }
 
 .lesson-detail-card {
+  width: 100%;
+  min-width: 0;
+
   margin-top: 1rem;
+
   padding: 1.5rem;
+
   border: 1px solid var(--border);
   border-radius: 16px;
+
   background: var(--surface);
+
+  overflow: hidden;
 }
 
 .lesson-detail-number {
   font-size: 0.9rem;
   font-weight: 700;
+
   color: var(--muted);
+
   letter-spacing: 0.05em;
 }
 
 .lesson-detail-card h2 {
   margin: 0.5rem 0;
+
   font-size: 1.8rem;
+
+  overflow-wrap: anywhere;
+}
+
+.lesson-detail-card p {
+  overflow-wrap: anywhere;
 }
 
 .lesson-book-name {
@@ -332,8 +546,11 @@ a {
 
 .lesson-placeholder {
   margin-top: 1.5rem;
+
   padding: 1rem;
+
   border-radius: 12px;
+
   background: var(--surface-alt);
 }
 
@@ -345,218 +562,121 @@ a {
   margin-bottom: 0;
   color: var(--muted);
 }
-/* =========================================
-   CAN-DO / ACTIVITY CARDS
-   ========================================= */
 
-.cando-section {
-  margin-top: 1.5rem;
-}
-
-.cando-section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.cando-section-header h3 {
-  margin: 0;
-}
-
-.cando-section-header span {
-  min-width: 32px;
-  padding: 0.35rem 0.6rem;
-  border-radius: 999px;
-  background: var(--surface-alt);
-  text-align: center;
-  font-weight: 700;
-}
-
-.cando-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-}
-
-.cando-number {
-  min-width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--surface-alt);
-  font-weight: 700;
-}
-
-.cando-content {
-  flex: 1;
-}
-
-.cando-content h4 {
-  margin: 0;
-  line-height: 1.5;
-}
-/* =========================================
-   CAN-DO BUTTON
-   ========================================= */
-
-.cando-card-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  border: 1px solid var(--border);
-  color: var(--text);
-  background: var(--surface);
-  text-align: left;
-  cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.cando-card-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-.cando-card-button:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.25);
-  outline-offset: 2px;
-}
-
-.cando-arrow {
-  margin-left: auto;
-  font-size: 1.2rem;
-}
-
-
-/* =========================================
-   ACTIVITY DETAIL
-   ========================================= */
-
-.activity-detail {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.activity-detail-card {
-  margin-top: 1rem;
-  padding: 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--surface);
-}
-
-.activity-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-
-.activity-id {
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.activity-detail-card h2 {
-  margin: 0.75rem 0 1rem;
-  line-height: 1.4;
-}
-
-.activity-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.activity-meta span {
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-  background: var(--surface-alt);
-  font-size: 0.85rem;
-}
-
-.activity-content {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border-radius: 12px;
-  background: var(--surface-alt);
-}
-
-.activity-content h3 {
-  margin-top: 0;
-}
-
-.activity-content p:last-child {
-  margin-bottom: 0;
-}/* =========================================
+/* =========================================================
    LESSON MODULE GRID
-   ========================================= */
+========================================================= */
 
-.lesson-module-grid {
+.lesson-module-grid,
+.learning-module-grid {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 0.75rem;
+
   margin-top: 1.5rem;
 }
 
-.lesson-module-card {
+.lesson-module-card,
+.learning-module {
+  width: 100%;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   gap: 0.45rem;
+
   min-height: 130px;
+
   padding: 1rem;
+
   border: 1px solid var(--border);
   border-radius: 14px;
+
   background: var(--surface);
   color: var(--text);
+
   text-align: left;
+
   cursor: pointer;
+
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
+
+  overflow: hidden;
 }
 
-.lesson-module-card:hover {
+.lesson-module-card:hover,
+.learning-module:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 6px 18px rgba(
+      0,
+      0,
+      0,
+      0.08
+    );
 }
 
-.lesson-module-card:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.25);
+.lesson-module-card:focus-visible,
+.learning-module:focus-visible {
+  outline: 3px solid rgba(
+    37,
+    99,
+    235,
+    0.25
+  );
+
   outline-offset: 2px;
 }
 
 .module-icon {
   font-size: 1.5rem;
+  flex-shrink: 0;
 }
 
-.lesson-module-card strong {
+.lesson-module-card strong,
+.learning-module h3 {
   font-size: 1rem;
+
+  overflow-wrap: anywhere;
 }
 
-.lesson-module-card span:last-child {
+.lesson-module-card span:last-child,
+.learning-module p {
   margin-top: auto;
+
   color: var(--muted);
+
   font-size: 0.85rem;
+
+  overflow-wrap: anywhere;
 }
 
+.module-content {
+  min-width: 0;
+}
 
-/* =========================================
+.module-content h3 {
+  margin: 0;
+}
+
+.module-content p {
+  margin-top: 4px;
+}
+
+/* =========================================================
    MODULE CONTENT
-   ========================================= */
+========================================================= */
 
 .lesson-module-content {
   margin-top: 1.25rem;
@@ -564,16 +684,21 @@ a {
 
 .module-panel {
   padding: 1rem;
+
   border: 1px solid var(--border);
   border-radius: 14px;
+
   background: var(--surface);
 }
 
 .module-panel-header {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 1rem;
+
   margin-bottom: 1rem;
 }
 
@@ -583,57 +708,337 @@ a {
 
 .module-panel-header span {
   min-width: 32px;
+
   padding: 0.35rem 0.6rem;
+
   border-radius: 999px;
+
   background: var(--surface-alt);
+
   text-align: center;
+
   font-weight: 700;
 }
 
+/* =========================================================
+   CAN-DO / ACTIVITY CARDS
+========================================================= */
 
-/* =========================================
+.cando-section,
+.can-do-section {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 1.5rem;
+}
+
+.cando-section-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 1rem;
+}
+
+.cando-section-header h3 {
+  margin: 0;
+}
+
+.cando-section-header span {
+  min-width: 32px;
+
+  padding: 0.35rem 0.6rem;
+
+  border-radius: 999px;
+
+  background: var(--surface-alt);
+
+  text-align: center;
+
+  font-weight: 700;
+}
+
+.cando-card {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 1rem;
+
+  margin-bottom: 0.75rem;
+
+  padding: 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background: var(--surface);
+
+  min-width: 0;
+}
+
+.cando-number {
+  min-width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--surface-alt);
+
+  font-weight: 700;
+}
+
+.cando-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.cando-content h4 {
+  margin: 0;
+
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   CAN-DO BUTTON
+========================================================= */
+
+.cando-card-button,
+.can-do-card-button {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  border: 1px solid var(--border);
+
+  color: var(--text);
+
+  background: var(--surface);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  padding: 0;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+}
+
+.cando-card-button:hover,
+.can-do-card-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(
+      0,
+      0,
+      0,
+      0.08
+    );
+}
+
+.cando-card-button:focus-visible,
+.can-do-card-button:focus-visible {
+  outline: 3px solid rgba(
+    37,
+    99,
+    235,
+    0.25
+  );
+
+  outline-offset: 2px;
+}
+
+.can-do-card {
+  width: 100%;
+  min-width: 0;
+
+  padding: 1rem;
+}
+
+.can-do-card-title {
+  font-weight: 700;
+
+  overflow-wrap: anywhere;
+}
+
+.cando-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+}
+
+/* =========================================================
+   ACTIVITY DETAIL
+========================================================= */
+
+.activity-detail {
+  width: 100%;
+  max-width: 800px;
+  min-width: 0;
+
+  margin: 0 auto;
+}
+
+.activity-detail-card {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 1rem;
+
+  padding: 1.5rem;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  background: var(--surface);
+
+  overflow: hidden;
+}
+
+.activity-detail-card h2 {
+  margin: 0.75rem 0 1rem;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.activity-field {
+  margin-top: 1rem;
+}
+
+.activity-field h3 {
+  margin-bottom: 0.35rem;
+}
+
+.activity-field p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.activity-label {
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  color: var(--muted);
+}
+
+.activity-id {
+  margin-top: 0.35rem;
+
+  font-size: 0.85rem;
+
+  color: var(--muted);
+
+  overflow-wrap: anywhere;
+}
+
+.activity-meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+}
+
+.activity-meta span {
+  padding: 0.4rem 0.7rem;
+
+  border-radius: 999px;
+
+  background: var(--surface-alt);
+
+  font-size: 0.85rem;
+}
+
+.activity-content {
+  margin-top: 1.5rem;
+
+  padding: 1rem;
+
+  border-radius: 12px;
+
+  background: var(--surface-alt);
+}
+
+.activity-content h3 {
+  margin-top: 0;
+}
+
+.activity-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
    PENDING DATA
-   ========================================= */
+========================================================= */
 
 .pending-card {
+  width: 100%;
+  min-width: 0;
+
   padding: 1.25rem;
+
   border-radius: 12px;
+
   background: var(--surface-alt);
+
+  overflow: hidden;
 }
 
 .pending-icon {
   font-size: 1.6rem;
+
   margin-bottom: 0.5rem;
 }
 
 .pending-card p {
   line-height: 1.6;
+
+  overflow-wrap: anywhere;
 }
 
 .pending-card strong {
   display: block;
+
   font-size: 0.75rem;
+
   letter-spacing: 0.04em;
 }
 
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 640px) {
-
-  .lesson-module-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-/* =========================================
+/* =========================================================
    DASHBOARD
-   ========================================= */
+========================================================= */
 
 .dashboard-section,
 .books-section {
+  width: 100%;
+  min-width: 0;
+
   margin-top: 2rem;
 }
 
@@ -643,68 +1048,111 @@ a {
 
 .section-heading h2 {
   margin: 0;
+
+  overflow-wrap: anywhere;
 }
 
 .section-heading p {
   margin: 0.35rem 0 0;
+
   color: var(--muted);
+
+  overflow-wrap: anywhere;
 }
 
-
-/* =========================================
+/* =========================================================
    DASHBOARD GRID
-   ========================================= */
+========================================================= */
 
 .dashboard-grid {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
+
   grid-template-columns:
     repeat(4, minmax(0, 1fr));
+
   gap: 0.9rem;
 }
 
 .dashboard-card {
+  min-width: 0;
+
   padding: 1.15rem;
+
   border: 1px solid var(--border);
+
   border-radius: 16px;
+
   background: var(--surface);
+
   text-align: center;
+
+  overflow: hidden;
 }
 
 .dashboard-icon {
   font-size: 1.5rem;
+
   margin-bottom: 0.4rem;
 }
 
 .dashboard-value {
   font-size: 1.7rem;
+
   font-weight: 800;
+
   line-height: 1.2;
+
+  overflow-wrap: anywhere;
 }
 
 .dashboard-label {
   margin-top: 0.35rem;
+
   color: var(--muted);
+
   font-size: 0.85rem;
+
+  overflow-wrap: anywhere;
 }
 
-
-/* =========================================
+/* =========================================================
    PROGRESS CARD
-   ========================================= */
+========================================================= */
 
 .progress-card {
+  width: 100%;
+  min-width: 0;
+
   margin-top: 0.9rem;
+
   padding: 1.2rem;
+
   border: 1px solid var(--border);
+
   border-radius: 16px;
+
   background: var(--surface);
+
+  overflow: hidden;
 }
 
 .progress-card-header {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 1rem;
+
+  min-width: 0;
+}
+
+.progress-card-header > div {
+  min-width: 0;
 }
 
 .progress-card-header h3 {
@@ -713,119 +1161,246 @@ a {
 
 .progress-card-header p {
   margin: 0.35rem 0 0;
+
   color: var(--muted);
+
+  overflow-wrap: anywhere;
 }
 
 .progress-card-header strong {
+  flex-shrink: 0;
+
   font-size: 1.4rem;
 }
 
 .progress-track {
   width: 100%;
+
   height: 10px;
+
   margin-top: 1rem;
+
   overflow: hidden;
+
   border-radius: 999px;
+
   background: var(--surface-alt);
 }
 
 .progress-bar {
+  width: 0;
+
   height: 100%;
+
   border-radius: inherit;
-  background: currentColor;
+
+  background: var(--primary);
+
+  transition:
+    width 0.3s ease;
 }
 
+/* =========================================================
+   COMPLETION
+========================================================= */
 
-/* =========================================
-   MOBILE
-   ========================================= */
+.lesson-completion-card {
+  width: 100%;
+  min-width: 0;
 
-@media (max-width: 800px) {
+  display: flex;
 
-  .dashboard-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
+  align-items: center;
 
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-top: 1.5rem;
+
+  padding: 1.25rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  background: var(--surface);
+
+  overflow: hidden;
 }
 
-
-@media (max-width: 480px) {
-
-  .dashboard-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .dashboard-card {
-    padding: 0.9rem;
-  }
-
-  .progress-card-header {
-    align-items: flex-start;
-  }
-
+.lesson-completion-card > div {
+  min-width: 0;
 }
+
+.lesson-completion-card h3 {
+  overflow-wrap: anywhere;
+}
+
+.lesson-completion-card p {
+  color: var(--muted);
+
+  overflow-wrap: anywhere;
+}
+
+.completion-button {
+  flex-shrink: 0;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  padding: 0.7rem 1rem;
+
+  background: var(--primary);
+
+  color: #ffffff;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.completion-button:hover {
+  background: var(--primary-dark);
+}
+
+.completion-button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.completion-badge {
+  display: inline-block;
+
+  margin-top: 0.35rem;
+
+  padding: 0.25rem 0.55rem;
+
+  border-radius: 999px;
+
+  background: #ecfdf5;
+
+  color: #047857;
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+}
+
 /* =========================================================
    ACTIVITY ATTEMPT HISTORY
 ========================================================= */
 
 .activity-attempt-card {
+  width: 100%;
+  min-width: 0;
+
   margin-top: 20px;
+
   padding: 20px;
+
   border-radius: 16px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  overflow: hidden;
 }
 
 .activity-attempt-header {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 16px;
+
+  min-width: 0;
+}
+
+.activity-attempt-header > div:first-child {
+  min-width: 0;
 }
 
 .activity-attempt-header h3 {
   margin: 0 0 6px;
+
+  overflow-wrap: anywhere;
 }
 
 .activity-attempt-header p {
   margin: 0;
-  color: #6b7280;
+
+  color: var(--muted);
+
+  overflow-wrap: anywhere;
 }
 
 .activity-attempt-count {
   min-width: 48px;
+
   height: 48px;
+
   padding: 0 12px;
+
+  flex-shrink: 0;
+
   border-radius: 14px;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
-  background: #f3f4f6;
+
+  background: var(--surface-alt);
+
   font-size: 20px;
+
   font-weight: 700;
 }
 
 .activity-last-attempt {
   margin-top: 16px;
+
   padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
+
+  border-top: 1px solid var(--border);
+
   display: flex;
+
   justify-content: space-between;
+
   gap: 12px;
 }
 
 .activity-last-attempt span {
-  color: #6b7280;
+  color: var(--muted);
+
   text-align: right;
+
+  overflow-wrap: anywhere;
 }
 
 .activity-history-list {
+  width: 100%;
+  min-width: 0;
+
   margin-top: 20px;
+
   padding: 20px;
+
   border-radius: 16px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  overflow: hidden;
 }
 
 .activity-history-list h3 {
@@ -834,30 +1409,169 @@ a {
 
 .attempt-history-items {
   display: flex;
+
   flex-direction: column;
+
   gap: 8px;
 }
 
 .attempt-history-item {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 12px;
+
   padding: 12px 14px;
+
   border-radius: 10px;
-  background: #f9fafb;
+
+  background: var(--surface-alt);
+
+  min-width: 0;
 }
 
 .attempt-number {
   font-weight: 700;
+
+  flex-shrink: 0;
 }
 
 .attempt-date {
-  color: #6b7280;
+  color: var(--muted);
+
   font-size: 14px;
+
+  overflow-wrap: anywhere;
+
+  text-align: right;
 }
 
-@media (max-width: 600px) {
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(
+    37,
+    99,
+    235,
+    0.30
+  );
+
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  #main-content,
+  .app-main {
+    padding:
+      22px
+      18px
+      36px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  #main-content,
+  .app-main {
+    padding:
+      18px
+      14px
+      30px;
+  }
+
+  .app-brand {
+    padding:
+      15px
+      14px;
+  }
+
+  .welcome-card {
+    padding: 22px;
+  }
+
+  .welcome-card h2 {
+    font-size: 1.35rem;
+  }
+
+  .book-list,
+  .book-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .lesson-module-grid,
+  .learning-module-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-detail,
+  .activity-detail {
+    max-width: 100%;
+  }
+
+  .lesson-completion-card {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .completion-button {
+    width: 100%;
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .dashboard-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .dashboard-card {
+    padding: 0.9rem;
+  }
+
+  .dashboard-value {
+    font-size: 1.35rem;
+  }
+
+  .progress-card-header {
+    align-items: flex-start;
+  }
+
+  .progress-card-header strong {
+    font-size: 1.2rem;
+  }
 
   .activity-attempt-header {
     align-items: flex-start;
@@ -873,7 +1587,47 @@ a {
 
   .attempt-history-item {
     align-items: flex-start;
+
     flex-direction: column;
+  }
+
+  .attempt-date {
+    text-align: left;
+  }
+
+  .book-card {
+    padding: 18px;
+  }
+
+}
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 360px) {
+
+  #main-content,
+  .app-main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .app-brand {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .dashboard-grid {
+    gap: 6px;
+  }
+
+  .dashboard-card {
+    padding: 0.7rem;
+  }
+
+  .dashboard-value {
+    font-size: 1.15rem;
   }
 
 }
