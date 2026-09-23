@@ -765,3 +765,115 @@ a {
   }
 
 }
+/* =========================================================
+   ACTIVITY ATTEMPT HISTORY
+========================================================= */
+
+.activity-attempt-card {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.activity-attempt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.activity-attempt-header h3 {
+  margin: 0 0 6px;
+}
+
+.activity-attempt-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.activity-attempt-count {
+  min-width: 48px;
+  height: 48px;
+  padding: 0 12px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.activity-last-attempt {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.activity-last-attempt span {
+  color: #6b7280;
+  text-align: right;
+}
+
+.activity-history-list {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.activity-history-list h3 {
+  margin-top: 0;
+}
+
+.attempt-history-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attempt-history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f9fafb;
+}
+
+.attempt-number {
+  font-weight: 700;
+}
+
+.attempt-date {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+
+  .activity-attempt-header {
+    align-items: flex-start;
+  }
+
+  .activity-last-attempt {
+    flex-direction: column;
+  }
+
+  .activity-last-attempt span {
+    text-align: left;
+  }
+
+  .attempt-history-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+}
