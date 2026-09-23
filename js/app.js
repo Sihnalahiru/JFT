@@ -1,8 +1,3 @@
-/* =========================================================
-   IRODORI MASTER PWA
-   Main Application
-========================================================= */
-
 const BOOKS_FILE = "./data/books.json";
 const LESSONS_FILE = "./data/lessons.json";
 const AUDIO_MAIN_FILE = "./data/audio-main.json";
@@ -32,26 +27,44 @@ const BOOK_KEY_ALIASES = {
   pre_intermediate: "pre-intermediate"
 };
 
+
 let books = [];
 let lessons = [];
 let canDos = {};
 let mainAudioRecords = [];
 
 
+document.addEventListener(
+  "DOMContentLoaded",
+  initializeApp
+);
+
+
 /* =========================================================
    INITIALIZATION
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", initializeApp);
-
 async function initializeApp() {
+
   try {
+
     await loadAllData();
+
     renderDashboard();
+
   } catch (error) {
-    console.error("IRODORI Master initialization error:", error);
-    showError("Unable to load IRODORI Master data.");
+
+    console.error(
+      "IRODORI Master initialization error:",
+      error
+    );
+
+    showError(
+      "Unable to load IRODORI Master data."
+    );
+
   }
+
 }
 
 
@@ -60,96 +73,236 @@ async function initializeApp() {
 ========================================================= */
 
 async function loadAllData() {
-  const options = {
-    cache: "no-store"
-  };
 
-  const [booksResponse, lessonsResponse] = await Promise.all([
-    fetch(BOOKS_FILE, options),
-    fetch(LESSONS_FILE, options)
-  ]);
-
-  if (!booksResponse.ok) {
-    throw new Error("Unable to load books.json");
-  }
-
-  if (!lessonsResponse.ok) {
-    throw new Error("Unable to load lessons.json");
-  }
-
-  const booksData = await booksResponse.json();
-  const lessonsData = await lessonsResponse.json();
-
-  books = Array.isArray(booksData)
-    ? booksData
-    : Array.isArray(booksData.books)
-      ? booksData.books
-      : [];
-
-  lessons = Array.isArray(lessonsData)
-    ? lessonsData
-    : Array.isArray(lessonsData.lessons)
-      ? lessonsData.lessons
-      : [];
-
-  await Promise.all(
-    Object.entries(CANDO_FILES).map(
-      async ([key, file]) => {
-        try {
-          const response = await fetch(file, options);
-
-          if (!response.ok) {
-            canDos[key] = [];
-            return;
-          }
-
-          const data = await response.json();
-
-          if (Array.isArray(data)) {
-            canDos[key] = data;
-          } else if (Array.isArray(data.canDos)) {
-            canDos[key] = data.canDos;
-          } else if (Array.isArray(data.activities)) {
-            canDos[key] = data.activities;
-          } else {
-            canDos[key] = [];
-          }
-        } catch (error) {
-          console.warn("Unable to load:", file, error);
-          canDos[key] = [];
-        }
+  const booksResponse =
+    await fetch(
+      BOOKS_FILE,
+      {
+        cache: "no-store"
       }
-    )
-  );
-
-  /* Main Lesson Audio dataset */
-  try {
-    const response = await fetch(
-      AUDIO_MAIN_FILE,
-      options
     );
 
-    if (response.ok) {
-      const data = await response.json();
-
-      if (Array.isArray(data)) {
-        mainAudioRecords = data;
-      } else if (Array.isArray(data.records)) {
-        mainAudioRecords = data.records;
-      } else {
-        mainAudioRecords = [];
+  const lessonsResponse =
+    await fetch(
+      LESSONS_FILE,
+      {
+        cache: "no-store"
       }
+    );
+
+
+  if (!booksResponse.ok) {
+
+    throw new Error(
+      "Unable to load books.json"
+    );
+
+  }
+
+
+  if (!lessonsResponse.ok) {
+
+    throw new Error(
+      "Unable to load lessons.json"
+    );
+
+  }
+
+
+  const booksData =
+    await booksResponse.json();
+
+  const lessonsData =
+    await lessonsResponse.json();
+
+
+  /* -------------------------------------------------------
+     MAIN AUDIO DATA
+  ------------------------------------------------------- */
+
+  try {
+
+    const audioResponse =
+      await fetch(
+        AUDIO_MAIN_FILE,
+        {
+          cache: "no-store"
+        }
+      );
+
+
+    if (audioResponse.ok) {
+
+      const audioData =
+        await audioResponse.json();
+
+
+      if (
+        Array.isArray(
+          audioData
+        )
+      ) {
+
+        mainAudioRecords =
+          audioData;
+
+      } else if (
+        Array.isArray(
+          audioData.records
+        )
+      ) {
+
+        mainAudioRecords =
+          audioData.records;
+
+      } else {
+
+        mainAudioRecords =
+          [];
+
+      }
+
     } else {
-      mainAudioRecords = [];
+
+      mainAudioRecords =
+        [];
+
     }
+
   } catch (error) {
+
     console.warn(
-      "Unable to load audio-main.json",
+      `Unable to load main audio file: ${AUDIO_MAIN_FILE}`,
       error
     );
 
-    mainAudioRecords = [];
+    mainAudioRecords =
+      [];
+
   }
+
+
+  /* -------------------------------------------------------
+     BOOKS
+  ------------------------------------------------------- */
+
+  books =
+    Array.isArray(
+      booksData
+    )
+      ? booksData
+      : Array.isArray(
+          booksData.books
+        )
+        ? booksData.books
+        : [];
+
+
+  /* -------------------------------------------------------
+     LESSONS
+  ------------------------------------------------------- */
+
+  lessons =
+    Array.isArray(
+      lessonsData
+    )
+      ? lessonsData
+      : Array.isArray(
+          lessonsData.lessons
+        )
+        ? lessonsData.lessons
+        : [];
+
+
+  /* -------------------------------------------------------
+     CAN-DO DATA
+  ------------------------------------------------------- */
+
+  await Promise.all(
+
+    Object.entries(
+      CANDO_FILES
+    ).map(
+      async (
+        [key, file]
+      ) => {
+
+        try {
+
+          const response =
+            await fetch(
+              file,
+              {
+                cache: "no-store"
+              }
+            );
+
+
+          if (!response.ok) {
+
+            canDos[key] =
+              [];
+
+            return;
+
+          }
+
+
+          const data =
+            await response.json();
+
+
+          if (
+            Array.isArray(
+              data
+            )
+          ) {
+
+            canDos[key] =
+              data;
+
+          } else if (
+            Array.isArray(
+              data.canDos
+            )
+          ) {
+
+            canDos[key] =
+              data.canDos;
+
+          } else if (
+            Array.isArray(
+              data.activities
+            )
+          ) {
+
+            canDos[key] =
+              data.activities;
+
+          } else {
+
+            canDos[key] =
+              [];
+
+          }
+
+        } catch (error) {
+
+          console.warn(
+            `Unable to load Can-do file: ${file}`,
+            error
+          );
+
+          canDos[key] =
+            [];
+
+        }
+
+      }
+    )
+
+  );
+
 }
 
 
@@ -158,110 +311,178 @@ async function loadAllData() {
 ========================================================= */
 
 function renderDashboard() {
-  const main = document.querySelector(".app-main");
 
-  if (!main) return;
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
+
+
+  if (!main) {
+
+    return;
+
+  }
+
 
   main.innerHTML = `
+
     <section class="dashboard-section">
 
       <div class="welcome-card">
+
         <div class="welcome-content">
-          <h2>IRODORI Master</h2>
+
+          <h2>
+            IRODORI Master
+          </h2>
+
           <p>
             Japanese learning platform based on
             the official IRODORI curriculum.
           </p>
+
         </div>
+
       </div>
+
 
       <div class="dashboard-grid">
 
         <div class="dashboard-card">
-          <div class="dashboard-icon">📚</div>
+
+          <div class="dashboard-icon">
+            📚
+          </div>
+
           <div
             class="dashboard-value"
             data-dashboard-books
           >
             0 / 4
           </div>
+
           <div class="dashboard-label">
             Books
           </div>
+
         </div>
 
+
         <div class="dashboard-card">
-          <div class="dashboard-icon">📖</div>
+
+          <div class="dashboard-icon">
+            📖
+          </div>
+
           <div
             class="dashboard-value"
             data-dashboard-lessons
           >
             0 / 72
           </div>
+
           <div class="dashboard-label">
             Lessons
           </div>
+
         </div>
 
+
         <div class="dashboard-card">
-          <div class="dashboard-icon">🎯</div>
+
+          <div class="dashboard-icon">
+            🎯
+          </div>
+
           <div
             class="dashboard-value"
             data-dashboard-activities
           >
             0 / 288
           </div>
+
           <div class="dashboard-label">
             Can-do / Activities
           </div>
+
         </div>
 
+
         <div class="dashboard-card">
-          <div class="dashboard-icon">漢</div>
+
+          <div class="dashboard-icon">
+            漢
+          </div>
+
           <div
             class="dashboard-value"
             data-dashboard-kanji
           >
             0 / 644
           </div>
+
           <div class="dashboard-label">
             Kanji
           </div>
+
         </div>
 
       </div>
+
 
       <div class="progress-card">
 
         <div class="progress-card-header">
+
           <div>
-            <h3>Overall Progress</h3>
+
+            <h3>
+              Overall Progress
+            </h3>
+
             <p>
               Your unique learning completion progress.
             </p>
+
           </div>
 
-          <strong data-progress-overall>
+          <strong
+            data-progress-overall
+          >
             0%
           </strong>
+
         </div>
 
+
         <div class="progress-track">
+
           <div
             class="progress-bar"
             data-progress-bar
-            style="width:0%"
+            style="width: 0%;"
           ></div>
+
         </div>
 
       </div>
 
+
       <section class="books-section">
 
         <div class="section-heading">
-          <h2>IRODORI Books</h2>
-          <p>Select a book to continue learning.</p>
+
+          <h2>
+            IRODORI Books
+          </h2>
+
+          <p>
+            Select a book to continue learning.
+          </p>
+
         </div>
+
 
         <div
           id="book-list"
@@ -271,122 +492,194 @@ function renderDashboard() {
       </section>
 
     </section>
+
   `;
 
+
   renderBooks();
+
   updateProgressUI();
+
 }
 
 
 /* =========================================================
-   PROGRESS
+   PROGRESS UI
 ========================================================= */
 
-function getProgressSummary() {
-  if (!window.IrodoriProgress) {
-    return null;
+function updateProgressUI() {
+
+  if (
+    !window.IrodoriProgress
+  ) {
+
+    return;
+
   }
+
+
+  let summary =
+    null;
+
 
   if (
     typeof window.IrodoriProgress.getSummary ===
     "function"
   ) {
-    return window.IrodoriProgress.getSummary();
-  }
 
-  if (
+    summary =
+      window.IrodoriProgress.getSummary();
+
+  } else if (
     typeof window.IrodoriProgress.getProgressSummary ===
     "function"
   ) {
-    return window.IrodoriProgress.getProgressSummary();
+
+    summary =
+      window.IrodoriProgress.getProgressSummary();
+
   }
 
-  return null;
-}
+
+  if (!summary) {
+
+    return;
+
+  }
 
 
-function updateProgressUI() {
-  const summary = getProgressSummary();
-
-  if (!summary) return;
-
-  const booksCompleted =
+  const completedBooks =
     summary.completedBooks ??
     summary.books ??
     0;
 
-  const lessonsCompleted =
+
+  const completedLessons =
     summary.completedLessons ??
     summary.lessons ??
     0;
 
-  const activitiesCompleted =
+
+  const completedActivities =
     summary.completedActivities ??
     summary.activities ??
     0;
 
-  const kanjiCompleted =
+
+  const completedKanji =
     summary.completedKanji ??
     summary.kanji ??
     0;
 
-  const overall =
+
+  const totalBooks =
+    summary.totalBooks ??
+    4;
+
+
+  const totalLessons =
+    summary.totalLessons ??
+    72;
+
+
+  const totalActivities =
+    summary.totalActivities ??
+    288;
+
+
+  const totalKanji =
+    summary.totalKanji ??
+    644;
+
+
+  const overallPercentage =
     summary.overallPercentage ??
     0;
 
-  const books = document.querySelector(
-    "[data-dashboard-books]"
-  );
 
-  const lessonElement = document.querySelector(
-    "[data-dashboard-lessons]"
-  );
+  const booksElement =
+    document.querySelector(
+      "[data-dashboard-books]"
+    );
 
-  const activities = document.querySelector(
-    "[data-dashboard-activities]"
-  );
 
-  const kanji = document.querySelector(
-    "[data-dashboard-kanji]"
-  );
+  const lessonsElement =
+    document.querySelector(
+      "[data-dashboard-lessons]"
+    );
 
-  const percentage = document.querySelector(
-    "[data-progress-overall]"
-  );
 
-  const bar = document.querySelector(
-    "[data-progress-bar]"
-  );
+  const activitiesElement =
+    document.querySelector(
+      "[data-dashboard-activities]"
+    );
 
-  if (books) {
-    books.textContent =
-      `${booksCompleted} / 4`;
+
+  const kanjiElement =
+    document.querySelector(
+      "[data-dashboard-kanji]"
+    );
+
+
+  const overallElement =
+    document.querySelector(
+      "[data-progress-overall]"
+    );
+
+
+  const progressBar =
+    document.querySelector(
+      "[data-progress-bar]"
+    );
+
+
+  if (booksElement) {
+
+    booksElement.textContent =
+      `${completedBooks} / ${totalBooks}`;
+
   }
 
-  if (lessonElement) {
-    lessonElement.textContent =
-      `${lessonsCompleted} / 72`;
+
+  if (lessonsElement) {
+
+    lessonsElement.textContent =
+      `${completedLessons} / ${totalLessons}`;
+
   }
 
-  if (activities) {
-    activities.textContent =
-      `${activitiesCompleted} / 288`;
+
+  if (activitiesElement) {
+
+    activitiesElement.textContent =
+      `${completedActivities} / ${totalActivities}`;
+
   }
 
-  if (kanji) {
-    kanji.textContent =
-      `${kanjiCompleted} / 644`;
+
+  if (kanjiElement) {
+
+    kanjiElement.textContent =
+      `${completedKanji} / ${totalKanji}`;
+
   }
 
-  if (percentage) {
-    percentage.textContent =
-      `${overall}%`;
+
+  if (overallElement) {
+
+    overallElement.textContent =
+      `${overallPercentage}%`;
+
   }
 
-  if (bar) {
-    bar.style.width =
-      `${overall}%`;
+
+  if (progressBar) {
+
+    progressBar.style.width =
+      `${overallPercentage}%`;
+
   }
+
 }
 
 
@@ -395,66 +688,136 @@ function updateProgressUI() {
 ========================================================= */
 
 function renderBooks() {
-  const container =
-    document.querySelector("#book-list");
 
-  if (!container) return;
+  const container =
+    document.querySelector(
+      "#book-list"
+    );
+
+
+  if (!container) {
+
+    return;
+
+  }
+
 
   if (!books.length) {
+
     container.innerHTML = `
+
       <div class="pending-card">
+
         <p class="pending-text">
           No book data available.
         </p>
+
       </div>
+
     `;
 
     return;
+
   }
 
-  container.innerHTML = books
-    .map(
-      (book, index) =>
-        renderBookCard(book, index)
-    )
-    .join("");
+
+  container.innerHTML =
+    books
+      .map(
+        (
+          book,
+          index
+        ) =>
+          renderBookCard(
+            book,
+            index
+          )
+      )
+      .join("");
+
 
   container
-    .querySelectorAll("[data-book-index]")
-    .forEach(button => {
-      button.addEventListener(
-        "click",
-        () => {
-          const index =
-            Number(
-              button.dataset.bookIndex
-            );
+    .querySelectorAll(
+      "[data-book-index]"
+    )
+    .forEach(
+      (
+        button
+      ) => {
 
-          if (books[index]) {
-            openBook(books[index]);
+        button.addEventListener(
+          "click",
+          () => {
+
+            const index =
+              Number(
+                button.dataset.bookIndex
+              );
+
+
+            if (
+              Number.isNaN(
+                index
+              )
+            ) {
+
+              return;
+
+            }
+
+
+            const book =
+              books[index];
+
+
+            if (book) {
+
+              openBook(
+                book
+              );
+
+            }
+
           }
-        }
-      );
-    });
+        );
+
+      }
+    );
+
 }
 
 
-function renderBookCard(book, index) {
+/* =========================================================
+   BOOK CARD
+========================================================= */
+
+function renderBookCard(
+  book,
+  index
+) {
+
   const title =
     book.title ||
     book.name ||
     book.bookTitle ||
     `Book ${index + 1}`;
 
+
   const description =
     book.description ||
     book.subtitle ||
+    book.level ||
     "";
 
+
   const lessonCount =
-    findLessonsForBook(book).length;
+    findLessonsForBook(
+      book
+    ).length;
+
 
   return `
+
     <button
       type="button"
       class="book-card-button"
@@ -463,8 +826,8 @@ function renderBookCard(book, index) {
 
       <div class="book-card">
 
-        <div class="book-card-number">
-          ${index + 1}
+        <div class="book-card-icon">
+          📘
         </div>
 
         <div class="book-card-content">
@@ -483,16 +846,22 @@ function renderBookCard(book, index) {
               : ""
           }
 
-          <small>
-            ${lessonCount} lessons
-          </small>
+          <div class="book-card-meta">
+
+            <span>
+              📖 ${lessonCount} lessons
+            </span>
+
+          </div>
 
         </div>
 
       </div>
 
     </button>
+
   `;
+
 }
 
 
@@ -500,11 +869,22 @@ function renderBookCard(book, index) {
    BOOK DETAIL
 ========================================================= */
 
-function openBook(book) {
-  const main =
-    document.querySelector(".app-main");
+function openBook(
+  book
+) {
 
-  if (!main) return;
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
+
+
+  if (!main) {
+
+    return;
+
+  }
+
 
   const title =
     book.title ||
@@ -512,15 +892,20 @@ function openBook(book) {
     book.bookTitle ||
     "IRODORI Book";
 
+
   const bookLessons =
-    findLessonsForBook(book)
-      .slice()
-      .sort(compareLessons);
+    findLessonsForBook(
+      book
+    ).sort(
+      compareLessons
+    );
+
 
   main.innerHTML = `
-    <section class="lesson-view">
 
-      <div class="lesson-detail">
+    <section class="book-view">
+
+      <div class="book-detail">
 
         <button
           type="button"
@@ -530,81 +915,144 @@ function openBook(book) {
           ← Back to Books
         </button>
 
-        <div class="lesson-detail-card">
+
+        <div class="book-detail-card">
+
+          <div class="book-detail-icon">
+            📘
+          </div>
+
+          <div>
+
+            <h2>
+              ${escapeHtml(title)}
+            </h2>
+
+            <p>
+              ${bookLessons.length}
+              lessons
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-heading">
 
           <h2>
-            ${escapeHtml(title)}
+            Lessons
           </h2>
 
           <p>
-            ${bookLessons.length}
-            lesson${bookLessons.length === 1 ? "" : "s"}
+            Select a lesson to continue.
           </p>
 
         </div>
 
-        <div class="lesson-grid">
 
-          ${
-            bookLessons.length
-              ? bookLessons
+        ${
+          bookLessons.length
+            ? `
+              <div class="lesson-grid">
+
+                ${bookLessons
                   .map(
-                    (lesson, index) =>
+                    (
+                      lesson,
+                      index
+                    ) =>
                       renderLessonCard(
                         lesson,
+                        book,
                         index
                       )
                   )
-                  .join("")
-              : `
-                <div class="pending-card">
-                  <p class="pending-text">
-                    No verified lesson relationship
-                    found for this book.
-                  </p>
-                </div>
-              `
-          }
+                  .join("")}
 
-        </div>
+              </div>
+            `
+            : `
+              <div class="pending-card">
+
+                <p class="pending-text">
+
+                  No verified lesson relationship
+                  found for this book.
+
+                </p>
+
+              </div>
+            `
+        }
 
       </div>
 
     </section>
+
   `;
 
+
   document
-    .querySelector("#back-to-dashboard")
+    .querySelector(
+      "#back-to-dashboard"
+    )
     ?.addEventListener(
       "click",
-      renderDashboard
+      () =>
+        renderDashboard()
     );
 
-  document
-    .querySelectorAll("[data-lesson-index]")
-    .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+  main
+    .querySelectorAll(
+      "[data-lesson-index]"
+    )
+    .forEach(
+      (
+        button
+      ) => {
 
-          const index =
-            Number(
-              button.dataset.lessonIndex
-            );
+        button.addEventListener(
+          "click",
+          () => {
 
-          const lesson =
-            bookLessons[index];
+            const index =
+              Number(
+                button.dataset.lessonIndex
+              );
 
-          if (lesson) {
-            openLesson(
-              lesson,
-              book
-            );
+
+            if (
+              Number.isNaN(
+                index
+              )
+            ) {
+
+              return;
+
+            }
+
+
+            const lesson =
+              bookLessons[index];
+
+
+            if (lesson) {
+
+              openLesson(
+                lesson,
+                book
+              );
+
+            }
+
           }
-        }
-      );
-    });
+        );
+
+      }
+    );
+
 }
 
 
@@ -614,58 +1062,106 @@ function openBook(book) {
 
 function renderLessonCard(
   lesson,
+  book,
   index
 ) {
-  const number =
-    getLessonNumber(lesson);
+
+  const lessonNumber =
+    getLessonNumber(
+      lesson
+    );
+
+
+  const lessonId =
+    getLessonId(
+      lesson
+    );
+
 
   const title =
     lesson.title ||
     lesson.name ||
     lesson.lessonTitle ||
-    `Lesson ${number}`;
+    `Lesson ${lessonNumber}`;
 
-  const lessonId =
-    getLessonId(lesson);
+
+  const lessonCanDos =
+    findCanDosForLesson(
+      lesson,
+      book
+    );
+
+
+  const audioCount =
+    getMainAudioRecordsForLesson(
+      lesson,
+      book
+    ).length;
+
 
   const completed =
-    isLessonComplete(lessonId);
+    isLessonComplete(
+      lessonId
+    );
+
 
   return `
+
     <button
       type="button"
       class="lesson-card-button"
       data-lesson-index="${index}"
     >
 
-      <div class="lesson-card">
+      <article class="lesson-card">
 
-        <div class="lesson-number">
-          ${escapeHtml(String(number))}
+        <div class="lesson-card-number">
+          ${escapeHtml(
+            String(
+              lessonNumber
+            )
+          )}
         </div>
 
         <div class="lesson-card-content">
 
-          <h3 class="lesson-title">
+          <h3>
             ${escapeHtml(title)}
           </h3>
+
+          <div class="lesson-card-meta">
+
+            <span>
+              🎯 ${lessonCanDos.length}
+              activities
+            </span>
+
+            <span>
+              🔊 ${audioCount}
+              audio
+            </span>
+
+          </div>
+
 
           ${
             completed
               ? `
-                <span class="completion-badge">
+                <div class="completion-badge">
                   ✓ Completed
-                </span>
+                </div>
               `
               : ""
           }
 
         </div>
 
-      </div>
+      </article>
 
     </button>
+
   `;
+
 }
 
 
@@ -677,16 +1173,31 @@ function openLesson(
   lesson,
   book
 ) {
-  const main =
-    document.querySelector(".app-main");
 
-  if (!main) return;
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
+
+
+  if (!main) {
+
+    return;
+
+  }
+
 
   const lessonNumber =
-    getLessonNumber(lesson);
+    getLessonNumber(
+      lesson
+    );
+
 
   const lessonId =
-    getLessonId(lesson);
+    getLessonId(
+      lesson
+    );
+
 
   const title =
     lesson.title ||
@@ -694,19 +1205,35 @@ function openLesson(
     lesson.lessonTitle ||
     `Lesson ${lessonNumber}`;
 
-  const activities =
+
+  const lessonCanDos =
     findCanDosForLesson(
       lesson,
       book
     );
 
-  const completed =
-    isLessonComplete(lessonId);
 
-  const attempts =
-    getLessonAttemptCount(lessonId);
+  const audioRecords =
+    getMainAudioRecordsForLesson(
+      lesson,
+      book
+    );
+
+
+  const completed =
+    isLessonComplete(
+      lessonId
+    );
+
+
+  const attemptCount =
+    getLessonAttemptCount(
+      lessonId
+    );
+
 
   main.innerHTML = `
+
     <section class="lesson-view">
 
       <div class="lesson-detail">
@@ -719,6 +1246,7 @@ function openLesson(
           ← Back to Book
         </button>
 
+
         <div class="lesson-detail-card">
 
           <h2>
@@ -726,12 +1254,16 @@ function openLesson(
           </h2>
 
           <p>
-            Lesson ${escapeHtml(
-              String(lessonNumber)
+            Lesson
+            ${escapeHtml(
+              String(
+                lessonNumber
+              )
             )}
           </p>
 
         </div>
+
 
         <div class="learning-module-grid">
 
@@ -752,17 +1284,19 @@ function openLesson(
               </h3>
 
               <p>
-                ${activities.length}
-                verified activit${
-                  activities.length === 1
-                    ? "y"
-                    : "ies"
+                ${lessonCanDos.length}
+                verified activity
+                ${
+                  lessonCanDos.length === 1
+                    ? ""
+                    : " records"
                 }
               </p>
 
             </div>
 
           </button>
+
 
           <div class="learning-module pending-card">
 
@@ -772,7 +1306,9 @@ function openLesson(
 
             <div class="module-content">
 
-              <h3>Vocabulary</h3>
+              <h3>
+                Vocabulary
+              </h3>
 
               <p>
                 Pending — source integration
@@ -782,10 +1318,39 @@ function openLesson(
 
           </div>
 
-          ${renderMainAudioModule(
-            lesson,
-            book
-          )}
+
+          <button
+            type="button"
+            class="learning-module"
+            id="module-main-audio"
+          >
+
+            <div class="module-icon">
+              🔊
+            </div>
+
+            <div class="module-content">
+
+              <h3>
+                Main Lesson Audio
+              </h3>
+
+              <p>
+                ${
+                  audioRecords.length
+                }
+                verified audio record
+                ${
+                  audioRecords.length === 1
+                    ? ""
+                    : "s"
+                }
+              </p>
+
+            </div>
+
+          </button>
+
 
           <div class="learning-module pending-card">
 
@@ -808,6 +1373,7 @@ function openLesson(
 
           </div>
 
+
           <div class="learning-module pending-card">
 
             <div class="module-icon">
@@ -816,7 +1382,9 @@ function openLesson(
 
             <div class="module-content">
 
-              <h3>Practice</h3>
+              <h3>
+                Practice
+              </h3>
 
               <p>
                 Practice engine pending
@@ -827,6 +1395,7 @@ function openLesson(
           </div>
 
         </div>
+
 
         <div class="lesson-completion-card">
 
@@ -849,13 +1418,16 @@ function openLesson(
             </p>
 
             ${
-              attempts
+              attemptCount > 0
                 ? `
                   <p>
+
                     <strong>
                       Study attempts:
                     </strong>
-                    ${attempts}
+
+                    ${attemptCount}
+
                   </p>
                 `
                 : ""
@@ -863,35 +1435,47 @@ function openLesson(
 
           </div>
 
+
           <button
             type="button"
             class="completion-button"
             id="lesson-complete-button"
-            ${lessonId ? "" : "disabled"}
+            ${
+              lessonId
+                ? ""
+                : "disabled"
+            }
           >
+
             ${
               completed
                 ? "✓ Completed — Study Again"
                 : "Mark Lesson Complete"
             }
+
           </button>
 
         </div>
 
+
         ${
-          activities.length
+          lessonCanDos.length
             ? `
+
               <div class="can-do-section">
 
                 <div class="section-heading">
+
                   <h2>
                     Can-do / Activities
                   </h2>
+
                 </div>
+
 
                 <div class="can-do-list">
 
-                  ${activities
+                  ${lessonCanDos
                     .map(
                       renderCanDoCard
                     )
@@ -900,6 +1484,7 @@ function openLesson(
                 </div>
 
               </div>
+
             `
             : ""
         }
@@ -907,97 +1492,545 @@ function openLesson(
       </div>
 
     </section>
+
   `;
 
-  document
-    .querySelector("#back-to-book")
-    ?.addEventListener(
-      "click",
-      () => openBook(book)
-    );
 
   document
-    .querySelector("#module-can-do")
+    .querySelector(
+      "#back-to-book"
+    )
+    ?.addEventListener(
+      "click",
+      () =>
+        openBook(book)
+    );
+
+
+  document
+    .querySelector(
+      "#module-can-do"
+    )
     ?.addEventListener(
       "click",
       () => {
 
-        if (activities.length) {
+        if (
+          lessonCanDos.length
+        ) {
+
           openActivity(
-            activities[0],
+            lessonCanDos[0],
             lesson,
             book
           );
+
         }
 
       }
     );
 
+
   document
-    .querySelector("#lesson-complete-button")
+    .querySelector(
+      "#module-main-audio"
+    )
+    ?.addEventListener(
+      "click",
+      () =>
+        openMainLessonAudio(
+          lesson,
+          book
+        )
+    );
+
+
+  document
+    .querySelector(
+      "#lesson-complete-button"
+    )
     ?.addEventListener(
       "click",
       () => {
 
         if (
           lessonId &&
-          window.IrodoriProgress &&
-          typeof
-            window.IrodoriProgress.markLessonComplete ===
-            "function"
+          window.IrodoriProgress
         ) {
-          window.IrodoriProgress.markLessonComplete(
-            lessonId
-          );
+
+          if (
+            typeof window.IrodoriProgress
+              .markLessonComplete ===
+            "function"
+          ) {
+
+            window.IrodoriProgress
+              .markLessonComplete(
+                lessonId
+              );
+
+          }
+
         }
+
 
         openLesson(
           lesson,
           book
         );
+
       }
     );
 
-  document
-    .querySelectorAll("[data-activity-id]")
-    .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+  main
+    .querySelectorAll(
+      "[data-activity-id]"
+    )
+    .forEach(
+      (
+        button
+      ) => {
 
-          const id =
-            button.dataset.activityId;
+        button.addEventListener(
+          "click",
+          () => {
 
-          const activity =
-            activities.find(
-              item =>
-                String(
-                  getActivityId(item)
-                ) === String(id)
-            );
+            const activityId =
+              button.dataset.activityId;
 
-          if (activity) {
-            openActivity(
-              activity,
-              lesson,
-              book
-            );
+
+            const activity =
+              lessonCanDos.find(
+                (
+                  item
+                ) =>
+                  String(
+                    getActivityId(
+                      item
+                    )
+                  ) ===
+                  String(
+                    activityId
+                  )
+              );
+
+
+            if (activity) {
+
+              openActivity(
+                activity,
+                lesson,
+                book
+              );
+
+            }
+
           }
+        );
 
-        }
-      );
-    });
+      }
+    );
+
 }
 
 
 /* =========================================================
-   CAN-DO
+   MAIN LESSON AUDIO
 ========================================================= */
 
-function renderCanDoCard(activity) {
+function getMainAudioRecordsForLesson(
+  lesson,
+  book
+) {
+
+  const lessonNumber =
+    getLessonNumber(
+      lesson
+    );
+
+
+  const lessonId =
+    getLessonId(
+      lesson
+    );
+
+
+  const bookKey =
+    getBookKey(
+      book
+    );
+
+
+  return mainAudioRecords
+    .filter(
+      (
+        record
+      ) => {
+
+        if (
+          !record ||
+          !record.url
+        ) {
+
+          return false;
+
+        }
+
+
+        const recordLessonId =
+          record.lessonId == null
+            ? ""
+            : String(
+                record.lessonId
+              );
+
+
+        const recordLessonNumber =
+          record.lessonNumber == null
+            ? ""
+            : String(
+                record.lessonNumber
+              );
+
+
+        const recordBookId =
+          record.bookId == null
+            ? ""
+            : String(
+                record.bookId
+              );
+
+
+        const recordBookKey =
+          getBookKey(
+            {
+              bookId:
+                recordBookId
+            }
+          );
+
+
+        const lessonMatches =
+          (
+            lessonId &&
+            recordLessonId ===
+              String(
+                lessonId
+              )
+          ) ||
+          (
+            recordLessonNumber &&
+            recordLessonNumber ===
+              String(
+                lessonNumber
+              )
+          );
+
+
+        const bookMatches =
+          !recordBookId ||
+          recordBookId ===
+            String(
+              book?.bookId ||
+              ""
+            ) ||
+          recordBookKey ===
+            bookKey;
+
+
+        return (
+          lessonMatches &&
+          bookMatches
+        );
+
+      }
+    )
+    .sort(
+      (
+        a,
+        b
+      ) =>
+        Number(
+          a.index ||
+          a.order ||
+          0
+        ) -
+        Number(
+          b.index ||
+          b.order ||
+          0
+        )
+    );
+
+}
+
+
+/* =========================================================
+   OPEN MAIN LESSON AUDIO
+========================================================= */
+
+function openMainLessonAudio(
+  lesson,
+  book
+) {
+
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
+
+
+  if (!main) {
+
+    return;
+
+  }
+
+
+  const records =
+    getMainAudioRecordsForLesson(
+      lesson,
+      book
+    );
+
+
+  const lessonNumber =
+    getLessonNumber(
+      lesson
+    );
+
+
+  const title =
+    lesson.title ||
+    lesson.name ||
+    lesson.lessonTitle ||
+    `Lesson ${lessonNumber}`;
+
+
+  main.innerHTML = `
+
+    <section class="lesson-view">
+
+      <div class="lesson-detail">
+
+        <button
+          type="button"
+          class="back-button"
+          id="back-to-lesson-from-audio"
+        >
+          ← Back to Lesson
+        </button>
+
+
+        <div class="lesson-detail-card">
+
+          <h2>
+            🎧 Main Lesson Audio
+          </h2>
+
+          <p>
+            ${escapeHtml(title)}
+            —
+            Lesson
+            ${escapeHtml(
+              String(
+                lessonNumber
+              )
+            )}
+          </p>
+
+        </div>
+
+
+        <div class="can-do-section">
+
+          <div class="section-heading">
+
+            <h2>
+              Audio Files
+            </h2>
+
+            <p>
+              Verified official audio records
+            </p>
+
+          </div>
+
+
+          ${
+            records.length
+              ? `
+
+                <div
+                  class="can-do-list"
+                >
+
+                  ${records
+                    .map(
+                      (
+                        record,
+                        index
+                      ) =>
+                        renderAudioRecord(
+                          record,
+                          index
+                        )
+                    )
+                    .join("")}
+
+                </div>
+
+              `
+              : `
+
+                <div class="pending-card">
+
+                  <h3>
+                    No verified audio records available
+                  </h3>
+
+                  <p class="pending-text">
+
+                    This lesson has no direct MP3
+                    records in audio-main.json yet.
+
+                  </p>
+
+                </div>
+
+              `
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+  `;
+
+
+  document
+    .querySelector(
+      "#back-to-lesson-from-audio"
+    )
+    ?.addEventListener(
+      "click",
+      () =>
+        openLesson(
+          lesson,
+          book
+        )
+    );
+
+}
+
+
+/* =========================================================
+   AUDIO RECORD CARD
+========================================================= */
+
+function renderAudioRecord(
+  record,
+  index
+) {
+
+  const filename =
+    record.filename ||
+    record.name ||
+    `Audio ${index + 1}`;
+
+
+  const url =
+    String(
+      record.url ||
+      ""
+    );
+
+
+  const sourcePage =
+    record.sourcePage ||
+    "";
+
+
+  const number =
+    String(
+      record.index ||
+      record.order ||
+      index + 1
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  return `
+
+    <article
+      class="can-do-card audio-record-card"
+    >
+
+      <div class="can-do-card-content">
+
+        <h3>
+
+          ${escapeHtml(number)}.
+
+          ${escapeHtml(filename)}
+
+        </h3>
+
+
+        <audio
+          class="irodori-audio-player"
+          controls
+          preload="none"
+          src="${escapeHtml(url)}"
+        >
+
+          Your browser does not support
+          the audio element.
+
+        </audio>
+
+
+        ${
+          sourcePage
+            ? `
+
+              <p
+                class="audio-source-note"
+              >
+                Official source verified.
+              </p>
+
+            `
+            : ""
+        }
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =========================================================
+   CAN-DO CARD
+========================================================= */
+
+function renderCanDoCard(
+  activity
+) {
+
   const activityId =
-    getActivityId(activity);
+    getActivityId(
+      activity
+    );
+
 
   const title =
     activity.title ||
@@ -1006,43 +2039,75 @@ function renderCanDoCard(activity) {
     activity.label ||
     "Activity";
 
+
   const completed =
-    isActivityComplete(activityId);
+    isActivityComplete(
+      activityId
+    );
+
 
   return `
+
     <button
       type="button"
       class="can-do-card-button"
       data-activity-id="${
         activityId
           ? escapeHtml(
-              String(activityId)
+              activityId
             )
           : ""
       }"
-      ${activityId ? "" : "disabled"}
+      ${
+        activityId
+          ? ""
+          : "disabled"
+      }
     >
 
-      <div class="can-do-card">
+      <article class="can-do-card">
 
-        <div class="can-do-card-title">
-          ${escapeHtml(title)}
+        <div class="can-do-card-content">
+
+          <div
+            class="can-do-status"
+          >
+            ${
+              completed
+                ? "✓ Completed"
+                : "○ Not completed"
+            }
+          </div>
+
+          <h3>
+            ${escapeHtml(title)}
+          </h3>
+
+
+          ${
+            activity.description ||
+            activity.details ||
+            activity.content
+              ? `
+                <p>
+                  ${escapeHtml(
+                    activity.description ||
+                    activity.details ||
+                    activity.content
+                  )}
+                </p>
+              `
+              : ""
+          }
+
         </div>
 
-        ${
-          completed
-            ? `
-              <span class="completion-badge">
-                ✓ Completed
-              </span>
-            `
-            : ""
-        }
-
-      </div>
+      </article>
 
     </button>
+
   `;
+
 }
 
 
@@ -1055,13 +2120,25 @@ function openActivity(
   lesson,
   book
 ) {
-  const main =
-    document.querySelector(".app-main");
 
-  if (!main) return;
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
+
+
+  if (!main) {
+
+    return;
+
+  }
+
 
   const activityId =
-    getActivityId(activity);
+    getActivityId(
+      activity
+    );
+
 
   const title =
     activity.title ||
@@ -1070,11 +2147,13 @@ function openActivity(
     activity.label ||
     "Activity";
 
+
   const description =
     activity.description ||
     activity.details ||
     activity.content ||
     "";
+
 
   const japanese =
     activity.japanese ||
@@ -1082,385 +2161,399 @@ function openActivity(
     activity.ja ||
     "";
 
+
   const english =
     activity.english ||
     activity.en ||
     "";
+
 
   const sinhala =
     activity.sinhala ||
     activity.si ||
     "";
 
+
+  const lessonId =
+    activity.lessonId ||
+    "";
+
+
+  const lessonNumber =
+    activity.lessonNumber ??
+    "";
+
+
   const completed =
-    isActivityComplete(activityId);
+    isActivityComplete(
+      activityId
+    );
+
 
   const attempts =
-    getActivityAttempts(activityId);
+    getActivityAttempts(
+      activityId
+    );
+
 
   main.innerHTML = `
+
     <section class="lesson-view">
 
-      <div class="activity-detail">
+      <div class="lesson-detail">
 
         <button
           type="button"
           class="back-button"
-          id="back-to-lesson"
+          id="back-to-lesson-from-activity"
         >
           ← Back to Lesson
         </button>
 
-        <div class="activity-detail-card">
+
+        <div class="lesson-detail-card">
 
           <h2>
             ${escapeHtml(title)}
           </h2>
 
+          <p>
+            Activity
+          </p>
+
+        </div>
+
+
+        <div class="can-do-section">
+
           ${
             description
               ? `
-                <div class="activity-field">
+                <div class="can-do-card">
 
-                  <h3>Description</h3>
+                  <div class="can-do-card-content">
 
-                  <p>
-                    ${escapeHtml(description)}
-                  </p>
+                    <h3>
+                      Description
+                    </h3>
+
+                    <p>
+                      ${escapeHtml(
+                        description
+                      )}
+                    </p>
+
+                  </div>
 
                 </div>
               `
               : ""
           }
+
 
           ${
             japanese
               ? `
-                <div class="activity-field">
+                <div class="can-do-card">
 
-                  <h3>Japanese</h3>
+                  <div class="can-do-card-content">
 
-                  <p>
-                    ${escapeHtml(japanese)}
-                  </p>
+                    <h3>
+                      Japanese
+                    </h3>
+
+                    <p>
+                      ${escapeHtml(
+                        japanese
+                      )}
+                    </p>
+
+                  </div>
 
                 </div>
               `
               : ""
           }
+
 
           ${
             english
               ? `
-                <div class="activity-field">
+                <div class="can-do-card">
 
-                  <h3>English</h3>
+                  <div class="can-do-card-content">
 
-                  <p>
-                    ${escapeHtml(english)}
-                  </p>
+                    <h3>
+                      English
+                    </h3>
+
+                    <p>
+                      ${escapeHtml(
+                        english
+                      )}
+                    </p>
+
+                  </div>
 
                 </div>
               `
               : ""
           }
+
 
           ${
             sinhala
               ? `
-                <div class="activity-field">
+                <div class="can-do-card">
 
-                  <h3>Sinhala</h3>
+                  <div class="can-do-card-content">
 
-                  <p>
-                    ${escapeHtml(sinhala)}
-                  </p>
+                    <h3>
+                      Sinhala
+                    </h3>
+
+                    <p>
+                      ${escapeHtml(
+                        sinhala
+                      )}
+                    </p>
+
+                  </div>
 
                 </div>
               `
               : ""
           }
 
-        </div>
 
-        <div class="activity-attempt-card">
+          ${
+            lessonId ||
+            lessonNumber
+              ? `
+                <div class="can-do-card">
 
-          <div class="activity-attempt-header">
+                  <div class="can-do-card-content">
+
+                    <h3>
+                      Source Relationship
+                    </h3>
+
+                    ${
+                      lessonId
+                        ? `
+                          <p>
+                            Lesson ID:
+                            ${escapeHtml(
+                              lessonId
+                            )}
+                          </p>
+                        `
+                        : ""
+                    }
+
+                    ${
+                      lessonNumber
+                        ? `
+                          <p>
+                            Lesson Number:
+                            ${escapeHtml(
+                              String(
+                                lessonNumber
+                              )
+                            )}
+                          </p>
+                        `
+                        : ""
+                    }
+
+                  </div>
+
+                </div>
+              `
+              : ""
+          }
+
+
+          <div class="lesson-completion-card">
 
             <div>
 
-              <h3>Practice History</h3>
+              <h3>
+                ${
+                  completed
+                    ? "Activity Completed"
+                    : "Activity Practice"
+                }
+              </h3>
 
               <p>
+
                 ${
-                  attempts.length
-                    ? `${attempts.length} practice attempt${
-                        attempts.length === 1
-                          ? ""
-                          : "s"
-                      } recorded`
-                    : "No practice attempts recorded yet"
+                  completed
+                    ? "You can practice this activity again at any time."
+                    : "Complete this activity when you finish practicing."
                 }
+
               </p>
 
+
+              ${
+                attempts.length
+                  ? `
+                    <p>
+
+                      <strong>
+                        Practice attempts:
+                      </strong>
+
+                      ${attempts.length}
+
+                    </p>
+                  `
+                  : ""
+              }
+
             </div>
 
-            <div class="activity-attempt-count">
-              ${attempts.length}
-            </div>
+
+            <button
+              type="button"
+              class="completion-button"
+              id="activity-complete-button"
+              ${
+                activityId
+                  ? ""
+                  : "disabled"
+              }
+            >
+
+              ${
+                completed
+                  ? "✓ Completed — Practice Again"
+                  : "Mark Activity Complete"
+              }
+
+            </button>
 
           </div>
 
-        </div>
 
-        <div class="lesson-completion-card">
+          ${
+            attempts.length
+              ? `
 
-          <div>
+                <div class="attempt-history">
 
-            <h3>
-              ${
-                completed
-                  ? "Completed"
-                  : "Ready to Practice"
-              }
-            </h3>
+                  <div class="section-heading">
 
-            <p>
-              ${
-                completed
-                  ? "You can practice this activity again at any time."
-                  : "Complete this activity when you finish practicing."
-              }
-            </p>
+                    <h3>
+                      Practice History
+                    </h3>
 
-          </div>
+                  </div>
 
-          <button
-            type="button"
-            class="completion-button"
-            id="activity-complete-button"
-            ${activityId ? "" : "disabled"}
-          >
-            ${
-              completed
-                ? "✓ Completed — Practice Again"
-                : "Mark Activity Complete"
-            }
-          </button>
+
+                  <div class="attempt-history-list">
+
+                    ${attempts
+                      .map(
+                        (
+                          attempt,
+                          index
+                        ) => `
+
+                          <div
+                            class="attempt-history-item"
+                          >
+
+                            <strong>
+                              Attempt
+                              ${index + 1}
+                            </strong>
+
+                            <span>
+                              ${formatAttemptDate(
+                                attempt.timestamp ||
+                                attempt.date ||
+                                attempt.createdAt
+                              )}
+                            </span>
+
+                          </div>
+
+                        `
+                      )
+                      .join("")}
+
+                  </div>
+
+                </div>
+
+              `
+              : ""
+          }
 
         </div>
 
       </div>
 
     </section>
+
   `;
 
-  document
-    .querySelector("#back-to-lesson")
-    ?.addEventListener(
-      "click",
-      () => openLesson(
-        lesson,
-        book
-      )
-    );
 
   document
-    .querySelector("#activity-complete-button")
+    .querySelector(
+      "#back-to-lesson-from-activity"
+    )
+    ?.addEventListener(
+      "click",
+      () =>
+        openLesson(
+          lesson,
+          book
+        )
+    );
+
+
+  document
+    .querySelector(
+      "#activity-complete-button"
+    )
     ?.addEventListener(
       "click",
       () => {
 
         if (
           activityId &&
-          window.IrodoriProgress &&
-          typeof
-            window.IrodoriProgress.markActivityComplete ===
-            "function"
+          window.IrodoriProgress
         ) {
-          window.IrodoriProgress.markActivityComplete(
-            activityId
-          );
+
+          if (
+            typeof window.IrodoriProgress
+              .markActivityComplete ===
+            "function"
+          ) {
+
+            window.IrodoriProgress
+              .markActivityComplete(
+                activityId
+              );
+
+          }
+
         }
+
 
         openActivity(
           activity,
           lesson,
           book
         );
+
       }
     );
-}
 
-
-/* =========================================================
-   MAIN LESSON AUDIO
-========================================================= */
-
-function getOfficialMainAudioPage(
-  lesson,
-  book
-) {
-  const bookKey =
-    getBookKey(book);
-
-  const lessonNumber =
-    Number(
-      getLessonNumber(lesson)
-    );
-
-  if (
-    !bookKey ||
-    !Number.isInteger(lessonNumber) ||
-    lessonNumber < 1 ||
-    lessonNumber > 18
-  ) {
-    return "";
-  }
-
-  const basePaths = {
-    starter:
-      "https://www.irodori.jpf.go.jp/en/starter/audio/lesson",
-
-    "elementary-1":
-      "https://www.irodori.jpf.go.jp/en/elementary01/audio/lesson",
-
-    "elementary-2":
-      "https://www.irodori.jpf.go.jp/en/elementary02/audio/lesson",
-
-    "pre-intermediate":
-      "https://www.irodori.jpf.go.jp/en/pre-intermediate/audio/lesson"
-  };
-
-  const base =
-    basePaths[bookKey];
-
-  if (!base) return "";
-
-  return (
-    base +
-    String(lessonNumber).padStart(2, "0") +
-    ".html"
-  );
-}
-
-
-function getMainAudioRecordsForLesson(
-  lesson,
-  book
-) {
-  if (!Array.isArray(mainAudioRecords)) {
-    return [];
-  }
-
-  const lessonId =
-    getLessonId(lesson);
-
-  const lessonNumber =
-    getLessonNumber(lesson);
-
-  const bookKey =
-    getBookKey(book);
-
-  return mainAudioRecords.filter(
-    record => {
-
-      if (!record || typeof record !== "object") {
-        return false;
-      }
-
-      if (
-        record.lessonId !== undefined &&
-        lessonId &&
-        String(record.lessonId) ===
-          String(lessonId)
-      ) {
-        return true;
-      }
-
-      if (
-        record.lessonNumber !== undefined &&
-        lessonNumber !== undefined
-      ) {
-        if (
-          record.bookId !== undefined
-        ) {
-          return (
-            getBookKey({
-              bookId: record.bookId
-            }) === bookKey &&
-            String(record.lessonNumber) ===
-              String(lessonNumber)
-          );
-        }
-      }
-
-      return false;
-    }
-  );
-}
-
-
-function renderMainAudioModule(
-  lesson,
-  book
-) {
-  const records =
-    getMainAudioRecordsForLesson(
-      lesson,
-      book
-    );
-
-  const officialPage =
-    getOfficialMainAudioPage(
-      lesson,
-      book
-    );
-
-  return `
-    <div class="learning-module audio-module">
-
-      <div class="module-icon">
-        🔊
-      </div>
-
-      <div class="module-content">
-
-        <h3>
-          Main Lesson Audio
-        </h3>
-
-        <p>
-          ${
-            records.length
-              ? `${records.length} verified audio records`
-              : "Official MP3 playback page available"
-          }
-        </p>
-
-        ${
-          officialPage
-            ? `
-              <a
-                class="completion-button"
-                href="${escapeHtml(officialPage)}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ▶ Open Official Audio
-              </a>
-            `
-            : `
-              <small>
-                PENDING — SOURCE VERIFICATION REQUIRED
-              </small>
-            `
-        }
-
-      </div>
-
-    </div>
-  `;
 }
 
 
@@ -1468,10 +2561,23 @@ function renderMainAudioModule(
    BOOK KEY
 ========================================================= */
 
-function getBookKey(book) {
-  if (!book) return "";
+function getBookKey(
+  book
+) {
+
+  if (
+    !book ||
+    typeof book !==
+      "object"
+  ) {
+
+    return "";
+
+  }
+
 
   const candidates = [
+
     book.bookId,
     book.id,
     book.code,
@@ -1481,45 +2587,91 @@ function getBookKey(book) {
     book.bookTitle,
     book.title,
     book.name
+
   ];
 
-  for (const candidate of candidates) {
+
+  for (
+    const candidate
+    of candidates
+  ) {
 
     if (
-      candidate === undefined ||
-      candidate === null
+      candidate ===
+        undefined ||
+      candidate ===
+        null
     ) {
+
       continue;
+
     }
 
-    const key =
-      normalizeBookKey(candidate);
+
+    const normalized =
+      normalizeBookKey(
+        candidate
+      );
+
 
     if (
-      BOOK_KEY_ALIASES[key]
+      BOOK_KEY_ALIASES[
+        normalized
+      ]
     ) {
-      return BOOK_KEY_ALIASES[key];
+
+      return BOOK_KEY_ALIASES[
+        normalized
+      ];
+
     }
+
 
     const compact =
-      key.replace(/[-_]/g, "");
+      normalized.replace(
+        /[-_]/g,
+        ""
+      );
+
 
     if (
-      BOOK_KEY_ALIASES[compact]
+      BOOK_KEY_ALIASES[
+        compact
+      ]
     ) {
-      return BOOK_KEY_ALIASES[compact];
+
+      return BOOK_KEY_ALIASES[
+        compact
+      ];
+
     }
+
   }
 
+
   return "";
+
 }
 
 
-function normalizeBookKey(value) {
-  return String(value)
+/* =========================================================
+   NORMALIZE BOOK KEY
+========================================================= */
+
+function normalizeBookKey(
+  value
+) {
+
+  return String(
+    value
+  )
     .trim()
     .toLowerCase()
-    .replace(/[\s_]+/g, "-");
+    .replace(
+      /[\s_]+/g,
+      "-"
+    );
+
 }
 
 
@@ -1527,17 +2679,26 @@ function normalizeBookKey(value) {
    LESSON MATCHING
 ========================================================= */
 
-function findLessonsForBook(book) {
+function findLessonsForBook(
+  book
+) {
+
   const rawBookId =
     book?.bookId ??
     book?.id ??
     "";
 
+
   const normalizedBookKey =
-    getBookKey(book);
+    getBookKey(
+      book
+    );
+
 
   return lessons.filter(
-    lesson => {
+    (
+      lesson
+    ) => {
 
       const lessonBookId =
         lesson?.bookId ??
@@ -1545,29 +2706,56 @@ function findLessonsForBook(book) {
         lesson?.bookCode ??
         "";
 
+
       if (!lessonBookId) {
+
         return false;
+
       }
+
+
+      /*
+       * PRIMARY MATCH:
+       * exact official book ID.
+       */
 
       if (
-        String(lessonBookId).trim() ===
-        String(rawBookId).trim()
+        String(
+          lessonBookId
+        ).trim() ===
+        String(
+          rawBookId
+        ).trim()
       ) {
+
         return true;
+
       }
 
+
+      /*
+       * SECONDARY MATCH:
+       * normalized master key.
+       */
+
       const lessonKey =
-        getBookKey({
-          bookId: lessonBookId
-        });
+        getBookKey(
+          {
+            bookId:
+              lessonBookId
+          }
+        );
+
 
       return (
         lessonKey &&
         lessonKey ===
           normalizedBookKey
       );
+
     }
   );
+
 }
 
 
@@ -1579,94 +2767,182 @@ function findCanDosForLesson(
   lesson,
   book
 ) {
+
   const bookKey =
-    getBookKey(book);
+    getBookKey(
+      book
+    );
+
 
   const records =
-    canDos[bookKey] || [];
+    canDos[
+      bookKey
+    ] || [];
+
 
   const lessonId =
-    getLessonId(lesson);
+    getLessonId(
+      lesson
+    );
+
 
   const lessonNumber =
-    getLessonNumber(lesson);
+    getLessonNumber(
+      lesson
+    );
+
 
   return records.filter(
-    record => {
+    (
+      record
+    ) => {
+
+      /*
+       * Explicit lesson ID match.
+       */
 
       if (
-        record.lessonId !== undefined &&
-        lessonId !== null &&
-        String(record.lessonId) ===
-          String(lessonId)
+        record.lessonId !==
+          undefined &&
+        lessonId !==
+          null &&
+        String(
+          record.lessonId
+        ) ===
+        String(
+          lessonId
+        )
       ) {
+
         return true;
+
       }
 
+
+      /*
+       * Explicit lesson number match.
+       */
+
       if (
-        record.lessonNumber !== undefined &&
-        lessonNumber !== undefined &&
-        String(record.lessonNumber) ===
-          String(lessonNumber)
+        record.lessonNumber !==
+          undefined &&
+        lessonNumber !==
+          undefined &&
+        String(
+          record.lessonNumber
+        ) ===
+        String(
+          lessonNumber
+        )
       ) {
+
         return true;
+
       }
+
 
       return false;
+
     }
   );
+
 }
 
 
 /* =========================================================
-   IDs
+   LESSON ID
 ========================================================= */
 
-function getLessonId(lesson) {
-  if (
-    !lesson ||
-    typeof lesson !== "object"
-  ) {
-    return null;
-  }
+function getLessonId(
+  lesson
+) {
 
   if (
-    lesson.lessonId !== undefined &&
-    lesson.lessonId !== null &&
+    !lesson ||
+    typeof lesson !==
+      "object"
+  ) {
+
+    return null;
+
+  }
+
+
+  /*
+   * Official dataset uses lessonId.
+   */
+
+  if (
+    lesson.lessonId !==
+      undefined &&
+    lesson.lessonId !==
+      null &&
     String(
       lesson.lessonId
     ).trim()
   ) {
+
     return String(
       lesson.lessonId
     ).trim();
+
   }
+
+
+  /*
+   * Safe fallback only when
+   * enough identity exists.
+   */
 
   const bookId =
     lesson.bookId;
 
-  const number =
+
+  const lessonNumber =
     lesson.lessonNumber ??
     lesson.number ??
     lesson.lessonNo;
 
+
   if (
     !bookId ||
-    number === undefined ||
-    number === null
+    lessonNumber ===
+      undefined ||
+    lessonNumber ===
+      null
   ) {
+
     return null;
+
   }
 
-  return (
-    `${String(bookId).trim()}-L` +
-    `${String(number).padStart(2, "0")}`
-  );
+
+  return `${String(
+    bookId
+  ).trim()}-L${String(
+    lessonNumber
+  ).padStart(
+    2,
+    "0"
+  )}`;
+
 }
 
 
-function getLessonNumber(lesson) {
-  if (!lesson) return "?";
+/* =========================================================
+   LESSON NUMBER
+========================================================= */
+
+function getLessonNumber(
+  lesson
+) {
+
+  if (!lesson) {
+
+    return "?";
+
+  }
+
 
   return (
     lesson.lessonNumber ??
@@ -1675,65 +2951,118 @@ function getLessonNumber(lesson) {
     lesson.lessonNo ??
     "?"
   );
+
 }
 
 
-function getActivityId(activity) {
+/* =========================================================
+   ACTIVITY ID
+========================================================= */
+
+function getActivityId(
+  activity
+) {
+
   if (
     !activity ||
-    typeof activity !== "object"
+    typeof activity !==
+      "object"
   ) {
+
     return null;
+
   }
 
+
   const candidates = [
+
     activity.activityId,
     activity.id,
     activity.code,
     activity.canDoId,
     activity.slug
+
   ];
 
-  for (const candidate of candidates) {
+
+  for (
+    const candidate
+    of candidates
+  ) {
 
     if (
-      candidate !== undefined &&
-      candidate !== null &&
-      String(candidate).trim() !== ""
+      candidate !==
+        undefined &&
+      candidate !==
+        null &&
+      String(
+        candidate
+      ).trim() !== ""
     ) {
 
       const id =
-        String(candidate).trim();
+        String(
+          candidate
+        ).trim();
+
 
       if (
-        !isUnsafePlaceholderId(id)
+        !isUnsafePlaceholderId(
+          id
+        )
       ) {
+
         return id;
+
       }
+
     }
+
   }
 
+
+  /*
+   * Never use "unknown-activity".
+   */
+
   return null;
+
 }
 
 
-function isUnsafePlaceholderId(id) {
-  const blocked = new Set([
-    "unknown",
-    "unknown-activity",
-    "unknown-lesson",
-    "unknown-kanji",
-    "?",
-    "undefined",
-    "null",
-    "nan"
-  ]);
+/* =========================================================
+   UNSAFE ID CHECK
+========================================================= */
+
+function isUnsafePlaceholderId(
+  id
+) {
+
+  const blocked =
+    new Set(
+      [
+
+        "unknown",
+        "unknown-activity",
+        "unknown-lesson",
+        "unknown-kanji",
+        "?",
+        "undefined",
+        "null",
+        "nan"
+
+      ]
+    );
+
 
   return blocked.has(
-    String(id)
+    String(
+      id
+    )
       .trim()
       .toLowerCase()
   );
+
 }
 
 
@@ -1741,215 +3070,410 @@ function isUnsafePlaceholderId(id) {
    PROGRESS HELPERS
 ========================================================= */
 
-function isLessonComplete(id) {
+function isLessonComplete(
+  lessonId
+) {
+
   if (
-    !id ||
+    !lessonId ||
     !window.IrodoriProgress
   ) {
+
     return false;
+
   }
 
-  if (
-    typeof
-      window.IrodoriProgress.isLessonComplete ===
-      "function"
-  ) {
-    return window.IrodoriProgress.isLessonComplete(
-      id
-    );
-  }
 
   if (
-    typeof
-      window.IrodoriProgress.isComplete ===
-      "function"
+    typeof window.IrodoriProgress
+      .isLessonComplete ===
+    "function"
   ) {
-    return window.IrodoriProgress.isComplete(
-      "lesson",
-      id
-    );
-  }
 
-  return false;
-}
-
-
-function isActivityComplete(id) {
-  if (
-    !id ||
-    !window.IrodoriProgress
-  ) {
-    return false;
-  }
-
-  if (
-    typeof
-      window.IrodoriProgress.isActivityComplete ===
-      "function"
-  ) {
-    return window.IrodoriProgress.isActivityComplete(
-      id
-    );
-  }
-
-  if (
-    typeof
-      window.IrodoriProgress.isComplete ===
-      "function"
-  ) {
-    return window.IrodoriProgress.isComplete(
-      "activity",
-      id
-    );
-  }
-
-  return false;
-}
-
-
-/* =========================================================
-   ATTEMPTS
-========================================================= */
-
-function getLessonAttemptCount(id) {
-  if (
-    !id ||
-    !window.IrodoriProgress
-  ) {
-    return 0;
-  }
-
-  if (
-    typeof
-      window.IrodoriProgress.getLessonAttemptCount ===
-      "function"
-  ) {
-    return window.IrodoriProgress.getLessonAttemptCount(
-      id
-    );
-  }
-
-  if (
-    typeof
-      window.IrodoriProgress.getLessonAttempts ===
-      "function"
-  ) {
-    const attempts =
-      window.IrodoriProgress.getLessonAttempts(
-        id
+    return window.IrodoriProgress
+      .isLessonComplete(
+        lessonId
       );
 
-    return Array.isArray(attempts)
-      ? attempts.length
-      : 0;
   }
 
-  return 0;
+
+  if (
+    typeof window.IrodoriProgress
+      .isComplete ===
+    "function"
+  ) {
+
+    return window.IrodoriProgress
+      .isComplete(
+        "lesson",
+        lessonId
+      );
+
+  }
+
+
+  return false;
+
 }
 
 
-function getActivityAttempts(id) {
+function isActivityComplete(
+  activityId
+) {
+
   if (
-    !id ||
+    !activityId ||
     !window.IrodoriProgress
   ) {
-    return [];
+
+    return false;
+
   }
+
 
   if (
-    typeof
-      window.IrodoriProgress.getActivityAttempts ===
-      "function"
+    typeof window.IrodoriProgress
+      .isActivityComplete ===
+    "function"
   ) {
-    return (
-      window.IrodoriProgress.getActivityAttempts(
-        id
-      ) || []
-    );
+
+    return window.IrodoriProgress
+      .isActivityComplete(
+        activityId
+      );
+
   }
 
-  return [];
+
+  if (
+    typeof window.IrodoriProgress
+      .isComplete ===
+    "function"
+  ) {
+
+    return window.IrodoriProgress
+      .isComplete(
+        "activity",
+        activityId
+      );
+
+  }
+
+
+  return false;
+
 }
 
 
 /* =========================================================
-   SORT
+   ATTEMPT HELPERS
 ========================================================= */
 
-function compareLessons(a, b) {
+function getLessonAttemptCount(
+  lessonId
+) {
+
+  if (
+    !lessonId ||
+    !window.IrodoriProgress
+  ) {
+
+    return 0;
+
+  }
+
+
+  if (
+    typeof window.IrodoriProgress
+      .getLessonAttemptCount ===
+    "function"
+  ) {
+
+    return window.IrodoriProgress
+      .getLessonAttemptCount(
+        lessonId
+      );
+
+  }
+
+
+  if (
+    typeof window.IrodoriProgress
+      .getLessonAttempts ===
+    "function"
+  ) {
+
+    const attempts =
+      window.IrodoriProgress
+        .getLessonAttempts(
+          lessonId
+        );
+
+
+    return Array.isArray(
+      attempts
+    )
+      ? attempts.length
+      : 0;
+
+  }
+
+
+  return 0;
+
+}
+
+
+function getActivityAttempts(
+  activityId
+) {
+
+  if (
+    !activityId ||
+    !window.IrodoriProgress
+  ) {
+
+    return [];
+
+  }
+
+
+  if (
+    typeof window.IrodoriProgress
+      .getActivityAttempts ===
+    "function"
+  ) {
+
+    return (
+      window.IrodoriProgress
+        .getActivityAttempts(
+          activityId
+        ) || []
+    );
+
+  }
+
+
+  return [];
+
+}
+
+
+/* =========================================================
+   ATTEMPT DATE
+========================================================= */
+
+function formatAttemptDate(
+  value
+) {
+
+  if (!value) {
+
+    return "Unknown date";
+
+  }
+
+
+  const date =
+    new Date(
+      value
+    );
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return escapeHtml(
+      String(
+        value
+      )
+    );
+
+  }
+
+
+  return escapeHtml(
+    date.toLocaleString()
+  );
+
+}
+
+
+/* =========================================================
+   LESSON INDEX
+========================================================= */
+
+function getLessonIndex(
+  book,
+  lesson
+) {
+
+  const list =
+    findLessonsForBook(
+      book
+    );
+
+
+  return list.indexOf(
+    lesson
+  );
+
+}
+
+
+/* =========================================================
+   SORT LESSONS
+========================================================= */
+
+function compareLessons(
+  a,
+  b
+) {
+
   const aNumber =
     Number(
-      getLessonNumber(a)
+      getLessonNumber(
+        a
+      )
     );
+
 
   const bNumber =
     Number(
-      getLessonNumber(b)
+      getLessonNumber(
+        b
+      )
     );
 
-  if (Number.isNaN(aNumber)) {
+
+  if (
+    Number.isNaN(
+      aNumber
+    )
+  ) {
+
     return 1;
+
   }
 
-  if (Number.isNaN(bNumber)) {
+
+  if (
+    Number.isNaN(
+      bNumber
+    )
+  ) {
+
     return -1;
+
   }
 
-  return aNumber - bNumber;
+
+  return (
+    aNumber -
+    bNumber
+  );
+
 }
 
 
 /* =========================================================
-   ERROR
+   ERROR DISPLAY
 ========================================================= */
 
-function showError(message) {
-  const main =
-    document.querySelector(".app-main");
+function showError(
+  message
+) {
 
-  if (!main) return;
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
+
+
+  if (!main) {
+
+    return;
+
+  }
+
 
   main.innerHTML = `
+
     <section class="pending-card">
 
       <p class="pending-text">
-        ${escapeHtml(message)}
+
+        ${escapeHtml(
+          message
+        )}
+
       </p>
 
     </section>
+
   `;
+
 }
 
 
 /* =========================================================
-   HTML ESCAPE
+   HTML ESCAPING
 ========================================================= */
 
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
 }
 
 
 /* =========================================================
-   OPTIONAL DEBUG API
+   MAIN AUDIO DEBUG API
 ========================================================= */
 
 window.IrodoriMainAudio = {
-  getRecordsForLesson:
-    getMainAudioRecordsForLesson,
 
-  getOfficialPage:
-    getOfficialMainAudioPage,
+  getAll: () =>
+    [
+      ...mainAudioRecords
+    ],
 
-  getRecordCountForLesson:
-    (lesson, book) =>
+  getForLesson:
+    (
+      lesson,
+      book
+    ) =>
       getMainAudioRecordsForLesson(
         lesson,
         book
-      ).length
+      )
+
 };
