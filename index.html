@@ -290,13 +290,18 @@
 
 
 
+  <!--
+    Progress must load before app.js because
+    app.js consumes window.IrodoriProgress.
+  -->
+
   <script
-    src="./js/app.js"
+    src="./js/progress.js"
   ></script>
 
 
   <script
-    src="./js/progress.js"
+    src="./js/app.js"
   ></script>
 
 
