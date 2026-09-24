@@ -1465,6 +1465,68 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+
+
+/* =========================================================
+   CURRENT HEADER MARKUP COMPATIBILITY
+   ========================================================= */
+
+/*
+ * index.html uses .header-inner while the stylesheet's
+ * original header rules target .app-brand.
+ * Keep both structures visually identical.
+ */
+
+.app-header .header-inner {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 18px 20px;
+}
+
+.app-header .header-inner h1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+
+  overflow-wrap: anywhere;
+}
+
+.app-header .header-inner p {
+  margin-top: 2px;
+
+  color: var(--muted);
+  font-size: 0.9rem;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   CURRENT FOOTER MARKUP COMPATIBILITY
+   ========================================================= */
+
+/*
+ * index.html uses a div directly inside .app-footer while
+ * the original footer rules target .app-footer p.
+ */
+
+.app-footer > div {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 18px 20px;
+
+  color: var(--muted);
+  font-size: 0.8rem;
+
+  overflow-wrap: anywhere;
+}
+
 /* =========================================================
    RESPONSIVE — TABLET
 ========================================================= */
@@ -1628,6 +1690,25 @@ a:focus-visible {
 
   .dashboard-value {
     font-size: 1.15rem;
+  }
+
+}
+
+
+/* =========================================================
+   CURRENT HEADER/FOOTER — VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .app-header .header-inner {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .app-footer > div {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
 }
