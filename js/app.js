@@ -2,6 +2,7 @@ const BOOKS_FILE = "./data/books.json";
 const LESSONS_FILE = "./data/lessons.json";
 const AUDIO_MAIN_FILE = "./data/audio-main.json";
 const AUDIO_WORDLIST_FILE = "./data/audio-wordlist.json";
+const AUDIO_GRAMMAR_FILE = "./data/audio-grammar.json";
 
 const CANDO_FILES = {
   starter: "./data/canDos-starter.json",
@@ -37,8 +38,9 @@ let lessons = [];
 let canDos = {};
 let mainAudioRecords = [];
 let wordlistAudioRecords = [];
-let wordlistAudioBooks = [];
 let wordlistAudioMetadata = {};
+let grammarAudioRecords = [];
+let grammarAudioMetadata = {};
 
 
 document.addEventListener(
@@ -190,15 +192,7 @@ async function loadAllData() {
 
 
   /* -------------------------------------------------------
-     MAIN AUDIO VALIDATION
-  ------------------------------------------------------- */
-
-  validateMainAudioDataset();
-
-
-  /* -------------------------------------------------------
      WORD-LIST AUDIO DATA
-     Kept completely separate from Main Lesson Audio.
   ------------------------------------------------------- */
 
   try {
@@ -211,7 +205,6 @@ async function loadAllData() {
         }
       );
 
-
     if (wordlistResponse.ok) {
 
       const wordlistData =
@@ -220,27 +213,13 @@ async function loadAllData() {
       wordlistAudioMetadata =
         wordlistData?.metadata || {};
 
-      wordlistAudioBooks =
-        Array.isArray(wordlistData?.books)
-          ? wordlistData.books
-          : [];
-
       wordlistAudioRecords =
-        Array.isArray(wordlistData)
-          ? wordlistData
-          : Array.isArray(wordlistData?.records)
-            ? wordlistData.records
-            : wordlistAudioBooks.flatMap(
-                (bookData) =>
-                  Array.isArray(bookData?.records)
-                    ? bookData.records
-                    : []
-              );
+        flattenAudioBooks(
+          wordlistData
+        );
 
     } else {
 
-      wordlistAudioMetadata = {};
-      wordlistAudioBooks = [];
       wordlistAudioRecords = [];
 
     }
@@ -252,14 +231,63 @@ async function loadAllData() {
       error
     );
 
-    wordlistAudioMetadata = {};
-    wordlistAudioBooks = [];
     wordlistAudioRecords = [];
 
   }
 
 
+  /* -------------------------------------------------------
+     GRAMMAR WORKSHEET AUDIO DATA
+  ------------------------------------------------------- */
+
+  try {
+
+    const grammarResponse =
+      await fetch(
+        AUDIO_GRAMMAR_FILE,
+        {
+          cache: "no-store"
+        }
+      );
+
+    if (grammarResponse.ok) {
+
+      const grammarData =
+        await grammarResponse.json();
+
+      grammarAudioMetadata =
+        grammarData?.metadata || {};
+
+      grammarAudioRecords =
+        flattenAudioBooks(
+          grammarData
+        );
+
+    } else {
+
+      grammarAudioRecords = [];
+
+    }
+
+  } catch (error) {
+
+    console.warn(
+      `Unable to load grammar worksheet audio file: ${AUDIO_GRAMMAR_FILE}`,
+      error
+    );
+
+    grammarAudioRecords = [];
+
+  }
+
+
+  /* -------------------------------------------------------
+     AUDIO DATASET VALIDATION
+  ------------------------------------------------------- */
+
+  validateMainAudioDataset();
   validateWordlistAudioDataset();
+  validateGrammarAudioDataset();
 
   /* -------------------------------------------------------
      BOOKS
@@ -1299,13 +1327,6 @@ function openLesson(
     );
 
 
-  const wordlistRecords =
-    getWordlistAudioRecordsForLesson(
-      lesson,
-      book
-    );
-
-
   const completed =
     isLessonComplete(
       lessonId
@@ -1445,7 +1466,7 @@ function openLesson(
           >
 
             <div class="module-icon">
-              🗣️
+              📖
             </div>
 
             <div class="module-content">
@@ -1456,11 +1477,17 @@ function openLesson(
 
               <p>
                 ${
-                  wordlistRecords.length
+                  getWordlistAudioRecordsForLesson(
+                    lesson,
+                    book
+                  ).length
                 }
                 verified audio record
                 ${
-                  wordlistRecords.length === 1
+                  getWordlistAudioRecordsForLesson(
+                    lesson,
+                    book
+                  ).length === 1
                     ? ""
                     : "s"
                 }
@@ -1471,7 +1498,11 @@ function openLesson(
           </button>
 
 
-          <div class="learning-module pending-card">
+          <button
+            type="button"
+            class="learning-module"
+            id="module-grammar-audio"
+          >
 
             <div class="module-icon">
               🎧
@@ -1484,13 +1515,26 @@ function openLesson(
               </h3>
 
               <p>
-                Verified audio dataset
-                integration pending
+                ${
+                  getGrammarAudioRecordsForLesson(
+                    lesson,
+                    book
+                  ).length
+                }
+                verified audio record
+                ${
+                  getGrammarAudioRecordsForLesson(
+                    lesson,
+                    book
+                  ).length === 1
+                    ? ""
+                    : "s"
+                }
               </p>
 
             </div>
 
-          </div>
+          </button>
 
 
           <div class="learning-module pending-card">
@@ -1663,7 +1707,6 @@ function openLesson(
         )
     );
 
-
   document
     .querySelector(
       "#module-wordlist-audio"
@@ -1672,6 +1715,20 @@ function openLesson(
       "click",
       () =>
         openWordlistLessonAudio(
+          lesson,
+          book
+        )
+    );
+
+
+  document
+    .querySelector(
+      "#module-grammar-audio"
+    )
+    ?.addEventListener(
+      "click",
+      () =>
+        openGrammarLessonAudio(
           lesson,
           book
         )
@@ -1769,41 +1826,160 @@ function openLesson(
 
 
 /* =========================================================
-   WORD-LIST AUDIO
-   This dataset is intentionally independent from Main Lesson Audio.
+   AUDIO DATA HELPERS
 ========================================================= */
 
-function getWordlistBookCode(book) {
+function flattenAudioBooks(
+  data
+) {
 
-  const bookKey =
-    getBookKey(book);
+  if (
+    Array.isArray(data)
+  ) {
 
-  const codeByBookKey = {
+    return data;
+
+  }
+
+  if (
+    Array.isArray(data?.records)
+  ) {
+
+    return data.records;
+
+  }
+
+  if (
+    Array.isArray(data?.books)
+  ) {
+
+    return data.books.flatMap(
+      (book) =>
+        Array.isArray(
+          book?.records
+        )
+          ? book.records.map(
+              (record) => ({
+                ...record,
+                book:
+                  record?.book ||
+                  book?.book,
+                book_code:
+                  record?.book_code ||
+                  book?.book_code
+              })
+            )
+          : []
+    );
+
+  }
+
+  return [];
+
+}
+
+
+function getBookCodeForKey(
+  bookKey
+) {
+
+  const codes = {
     starter: "X",
     "elementary-1": "Y",
     "elementary-2": "Z",
     "pre-intermediate": "ZZ"
   };
 
-  return codeByBookKey[bookKey] || "";
+  return codes[bookKey] || "";
 
 }
 
 
-function getWordlistAudioBookData(book) {
+function getAudioRecordsForLesson(
+  records,
+  lesson,
+  book
+) {
+
+  const lessonNumber =
+    getLessonNumber(
+      lesson
+    );
+
+  const bookKey =
+    getBookKey(
+      book
+    );
 
   const bookCode =
-    getWordlistBookCode(book);
+    getBookCodeForKey(
+      bookKey
+    );
 
-  if (!bookCode) {
-    return null;
+  if (
+    !bookCode
+  ) {
+
+    return [];
+
   }
 
-  return wordlistAudioBooks.find(
-    (bookData) =>
-      String(bookData?.book_code || "").trim() ===
-      bookCode
-  ) || null;
+  return records
+    .filter(
+      (record) => {
+
+        if (
+          !record ||
+          !record.audio_url
+        ) {
+
+          return false;
+
+        }
+
+        const recordCode =
+          String(
+            record.book_code ||
+            ""
+          ).trim().toUpperCase();
+
+        if (
+          recordCode !==
+          bookCode
+        ) {
+
+          return false;
+
+        }
+
+        const recordLesson =
+          Number(
+            record.lesson
+          );
+
+        return (
+          Number.isFinite(
+            recordLesson
+          ) &&
+          recordLesson ===
+            Number(
+              lessonNumber
+            )
+        );
+
+      }
+    )
+    .sort(
+      (a, b) =>
+        Number(
+          a.audio_index ??
+          0
+        ) -
+        Number(
+          b.audio_index ??
+          0
+        )
+    );
 
 }
 
@@ -1813,54 +1989,165 @@ function getWordlistAudioRecordsForLesson(
   book
 ) {
 
-  const lessonNumber =
-    getLessonNumber(lesson);
-
-  const bookCode =
-    getWordlistBookCode(book);
-
-  if (
-    !bookCode ||
-    String(lessonNumber) === "?"
-  ) {
-    return [];
-  }
-
-  const number =
-    Number(lessonNumber);
-
-  if (!Number.isFinite(number)) {
-    return [];
-  }
-
-  return wordlistAudioRecords
-    .filter((record) => {
-
-      if (!record) {
-        return false;
-      }
-
-      const recordBookCode =
-        String(record.book_code || "").trim();
-
-      const recordLesson =
-        Number(record.lesson);
-
-      return (
-        recordBookCode === bookCode &&
-        Number.isFinite(recordLesson) &&
-        recordLesson === number
-      );
-
-    })
-    .sort(
-      (a, b) =>
-        Number(a.audio_index ?? 0) -
-        Number(b.audio_index ?? 0)
-    );
+  return getAudioRecordsForLesson(
+    wordlistAudioRecords,
+    lesson,
+    book
+  );
 
 }
 
+
+function getGrammarAudioRecordsForLesson(
+  lesson,
+  book
+) {
+
+  return getAudioRecordsForLesson(
+    grammarAudioRecords,
+    lesson,
+    book
+  );
+
+}
+
+
+function renderAudioRecordCard(
+  record,
+  index,
+  familyLabel
+) {
+
+  const filename =
+    record?.filename ||
+    `Audio ${index + 1}`;
+
+  const audioUrl =
+    record?.audio_url ||
+    "";
+
+  const sourcePage =
+    record?.source_page ||
+    "";
+
+  return `
+    <article class="can-do-card">
+
+      <div class="can-do-card-header">
+
+        <div>
+
+          <span class="can-do-number">
+            ${escapeHtml(
+              String(
+                index + 1
+              )
+            )}
+          </span>
+
+          <strong>
+            ${escapeHtml(
+              filename
+            )}
+          </strong>
+
+        </div>
+
+        <span class="status-badge">
+          ${escapeHtml(
+            record?.status ||
+            "VERIFIED"
+          )}
+        </span>
+
+      </div>
+
+      <p>
+        ${escapeHtml(
+          familyLabel
+        )}
+        — official audio
+      </p>
+
+      ${
+        audioUrl
+          ? `
+            <audio
+              controls
+              preload="none"
+              src="${escapeHtml(
+                audioUrl
+              )}"
+            >
+              Your browser does not support
+              HTML audio playback.
+            </audio>
+          `
+          : `
+            <p class="pending-text">
+              Direct MP3 URL not verified.
+            </p>
+          `
+      }
+
+      ${
+        sourcePage
+          ? `
+            <p>
+              <a
+                href="${escapeHtml(
+                  sourcePage
+                )}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open Official IRODORI Source ↗
+              </a>
+            </p>
+          `
+          : ""
+      }
+
+    </article>
+  `;
+
+}
+
+
+function renderPendingAudioCard(
+  familyLabel,
+  metadata
+) {
+
+  return `
+    <article class="can-do-card pending-card">
+
+      <div class="can-do-card-header">
+
+        <strong>
+          ${escapeHtml(
+            familyLabel
+          )}
+        </strong>
+
+      </div>
+
+      <p class="pending-text">
+        ${escapeHtml(
+          metadata?.pre_intermediate_status ||
+          "PENDING — SOURCE VERIFICATION REQUIRED"
+        )}
+      </p>
+
+    </article>
+  `;
+
+}
+
+
+/* =========================================================
+   OPEN WORD-LIST AUDIO
+========================================================= */
 
 function openWordlistLessonAudio(
   lesson,
@@ -1873,7 +2160,9 @@ function openWordlistLessonAudio(
     );
 
   if (!main) {
+
     return;
+
   }
 
   const records =
@@ -1883,7 +2172,9 @@ function openWordlistLessonAudio(
     );
 
   const lessonNumber =
-    getLessonNumber(lesson);
+    getLessonNumber(
+      lesson
+    );
 
   const title =
     lesson.title ||
@@ -1891,15 +2182,14 @@ function openWordlistLessonAudio(
     lesson.lessonTitle ||
     `Lesson ${lessonNumber}`;
 
-  const bookData =
-    getWordlistAudioBookData(book);
+  const bookKey =
+    getBookKey(
+      book
+    );
 
-  const bookStatus =
-    bookData?.status ||
-    "PENDING — SOURCE VERIFICATION REQUIRED";
-
-  const isPending =
-    bookStatus !== "VERIFIED";
+  const pending =
+    bookKey ===
+    "pre-intermediate";
 
   main.innerHTML = `
 
@@ -1915,26 +2205,24 @@ function openWordlistLessonAudio(
           ← Back to Lesson
         </button>
 
-
         <div class="lesson-detail-card">
 
           <h2>
-            🗣️ Word-list Audio
+            📖 Word-list Audio
           </h2>
 
           <p>
             ${escapeHtml(title)}
-            — Lesson
-            ${escapeHtml(String(lessonNumber))}
-          </p>
-
-          <p>
-            ${escapeHtml(String(records.length))}
-            verified word-list audio record${records.length === 1 ? "" : "s"}
+            —
+            Lesson
+            ${escapeHtml(
+              String(
+                lessonNumber
+              )
+            )}
           </p>
 
         </div>
-
 
         <div class="can-do-section">
 
@@ -1945,54 +2233,48 @@ function openWordlistLessonAudio(
             </h2>
 
             <p>
-              Official IRODORI word-list audio dataset
+              ${
+                pending
+                  ? "Pre-Intermediate source verification is pending."
+                  : `${records.length} verified official audio record${records.length === 1 ? "" : "s"}`
+              }
             </p>
 
           </div>
 
           ${
-            isPending
-              ? `
-                <div class="pending-card">
-
-                  <h3>
-                    Word-list Audio Pending
-                  </h3>
-
-                  <p class="pending-text">
-                    ${escapeHtml(bookStatus)}
-                  </p>
-
-                </div>
-              `
+            pending
+              ? renderPendingAudioCard(
+                  "Pre-Intermediate Word-list Audio",
+                  wordlistAudioMetadata
+                )
               : records.length
                 ? `
                   <div class="can-do-list">
-
                     ${records
                       .map(
-                        (record, index) =>
-                          renderWordlistAudioRecord(
+                        (
+                          record,
+                          index
+                        ) =>
+                          renderAudioRecordCard(
                             record,
-                            index
+                            index,
+                            "Word-list Audio"
                           )
                       )
                       .join("")}
-
                   </div>
                 `
                 : `
-                  <div class="pending-card">
-
-                    <h3>
-                      No verified word-list audio records
-                    </h3>
+                  <article class="can-do-card pending-card">
 
                     <p class="pending-text">
-                      No verified records are currently available for this lesson.
+                      No verified Word-list Audio records
+                      were found for this lesson.
                     </p>
 
-                  </div>
+                  </article>
                 `
           }
 
@@ -2020,105 +2302,161 @@ function openWordlistLessonAudio(
 }
 
 
-function renderWordlistAudioRecord(
-  record,
-  index
+/* =========================================================
+   OPEN GRAMMAR WORKSHEET AUDIO
+========================================================= */
+
+function openGrammarLessonAudio(
+  lesson,
+  book
 ) {
 
-  const filename =
-    record.filename ||
-    `Word-list Audio ${index + 1}`;
+  const main =
+    document.querySelector(
+      ".app-main"
+    );
 
-  const sourcePage =
-    record.source_page ||
-    record.sourcePage ||
-    "";
+  if (!main) {
 
-  const audioUrl =
-    record.audio_url ||
-    "";
+    return;
 
-  const status =
-    record.status ||
-    "VERIFIED";
+  }
 
-  const number =
-    String(
-      record.audio_index ??
-      index + 1
-    ).padStart(2, "0");
+  const records =
+    getGrammarAudioRecordsForLesson(
+      lesson,
+      book
+    );
 
-  return `
+  const lessonNumber =
+    getLessonNumber(
+      lesson
+    );
 
-    <article
-      class="can-do-card audio-record-card"
-    >
+  const title =
+    lesson.title ||
+    lesson.name ||
+    lesson.lessonTitle ||
+    `Lesson ${lessonNumber}`;
 
-      <div class="can-do-card-content">
+  const bookKey =
+    getBookKey(
+      book
+    );
 
-        <h3>
-          ${escapeHtml(number)}.
-          ${escapeHtml(filename)}
-        </h3>
+  const pending =
+    bookKey ===
+    "pre-intermediate";
 
-        <p>
-          Status:
-          ${escapeHtml(status)}
-        </p>
+  main.innerHTML = `
 
-        ${
-          audioUrl
-            ? `
-              <div class="audio-player-wrap">
-                <audio
-                  controls
-                  preload="none"
-                  src="${escapeHtml(audioUrl)}"
-                  aria-label="${escapeHtml(filename)}"
-                >
-                  Your browser does not support audio playback.
-                </audio>
-              </div>
+    <section class="lesson-view">
 
-              <p class="audio-source-note">
-                Official MP3 URL verified from the IRODORI asset path.
-              </p>
-            `
-            : `
-              <p class="pending-text">
-                Direct MP3 URL: PENDING — SOURCE VERIFICATION REQUIRED
-              </p>
-            `
-        }
+      <div class="lesson-detail">
 
-        ${
-          sourcePage
-            ? `
-              <p class="audio-source-note">
-                <a
-                  href="${escapeHtml(sourcePage)}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Open Official Source Page ↗
-                </a>
-              </p>
-            `
-            : `
-              <p class="audio-source-note">
-                Official source page: PENDING — SOURCE VERIFICATION REQUIRED
-              </p>
-            `
-        }
+        <button
+          type="button"
+          class="back-button"
+          id="back-to-lesson-from-grammar-audio"
+        >
+          ← Back to Lesson
+        </button>
+
+        <div class="lesson-detail-card">
+
+          <h2>
+            🎧 Grammar Worksheet Audio
+          </h2>
+
+          <p>
+            ${escapeHtml(title)}
+            —
+            Lesson
+            ${escapeHtml(
+              String(
+                lessonNumber
+              )
+            )}
+          </p>
+
+        </div>
+
+        <div class="can-do-section">
+
+          <div class="section-heading">
+
+            <h2>
+              Grammar Worksheet Audio Files
+            </h2>
+
+            <p>
+              ${
+                pending
+                  ? "Pre-Intermediate source verification is pending."
+                  : `${records.length} verified official audio record${records.length === 1 ? "" : "s"}`
+              }
+            </p>
+
+          </div>
+
+          ${
+            pending
+              ? renderPendingAudioCard(
+                  "Pre-Intermediate Grammar Worksheet Audio",
+                  grammarAudioMetadata
+                )
+              : records.length
+                ? `
+                  <div class="can-do-list">
+                    ${records
+                      .map(
+                        (
+                          record,
+                          index
+                        ) =>
+                          renderAudioRecordCard(
+                            record,
+                            index,
+                            "Grammar Worksheet Audio"
+                          )
+                      )
+                      .join("")}
+                  </div>
+                `
+                : `
+                  <article class="can-do-card pending-card">
+
+                    <p class="pending-text">
+                      No verified Grammar Worksheet Audio
+                      records were found for this lesson.
+                    </p>
+
+                  </article>
+                `
+          }
+
+        </div>
 
       </div>
 
-    </article>
+    </section>
 
   `;
 
-}
+  document
+    .querySelector(
+      "#back-to-lesson-from-grammar-audio"
+    )
+    ?.addEventListener(
+      "click",
+      () =>
+        openLesson(
+          lesson,
+          book
+        )
+    );
 
+}
 
 
 /* =========================================================
@@ -3013,112 +3351,6 @@ function openActivity(
 
 
 /* =========================================================
-   WORD-LIST AUDIO VALIDATION
-========================================================= */
-
-function validateWordlistAudioDataset() {
-
-  const expectedByBookCode = {
-    X: 79,
-    Y: 67,
-    Z: 77
-  };
-
-  const actualByBookCode = {
-    X: 0,
-    Y: 0,
-    Z: 0,
-    ZZ: 0
-  };
-
-  wordlistAudioRecords.forEach((record) => {
-
-    const code =
-      String(record?.book_code || "").trim();
-
-    if (
-      Object.prototype.hasOwnProperty.call(
-        actualByBookCode,
-        code
-      )
-    ) {
-      actualByBookCode[code] += 1;
-    }
-
-  });
-
-  const expectedVerifiedTotal =
-    Object.values(expectedByBookCode)
-      .reduce(
-        (sum, value) => sum + value,
-        0
-      );
-
-  const mismatches =
-    Object.keys(expectedByBookCode)
-      .filter(
-        (code) =>
-          actualByBookCode[code] !==
-          expectedByBookCode[code]
-      );
-
-  const preIntermediatePending =
-    !wordlistAudioBooks.some(
-      (bookData) =>
-        String(bookData?.book_code || "").trim() === "ZZ" &&
-        bookData?.status === "VERIFIED"
-    );
-
-  if (
-    wordlistAudioRecords.length !==
-      expectedVerifiedTotal ||
-    mismatches.length
-  ) {
-    console.warn(
-      "Word-list Audio dataset count mismatch:",
-      {
-        expected: expectedByBookCode,
-        actual: actualByBookCode,
-        total: wordlistAudioRecords.length,
-        expectedVerifiedTotal,
-        mismatches
-      }
-    );
-  } else {
-    const directUrlByBookCode = {
-      X: 0,
-      Y: 0,
-      Z: 0,
-      ZZ: 0
-    };
-
-    wordlistAudioRecords.forEach((record) => {
-      const code = String(record?.book_code || "").trim();
-      if (
-        Object.prototype.hasOwnProperty.call(
-          directUrlByBookCode,
-          code
-        ) && record?.audio_url
-      ) {
-        directUrlByBookCode[code] += 1;
-      }
-    });
-
-    console.info(
-      "Word-list Audio dataset verified:",
-      {
-        total: wordlistAudioRecords.length,
-        bookCounts: actualByBookCode,
-        directUrlByBookCode,
-        preIntermediatePending
-      }
-    );
-  }
-
-}
-
-
-/* =========================================================
    MAIN AUDIO VALIDATION
 ========================================================= */
 
@@ -3197,6 +3429,184 @@ function validateMainAudioDataset() {
 
     console.info(
       "IRODORI Main Audio validation passed.",
+      {
+        total,
+        byBook: actualByBook
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   WORD-LIST AUDIO VALIDATION
+========================================================= */
+
+function validateWordlistAudioDataset() {
+
+  const expectedByBook = {
+    starter: 79,
+    "elementary-1": 67,
+    "elementary-2": 77,
+    "pre-intermediate": 0
+  };
+
+  const actualByBook = {
+    starter: 0,
+    "elementary-1": 0,
+    "elementary-2": 0,
+    "pre-intermediate": 0
+  };
+
+  wordlistAudioRecords.forEach(
+    (record) => {
+
+      const key =
+        getBookKey({
+          bookId:
+            record?.book ||
+            record?.book_code
+        });
+
+      if (
+        Object.prototype.hasOwnProperty.call(
+          actualByBook,
+          key
+        )
+      ) {
+
+        actualByBook[key] += 1;
+
+      }
+
+    }
+  );
+
+  const total =
+    wordlistAudioRecords.length;
+
+  const expectedTotal =
+    223;
+
+  const mismatches =
+    Object.keys(
+      expectedByBook
+    ).filter(
+      (key) =>
+        actualByBook[key] !==
+        expectedByBook[key]
+    );
+
+  if (
+    total !== expectedTotal ||
+    mismatches.length
+  ) {
+
+    console.warn(
+      "IRODORI Word-list Audio validation mismatch.",
+      {
+        expectedTotal,
+        actualTotal: total,
+        expectedByBook,
+        actualByBook
+      }
+    );
+
+  } else {
+
+    console.info(
+      "IRODORI Word-list Audio validation passed.",
+      {
+        total,
+        byBook: actualByBook
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   GRAMMAR WORKSHEET AUDIO VALIDATION
+========================================================= */
+
+function validateGrammarAudioDataset() {
+
+  const expectedByBook = {
+    starter: 79,
+    "elementary-1": 90,
+    "elementary-2": 89,
+    "pre-intermediate": 0
+  };
+
+  const actualByBook = {
+    starter: 0,
+    "elementary-1": 0,
+    "elementary-2": 0,
+    "pre-intermediate": 0
+  };
+
+  grammarAudioRecords.forEach(
+    (record) => {
+
+      const key =
+        getBookKey({
+          bookId:
+            record?.book ||
+            record?.book_code
+        });
+
+      if (
+        Object.prototype.hasOwnProperty.call(
+          actualByBook,
+          key
+        )
+      ) {
+
+        actualByBook[key] += 1;
+
+      }
+
+    }
+  );
+
+  const total =
+    grammarAudioRecords.length;
+
+  const expectedTotal =
+    258;
+
+  const mismatches =
+    Object.keys(
+      expectedByBook
+    ).filter(
+      (key) =>
+        actualByBook[key] !==
+        expectedByBook[key]
+    );
+
+  if (
+    total !== expectedTotal ||
+    mismatches.length
+  ) {
+
+    console.warn(
+      "IRODORI Grammar Worksheet Audio validation mismatch.",
+      {
+        expectedTotal,
+        actualTotal: total,
+        expectedByBook,
+        actualByBook
+      }
+    );
+
+  } else {
+
+    console.info(
+      "IRODORI Grammar Worksheet Audio validation passed.",
       {
         total,
         byBook: actualByBook
@@ -4194,16 +4604,6 @@ window.IrodoriWordlistAudio = {
       ...wordlistAudioRecords
     ],
 
-  getMetadata: () =>
-    ({
-      ...wordlistAudioMetadata
-    }),
-
-  getBooks: () =>
-    [
-      ...wordlistAudioBooks
-    ],
-
   getForLesson:
     (
       lesson,
@@ -4224,48 +4624,127 @@ window.IrodoriWordlistAudio = {
         book
       ).length,
 
-  getTotalCount: () =>
-    wordlistAudioRecords.length,
+  getTotalCount:
+    () =>
+      wordlistAudioRecords.length,
 
-  getBookCounts: () => {
+  getBookCounts:
+    () => {
 
-    const counts = {};
+      const counts = {};
 
-    wordlistAudioRecords.forEach(
-      (record) => {
+      wordlistAudioRecords.forEach(
+        (record) => {
 
-        const code =
-          String(record?.book_code || "").trim();
+          const key =
+            getBookKey({
+              bookId:
+                record?.book ||
+                record?.book_code
+            });
 
-        counts[code] =
-          (counts[code] || 0) + 1;
+          counts[key] =
+            (counts[key] || 0) + 1;
 
-      }
-    );
+        }
+      );
 
-    return counts;
+      return counts;
 
-  },
+    },
 
-  validate: () => {
+  validate:
+    () => {
 
-    validateWordlistAudioDataset();
+      validateWordlistAudioDataset();
 
-    return {
-      total:
-        wordlistAudioRecords.length,
-      bookCounts:
-        window.IrodoriWordlistAudio
-          .getBookCounts(),
-      preIntermediateStatus:
-        wordlistAudioBooks.find(
-          (bookData) =>
-            String(bookData?.book_code || "").trim() === "ZZ"
-        )?.status ||
-        "PENDING — SOURCE VERIFICATION REQUIRED"
-    };
+      return {
+        total:
+          wordlistAudioRecords.length,
+        bookCounts:
+          window.IrodoriWordlistAudio
+            .getBookCounts()
+      };
 
-  }
+    }
+
+};
+
+
+/* =========================================================
+   GRAMMAR WORKSHEET AUDIO DEBUG API
+========================================================= */
+
+window.IrodoriGrammarAudio = {
+
+  getAll: () =>
+    [
+      ...grammarAudioRecords
+    ],
+
+  getForLesson:
+    (
+      lesson,
+      book
+    ) =>
+      getGrammarAudioRecordsForLesson(
+        lesson,
+        book
+      ),
+
+  getCountForLesson:
+    (
+      lesson,
+      book
+    ) =>
+      getGrammarAudioRecordsForLesson(
+        lesson,
+        book
+      ).length,
+
+  getTotalCount:
+    () =>
+      grammarAudioRecords.length,
+
+  getBookCounts:
+    () => {
+
+      const counts = {};
+
+      grammarAudioRecords.forEach(
+        (record) => {
+
+          const key =
+            getBookKey({
+              bookId:
+                record?.book ||
+                record?.book_code
+            });
+
+          counts[key] =
+            (counts[key] || 0) + 1;
+
+        }
+      );
+
+      return counts;
+
+    },
+
+  validate:
+    () => {
+
+      validateGrammarAudioDataset();
+
+      return {
+        total:
+          grammarAudioRecords.length,
+        bookCounts:
+          window.IrodoriGrammarAudio
+            .getBookCounts()
+      };
+
+    }
 
 };
 
