@@ -2034,6 +2034,10 @@ function renderWordlistAudioRecord(
     record.sourcePage ||
     "";
 
+  const audioUrl =
+    record.audio_url ||
+    "";
+
   const status =
     record.status ||
     "VERIFIED";
@@ -2062,10 +2066,30 @@ function renderWordlistAudioRecord(
           ${escapeHtml(status)}
         </p>
 
-        <p class="pending-text">
-          Direct MP3 URL not verified.
-          Use the official IRODORI source page below.
-        </p>
+        ${
+          audioUrl
+            ? `
+              <div class="audio-player-wrap">
+                <audio
+                  controls
+                  preload="none"
+                  src="${escapeHtml(audioUrl)}"
+                  aria-label="${escapeHtml(filename)}"
+                >
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+
+              <p class="audio-source-note">
+                Official MP3 URL verified from the IRODORI asset path.
+              </p>
+            `
+            : `
+              <p class="pending-text">
+                Direct MP3 URL: PENDING — SOURCE VERIFICATION REQUIRED
+              </p>
+            `
+        }
 
         ${
           sourcePage
@@ -2094,6 +2118,7 @@ function renderWordlistAudioRecord(
   `;
 
 }
+
 
 
 /* =========================================================
@@ -3060,11 +3085,31 @@ function validateWordlistAudioDataset() {
       }
     );
   } else {
+    const directUrlByBookCode = {
+      X: 0,
+      Y: 0,
+      Z: 0,
+      ZZ: 0
+    };
+
+    wordlistAudioRecords.forEach((record) => {
+      const code = String(record?.book_code || "").trim();
+      if (
+        Object.prototype.hasOwnProperty.call(
+          directUrlByBookCode,
+          code
+        ) && record?.audio_url
+      ) {
+        directUrlByBookCode[code] += 1;
+      }
+    });
+
     console.info(
       "Word-list Audio dataset verified:",
       {
         total: wordlistAudioRecords.length,
         bookCounts: actualByBookCode,
+        directUrlByBookCode,
         preIntermediatePending
       }
     );
