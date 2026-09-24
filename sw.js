@@ -1,31 +1,61 @@
-const CACHE_NAME = "irodori-master-v6";
+const CACHE_NAME =
+  "irodori-master-v7";
+
 
 const APP_SHELL = [
+
   "./",
+
   "./index.html",
+
   "./css/style.css",
+
   "./js/progress.js",
+
   "./js/app.js",
+
   "./manifest.json",
+
 
   /* MASTER DATA */
 
   "./data/master.json",
+
   "./data/books.json",
+
   "./data/lessons.json",
+
 
   /* CAN-DO DATA */
 
   "./data/canDos-starter.json",
+
   "./data/canDos-e1.json",
+
   "./data/canDos-e2.json",
+
   "./data/canDos-pi.json",
+
+
+  /* ACTIVITY DATA */
+
+  "./data/activities.json",
+
+  "./data/activities-e1.json",
+
+  "./data/activities-e2.json",
+
+  "./data/activities-pi.json",
+
 
   /* AUDIO METADATA */
 
   "./data/audio-main.json",
+
   "./data/audio-wordlist.json",
+
   "./data/audio-grammar.json"
+
 ];
 
 
@@ -41,13 +71,10 @@ self.addEventListener(
 
       caches
         .open(CACHE_NAME)
-        .then((cache) => {
-
-          return cache.addAll(
-            APP_SHELL
-          );
-
-        })
+        .then(
+          (cache) =>
+            cache.addAll(APP_SHELL)
+        )
 
     );
 
@@ -69,28 +96,24 @@ self.addEventListener(
 
       caches
         .keys()
-        .then((cacheNames) => {
-
-          return Promise.all(
-
-            cacheNames
-              .filter(
-                (name) =>
-                  name !== CACHE_NAME
-              )
-              .map(
-                (name) =>
-                  caches.delete(name)
-              )
-
-          );
-
-        })
-        .then(() => {
-
-          return self.clients.claim();
-
-        })
+        .then(
+          (cacheNames) =>
+            Promise.all(
+              cacheNames
+                .filter(
+                  (name) =>
+                    name !== CACHE_NAME
+                )
+                .map(
+                  (name) =>
+                    caches.delete(name)
+                )
+            )
+        )
+        .then(
+          () =>
+            self.clients.claim()
+        )
 
     );
 
@@ -110,10 +133,6 @@ self.addEventListener(
       event.request;
 
 
-    /*
-     * Only handle GET requests.
-     */
-
     if (
       request.method !== "GET"
     ) {
@@ -124,15 +143,8 @@ self.addEventListener(
 
 
     const url =
-      new URL(
-        request.url
-      );
+      new URL(request.url);
 
-
-    /*
-     * Only handle same-origin
-     * application resources.
-     */
 
     if (
       url.origin !==
@@ -149,13 +161,9 @@ self.addEventListener(
 
 
     /*
-     * HTML, JavaScript, CSS,
-     * JSON and Web Manifest use
-     * NETWORK-FIRST behavior.
-     *
-     * This allows newly deployed
-     * GitHub Pages files to update
-     * while retaining offline fallback.
+     * Application resources use NETWORK-FIRST.
+     * This keeps GitHub deployments updateable while
+     * retaining an offline fallback.
      */
 
     const isAppResource =
@@ -171,7 +179,6 @@ self.addEventListener(
       event.respondWith(
 
         fetch(request)
-
           .then(
             (networkResponse) => {
 
@@ -183,46 +190,32 @@ self.addEventListener(
                 const responseClone =
                   networkResponse.clone();
 
-
                 caches
                   .open(CACHE_NAME)
                   .then(
-                    (cache) => {
-
-                      return cache.put(
+                    (cache) =>
+                      cache.put(
                         request,
                         responseClone
-                      );
-
-                    }
+                      )
                   )
                   .catch(
-                    (error) => {
-
+                    (error) =>
                       console.warn(
                         "Unable to update cache:",
                         error
-                      );
-
-                    }
+                      )
                   );
 
               }
-
 
               return networkResponse;
 
             }
           )
-
           .catch(
-            () => {
-
-              return caches.match(
-                request
-              );
-
-            }
+            () =>
+              caches.match(request)
           )
 
       );
@@ -233,29 +226,25 @@ self.addEventListener(
 
 
     /*
-     * Other same-origin resources:
-     * cache-first with network fallback.
+     * Other same-origin resources use CACHE-FIRST.
+     * Official IRODORI MP3 files are external-origin and
+     * therefore are intentionally not handled here.
      */
 
     event.respondWith(
 
       caches
         .match(request)
-
         .then(
           (cachedResponse) => {
 
-            if (
-              cachedResponse
-            ) {
+            if (cachedResponse) {
 
               return cachedResponse;
 
             }
 
-
             return fetch(request)
-
               .then(
                 (networkResponse) => {
 
@@ -267,32 +256,24 @@ self.addEventListener(
                     const responseClone =
                       networkResponse.clone();
 
-
                     caches
                       .open(CACHE_NAME)
                       .then(
-                        (cache) => {
-
-                          return cache.put(
+                        (cache) =>
+                          cache.put(
                             request,
                             responseClone
-                          );
-
-                        }
+                          )
                       )
                       .catch(
-                        (error) => {
-
+                        (error) =>
                           console.warn(
                             "Unable to cache resource:",
                             error
-                          );
-
-                        }
+                          )
                       );
 
                   }
-
 
                   return networkResponse;
 
