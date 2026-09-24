@@ -1,3 +1,4 @@
+
 const PROGRESS_STORAGE_KEY =
   "irodori_master_learning_progress_v1";
 
@@ -116,23 +117,20 @@ function normalizeProgressId(value) {
 
 
 /* =========================================
-   NORMALIZE UNIQUE ID ARRAY
+   NORMALIZE PROGRESS LIST
    ========================================= */
 
-function normalizeUniqueIds(value) {
+function normalizeProgressList(values) {
 
-  if (
-    !Array.isArray(value)
-  ) {
+  if (!Array.isArray(values)) {
 
     return [];
 
   }
 
-
   return [
     ...new Set(
-      value
+      values
         .map(normalizeProgressId)
         .filter(Boolean)
     )
@@ -183,27 +181,27 @@ function loadProgress() {
     return {
 
       completedBooks:
-        normalizeUniqueIds(
-          parsed.completedBooks
-        ),
+        normalizeProgressList(
+        parsed.completedBooks
+      ),
 
 
       completedLessons:
-        normalizeUniqueIds(
-          parsed.completedLessons
-        ),
+        normalizeProgressList(
+        parsed.completedLessons
+      ),
 
 
       completedActivities:
-        normalizeUniqueIds(
-          parsed.completedActivities
-        ),
+        normalizeProgressList(
+        parsed.completedActivities
+      ),
 
 
       completedKanji:
-        normalizeUniqueIds(
-          parsed.completedKanji
-        )
+        normalizeProgressList(
+        parsed.completedKanji
+      )
 
     };
 
