@@ -4,6 +4,13 @@ const AUDIO_MAIN_FILE = "./data/audio-main.json";
 const AUDIO_WORDLIST_FILE = "./data/audio-wordlist.json";
 const AUDIO_GRAMMAR_FILE = "./data/audio-grammar.json";
 
+const ACTIVITY_FILES = {
+  starter: "./data/activities.json",
+  "elementary-1": "./data/activities-e1.json",
+  "elementary-2": "./data/activities-e2.json",
+  "pre-intermediate": "./data/activities-pi.json"
+};
+
 const CANDO_FILES = {
   starter: "./data/canDos-starter.json",
   "elementary-1": "./data/canDos-e1.json",
@@ -36,6 +43,7 @@ const BOOK_KEY_ALIASES = {
 let books = [];
 let lessons = [];
 let canDos = {};
+let activities = {};
 let mainAudioRecords = [];
 let wordlistAudioRecords = [];
 let wordlistAudioMetadata = {};
@@ -319,6 +327,81 @@ async function loadAllData() {
         )
         ? lessonsData.lessons
         : [];
+
+
+  /* -------------------------------------------------------
+     ACTIVITY DATA
+  ------------------------------------------------------- */
+
+  await Promise.all(
+
+    Object.entries(
+      ACTIVITY_FILES
+    ).map(
+      async (
+        [key, file]
+      ) => {
+
+        try {
+
+          const response =
+            await fetch(
+              file,
+              {
+                cache: "no-store"
+              }
+            );
+
+
+          if (!response.ok) {
+
+            activities[key] = [];
+
+            return;
+
+          }
+
+
+          const data =
+            await response.json();
+
+
+          if (
+            Array.isArray(data)
+          ) {
+
+            activities[key] = data;
+
+          } else if (
+            Array.isArray(data.activities)
+          ) {
+
+            activities[key] = data.activities;
+
+          } else {
+
+            activities[key] = [];
+
+          }
+
+        } catch (error) {
+
+          console.warn(
+            `Unable to load activity file: ${file}`,
+            error
+          );
+
+          activities[key] = [];
+
+        }
+
+      }
+    )
+
+  );
+
+
+  validateActivityDatasets();
 
 
   /* -------------------------------------------------------
@@ -1313,6 +1396,13 @@ function openLesson(
     `Lesson ${lessonNumber}`;
 
 
+  const lessonActivities =
+    findActivitiesForLesson(
+      lesson,
+      book
+    );
+
+
   const lessonCanDos =
     findCanDosForLesson(
       lesson,
@@ -1391,10 +1481,10 @@ function openLesson(
               </h3>
 
               <p>
-                ${lessonCanDos.length}
+                ${lessonActivities.length}
                 verified activity
                 ${
-                  lessonCanDos.length === 1
+                  lessonActivities.length === 1
                     ? ""
                     : " records"
                 }
@@ -1622,7 +1712,7 @@ function openLesson(
 
 
         ${
-          lessonCanDos.length
+          lessonActivities.length
             ? `
 
               <div class="can-do-section">
@@ -1633,12 +1723,16 @@ function openLesson(
                     Can-do / Activities
                   </h2>
 
+                  <p>
+                    ${lessonActivities.length} verified official activity record${lessonActivities.length === 1 ? "" : "s"}
+                  </p>
+
                 </div>
 
 
                 <div class="can-do-list">
 
-                  ${lessonCanDos
+                  ${lessonActivities
                     .map(
                       renderCanDoCard
                     )
@@ -1649,7 +1743,18 @@ function openLesson(
               </div>
 
             `
-            : ""
+            : `
+              <div class="can-do-section">
+                <div class="section-heading">
+                  <h2>
+                    Can-do / Activities
+                  </h2>
+                  <p>
+                    No verified activity records were loaded for this lesson.
+                  </p>
+                </div>
+              </div>
+            `
         }
 
       </div>
@@ -1679,11 +1784,11 @@ function openLesson(
       () => {
 
         if (
-          lessonCanDos.length
+          lessonActivities.length
         ) {
 
           openActivity(
-            lessonCanDos[0],
+            lessonActivities[0],
             lesson,
             book
           );
@@ -1791,7 +1896,7 @@ function openLesson(
 
 
             const activity =
-              lessonCanDos.find(
+              lessonActivities.find(
                 (
                   item
                 ) =>
@@ -2967,6 +3072,18 @@ function openActivity(
     "";
 
 
+  const canDoRecord =
+    findCanDoForActivity(
+      activity,
+      book
+    );
+
+
+  const canDoText =
+    canDoRecord?.textEn ||
+    "";
+
+
   const lessonId =
     activity.lessonId ||
     "";
@@ -3018,6 +3135,24 @@ function openActivity(
 
 
         <div class="can-do-section">
+
+          ${
+            canDoText
+              ? `
+                <div class="can-do-card">
+                  <div class="can-do-card-content">
+                    <h3>
+                      Official Can-do
+                    </h3>
+                    <p>
+                      ${escapeHtml(canDoText)}
+                    </p>
+                  </div>
+                </div>
+              `
+              : ""
+          }
+
 
           ${
             description
@@ -3892,6 +4027,186 @@ function findLessonsForBook(
       );
 
     }
+  );
+
+}
+
+
+/* =========================================================
+   ACTIVITY DATA VALIDATION
+========================================================= */
+
+function validateActivityDatasets() {
+
+  const expectedByBook = {
+    starter: 79,
+    "elementary-1": 69,
+    "elementary-2": 78,
+    "pre-intermediate": 62
+  };
+
+  const actualByBook = {
+    starter: Array.isArray(activities.starter) ? activities.starter.length : 0,
+    "elementary-1": Array.isArray(activities["elementary-1"]) ? activities["elementary-1"].length : 0,
+    "elementary-2": Array.isArray(activities["elementary-2"]) ? activities["elementary-2"].length : 0,
+    "pre-intermediate": Array.isArray(activities["pre-intermediate"]) ? activities["pre-intermediate"].length : 0
+  };
+
+  const expectedTotal =
+    Object.values(expectedByBook).reduce(
+      (sum, value) => sum + value,
+      0
+    );
+
+  const actualTotal =
+    Object.values(actualByBook).reduce(
+      (sum, value) => sum + value,
+      0
+    );
+
+  const mismatches =
+    Object.keys(expectedByBook).filter(
+      (key) => actualByBook[key] !== expectedByBook[key]
+    );
+
+  if (
+    actualTotal !== expectedTotal ||
+    mismatches.length
+  ) {
+
+    console.warn(
+      "IRODORI Activity dataset validation mismatch.",
+      {
+        expectedTotal,
+        actualTotal,
+        expectedByBook,
+        actualByBook
+      }
+    );
+
+  } else {
+
+    console.info(
+      "IRODORI Activity dataset validation passed.",
+      actualByBook
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ACTIVITY MATCHING
+========================================================= */
+
+function findActivitiesForLesson(
+  lesson,
+  book
+) {
+
+  const bookKey =
+    getBookKey(book);
+
+  const records =
+    activities[bookKey] || [];
+
+  const lessonId =
+    getLessonId(lesson);
+
+  const lessonNumber =
+    getLessonNumber(lesson);
+
+  return records
+    .filter(
+      (record) => {
+
+        if (
+          !record ||
+          !record.activityId
+        ) {
+          return false;
+        }
+
+        if (
+          record.lessonId !== undefined &&
+          lessonId !== null &&
+          String(record.lessonId) === String(lessonId)
+        ) {
+          return true;
+        }
+
+        if (
+          record.lessonNumber !== undefined &&
+          lessonNumber !== undefined &&
+          String(record.lessonNumber) === String(lessonNumber)
+        ) {
+          return true;
+        }
+
+        const activityId =
+          String(record.activityId);
+
+        const expectedPrefix =
+          String(bookKey === "starter" ? "ST" :
+            bookKey === "elementary-1" ? "E1" :
+            bookKey === "elementary-2" ? "E2" :
+            bookKey === "pre-intermediate" ? "PI" : "");
+
+        if (
+          expectedPrefix &&
+          activityId.startsWith(`${expectedPrefix}-L`) &&
+          lessonNumber !== "?"
+        ) {
+
+          const match =
+            activityId.match(/-L(\d+)-A/);
+
+          if (
+            match &&
+            String(Number(match[1])) === String(Number(lessonNumber))
+          ) {
+            return true;
+          }
+
+        }
+
+        return false;
+
+      }
+    )
+    .sort(
+      (a, b) =>
+        Number(a.activityNumber ?? a.order ?? 0) -
+        Number(b.activityNumber ?? b.order ?? 0)
+    );
+
+}
+
+
+function findCanDoForActivity(
+  activity,
+  book
+) {
+
+  const bookKey =
+    getBookKey(book);
+
+  const records =
+    canDos[bookKey] || [];
+
+  const canDoId =
+    activity?.canDoId;
+
+  if (!canDoId) {
+    return null;
+  }
+
+  return (
+    records.find(
+      (record) =>
+        String(record?.canDoId || "") === String(canDoId)
+    ) || null
   );
 
 }
