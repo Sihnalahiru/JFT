@@ -11,16 +11,19 @@ const CANDO_FILES = {
 
 const BOOK_KEY_ALIASES = {
   starter: "starter",
+  s: "starter",
 
   elementary01: "elementary-1",
   "elementary-01": "elementary-1",
   elementary1: "elementary-1",
   "elementary-1": "elementary-1",
+  e1: "elementary-1",
 
   elementary02: "elementary-2",
   "elementary-02": "elementary-2",
   elementary2: "elementary-2",
   "elementary-2": "elementary-2",
+  e2: "elementary-2",
 
   "pre-intermediate": "pre-intermediate",
   preintermediate: "pre-intermediate",
@@ -181,6 +184,12 @@ async function loadAllData() {
 
   }
 
+
+  /* -------------------------------------------------------
+     MAIN AUDIO VALIDATION
+  ------------------------------------------------------- */
+
+  validateMainAudioDataset();
 
   /* -------------------------------------------------------
      BOOKS
@@ -1645,120 +1654,89 @@ function getMainAudioRecordsForLesson(
 ) {
 
   const lessonNumber =
-    getLessonNumber(
-      lesson
-    );
-
+    getLessonNumber(lesson);
 
   const lessonId =
-    getLessonId(
-      lesson
-    );
-
+    getLessonId(lesson);
 
   const bookKey =
-    getBookKey(
-      book
-    );
-
+    getBookKey(book);
 
   return mainAudioRecords
-    .filter(
-      (
-        record
-      ) => {
+    .filter((record) => {
 
-        if (
-          !record ||
-          !record.url
-        ) {
+      if (
+        !record ||
+        !record.url
+      ) {
+        return false;
+      }
 
-          return false;
+      const recordBookId =
+        record.bookId == null
+          ? ""
+          : String(record.bookId).trim();
 
-        }
+      const recordBookKey =
+        getBookKey({
+          bookId: recordBookId
+        });
 
+      if (
+        !recordBookId ||
+        !bookKey ||
+        recordBookKey !== bookKey
+      ) {
+        return false;
+      }
 
-        const recordLessonId =
-          record.lessonId == null
-            ? ""
-            : String(
-                record.lessonId
-              );
-
-
-        const recordLessonNumber =
-          record.lessonNumber == null
-            ? ""
-            : String(
-                record.lessonNumber
-              );
-
-
-        const recordBookId =
-          record.bookId == null
-            ? ""
-            : String(
-                record.bookId
-              );
-
-
-        const recordBookKey =
-          getBookKey(
-            {
-              bookId:
-                recordBookId
-            }
-          );
-
-
-        const lessonMatches =
-          (
-            lessonId &&
-            recordLessonId ===
-              String(
-                lessonId
-              )
-          ) ||
-          (
-            recordLessonNumber &&
-            recordLessonNumber ===
-              String(
-                lessonNumber
-              )
-          );
-
-
-        const bookMatches =
-          !recordBookId ||
-          recordBookId ===
-            String(
-              book?.bookId ||
-              ""
-            ) ||
-          recordBookKey ===
-            bookKey;
-
-
-        return (
-          lessonMatches &&
-          bookMatches
+      const normalizedRecordLessonId =
+        normalizeLessonId(
+          record.lessonId
         );
 
-      }
-    )
+      const normalizedLessonId =
+        normalizeLessonId(
+          lessonId
+        );
+
+      const lessonIdMatches =
+        Boolean(
+          normalizedRecordLessonId &&
+          normalizedLessonId &&
+          normalizedRecordLessonId ===
+            normalizedLessonId
+        );
+
+      const recordLessonNumber =
+        record.lessonNumber == null
+          ? ""
+          : String(record.lessonNumber).trim();
+
+      const lessonNumberMatches =
+        Boolean(
+          recordLessonNumber &&
+          String(lessonNumber) !== "?" &&
+          recordLessonNumber ===
+            String(lessonNumber)
+        );
+
+      return (
+        lessonIdMatches ||
+        lessonNumberMatches
+      );
+
+    })
     .sort(
-      (
-        a,
-        b
-      ) =>
+      (a, b) =>
         Number(
-          a.index ||
-          a.order ||
+          a.index ??
+          a.order ??
           0
         ) -
         Number(
-          b.index ||
-          b.order ||
+          b.index ??
+          b.order ??
           0
         )
     );
@@ -2554,6 +2532,173 @@ function openActivity(
       }
     );
 
+}
+
+
+/* =========================================================
+   MAIN AUDIO VALIDATION
+========================================================= */
+
+function validateMainAudioDataset() {
+
+  const expectedByBook = {
+    starter: 465,
+    "elementary-1": 326,
+    "elementary-2": 338,
+    "pre-intermediate": 251
+  };
+
+  const actualByBook = {
+    starter: 0,
+    "elementary-1": 0,
+    "elementary-2": 0,
+    "pre-intermediate": 0
+  };
+
+  mainAudioRecords.forEach((record) => {
+
+    const key =
+      getBookKey({
+        bookId:
+          record?.bookId
+      });
+
+    if (
+      Object.prototype.hasOwnProperty.call(
+        actualByBook,
+        key
+      )
+    ) {
+      actualByBook[key] += 1;
+    }
+
+  });
+
+  const total =
+    mainAudioRecords.length;
+
+  const expectedTotal =
+    Object.values(
+      expectedByBook
+    ).reduce(
+      (sum, value) =>
+        sum + value,
+      0
+    );
+
+  const mismatches =
+    Object.keys(
+      expectedByBook
+    ).filter(
+      (key) =>
+        actualByBook[key] !==
+        expectedByBook[key]
+    );
+
+  if (
+    total !== expectedTotal ||
+    mismatches.length
+  ) {
+
+    console.warn(
+      "IRODORI Main Audio validation mismatch.",
+      {
+        expectedTotal,
+        actualTotal: total,
+        expectedByBook,
+        actualByBook
+      }
+    );
+
+  } else {
+
+    console.info(
+      "IRODORI Main Audio validation passed.",
+      {
+        total,
+        byBook: actualByBook
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   NORMALIZE LESSON ID
+========================================================= */
+
+function normalizeLessonId(
+  value
+) {
+
+  if (
+    value === undefined ||
+    value === null ||
+    String(value).trim() === ""
+  ) {
+    return "";
+  }
+
+  const raw =
+    String(value)
+      .trim()
+      .toLowerCase()
+      .replace(
+        /_/g,
+        "-"
+      );
+
+  const match =
+    raw.match(
+      /^(starter|s|elementary-?0?1|elementary-?1|e1|elementary-?0?2|elementary-?2|e2|pre-?intermediate|pi)[- ]?l?(\d{1,2})$/
+    );
+
+  if (!match) {
+    return raw;
+  }
+
+  const bookToken =
+    match[1];
+
+  const number =
+    String(
+      Number(
+        match[2]
+      )
+    ).padStart(
+      2,
+      "0"
+    );
+
+  let bookKey = "";
+
+  if (
+    bookToken === "starter" ||
+    bookToken === "s"
+  ) {
+    bookKey = "starter";
+  } else if (
+    bookToken === "e1" ||
+    bookToken.includes("1")
+  ) {
+    bookKey = "elementary-1";
+  } else if (
+    bookToken === "e2" ||
+    bookToken.includes("2")
+  ) {
+    bookKey = "elementary-2";
+  } else if (
+    bookToken === "pi" ||
+    bookToken.startsWith("pre")
+  ) {
+    bookKey = "pre-intermediate";
+  }
+
+  return bookKey
+    ? `${bookKey}-L${number}`
+    : raw;
 }
 
 
@@ -3474,6 +3619,59 @@ window.IrodoriMainAudio = {
       getMainAudioRecordsForLesson(
         lesson,
         book
-      )
+      ),
+
+  getCountForLesson:
+    (
+      lesson,
+      book
+    ) =>
+      getMainAudioRecordsForLesson(
+        lesson,
+        book
+      ).length,
+
+  getTotalCount:
+    () =>
+      mainAudioRecords.length,
+
+  getBookCounts:
+    () => {
+
+      const counts = {};
+
+      mainAudioRecords.forEach(
+        (record) => {
+
+          const key =
+            getBookKey({
+              bookId:
+                record?.bookId
+            });
+
+          counts[key] =
+            (counts[key] || 0) + 1;
+
+        }
+      );
+
+      return counts;
+
+    },
+
+  validate:
+    () => {
+
+      validateMainAudioDataset();
+
+      return {
+        total:
+          mainAudioRecords.length,
+        bookCounts:
+          window.IrodoriMainAudio
+            .getBookCounts()
+      };
+
+    }
 
 };
