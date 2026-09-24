@@ -1,0 +1,334 @@
+{
+  "metadata": {
+    "dataset": "wordlist-audio",
+    "title": "IRODORI Word-list Audio",
+    "source": "Japan Foundation IRODORI",
+    "verified_records": 223,
+    "status": "PARTIAL_OFFICIAL_DATA",
+    "pre_intermediate_status": "PENDING — SOURCE VERIFICATION REQUIRED",
+    "last_audit": "2026-09-24"
+  },
+  "books": [
+    {
+      "book": "Starter",
+      "book_code": "X",
+      "status": "VERIFIED",
+      "record_count": 79,
+      "source_pages": [
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html",
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html",
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html"
+      ],
+      "records": [
+        {"id":"wordlist-X-01-01","book":"Starter","book_code":"X","lesson":1,"lesson_label":"L01","audio_index":1,"filename":"wordlist_X_01-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-01-02","book":"Starter","book_code":"X","lesson":1,"lesson_label":"L01","audio_index":2,"filename":"wordlist_X_01-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-01-03","book":"Starter","book_code":"X","lesson":1,"lesson_label":"L01","audio_index":3,"filename":"wordlist_X_01-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-01-04","book":"Starter","book_code":"X","lesson":1,"lesson_label":"L01","audio_index":4,"filename":"wordlist_X_01-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-02-01","book":"Starter","book_code":"X","lesson":2,"lesson_label":"L02","audio_index":1,"filename":"wordlist_X_02-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-02-02","book":"Starter","book_code":"X","lesson":2,"lesson_label":"L02","audio_index":2,"filename":"wordlist_X_02-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-02-03","book":"Starter","book_code":"X","lesson":2,"lesson_label":"L02","audio_index":3,"filename":"wordlist_X_02-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-03-01","book":"Starter","book_code":"X","lesson":3,"lesson_label":"L03","audio_index":1,"filename":"wordlist_X_03-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-03-02","book":"Starter","book_code":"X","lesson":3,"lesson_label":"L03","audio_index":2,"filename":"wordlist_X_03-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-03-03","book":"Starter","book_code":"X","lesson":3,"lesson_label":"L03","audio_index":3,"filename":"wordlist_X_03-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-03-04","book":"Starter","book_code":"X","lesson":3,"lesson_label":"L03","audio_index":4,"filename":"wordlist_X_03-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-04-01","book":"Starter","book_code":"X","lesson":4,"lesson_label":"L04","audio_index":1,"filename":"wordlist_X_04-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-04-02","book":"Starter","book_code":"X","lesson":4,"lesson_label":"L04","audio_index":2,"filename":"wordlist_X_04-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-04-03","book":"Starter","book_code":"X","lesson":4,"lesson_label":"L04","audio_index":3,"filename":"wordlist_X_04-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-04-04","book":"Starter","book_code":"X","lesson":4,"lesson_label":"L04","audio_index":4,"filename":"wordlist_X_04-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-05-01","book":"Starter","book_code":"X","lesson":5,"lesson_label":"L05","audio_index":1,"filename":"wordlist_X_05-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-05-02","book":"Starter","book_code":"X","lesson":5,"lesson_label":"L05","audio_index":2,"filename":"wordlist_X_05-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-05-03","book":"Starter","book_code":"X","lesson":5,"lesson_label":"L05","audio_index":3,"filename":"wordlist_X_05-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-05-04","book":"Starter","book_code":"X","lesson":5,"lesson_label":"L05","audio_index":4,"filename":"wordlist_X_05-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-05-05","book":"Starter","book_code":"X","lesson":5,"lesson_label":"L05","audio_index":5,"filename":"wordlist_X_05-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-06-01","book":"Starter","book_code":"X","lesson":6,"lesson_label":"L06","audio_index":1,"filename":"wordlist_X_06-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-06-02","book":"Starter","book_code":"X","lesson":6,"lesson_label":"L06","audio_index":2,"filename":"wordlist_X_06-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-06-03","book":"Starter","book_code":"X","lesson":6,"lesson_label":"L06","audio_index":3,"filename":"wordlist_X_06-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-06-04","book":"Starter","book_code":"X","lesson":6,"lesson_label":"L06","audio_index":4,"filename":"wordlist_X_06-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-06-05","book":"Starter","book_code":"X","lesson":6,"lesson_label":"L06","audio_index":5,"filename":"wordlist_X_06-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-07-01","book":"Starter","book_code":"X","lesson":7,"lesson_label":"L07","audio_index":1,"filename":"wordlist_X_07-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-07-02","book":"Starter","book_code":"X","lesson":7,"lesson_label":"L07","audio_index":2,"filename":"wordlist_X_07-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-07-03","book":"Starter","book_code":"X","lesson":7,"lesson_label":"L07","audio_index":3,"filename":"wordlist_X_07-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-07-04","book":"Starter","book_code":"X","lesson":7,"lesson_label":"L07","audio_index":4,"filename":"wordlist_X_07-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-07-05","book":"Starter","book_code":"X","lesson":7,"lesson_label":"L07","audio_index":5,"filename":"wordlist_X_07-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-08-01","book":"Starter","book_code":"X","lesson":8,"lesson_label":"L08","audio_index":1,"filename":"wordlist_X_08-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-08-02","book":"Starter","book_code":"X","lesson":8,"lesson_label":"L08","audio_index":2,"filename":"wordlist_X_08-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-08-03","book":"Starter","book_code":"X","lesson":8,"lesson_label":"L08","audio_index":3,"filename":"wordlist_X_08-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-08-04","book":"Starter","book_code":"X","lesson":8,"lesson_label":"L08","audio_index":4,"filename":"wordlist_X_08-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-09-01","book":"Starter","book_code":"X","lesson":9,"lesson_label":"L09","audio_index":1,"filename":"wordlist_X_09-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-09-02","book":"Starter","book_code":"X","lesson":9,"lesson_label":"L09","audio_index":2,"filename":"wordlist_X_09-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-09-03","book":"Starter","book_code":"X","lesson":9,"lesson_label":"L09","audio_index":3,"filename":"wordlist_X_09-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-09-04","book":"Starter","book_code":"X","lesson":9,"lesson_label":"L09","audio_index":4,"filename":"wordlist_X_09-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-10-01","book":"Starter","book_code":"X","lesson":10,"lesson_label":"L10","audio_index":1,"filename":"wordlist_X_10-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-10-02","book":"Starter","book_code":"X","lesson":10,"lesson_label":"L10","audio_index":2,"filename":"wordlist_X_10-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-10-03","book":"Starter","book_code":"X","lesson":10,"lesson_label":"L10","audio_index":3,"filename":"wordlist_X_10-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-10-04","book":"Starter","book_code":"X","lesson":10,"lesson_label":"L10","audio_index":4,"filename":"wordlist_X_10-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-10-05","book":"Starter","book_code":"X","lesson":10,"lesson_label":"L10","audio_index":5,"filename":"wordlist_X_10-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-11-01","book":"Starter","book_code":"X","lesson":11,"lesson_label":"L11","audio_index":1,"filename":"wordlist_X_11-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-11-02","book":"Starter","book_code":"X","lesson":11,"lesson_label":"L11","audio_index":2,"filename":"wordlist_X_11-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-11-03","book":"Starter","book_code":"X","lesson":11,"lesson_label":"L11","audio_index":3,"filename":"wordlist_X_11-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-11-04","book":"Starter","book_code":"X","lesson":11,"lesson_label":"L11","audio_index":4,"filename":"wordlist_X_11-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-12-01","book":"Starter","book_code":"X","lesson":12,"lesson_label":"L12","audio_index":1,"filename":"wordlist_X_12-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-12-02","book":"Starter","book_code":"X","lesson":12,"lesson_label":"L12","audio_index":2,"filename":"wordlist_X_12-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-12-03","book":"Starter","book_code":"X","lesson":12,"lesson_label":"L12","audio_index":3,"filename":"wordlist_X_12-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-12-04","book":"Starter","book_code":"X","lesson":12,"lesson_label":"L12","audio_index":4,"filename":"wordlist_X_12-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-13-01","book":"Starter","book_code":"X","lesson":13,"lesson_label":"L13","audio_index":1,"filename":"wordlist_X_13-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-13-02","book":"Starter","book_code":"X","lesson":13,"lesson_label":"L13","audio_index":2,"filename":"wordlist_X_13-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-13-03","book":"Starter","book_code":"X","lesson":13,"lesson_label":"L13","audio_index":3,"filename":"wordlist_X_13-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-13-04","book":"Starter","book_code":"X","lesson":13,"lesson_label":"L13","audio_index":4,"filename":"wordlist_X_13-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-13-05","book":"Starter","book_code":"X","lesson":13,"lesson_label":"L13","audio_index":5,"filename":"wordlist_X_13-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-14-01","book":"Starter","book_code":"X","lesson":14,"lesson_label":"L14","audio_index":1,"filename":"wordlist_X_14-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-14-02","book":"Starter","book_code":"X","lesson":14,"lesson_label":"L14","audio_index":2,"filename":"wordlist_X_14-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-14-03","book":"Starter","book_code":"X","lesson":14,"lesson_label":"L14","audio_index":3,"filename":"wordlist_X_14-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-14-04","book":"Starter","book_code":"X","lesson":14,"lesson_label":"L14","audio_index":4,"filename":"wordlist_X_14-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-15-01","book":"Starter","book_code":"X","lesson":15,"lesson_label":"L15","audio_index":1,"filename":"wordlist_X_15-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-15-02","book":"Starter","book_code":"X","lesson":15,"lesson_label":"L15","audio_index":2,"filename":"wordlist_X_15-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-15-03","book":"Starter","book_code":"X","lesson":15,"lesson_label":"L15","audio_index":3,"filename":"wordlist_X_15-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-15-04","book":"Starter","book_code":"X","lesson":15,"lesson_label":"L15","audio_index":4,"filename":"wordlist_X_15-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-15-05","book":"Starter","book_code":"X","lesson":15,"lesson_label":"L15","audio_index":5,"filename":"wordlist_X_15-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-16-01","book":"Starter","book_code":"X","lesson":16,"lesson_label":"L16","audio_index":1,"filename":"wordlist_X_16-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-16-02","book":"Starter","book_code":"X","lesson":16,"lesson_label":"L16","audio_index":2,"filename":"wordlist_X_16-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-16-03","book":"Starter","book_code":"X","lesson":16,"lesson_label":"L16","audio_index":3,"filename":"wordlist_X_16-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-16-04","book":"Starter","book_code":"X","lesson":16,"lesson_label":"L16","audio_index":4,"filename":"wordlist_X_16-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-16-05","book":"Starter","book_code":"X","lesson":16,"lesson_label":"L16","audio_index":5,"filename":"wordlist_X_16-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-17-01","book":"Starter","book_code":"X","lesson":17,"lesson_label":"L17","audio_index":1,"filename":"wordlist_X_17-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-17-02","book":"Starter","book_code":"X","lesson":17,"lesson_label":"L17","audio_index":2,"filename":"wordlist_X_17-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-17-03","book":"Starter","book_code":"X","lesson":17,"lesson_label":"L17","audio_index":3,"filename":"wordlist_X_17-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-17-04","book":"Starter","book_code":"X","lesson":17,"lesson_label":"L17","audio_index":4,"filename":"wordlist_X_17-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-17-05","book":"Starter","book_code":"X","lesson":17,"lesson_label":"L17","audio_index":5,"filename":"wordlist_X_17-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-X-18-01","book":"Starter","book_code":"X","lesson":18,"lesson_label":"L18","audio_index":1,"filename":"wordlist_X_18-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-18-02","book":"Starter","book_code":"X","lesson":18,"lesson_label":"L18","audio_index":2,"filename":"wordlist_X_18-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-18-03","book":"Starter","book_code":"X","lesson":18,"lesson_label":"L18","audio_index":3,"filename":"wordlist_X_18-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-X-18-04","book":"Starter","book_code":"X","lesson":18,"lesson_label":"L18","audio_index":4,"filename":"wordlist_X_18-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/starter_03.html","audio_url":null,"status":"VERIFIED"}
+      ]
+    },
+    {
+      "book": "Elementary 1",
+      "book_code": "Y",
+      "status": "VERIFIED",
+      "record_count": 67,
+      "source_pages": [
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html",
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html",
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html"
+      ],
+      "records": [
+        {"id":"wordlist-Y-01-01","book":"Elementary 1","book_code":"Y","lesson":1,"lesson_label":"L01","audio_index":1,"filename":"wordlist_Y_01-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-01-02","book":"Elementary 1","book_code":"Y","lesson":1,"lesson_label":"L01","audio_index":2,"filename":"wordlist_Y_01-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-01-03","book":"Elementary 1","book_code":"Y","lesson":1,"lesson_label":"L01","audio_index":3,"filename":"wordlist_Y_01-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-02-01","book":"Elementary 1","book_code":"Y","lesson":2,"lesson_label":"L02","audio_index":1,"filename":"wordlist_Y_02-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-02-02","book":"Elementary 1","book_code":"Y","lesson":2,"lesson_label":"L02","audio_index":2,"filename":"wordlist_Y_02-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-02-03","book":"Elementary 1","book_code":"Y","lesson":2,"lesson_label":"L02","audio_index":3,"filename":"wordlist_Y_02-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-03-01","book":"Elementary 1","book_code":"Y","lesson":3,"lesson_label":"L03","audio_index":1,"filename":"wordlist_Y_03-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-03-02","book":"Elementary 1","book_code":"Y","lesson":3,"lesson_label":"L03","audio_index":2,"filename":"wordlist_Y_03-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-03-03","book":"Elementary 1","book_code":"Y","lesson":3,"lesson_label":"L03","audio_index":3,"filename":"wordlist_Y_03-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-04-01","book":"Elementary 1","book_code":"Y","lesson":4,"lesson_label":"L04","audio_index":1,"filename":"wordlist_Y_04-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-04-02","book":"Elementary 1","book_code":"Y","lesson":4,"lesson_label":"L04","audio_index":2,"filename":"wordlist_Y_04-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-04-03","book":"Elementary 1","book_code":"Y","lesson":4,"lesson_label":"L04","audio_index":3,"filename":"wordlist_Y_04-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-05-01","book":"Elementary 1","book_code":"Y","lesson":5,"lesson_label":"L05","audio_index":1,"filename":"wordlist_Y_05-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-05-02","book":"Elementary 1","book_code":"Y","lesson":5,"lesson_label":"L05","audio_index":2,"filename":"wordlist_Y_05-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-05-03","book":"Elementary 1","book_code":"Y","lesson":5,"lesson_label":"L05","audio_index":3,"filename":"wordlist_Y_05-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-06-01","book":"Elementary 1","book_code":"Y","lesson":6,"lesson_label":"L06","audio_index":1,"filename":"wordlist_Y_06-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-06-02","book":"Elementary 1","book_code":"Y","lesson":6,"lesson_label":"L06","audio_index":2,"filename":"wordlist_Y_06-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-06-03","book":"Elementary 1","book_code":"Y","lesson":6,"lesson_label":"L06","audio_index":3,"filename":"wordlist_Y_06-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-07-01","book":"Elementary 1","book_code":"Y","lesson":7,"lesson_label":"L07","audio_index":1,"filename":"wordlist_Y_07-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-07-02","book":"Elementary 1","book_code":"Y","lesson":7,"lesson_label":"L07","audio_index":2,"filename":"wordlist_Y_07-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-07-03","book":"Elementary 1","book_code":"Y","lesson":7,"lesson_label":"L07","audio_index":3,"filename":"wordlist_Y_07-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-08-01","book":"Elementary 1","book_code":"Y","lesson":8,"lesson_label":"L08","audio_index":1,"filename":"wordlist_Y_08-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-08-02","book":"Elementary 1","book_code":"Y","lesson":8,"lesson_label":"L08","audio_index":2,"filename":"wordlist_Y_08-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-08-03","book":"Elementary 1","book_code":"Y","lesson":8,"lesson_label":"L08","audio_index":3,"filename":"wordlist_Y_08-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-09-01","book":"Elementary 1","book_code":"Y","lesson":9,"lesson_label":"L09","audio_index":1,"filename":"wordlist_Y_09-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-09-02","book":"Elementary 1","book_code":"Y","lesson":9,"lesson_label":"L09","audio_index":2,"filename":"wordlist_Y_09-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-09-03","book":"Elementary 1","book_code":"Y","lesson":9,"lesson_label":"L09","audio_index":3,"filename":"wordlist_Y_09-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-09-04","book":"Elementary 1","book_code":"Y","lesson":9,"lesson_label":"L09","audio_index":4,"filename":"wordlist_Y_09-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-10-01","book":"Elementary 1","book_code":"Y","lesson":10,"lesson_label":"L10","audio_index":1,"filename":"wordlist_Y_10-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-10-02","book":"Elementary 1","book_code":"Y","lesson":10,"lesson_label":"L10","audio_index":2,"filename":"wordlist_Y_10-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-10-03","book":"Elementary 1","book_code":"Y","lesson":10,"lesson_label":"L10","audio_index":3,"filename":"wordlist_Y_10-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-10-04","book":"Elementary 1","book_code":"Y","lesson":10,"lesson_label":"L10","audio_index":4,"filename":"wordlist_Y_10-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-11-01","book":"Elementary 1","book_code":"Y","lesson":11,"lesson_label":"L11","audio_index":1,"filename":"wordlist_Y_11-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-11-02","book":"Elementary 1","book_code":"Y","lesson":11,"lesson_label":"L11","audio_index":2,"filename":"wordlist_Y_11-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-11-03","book":"Elementary 1","book_code":"Y","lesson":11,"lesson_label":"L11","audio_index":3,"filename":"wordlist_Y_11-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-11-04","book":"Elementary 1","book_code":"Y","lesson":11,"lesson_label":"L11","audio_index":4,"filename":"wordlist_Y_11-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-12-01","book":"Elementary 1","book_code":"Y","lesson":12,"lesson_label":"L12","audio_index":1,"filename":"wordlist_Y_12-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-12-02","book":"Elementary 1","book_code":"Y","lesson":12,"lesson_label":"L12","audio_index":2,"filename":"wordlist_Y_12-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-12-03","book":"Elementary 1","book_code":"Y","lesson":12,"lesson_label":"L12","audio_index":3,"filename":"wordlist_Y_12-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-12-04","book":"Elementary 1","book_code":"Y","lesson":12,"lesson_label":"L12","audio_index":4,"filename":"wordlist_Y_12-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-13-01","book":"Elementary 1","book_code":"Y","lesson":13,"lesson_label":"L13","audio_index":1,"filename":"wordlist_Y_13-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-13-02","book":"Elementary 1","book_code":"Y","lesson":13,"lesson_label":"L13","audio_index":2,"filename":"wordlist_Y_13-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-13-03","book":"Elementary 1","book_code":"Y","lesson":13,"lesson_label":"L13","audio_index":3,"filename":"wordlist_Y_13-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-13-04","book":"Elementary 1","book_code":"Y","lesson":13,"lesson_label":"L13","audio_index":4,"filename":"wordlist_Y_13-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-13-05","book":"Elementary 1","book_code":"Y","lesson":13,"lesson_label":"L13","audio_index":5,"filename":"wordlist_Y_13-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-14-01","book":"Elementary 1","book_code":"Y","lesson":14,"lesson_label":"L14","audio_index":1,"filename":"wordlist_Y_14-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-14-02","book":"Elementary 1","book_code":"Y","lesson":14,"lesson_label":"L14","audio_index":2,"filename":"wordlist_Y_14-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-14-03","book":"Elementary 1","book_code":"Y","lesson":14,"lesson_label":"L14","audio_index":3,"filename":"wordlist_Y_14-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-14-04","book":"Elementary 1","book_code":"Y","lesson":14,"lesson_label":"L14","audio_index":4,"filename":"wordlist_Y_14-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-15-01","book":"Elementary 1","book_code":"Y","lesson":15,"lesson_label":"L15","audio_index":1,"filename":"wordlist_Y_15-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-15-02","book":"Elementary 1","book_code":"Y","lesson":15,"lesson_label":"L15","audio_index":2,"filename":"wordlist_Y_15-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-15-03","book":"Elementary 1","book_code":"Y","lesson":15,"lesson_label":"L15","audio_index":3,"filename":"wordlist_Y_15-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-15-04","book":"Elementary 1","book_code":"Y","lesson":15,"lesson_label":"L15","audio_index":4,"filename":"wordlist_Y_15-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-15-05","book":"Elementary 1","book_code":"Y","lesson":15,"lesson_label":"L15","audio_index":5,"filename":"wordlist_Y_15-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-16-01","book":"Elementary 1","book_code":"Y","lesson":16,"lesson_label":"L16","audio_index":1,"filename":"wordlist_Y_16-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-16-02","book":"Elementary 1","book_code":"Y","lesson":16,"lesson_label":"L16","audio_index":2,"filename":"wordlist_Y_16-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-16-03","book":"Elementary 1","book_code":"Y","lesson":16,"lesson_label":"L16","audio_index":3,"filename":"wordlist_Y_16-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-16-04","book":"Elementary 1","book_code":"Y","lesson":16,"lesson_label":"L16","audio_index":4,"filename":"wordlist_Y_16-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-17-01","book":"Elementary 1","book_code":"Y","lesson":17,"lesson_label":"L17","audio_index":1,"filename":"wordlist_Y_17-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-17-02","book":"Elementary 1","book_code":"Y","lesson":17,"lesson_label":"L17","audio_index":2,"filename":"wordlist_Y_17-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-17-03","book":"Elementary 1","book_code":"Y","lesson":17,"lesson_label":"L17","audio_index":3,"filename":"wordlist_Y_17-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-17-04","book":"Elementary 1","book_code":"Y","lesson":17,"lesson_label":"L17","audio_index":4,"filename":"wordlist_Y_17-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Y-18-01","book":"Elementary 1","book_code":"Y","lesson":18,"lesson_label":"L18","audio_index":1,"filename":"wordlist_Y_18-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-18-02","book":"Elementary 1","book_code":"Y","lesson":18,"lesson_label":"L18","audio_index":2,"filename":"wordlist_Y_18-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-18-03","book":"Elementary 1","book_code":"Y","lesson":18,"lesson_label":"L18","audio_index":3,"filename":"wordlist_Y_18-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-18-04","book":"Elementary 1","book_code":"Y","lesson":18,"lesson_label":"L18","audio_index":4,"filename":"wordlist_Y_18-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Y-18-05","book":"Elementary 1","book_code":"Y","lesson":18,"lesson_label":"L18","audio_index":5,"filename":"wordlist_Y_18-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary01_03.html","audio_url":null,"status":"VERIFIED"}
+      ]
+    },
+    {
+      "book": "Elementary 2",
+      "book_code": "Z",
+      "status": "VERIFIED",
+      "record_count": 77,
+      "source_pages": [
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html",
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html",
+        "https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html"
+      ],
+      "records": [
+        {"id":"wordlist-Z-01-01","book":"Elementary 2","book_code":"Z","lesson":1,"lesson_label":"L01","audio_index":1,"filename":"wordlist_Z_01-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-01-02","book":"Elementary 2","book_code":"Z","lesson":1,"lesson_label":"L01","audio_index":2,"filename":"wordlist_Z_01-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-01-03","book":"Elementary 2","book_code":"Z","lesson":1,"lesson_label":"L01","audio_index":3,"filename":"wordlist_Z_01-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-01-04","book":"Elementary 2","book_code":"Z","lesson":1,"lesson_label":"L01","audio_index":4,"filename":"wordlist_Z_01-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-02-01","book":"Elementary 2","book_code":"Z","lesson":2,"lesson_label":"L02","audio_index":1,"filename":"wordlist_Z_02-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-02-02","book":"Elementary 2","book_code":"Z","lesson":2,"lesson_label":"L02","audio_index":2,"filename":"wordlist_Z_02-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-02-03","book":"Elementary 2","book_code":"Z","lesson":2,"lesson_label":"L02","audio_index":3,"filename":"wordlist_Z_02-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-02-04","book":"Elementary 2","book_code":"Z","lesson":2,"lesson_label":"L02","audio_index":4,"filename":"wordlist_Z_02-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-03-01","book":"Elementary 2","book_code":"Z","lesson":3,"lesson_label":"L03","audio_index":1,"filename":"wordlist_Z_03-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-03-02","book":"Elementary 2","book_code":"Z","lesson":3,"lesson_label":"L03","audio_index":2,"filename":"wordlist_Z_03-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-03-03","book":"Elementary 2","book_code":"Z","lesson":3,"lesson_label":"L03","audio_index":3,"filename":"wordlist_Z_03-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-03-04","book":"Elementary 2","book_code":"Z","lesson":3,"lesson_label":"L03","audio_index":4,"filename":"wordlist_Z_03-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-03-05","book":"Elementary 2","book_code":"Z","lesson":3,"lesson_label":"L03","audio_index":5,"filename":"wordlist_Z_03-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-04-01","book":"Elementary 2","book_code":"Z","lesson":4,"lesson_label":"L04","audio_index":1,"filename":"wordlist_Z_04-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-04-02","book":"Elementary 2","book_code":"Z","lesson":4,"lesson_label":"L04","audio_index":2,"filename":"wordlist_Z_04-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-04-03","book":"Elementary 2","book_code":"Z","lesson":4,"lesson_label":"L04","audio_index":3,"filename":"wordlist_Z_04-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-04-04","book":"Elementary 2","book_code":"Z","lesson":4,"lesson_label":"L04","audio_index":4,"filename":"wordlist_Z_04-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-04-05","book":"Elementary 2","book_code":"Z","lesson":4,"lesson_label":"L04","audio_index":5,"filename":"wordlist_Z_04-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-05-01","book":"Elementary 2","book_code":"Z","lesson":5,"lesson_label":"L05","audio_index":1,"filename":"wordlist_Z_05-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-05-02","book":"Elementary 2","book_code":"Z","lesson":5,"lesson_label":"L05","audio_index":2,"filename":"wordlist_Z_05-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-05-03","book":"Elementary 2","book_code":"Z","lesson":5,"lesson_label":"L05","audio_index":3,"filename":"wordlist_Z_05-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-05-04","book":"Elementary 2","book_code":"Z","lesson":5,"lesson_label":"L05","audio_index":4,"filename":"wordlist_Z_05-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-06-01","book":"Elementary 2","book_code":"Z","lesson":6,"lesson_label":"L06","audio_index":1,"filename":"wordlist_Z_06-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-06-02","book":"Elementary 2","book_code":"Z","lesson":6,"lesson_label":"L06","audio_index":2,"filename":"wordlist_Z_06-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-06-03","book":"Elementary 2","book_code":"Z","lesson":6,"lesson_label":"L06","audio_index":3,"filename":"wordlist_Z_06-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-06-04","book":"Elementary 2","book_code":"Z","lesson":6,"lesson_label":"L06","audio_index":4,"filename":"wordlist_Z_06-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-06-05","book":"Elementary 2","book_code":"Z","lesson":6,"lesson_label":"L06","audio_index":5,"filename":"wordlist_Z_06-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_01.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-07-01","book":"Elementary 2","book_code":"Z","lesson":7,"lesson_label":"L07","audio_index":1,"filename":"wordlist_Z_07-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-07-02","book":"Elementary 2","book_code":"Z","lesson":7,"lesson_label":"L07","audio_index":2,"filename":"wordlist_Z_07-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-07-03","book":"Elementary 2","book_code":"Z","lesson":7,"lesson_label":"L07","audio_index":3,"filename":"wordlist_Z_07-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-07-04","book":"Elementary 2","book_code":"Z","lesson":7,"lesson_label":"L07","audio_index":4,"filename":"wordlist_Z_07-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-08-01","book":"Elementary 2","book_code":"Z","lesson":8,"lesson_label":"L08","audio_index":1,"filename":"wordlist_Z_08-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-08-02","book":"Elementary 2","book_code":"Z","lesson":8,"lesson_label":"L08","audio_index":2,"filename":"wordlist_Z_08-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-08-03","book":"Elementary 2","book_code":"Z","lesson":8,"lesson_label":"L08","audio_index":3,"filename":"wordlist_Z_08-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-08-04","book":"Elementary 2","book_code":"Z","lesson":8,"lesson_label":"L08","audio_index":4,"filename":"wordlist_Z_08-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-08-05","book":"Elementary 2","book_code":"Z","lesson":8,"lesson_label":"L08","audio_index":5,"filename":"wordlist_Z_08-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-09-01","book":"Elementary 2","book_code":"Z","lesson":9,"lesson_label":"L09","audio_index":1,"filename":"wordlist_Z_09-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-09-02","book":"Elementary 2","book_code":"Z","lesson":9,"lesson_label":"L09","audio_index":2,"filename":"wordlist_Z_09-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-09-03","book":"Elementary 2","book_code":"Z","lesson":9,"lesson_label":"L09","audio_index":3,"filename":"wordlist_Z_09-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-09-04","book":"Elementary 2","book_code":"Z","lesson":9,"lesson_label":"L09","audio_index":4,"filename":"wordlist_Z_09-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-09-05","book":"Elementary 2","book_code":"Z","lesson":9,"lesson_label":"L09","audio_index":5,"filename":"wordlist_Z_09-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-10-01","book":"Elementary 2","book_code":"Z","lesson":10,"lesson_label":"L10","audio_index":1,"filename":"wordlist_Z_10-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-10-02","book":"Elementary 2","book_code":"Z","lesson":10,"lesson_label":"L10","audio_index":2,"filename":"wordlist_Z_10-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-10-03","book":"Elementary 2","book_code":"Z","lesson":10,"lesson_label":"L10","audio_index":3,"filename":"wordlist_Z_10-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-10-04","book":"Elementary 2","book_code":"Z","lesson":10,"lesson_label":"L10","audio_index":4,"filename":"wordlist_Z_10-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-11-01","book":"Elementary 2","book_code":"Z","lesson":11,"lesson_label":"L11","audio_index":1,"filename":"wordlist_Z_11-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-11-02","book":"Elementary 2","book_code":"Z","lesson":11,"lesson_label":"L11","audio_index":2,"filename":"wordlist_Z_11-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-11-03","book":"Elementary 2","book_code":"Z","lesson":11,"lesson_label":"L11","audio_index":3,"filename":"wordlist_Z_11-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-11-04","book":"Elementary 2","book_code":"Z","lesson":11,"lesson_label":"L11","audio_index":4,"filename":"wordlist_Z_11-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-12-01","book":"Elementary 2","book_code":"Z","lesson":12,"lesson_label":"L12","audio_index":1,"filename":"wordlist_Z_12-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-12-02","book":"Elementary 2","book_code":"Z","lesson":12,"lesson_label":"L12","audio_index":2,"filename":"wordlist_Z_12-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-12-03","book":"Elementary 2","book_code":"Z","lesson":12,"lesson_label":"L12","audio_index":3,"filename":"wordlist_Z_12-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-12-04","book":"Elementary 2","book_code":"Z","lesson":12,"lesson_label":"L12","audio_index":4,"filename":"wordlist_Z_12-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_02.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-13-01","book":"Elementary 2","book_code":"Z","lesson":13,"lesson_label":"L13","audio_index":1,"filename":"wordlist_Z_13-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-13-02","book":"Elementary 2","book_code":"Z","lesson":13,"lesson_label":"L13","audio_index":2,"filename":"wordlist_Z_13-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-13-03","book":"Elementary 2","book_code":"Z","lesson":13,"lesson_label":"L13","audio_index":3,"filename":"wordlist_Z_13-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-13-04","book":"Elementary 2","book_code":"Z","lesson":13,"lesson_label":"L13","audio_index":4,"filename":"wordlist_Z_13-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-13-05","book":"Elementary 2","book_code":"Z","lesson":13,"lesson_label":"L13","audio_index":5,"filename":"wordlist_Z_13-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-14-01","book":"Elementary 2","book_code":"Z","lesson":14,"lesson_label":"L14","audio_index":1,"filename":"wordlist_Z_14-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-14-02","book":"Elementary 2","book_code":"Z","lesson":14,"lesson_label":"L14","audio_index":2,"filename":"wordlist_Z_14-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-14-03","book":"Elementary 2","book_code":"Z","lesson":14,"lesson_label":"L14","audio_index":3,"filename":"wordlist_Z_14-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-14-04","book":"Elementary 2","book_code":"Z","lesson":14,"lesson_label":"L14","audio_index":4,"filename":"wordlist_Z_14-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-15-01","book":"Elementary 2","book_code":"Z","lesson":15,"lesson_label":"L15","audio_index":1,"filename":"wordlist_Z_15-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-15-02","book":"Elementary 2","book_code":"Z","lesson":15,"lesson_label":"L15","audio_index":2,"filename":"wordlist_Z_15-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-15-03","book":"Elementary 2","book_code":"Z","lesson":15,"lesson_label":"L15","audio_index":3,"filename":"wordlist_Z_15-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-15-04","book":"Elementary 2","book_code":"Z","lesson":15,"lesson_label":"L15","audio_index":4,"filename":"wordlist_Z_15-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-16-01","book":"Elementary 2","book_code":"Z","lesson":16,"lesson_label":"L16","audio_index":1,"filename":"wordlist_Z_16-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-16-02","book":"Elementary 2","book_code":"Z","lesson":16,"lesson_label":"L16","audio_index":2,"filename":"wordlist_Z_16-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-16-03","book":"Elementary 2","book_code":"Z","lesson":16,"lesson_label":"L16","audio_index":3,"filename":"wordlist_Z_16-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-16-04","book":"Elementary 2","book_code":"Z","lesson":16,"lesson_label":"L16","audio_index":4,"filename":"wordlist_Z_16-4.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-16-05","book":"Elementary 2","book_code":"Z","lesson":16,"lesson_label":"L16","audio_index":5,"filename":"wordlist_Z_16-5.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-17-01","book":"Elementary 2","book_code":"Z","lesson":17,"lesson_label":"L17","audio_index":1,"filename":"wordlist_Z_17-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-17-02","book":"Elementary 2","book_code":"Z","lesson":17,"lesson_label":"L17","audio_index":2,"filename":"wordlist_Z_17-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-17-03","book":"Elementary 2","book_code":"Z","lesson":17,"lesson_label":"L17","audio_index":3,"filename":"wordlist_Z_17-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+
+        {"id":"wordlist-Z-18-01","book":"Elementary 2","book_code":"Z","lesson":18,"lesson_label":"L18","audio_index":1,"filename":"wordlist_Z_18-1.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-18-02","book":"Elementary 2","book_code":"Z","lesson":18,"lesson_label":"L18","audio_index":2,"filename":"wordlist_Z_18-2.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"},
+        {"id":"wordlist-Z-18-03","book":"Elementary 2","book_code":"Z","lesson":18,"lesson_label":"L18","audio_index":3,"filename":"wordlist_Z_18-3.mp3","source_page":"https://www.irodori.jpf.go.jp/en/wordlists/audio/elementary02_03.html","audio_url":null,"status":"VERIFIED"}
+      ]
+    },
+    {
+      "book": "Pre-Intermediate",
+      "book_code": "ZZ",
+      "status": "PENDING — SOURCE VERIFICATION REQUIRED",
+      "record_count": null,
+      "source_pages": [],
+      "records": []
+    }
+  ]
+}
