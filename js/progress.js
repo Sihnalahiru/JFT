@@ -1,4 +1,3 @@
-```javascript
 const PROGRESS_STORAGE_KEY =
   "irodori_master_learning_progress_v1";
 
@@ -117,6 +116,32 @@ function normalizeProgressId(value) {
 
 
 /* =========================================
+   NORMALIZE UNIQUE ID ARRAY
+   ========================================= */
+
+function normalizeUniqueIds(value) {
+
+  if (
+    !Array.isArray(value)
+  ) {
+
+    return [];
+
+  }
+
+
+  return [
+    ...new Set(
+      value
+        .map(normalizeProgressId)
+        .filter(Boolean)
+    )
+  ];
+
+}
+
+
+/* =========================================
    LOAD PROGRESS
    ========================================= */
 
@@ -158,43 +183,27 @@ function loadProgress() {
     return {
 
       completedBooks:
-        Array.isArray(
+        normalizeUniqueIds(
           parsed.completedBooks
-        )
-          ? parsed.completedBooks
-              .map(normalizeProgressId)
-              .filter(Boolean)
-          : [],
+        ),
 
 
       completedLessons:
-        Array.isArray(
+        normalizeUniqueIds(
           parsed.completedLessons
-        )
-          ? parsed.completedLessons
-              .map(normalizeProgressId)
-              .filter(Boolean)
-          : [],
+        ),
 
 
       completedActivities:
-        Array.isArray(
+        normalizeUniqueIds(
           parsed.completedActivities
-        )
-          ? parsed.completedActivities
-              .map(normalizeProgressId)
-              .filter(Boolean)
-          : [],
+        ),
 
 
       completedKanji:
-        Array.isArray(
+        normalizeUniqueIds(
           parsed.completedKanji
         )
-          ? parsed.completedKanji
-              .map(normalizeProgressId)
-              .filter(Boolean)
-          : []
 
     };
 
@@ -1440,4 +1449,3 @@ window.IrodoriProgress = {
   getKanjiAttemptCount
 
 };
-```
